@@ -9,7 +9,6 @@ from src.api_examples import item_example
 app = FastAPI()
 
 
-
 class Item(BaseModel):
     name: str
     description: str | None = None
