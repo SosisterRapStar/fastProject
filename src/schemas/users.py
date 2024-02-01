@@ -13,4 +13,3 @@ class UserIn(BaseUser):
 
 class UserOut(BaseUser):
     pass
-
