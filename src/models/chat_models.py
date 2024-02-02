@@ -48,6 +48,6 @@ class Convesation(Base):
 
 class UserConversationSecondary(Base):
     __tablename__ = "user_conversation"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     user_fk = mapped_column(ForeignKey("user.id"))
     conversation_fk = mapped_column(ForeignKey("conversation.id"))

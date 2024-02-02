@@ -13,6 +13,7 @@ class DebugSettings(BaseSettings):
 
 
 class DBSettings(BaseSettings):
+    db_string_url: str = os.getenv("DB_STRING")
     db_url: URL = URL.create(
         "postgresql+asyncpg",
         username=os.getenv("DB_USER"),

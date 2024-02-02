@@ -6,15 +6,15 @@ from fastapi import FastAPI
 from src.models import db_handler, Base
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    async with db_handler.engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     async with db_handler.engine.begin() as conn:
+#         await conn.run_sync(Base.metadata.create_all)
+#
+#     yield
 
-    yield
 
-
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 
 if __name__ == "__main__":
