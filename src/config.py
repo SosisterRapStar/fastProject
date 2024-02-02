@@ -3,12 +3,13 @@ from sqlalchemy import URL
 import os
 from dotenv import load_dotenv
 
+
 # Load environment variables from .env file
 load_dotenv()
 
 
 class DebugSettings(BaseSettings):
-    is_on = True
+    is_on: bool = True
 
 
 class DBSettings(BaseSettings):
@@ -19,4 +20,9 @@ class DBSettings(BaseSettings):
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
     )
-    echo_mode: bool = DebugSettings.is_on
+    echo_mode: bool = True
+
+
+db_settings = DBSettings()
+
+

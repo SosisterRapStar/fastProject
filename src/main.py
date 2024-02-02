@@ -1,10 +1,21 @@
-from typing import Union, Annotated
+from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Path, Query, Body
-from pydantic import BaseModel, Field
-from enum import Enum
+import uvicorn
+from fastapi import FastAPI
 
-
-app = FastAPI()
+from src.models import db_handler, Base
 
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with db_handler.engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", reload=True)
