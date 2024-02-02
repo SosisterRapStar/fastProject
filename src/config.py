@@ -7,7 +7,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-class Settings(BaseSettings):
+class DebugSettings(BaseSettings):
+    is_on = True
+
+
+class DBSettings(BaseSettings):
     db_url: URL = URL.create(
         "postgresql+asyncpg",
         username=os.getenv("DB_USER"),
@@ -15,5 +19,4 @@ class Settings(BaseSettings):
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
     )
-    echo_mode: bool = True
-
+    echo_mode: bool = DebugSettings.is_on
