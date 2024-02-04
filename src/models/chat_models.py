@@ -1,23 +1,12 @@
-from sqlalchemy import String, ForeignKey
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, relationship
 from .base import Base
 from .annotated_types import *
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from .user_model import User
 
-class User(Base):
-    __tablename__ = "user"
-
-    name: Mapped[str] = mapped_column(String(20), nullable=False)
-    email: Mapped[str] = mapped_column(nullable=False)
-    conversations: Mapped[list["Convesation"]] = relationship(
-        back_populates="users",
-        uselist=True,
-        secondary="user_conversation",
-    )
-    messages: Mapped[list['Message']] = relationship(back_populates='user', uselist=True)
-    hashed_password: Mapped[str]
-    is_online: Mapped[bool] = mapped_column(nullable=False)
-    created_at: Mapped[created_at_timestamp]
 
 
 class Message(Base):
@@ -25,7 +14,7 @@ class Message(Base):
 
     content: Mapped[str] = mapped_column(nullable=False)
     status: Mapped[str] = mapped_column(nullable=False)
-    user: Mapped["User"] = relationship(back_populates='messages', uselist=False)
+    user: Mapped["User"] = relationship(back_populates='messages', uselist=False,)
     user_fk: Mapped[UUIDpk] = mapped_column(ForeignKey("user.id"))
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]

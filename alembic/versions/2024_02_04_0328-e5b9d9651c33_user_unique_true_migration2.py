@@ -1,8 +1,8 @@
-"""Create migration
+"""User unique=True migration2
 
-Revision ID: 818c2e82ca93
+Revision ID: e5b9d9651c33
 Revises: 
-Create Date: 2024-02-03 02:33:19.787097
+Create Date: 2024-02-04 03:28:31.996702
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "818c2e82ca93"
+revision: str = "e5b9d9651c33"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -55,6 +55,7 @@ def upgrade() -> None:
         ),
         sa.Column("id", sa.Uuid(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("name"),
     )
     op.create_table(
         "messages",

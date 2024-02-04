@@ -1,18 +1,15 @@
-from sqlalchemy import create_engine, URL
-from sqlalchemy.ext.asyncio import AsyncAttrs
+from sqlalchemy import URL
 from sqlalchemy.ext.asyncio import async_sessionmaker
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
+from sqlalchemy.orm import DeclarativeBase, Mapped, as_declarative
 from src.config import db_settings
 from .annotated_types import UUIDpk
 
 
-class Base(DeclarativeBase):
+@as_declarative()   # pont zheskiy commited
+class Base:
     __abstract__ = True
     id: Mapped[UUIDpk]
-
-
 
 
 class DatabaseHandler:
