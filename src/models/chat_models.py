@@ -8,13 +8,15 @@ if TYPE_CHECKING:
     from .user_model import User
 
 
-
 class Message(Base):
     __tablename__ = "messages"
 
     content: Mapped[str] = mapped_column(nullable=False)
     status: Mapped[str] = mapped_column(nullable=False)
-    user: Mapped["User"] = relationship(back_populates='messages', uselist=False,)
+    user: Mapped["User"] = relationship(
+        back_populates="messages",
+        uselist=False,
+    )
     user_fk: Mapped[UUIDpk] = mapped_column(ForeignKey("user.id"))
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]

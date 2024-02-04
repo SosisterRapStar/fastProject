@@ -2,14 +2,14 @@ from pydantic_settings import BaseSettings
 from sqlalchemy import URL
 import os
 from dotenv import load_dotenv
-
+from src.config_file import global_config
 
 # Load environment variables from .env file
 load_dotenv()
 
 
-class DebugSettings(BaseSettings):
-    is_on: bool = True
+class RouterSettings(BaseSettings):
+    api_v1_prefix: str = "/api/v1"
 
 
 class DBSettings(BaseSettings):
@@ -21,9 +21,8 @@ class DBSettings(BaseSettings):
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
     )
-    echo_mode: bool = True
+    echo_mode: bool = global_config.DEBUG_MODE
 
 
 db_settings = DBSettings()
-
-
+router_settings = RouterSettings()

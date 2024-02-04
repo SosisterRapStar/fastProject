@@ -26,5 +26,11 @@ class User(Base):
     messages: Mapped[list["Message"] | None] = relationship(
         back_populates="user", uselist=True
     )
-    hashed_password: Mapped[str | None]
+    password: Mapped[str | None]  # hashed password
     created_at: Mapped[created_at_timestamp]
+
+    def __repr__(self):
+        return f"User: {self.name}"
+
+    def __str__(self):
+        self.__repr__()

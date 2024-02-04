@@ -1,8 +1,8 @@
-"""User unique=True migration2
+"""Renaming
 
-Revision ID: e5b9d9651c33
+Revision ID: d4dad98ecb0b
 Revises: 
-Create Date: 2024-02-04 03:28:31.996702
+Create Date: 2024-02-04 23:04:37.182057
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "e5b9d9651c33"
+revision: str = "d4dad98ecb0b"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -45,8 +45,7 @@ def upgrade() -> None:
         "user",
         sa.Column("name", sa.String(length=20), nullable=False),
         sa.Column("email", sa.String(), nullable=False),
-        sa.Column("hashed_password", sa.String(), nullable=False),
-        sa.Column("is_online", sa.Boolean(), nullable=False),
+        sa.Column("password", sa.String(), nullable=True),
         sa.Column(
             "created_at",
             sa.DateTime(),
