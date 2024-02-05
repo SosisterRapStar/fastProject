@@ -17,6 +17,8 @@ class Message(Base):
         back_populates="messages",
         uselist=False,
     )
+    conversation: Mapped["Convesation"] = relationship(back_populates="messages")
+    conversation_fk: Mapped[UUIDpk] = mapped_column(ForeignKey("conversation.id"))
     user_fk: Mapped[UUIDpk] = mapped_column(ForeignKey("user.id"))
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
@@ -26,13 +28,13 @@ class Convesation(Base):
     __tablename__ = "conversation"
 
     status: Mapped[str] = mapped_column(nullable=False)
-    is_group: Mapped[bool] = mapped_column(nullable=False)
     name: Mapped[str | None]
     users: Mapped[list["User"]] = relationship(
         back_populates="conversations",
         uselist=True,
         secondary="user_conversation",
     )
+    messages: Mapped[list["Message"]] = relationship(ba)
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
 
