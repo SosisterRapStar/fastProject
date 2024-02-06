@@ -18,6 +18,12 @@ class Base:
     __abstract__ = True
     id: Mapped[UUIDpk]
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}: {self.name}, {self.id}"
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class DatabaseHandler:
     def __init__(self, url: str | URL, echo: bool = db_settings.echo_mode):

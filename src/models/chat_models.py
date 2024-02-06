@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 
 class Message(Base):
-    __tablename__ = "messages"
+    __tablename__ = "message"
 
     content: Mapped[str] = mapped_column(nullable=False)
     status: Mapped[str] = mapped_column(nullable=False)
@@ -17,24 +17,25 @@ class Message(Base):
         back_populates="messages",
         uselist=False,
     )
-    conversation: Mapped["Convesation"] = relationship(back_populates="messages")
-    conversation_fk: Mapped[UUIDpk] = mapped_column(ForeignKey("conversation.id"))
-    user_fk: Mapped[UUIDpk] = mapped_column(ForeignKey("user.id"))
+    in_conversation: Mapped["Conversation"] = relationship(back_populates="messages", uselist=False)
+    conversation_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id"), unique=True)
+    user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"), unique=True)
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
 
 
-class Convesation(Base):
+class Conversation(Base):
     __tablename__ = "conversation"
 
-    status: Mapped[str] = mapped_column(nullable=False)
-    name: Mapped[str | None]
+    name: Mapped[str | None] = mapped_column(unique=True)
     users: Mapped[list["User"]] = relationship(
         back_populates="conversations",
         uselist=True,
-        secondary="user_conversation",
+        secondary="user_conversation"
     )
-    messages: Mapped[list["Message"]] = relationship(ba)
+    user_admin: Mapped["User"] = relationship(back_populates="admin_convs", uselist=False)
+    user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
+    messages: Mapped[list["Message"]] = relationship(back_populates="in_conversation", uselist=True)
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
 
@@ -42,5 +43,11 @@ class Convesation(Base):
 class UserConversationSecondary(Base):
     __tablename__ = "user_conversation"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    user_fk = mapped_column(ForeignKey("user.id"))
-    conversation_fk = mapped_column(ForeignKey("conversation.id"))
+    user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
+    conversation_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id", ondelete="CASCADE"))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}: {self.user_fk}, {self.conversation_fk}"
+
+    def __str__(self):
+        return self.__repr__()

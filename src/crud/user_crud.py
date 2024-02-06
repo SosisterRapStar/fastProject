@@ -15,7 +15,7 @@ async def create_user(async_session: AsyncSession, user: User_on_request) -> Use
 
 
 async def delete_user(
-        async_session: async_sessionmaker[AsyncSession],
+        async_session: AsyncSession,
         user: User_on_request,
 ):
     pass
