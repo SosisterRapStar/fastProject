@@ -39,18 +39,9 @@ async def get_smthing_id_by_name(session: AsyncSession, name: str, smthing: Type
     return res
 
 
-async def get_secondary(session: AsyncSession):
-    return UserConversationSecondary()
 
 
-async def add_user_to_conv(session: AsyncSession, user_name: str, conv_name: str):
-    user_id = await get_smthing_id_by_name(session=session, name=user_name, smthing=User)
-    conv_id = await get_smthing_id_by_name(session=session, name=conv_name, smthing=Conversation)
-    sec = await get_secondary(session)
-    sec.user_fk = user_id
-    sec.conversation_fk = conv_id
-    session.add(sec)
-    await session.commit()
+
 
 
 
@@ -59,8 +50,10 @@ async def main():
         # await add_user_to_conv(ses, user_name="I hate niggers2", conv_name="New_conv2")
 
 
-        stmt = select(User).where(User.name == "I hate niggers2").options(selectinload(User.conversations))
-        print(stmt.compile(db_handler.engine))
+        stmt = select(User).where(User.name == "I hate niggers")
+        user = await ses.scalar(stmt)
+        user.optional(selectinload(User.conversations))
+        print(user.conversations)
         # result: Result = await ses.execute(stmt)
         # user = result.scalar()
         # user = await ses.scalar(stmt)

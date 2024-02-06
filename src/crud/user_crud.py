@@ -34,13 +34,6 @@ async def update_user(
 
 
 
-async def get_user_by_id(
-        async_session: AsyncSession,
-        user_id: uuid.UUID,
-) -> User | None:
-    stmt = select(User).where(User.id == user_id)
-    result: Result = await async_session.execute(stmt)
-    return result.scalar()
 
 
 async def get_users(async_session: AsyncSession) -> list[User]:
