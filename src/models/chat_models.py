@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Table, Column
 from sqlalchemy.orm import Mapped, relationship
 from .base import Base
 from .annotated_types import *
@@ -40,14 +40,10 @@ class Conversation(Base):
     updated_at: Mapped[updated_at_timestamp]
 
 
-class UserConversationSecondary(Base):
-    __tablename__ = "user_conversation"
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
-    conversation_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id", ondelete="CASCADE"))
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}: {self.user_fk}, {self.conversation_fk}"
+UserConversationSecondary = Table("user_conversation",
+                                  Base.metadata,
+                                  Column("user_fk", ForeignKey("user.id"), primary_key=True),
+                                  Column("conversation_fk", ForeignKey("conversation.id"), primary_key=True),
+                                  )
 
-    def __str__(self):
-        return self.__repr__()
