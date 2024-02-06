@@ -39,6 +39,7 @@ class DatabaseHandler:
         )
         return session
 
+# TODO: сделать scoped_session
     async def session_dependency(self) -> AsyncSession:  # Generator[AsyncSession]:
         async with self.session() as session:
             yield session

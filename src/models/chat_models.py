@@ -38,7 +38,7 @@ class Conversation(Base):
         back_populates="conversations", uselist=True, secondary="user_conversation"
     )
     user_admin: Mapped["User"] = relationship(
-        back_populates="admin_convs", uselist=False
+        back_populates="admin_convs", uselist=False, lazy='joined',
     )
     user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
     messages: Mapped[list["Message"]] = relationship(

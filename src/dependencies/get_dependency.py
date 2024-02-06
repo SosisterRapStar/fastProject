@@ -11,6 +11,7 @@ from src.dependencies.session_dependency import session_dep
 from src.models.user_model import User
 
 
+# TODO: перенести в user_crud, а здесь вызывать функции
 async def get_user_stmt(criteria):
     return select(User).where(criteria)
 
