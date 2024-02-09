@@ -22,7 +22,9 @@ async def get_empty_conv(
     return new_conv
 
 
-async def create_conversation_and_add_user(
+
+
+async def create_conversation_and_add_admin(
         async_session: AsyncSession,
         user_id: uuid.UUID,
         conversation_schema: ConversationRequest,
@@ -33,6 +35,7 @@ async def create_conversation_and_add_user(
     await async_session.refresh(new_conv)
     await add_user_to_conv(async_session, user_id, new_conv.id)
     await async_session.commit()
+    return new_conv
 
 
 async def add_user_to_conv(
@@ -74,10 +77,10 @@ async def get_user_convs(async_session: AsyncSession, user_name: str) -> list[Co
     return user.conversations
 
 
-async def get_users_in_conv(async_session: AsyncSession, conv_name: str, ) -> list[User]:
+async def get_conv_with_users(async_session: AsyncSession, conv_name: str, ) -> Conversation:
     stmt = select(Conversation).where(Conversation.name == conv_name).options(selectinload(Conversation.users))
     conv = await async_session.scalar(stmt)
-    return conv.users
+    return conv
 
 
 async def get_conv_by_name(

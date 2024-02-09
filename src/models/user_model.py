@@ -21,9 +21,8 @@ class User(Base):
     )
     email: Mapped[str | None] = mapped_column(nullable=False)
     admin_convs: Mapped[list["Conversation"]] = relationship(back_populates="user_admin", uselist=True)
-    conversations: Mapped[list["Conversation"] | None] = relationship(
+    conversations: Mapped[list["Conversation"]] = relationship(
         back_populates="users",
-        uselist=True,
         secondary="user_conversation",
     )
     messages: Mapped[list["Message"] | None] = relationship(

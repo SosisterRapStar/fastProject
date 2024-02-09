@@ -35,7 +35,7 @@ class Conversation(Base):
 
     name: Mapped[str | None] = mapped_column(unique=True)
     users: Mapped[list["User"]] = relationship(
-        back_populates="conversations", uselist=True, secondary="user_conversation"
+        back_populates="conversations", secondary="user_conversation"
     )
     user_admin: Mapped["User"] = relationship(
         back_populates="admin_convs", uselist=False, lazy='joined',
