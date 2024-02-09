@@ -1,8 +1,8 @@
 """refactor of secondary
 
-Revision ID: 4a4ee2571cd2
-Revises: 6d9a202ab922
-Create Date: 2024-02-07 22:55:59.051113
+Revision ID: f79aaef58ae5
+Revises: fdd40642ab08
+Create Date: 2024-02-10 01:04:23.203820
 
 """
 
@@ -13,8 +13,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "4a4ee2571cd2"
-down_revision: Union[str, None] = "6d9a202ab922"
+revision: str = "f79aaef58ae5"
+down_revision: Union[str, None] = "fdd40642ab08"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

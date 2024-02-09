@@ -38,12 +38,19 @@ class Conversation(Base):
         back_populates="conversations", secondary="user_conversation"
     )
     user_admin: Mapped["User"] = relationship(
-        back_populates="admin_convs", uselist=False, lazy='joined',
+        back_populates="admin_convs",
+        uselist=False,
+        lazy="joined",
     )
     user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
     messages: Mapped[list["Message"]] = relationship(
         back_populates="in_conversation", uselist=True
     )
+
+    asoc_users: Mapped[list["UserConversationSecondary"]] = relationship(
+        back_populates="user", uselist=True
+    )
+
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
 
@@ -58,5 +65,13 @@ class UserConversationSecondary(Base):
         ),
     )
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+
+    edit_permission: Mapped[bool] = mapped_column(default=False, server_default="False")
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
     conversation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id"))
+
+
+    conversation: Mapped["Conversation"] = relationship(
+        back_populates="asoc_conversations"
+    )
+    user: Mapped["User"] = relationship(back_populates="asoc_users")

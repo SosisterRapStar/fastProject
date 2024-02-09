@@ -8,7 +8,7 @@ from .base import Base
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .chat_models import Conversation, Message
+    from .chat_models import Conversation, Message, UserConversationSecondary
 
 
 class User(Base):
@@ -20,7 +20,9 @@ class User(Base):
         unique=True,
     )
     email: Mapped[str | None] = mapped_column(nullable=False)
-    admin_convs: Mapped[list["Conversation"]] = relationship(back_populates="user_admin", uselist=True)
+    admin_convs: Mapped[list["Conversation"]] = relationship(
+        back_populates="user_admin", uselist=True
+    )
     conversations: Mapped[list["Conversation"]] = relationship(
         back_populates="users",
         secondary="user_conversation",
@@ -28,7 +30,11 @@ class User(Base):
     messages: Mapped[list["Message"] | None] = relationship(
         back_populates="user", uselist=True, lazy="dynamic"
     )
+
+    asoc_conversations: Mapped[list["UserConversationSecondary"]] = relationship(
+        back_populates="conversation",
+        uselist=True,
+    )
+
     password: Mapped[str | None]  # hashed password
     created_at: Mapped[created_at_timestamp]
-
-
