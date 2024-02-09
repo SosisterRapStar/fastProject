@@ -4,6 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 from sqlalchemy.orm import selectinload
 
+from src.crud.utils import get_smth_id_by_name
 from src.models.base import db_handler
 from src.models.chat_models import Conversation, UserConversationSecondary
 from src.models.user_model import User
@@ -22,8 +23,6 @@ async def get_empty_conv(
     return new_conv
 
 
-
-
 async def create_conversation_and_add_admin(
         async_session: AsyncSession,
         user_id: uuid.UUID,
@@ -36,6 +35,29 @@ async def create_conversation_and_add_admin(
     await add_user_to_conv(async_session, user_id, new_conv.id)
     await async_session.commit()
     return new_conv
+
+
+# TODO: прочитать паттерны банды 4х а то это вообще ни в какие ворота
+async def add_user_to_conv_by_name(
+        async_session: AsyncSession,
+        user_name: str,
+        conv_name: str,
+):
+    user_id = await get_smth_id_by_name(
+        model=User,
+        session=async_session,
+        smth_name=user_name,
+    )
+    conv_id = await get_smth_id_by_name(
+        model=Conversation,
+        session=async_session,
+        smth_name=conv_name,
+    )
+    await add_user_to_conv(
+        async_session=async_session,
+        user_id=user_id,
+        conv_id=conv_id,
+    )
 
 
 async def add_user_to_conv(
@@ -67,7 +89,9 @@ async def demo_add_user_to_conversation(
     await async_session.commit()
 
 
-async def get_user_convs(async_session: AsyncSession, user_name: str) -> list[Conversation]:
+async def get_user_convs(
+        async_session: AsyncSession, user_name: str
+) -> list[Conversation]:
     stmt = (
         select(User)
         .where(User.name == user_name)
@@ -77,10 +101,11 @@ async def get_user_convs(async_session: AsyncSession, user_name: str) -> list[Co
     return user.conversations
 
 
-async def get_conv_with_users(async_session: AsyncSession, conv_name: str, ) -> Conversation:
-    stmt = select(Conversation).where(Conversation.name == conv_name).options(selectinload(Conversation.users))
-    conv = await async_session.scalar(stmt)
-    return conv
+# async def get_conv_with_users(async_session: AsyncSession, conv_name: str, ) -> Conversation:
+#     stmt = select(Conversation).where(Conversation.name == conv_name).options(selectinload(Conversation.users))
+#     conv = await async_session.scalar(stmt)
+#     return conv
+#
 
 
 async def get_conv_by_name(

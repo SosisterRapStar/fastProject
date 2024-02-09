@@ -23,10 +23,12 @@ class User(Base):
     admin_convs: Mapped[list["Conversation"]] = relationship(
         back_populates="user_admin", uselist=True
     )
-    conversations: Mapped[list["Conversation"]] = relationship(
-        back_populates="users",
-        secondary="user_conversation",
-    )
+
+    # Depricated
+    # conversations: Mapped[list["Conversation"]] = relationship(
+    #     back_populates="users",
+    #     secondary="user_conversation",
+    # )
     messages: Mapped[list["Message"] | None] = relationship(
         back_populates="user", uselist=True, lazy="dynamic"
     )

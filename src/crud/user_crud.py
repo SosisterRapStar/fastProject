@@ -17,16 +17,16 @@ async def create_user(async_session: AsyncSession, user: User_on_request) -> Use
 
 
 async def delete_user(
-        async_session: AsyncSession,
-        user: User_on_request,
+    async_session: AsyncSession,
+    user: User_on_request,
 ):
     pass
 
 
 async def update_user(
-        async_session: AsyncSession,
-        user_db: User,
-        user_update: User_for_update,
+    async_session: AsyncSession,
+    user_db: User,
+    user_update: User_for_update,
 ) -> User:
     for name, value in user_update.model_dump(exclude_unset=True).items():
         setattr(user_db, name, value)
@@ -40,9 +40,9 @@ async def get_users(async_session: AsyncSession) -> list[User]:
     return list(result.scalars().all())
 
 
-async def load_user_with_convs(user_id: uuid.UUID,
-                               async_session: AsyncSession, ) -> User:
-    stmt = select(User).where(User.id == user_id).options(selectinload(User.conversations))
-    # user_with_convs = await get_user_or_404(stmt, session=session)
-    user = await async_session.scalar(stmt)
-    return user
+# async def load_user_with_convs(user_id: uuid.UUID,
+#                                async_session: AsyncSession, ) -> User:
+#     stmt = select(User).where(User.id == user_id).options(selectinload(User.conversations))
+#     # user_with_convs = await get_user_or_404(stmt, session=session)
+#     user = await async_session.scalar(stmt)
+#     return user

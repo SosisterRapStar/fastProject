@@ -2,7 +2,7 @@ import uuid
 
 from sqlalchemy import ForeignKey, Table, Column, Integer, UniqueConstraint
 from sqlalchemy.orm import Mapped, relationship
-from .base import Base
+from src.models.base import Base
 from .annotated_types import *
 from typing import TYPE_CHECKING
 
@@ -34,15 +34,17 @@ class Conversation(Base):
     __tablename__ = "conversation"
 
     name: Mapped[str | None] = mapped_column(unique=True)
-    users: Mapped[list["User"]] = relationship(
-        back_populates="conversations", secondary="user_conversation"
-    )
+    # deprecated due to new relational management using secondsry directly
+    # users: Mapped[list["User"]] = relationship(
+    #     back_populates="conversations", secondary="user_conversation"
+    # )
     user_admin: Mapped["User"] = relationship(
         back_populates="admin_convs",
         uselist=False,
         lazy="joined",
     )
     user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
+
     messages: Mapped[list["Message"]] = relationship(
         back_populates="in_conversation", uselist=True
     )
@@ -71,7 +73,13 @@ class UserConversationSecondary(Base):
     conversation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id"))
 
 
-    conversation: Mapped["Conversation"] = relationship(
+    conversation: Mapped["User"] = relationship(
         back_populates="asoc_conversations"
     )
-    user: Mapped["User"] = relationship(back_populates="asoc_users")
+    user: Mapped["Conversation"] = relationship(back_populates="asoc_users")
+
+    def __repr__(self):
+        return f"{self.user_id} | {self.conversation_id}"
+
+
+
