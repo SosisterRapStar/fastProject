@@ -12,6 +12,12 @@ from src.schemas.conversation import ConversationRequest
 
 
 # TODO: исправить пиздец этот
+
+
+class ConversationCRUD:
+
+
+
 async def get_empty_conv(
         conversation_schema: ConversationRequest,
         creator_id: uuid.UUID,

@@ -9,6 +9,5 @@ from src.models import db_handler
 #
 async def main():
     async with db_handler.session() as ses:
-
 if __name__ == "__main__":
     asyncio.run(main())
