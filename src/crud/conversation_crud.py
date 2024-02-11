@@ -13,8 +13,8 @@ from src.schemas.conversation import ConversationRequest
 
 # TODO: исправить пиздец этот
 
-
-class ConversationCRUD:
+# TODO: Использовать паттерн репозиторий для решения этой жопы
+# TODO: Использовать слой сервисов для решения жопы после создания репозиториев
 
 
 
