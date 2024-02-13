@@ -4,7 +4,6 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 from sqlalchemy.orm import selectinload
 
-from src.crud.utils import get_smth_id_by_name
 from src.models.base import db_handler
 from src.models.chat_models import Conversation, UserConversationSecondary
 from src.models.user_model import User
@@ -49,22 +48,7 @@ async def add_user_to_conv_by_name(
         user_name: str,
         conv_name: str,
 ):
-    user_id = await get_smth_id_by_name(
-        model=User,
-        session=async_session,
-        smth_name=user_name,
-    )
-    conv_id = await get_smth_id_by_name(
-        model=Conversation,
-        session=async_session,
-        smth_name=conv_name,
-    )
-    await add_user_to_conv(
-        async_session=async_session,
-        user_id=user_id,
-        conv_id=conv_id,
-    )
-
+    pass
 
 async def add_user_to_conv(
         async_session: AsyncSession,
@@ -112,19 +96,3 @@ async def get_user_convs(
 #     conv = await async_session.scalar(stmt)
 #     return conv
 #
-
-
-async def get_conv_by_name(
-        async_session: AsyncSession,
-        conv_name: str,
-):
-    stmt = select(Conversation).where(Conversation.name == conv_name)
-    return await async_session.scalar(stmt)
-
-
-async def delete_conversation(async_session: async_sessionmaker):
-    pass
-
-
-async def update_conversation(async_session: async_sessionmaker):
-    pass

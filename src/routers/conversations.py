@@ -17,7 +17,8 @@ router = APIRouter(tags=["Conversations"])
 
 
 
-
+# TODO: убрать явный объект другой природы (сессию) из dependencies в роутах
+# сессия должна быть инкапсулирована в работе методов crud и других
 # @router.post(
 #     "/{creator_id}/",
 #     response_model=ConversationResponse,
