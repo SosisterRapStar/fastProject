@@ -5,6 +5,7 @@ from typing_extensions import Unpack, TypedDict
 from sqlalchemy import select, update, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.crud.exceptions import RecordNotFoundError
 from src.models import Base
 
 
@@ -25,12 +26,15 @@ async def get_object(
 
     if 'name' in criteries:
         stmt = select(model).where(model.name == criteries['name'])
-        model = await async_session.scalar(stmt)
-        return model
+        obj = await async_session.scalar(stmt)
+    else:
+        stmt = select(model).where(model.id == criteries['id'])
+        obj = await async_session.scalar(stmt)
 
-    stmt = select(model).where(model.id == criteries['id'])
-    model = await async_session.scalar(stmt)
-    return model
+    if obj is None:
+        raise RecordNotFoundError
+
+    return obj
 
 
 async def update_object(
@@ -51,6 +55,7 @@ async def update_object(
         await async_session.execute(stmt)
 
 
+
 async def delete_obj(
         async_session: AsyncSession,
         model: Type[Base],
@@ -66,4 +71,6 @@ async def delete_obj(
     else:
         stmt = delete(model).where(model.id == criteries['id'])
         await async_session.execute(stmt)
+
+
 
