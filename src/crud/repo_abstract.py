@@ -52,16 +52,16 @@ class CRUDAlchemyRepository(CRUDRepository):
     _model: Type[Base] = None
 
     def __init__(self, session: AsyncSession):
-        self.session = session
+        self._session = session
 
     async def create(self, data: dict) -> uuid.UUID | int:
         stmt = insert(self._model).values(**data).returning(self._model.id)
-        res: Result = await self.session.execute(stmt)
+        res: Result = await self._session.execute(stmt)
         return res.scalar_one()
 
     async def get(self, **criteries: Unpack[NameOrId | None]) -> Base:
         res = await get_object(
-            async_session=self.session,
+            async_session=self._session,
             model=self._model,
             **criteries,
         )
@@ -69,23 +69,23 @@ class CRUDAlchemyRepository(CRUDRepository):
 
     async def get_all(self) -> list[Base]:
         # В данном случае функция вернет все записи
-        res = await get_object(async_session=self.session, model=self._model)
+        res = await get_object(async_session=self._session, model=self._model)
         return res
 
     async def update(self, data: dict, **criteries: Unpack[NameOrId]):
         await update_object(
-            async_session=self.session,
+            async_session=self._session,
             model=self._model,
             data=data,
             **criteries,
         )
 
     async def delete(
-            self,
-            **criteries: Unpack[NameOrId],
+        self,
+        **criteries: Unpack[NameOrId],
     ) -> None:
         await delete_obj(
-            async_session=self.session,
+            async_session=self._session,
             model=self._model,
             **criteries,
         )
