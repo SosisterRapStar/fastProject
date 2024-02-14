@@ -18,6 +18,7 @@ class Message(Base):
     user: Mapped["User"] = relationship(
         back_populates="messages",
         uselist=False,
+        lazy="joined",
     )
     in_conversation: Mapped["Conversation"] = relationship(
         back_populates="messages", uselist=False
