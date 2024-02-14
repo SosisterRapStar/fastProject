@@ -14,26 +14,26 @@ class ConversationRepository(CRUDAlchemyRepository):
     # TODO: do something with session identity map for caching
     # TODO: errors handling
 
-    async def get_conv_users(self, conv_id: uuid.UUID) -> list["Conversation"]:
+    async def get_conv_users(self, conv_id: uuid.UUID) -> list["User"]:
         stmt = (
             select(User)
-            .join(UserConversationSecondary, Conversation.id == UserConversationSecondary.conversation_id)
-            .join(User, User.id == UserConversationSecondary.user_id)
-            .where(User.id == conv_id)
+            .join(
+                UserConversationSecondary,
+                Conversation.id == UserConversationSecondary.conversation_id,
+            )
+            .where(UserConversationSecondary.conversation_id == conv_id)
         )
-        res = await self.session.scalars(stmt)
+        res = await self._session.scalars(stmt)
         return list(res.all())
 
-    async def get_user_messages(self, user_id: uuid.UUID):
-        user = await self.get_user_with_messages(user_id)
-        return user.messages
-
-    async def get_user_with_messages(self, user_id: uuid.UUID) -> User:
-        stmt = select(User).where(User.id == user_id).options(joinedload(User.conversations))
-        user = await self.session.scalar(stmt)
-        return user
-
-
+    async def get_conv_with_admin_info(self, conv_id: uuid.UUID) -> Conversation:
+        stmt = (
+            select(Conversation)
+            .where(Conversation.id == conv_id)
+            .options(joinedload(Conversation.user_admin))
+        )
+        conv = await self._session.scalar(stmt)
+        return conv
 
     # may be it will be better to make it using one querie
     # this function do it with two queries using loaded messages and than selecting them
