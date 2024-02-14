@@ -34,14 +34,15 @@ class Conversation(Base):
     __tablename__ = "conversation"
 
     name: Mapped[str | None] = mapped_column(unique=True)
-    # deprecated due to new relational management using secondsry directly
+
+    # deprecated due to new relational management using secondary table directly
     # users: Mapped[list["User"]] = relationship(
     #     back_populates="conversations", secondary="user_conversation"
     # )
+
     user_admin: Mapped["User"] = relationship(
         back_populates="admin_convs",
         uselist=False,
-        lazy="joined",
     )
     user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
 

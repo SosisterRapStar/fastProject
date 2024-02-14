@@ -29,8 +29,9 @@ class User(Base):
     #     back_populates="users",
     #     secondary="user_conversation",
     # )
+
     messages: Mapped[list["Message"] | None] = relationship(
-        back_populates="user", uselist=True, lazy="dynamic"
+        back_populates="user", uselist=True
     )
 
     asoc_conversations: Mapped[list["UserConversationSecondary"]] = relationship(
