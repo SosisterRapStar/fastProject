@@ -24,23 +24,18 @@ class UserRepository(CRUDAlchemyRepository):
             .join(User, User.id == UserConversationSecondary.user_id)
             .where(User.id == user_id)
         )
-        res = await self.session.scalars(stmt)
+        res = await self._session.scalars(stmt)
         return list(res.all())
 
-
-    async def get_user_messages(self,  user_id: uuid.UUID):
+    async def get_user_messages(self, user_id: uuid.UUID):
         user = await self.get_user_with_messages(user_id)
         return user.messages
 
     async def get_user_with_messages(self, user_id: uuid.UUID) -> User:
-        stmt = select(User).where(User.id == user_id).options(joinedload(User.conversations))
-        user = await self.session.scalar(stmt)
+        stmt = (
+            select(User)
+            .where(User.id == user_id)
+            .options(joinedload(User.conversations))
+        )
+        user = await self._session.scalar(stmt)
         return user
-
-
-
-
-
-
-
-
