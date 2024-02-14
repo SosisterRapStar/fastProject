@@ -17,7 +17,10 @@ class UserRepository(CRUDAlchemyRepository):
     async def get_user_convs(self, user_id: uuid.UUID) -> list["Conversation"]:
         stmt = (
             select(Conversation)
-            .join(UserConversationSecondary, Conversation.id == UserConversationSecondary.conversation_id)
+            .join(
+                UserConversationSecondary,
+                Conversation.id == UserConversationSecondary.conversation_id,
+            )
             .join(User, User.id == UserConversationSecondary.user_id)
             .where(User.id == user_id)
         )
