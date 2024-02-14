@@ -7,6 +7,5 @@ class RecordNotFoundError(Exception):
 
     def __str__(self):
         if self.message:
-            return f'{self.message}'
-        return f'Record not found'
-
+            return f"{self.message}"
+        return f"Record not found"
