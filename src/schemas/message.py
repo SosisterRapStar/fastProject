@@ -6,7 +6,6 @@ from pydantic import BaseModel, EmailStr, Field, UUID4, ConfigDict
 import uuid
 
 
-
 if TYPE_CHECKING:
     from .users import User_on_response
     from .conversation import ConversationResponse
@@ -19,9 +18,3 @@ class ResponseMessage(BaseModel):
     content: str
     author: Optional["User_on_response"] = Field(alies="user")
     in_conv: Optional["ConversationResponse"]
-
-
-
-
-
-

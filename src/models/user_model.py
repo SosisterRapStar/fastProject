@@ -35,7 +35,7 @@ class User(Base):
     )
 
     asoc_conversations: Mapped[list["UserConversationSecondary"]] = relationship(
-        back_populates="conversation",
+        back_populates="user",
         uselist=True,
     )
 

@@ -1,9 +1,10 @@
 import uuid
 from abc import ABC, abstractmethod
 
-from typing import Type, Unpack
+from typing import Type
 
-from sqlalchemy import insert, Result, select, delete, update
+from typing_extensions import Unpack
+from sqlalchemy import insert, Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.crud.exceptions import RecordNotFoundError
@@ -34,30 +35,19 @@ class CRUDRepository(ABC):
         raise NotImplementedError
 
 
-# repo for add some things that are connected with other models
-class AddToDeleteFromRepository(ABC):
-    model = None
-
-    @abstractmethod
-    async def add_to(self):
-        raise NotImplementedError
-
-    @abstractmethod
-    async def delete_from(self):
-        raise NotImplementedError
-
-
-# TODO: make session protected
 class CRUDAlchemyRepository(CRUDRepository):
     _model: Type[Base] = None
 
     def __init__(self, session: AsyncSession):
         self._session = session
 
-    async def create(self, data: dict) -> uuid.UUID | int:
-        stmt = insert(self._model).values(**data).returning(self._model.id)
-        res: Result = await self._session.execute(stmt)
-        return res.scalar_one()
+    async def create(self, data: dict) -> Base:
+        # TODO: переработать работу с сессией
+        new_obj = self._model(**data)
+        self._session.add(new_obj)
+
+        await self._session.commit()  # подразумевается что сессия уже открыта
+        return new_obj
 
     async def get(self, **criteries: Unpack[NameOrId | None]) -> Base:
         res = await get_object(
@@ -69,23 +59,29 @@ class CRUDAlchemyRepository(CRUDRepository):
 
     async def get_all(self) -> list[Base]:
         # В данном случае функция вернет все записи
+
         res = await get_object(async_session=self._session, model=self._model)
+
         return res
 
     async def update(self, data: dict, **criteries: Unpack[NameOrId]):
-        await update_object(
+        updated = await update_object(
             async_session=self._session,
             model=self._model,
             data=data,
             **criteries,
         )
+        await self._session.commit()
+        return updated
 
     async def delete(
         self,
         **criteries: Unpack[NameOrId],
     ) -> None:
-        await delete_obj(
+        returned_id = await delete_obj(
             async_session=self._session,
             model=self._model,
             **criteries,
         )
+        await self._session.commit()
+        return returned_id

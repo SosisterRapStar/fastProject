@@ -52,7 +52,7 @@ class Conversation(Base):
     )
 
     asoc_users: Mapped[list["UserConversationSecondary"]] = relationship(
-        back_populates="user", uselist=True
+        back_populates="conversation", uselist=True
     )
 
     created_at: Mapped[created_at_timestamp]
@@ -74,14 +74,8 @@ class UserConversationSecondary(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
     conversation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id"))
 
-
-    conversation: Mapped["User"] = relationship(
-        back_populates="asoc_conversations"
-    )
-    user: Mapped["Conversation"] = relationship(back_populates="asoc_users")
+    conversation: Mapped["Conversation"] = relationship(back_populates="asoc_users")
+    user: Mapped["User"] = relationship(back_populates="asoc_conversations")
 
     def __repr__(self):
         return f"{self.user_id} | {self.conversation_id}"
-
-
-

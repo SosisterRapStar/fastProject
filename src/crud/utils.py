@@ -2,7 +2,7 @@ import uuid
 from typing import Type
 from typing_extensions import Unpack, TypedDict
 
-from sqlalchemy import select, update, delete
+from sqlalchemy import select, update, delete, Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.crud.exceptions import RecordNotFoundError
@@ -42,17 +42,29 @@ async def update_object(
     model: Type[Base],
     data: dict,
     **criteries: Unpack[NameOrId],
-) -> None:
+) -> Base:
     if "name" not in criteries.keys() and "id" not in criteries.keys():
         raise ValueError("You must specify id or name")
 
     if "name" in criteries:
-        stmt = update(model).where(model.name == criteries["name"]).values(**data)
-        await async_session.execute(stmt)
+        stmt = (
+            update(model)
+            .where(model.name == criteries["name"])
+            .values(**data)
+            .returning(model)
+        )
+        result: Result = await async_session.execute(stmt)
+        return result.scalar_one()
 
     else:
-        stmt = update(model).where(model.id == criteries["id"]).values(**data)
-        await async_session.execute(stmt)
+        stmt = (
+            update(model)
+            .where(model.id == criteries["id"])
+            .values(**data)
+            .returning(model)
+        )
+        result: Result = await async_session.execute(stmt)
+        return result.scalar_one()
 
 
 async def delete_obj(
@@ -64,9 +76,11 @@ async def delete_obj(
         raise ValueError("You must specify id or name")
 
     if "name" in criteries:
-        stmt = delete(model).where(model.name == criteries["name"])
-        await async_session.execute(stmt)
+        stmt = delete(model).where(model.name == criteries["name"]).returning(model.id)
+        result: Result = await async_session.execute(stmt)
+        return result.scalar_one()
 
     else:
-        stmt = delete(model).where(model.id == criteries["id"])
-        await async_session.execute(stmt)
+        stmt = delete(model).where(model.id == criteries["id"]).returning(model.id)
+        result: Result = await async_session.execute(stmt)
+        return result.scalar_one()

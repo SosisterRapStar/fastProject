@@ -4,7 +4,6 @@ from pydantic import BaseModel, EmailStr, Field, UUID4, ConfigDict
 import uuid
 
 
-
 if TYPE_CHECKING:
     from .conversation import ConversationResponse
 
@@ -34,7 +33,3 @@ class User_for_update(BaseUser):
 class User_on_response(BaseUser):
     model_config = ConfigDict(from_attributes=True)
     id: uuid.UUID
-
-
-
-
