@@ -14,7 +14,7 @@ class UserRepository(CRUDAlchemyRepository):
     # TODO: do something with session identity map for caching
     # TODO: errors handling
 
-    async def get_user_convs(self, user_id: uuid.UUID) -> list["Conversation"]:
+    async def get_convs(self, user_id: uuid.UUID) -> list["Conversation"]:
         stmt = (
             select(Conversation)
             .join(
