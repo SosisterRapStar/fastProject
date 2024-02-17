@@ -26,11 +26,7 @@ class User_on_request(BaseUser):
 
 
 class User_for_update(BaseUser):
-    name: str = Field(
-        title="Name of the user",
-        max_length=20,
-        default=None
-    )
+    name: str = Field(title="Name of the user", max_length=20, default=None)
     email: EmailStr | None = None
     password: str | None = None
 
