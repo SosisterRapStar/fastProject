@@ -24,7 +24,7 @@ class Message(Base):
         back_populates="messages", uselist=False
     )
     conversation_fk: Mapped[uuid.UUID] = mapped_column(
-        ForeignKey("conversation.id"), unique=True
+        ForeignKey("conversation.id", ondelete="Cascade"), unique=True
     )
     user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"), unique=True)
     created_at: Mapped[created_at_timestamp]
@@ -36,23 +36,20 @@ class Conversation(Base):
 
     name: Mapped[str | None] = mapped_column(unique=True)
 
-    # deprecated due to new relational management using secondary table directly
-    # users: Mapped[list["User"]] = relationship(
-    #     back_populates="conversations", secondary="user_conversation"
-    # )
-
     user_admin: Mapped["User"] = relationship(
         back_populates="admin_convs",
         uselist=False,
     )
-    user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
+    user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
 
     messages: Mapped[list["Message"]] = relationship(
-        back_populates="in_conversation", uselist=True
+        back_populates="in_conversation", uselist=True, cascade="all, delete",
+        passive_deletes=True
     )
 
     asoc_users: Mapped[list["UserConversationSecondary"]] = relationship(
-        back_populates="conversation", uselist=True
+        back_populates="conversation", uselist=True, cascade="all, delete",
+        passive_deletes=True,
     )
 
     created_at: Mapped[created_at_timestamp]
@@ -71,8 +68,8 @@ class UserConversationSecondary(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
     edit_permission: Mapped[bool] = mapped_column(default=False, server_default="False")
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"))
-    conversation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id"))
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
+    conversation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id", ondelete="CASCADE"))
 
     conversation: Mapped["Conversation"] = relationship(back_populates="asoc_users")
     user: Mapped["User"] = relationship(back_populates="asoc_conversations")

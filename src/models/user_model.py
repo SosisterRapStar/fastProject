@@ -21,7 +21,8 @@ class User(Base):
     )
     email: Mapped[str | None] = mapped_column(nullable=False)
     admin_convs: Mapped[list["Conversation"]] = relationship(
-        back_populates="user_admin", uselist=True
+        back_populates="user_admin", uselist=True, cascade="all, delete",
+        passive_deletes=True,
     )
 
     # Depricated
@@ -37,7 +38,11 @@ class User(Base):
     asoc_conversations: Mapped[list["UserConversationSecondary"]] = relationship(
         back_populates="user",
         uselist=True,
+        cascade="all, delete",
+        passive_deletes=True,
+
     )
 
     password: Mapped[str | None]  # hashed password
     created_at: Mapped[created_at_timestamp]
+
