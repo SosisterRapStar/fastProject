@@ -43,6 +43,7 @@ class DatabaseHandler:
     async def session_dependency(self) -> AsyncSession:  # Generator[AsyncSession]:
         async with self.session() as session:
             yield session
+            await session.commit()
 
 
 db_handler = DatabaseHandler(url=db_settings.db_url, echo=db_settings.echo_mode)
