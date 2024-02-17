@@ -22,3 +22,8 @@ class ConversationResponse(ConversationBase):
 
 class ConversationUpdate(ConversationBase):
     name: str = Field(max_length=20, default=None)
+
+
+class AddUser(BaseModel):
+    user_id: uuid.UUID
+    is_moder: bool = False
