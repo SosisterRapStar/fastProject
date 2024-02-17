@@ -58,3 +58,12 @@ class ConversationRepository(CRUDAlchemyRepository):
         self._session.add(new_conv)
         await self._session.commit()
         return new_conv
+
+    async def add_user(self, user_id: uuid.UUID, conv_id: uuid.UUID, permission: bool) -> None:
+        new_asoc = UserConversationSecondary(edit_permission=permission)
+        new_asoc.conversation_id = conv_id
+        new_asoc.user_id = user_id
+        self._session.add(new_asoc)
+        await self._session.commit()
+
+
