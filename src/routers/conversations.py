@@ -6,11 +6,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.crud.conversation_repository import ConversationRepository
 from src.dependencies.hash_dependency import User_on_request_hash_dep
 from src.dependencies.session_dependency import session_dep
-from src.schemas.conversation import ConversationResponse, ConversationRequest
+from src.schemas.conversation import ConversationResponse, ConversationRequest, ConversationUpdate
 from src.schemas.user_conversation import ConversationWithUsersResp
 
 from src.schemas.users import User_on_response, User_on_request
-
 
 router = APIRouter(tags=["Conversations"])
 
@@ -63,3 +62,19 @@ async def get_conv_by_name(conv_name: str, session: session_dep):
 async def get_conv_by_id(conv_id: uuid.UUID, session: session_dep):
     conv_repo = ConversationRepository(session=session)
     return await conv_repo.get(id=conv_id)
+
+
+@router.patch("/{conv_id}/", response_model=ConversationResponse, )
+async def update_conv(conv_id: uuid.UUID, session: session_dep, conversation: ConversationUpdate,
+                      ):
+    conv_repo = ConversationRepository(session=session)
+    return await conv_repo.update(conversation.model_dump(exclude_unset=True), id=conv_id)
+
+
+@router.patch("/by_name/{conv_name/", response_model=ConversationResponse, )
+async def update_conv(conv_name: str,
+                      session: session_dep,
+                      conversation: ConversationUpdate,
+                      ):
+    conv_repo = ConversationRepository(session=session)
+    return await conv_repo.update(conversation.model_dump(exclude_unset=True), name=conv_name)

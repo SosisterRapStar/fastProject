@@ -18,3 +18,7 @@ class ConversationResponse(ConversationBase):
     id: uuid.UUID
     model_config = ConfigDict(from_attributes=True)
     user_admin_fk: uuid.UUID
+
+
+class ConversationUpdate(ConversationBase):
+    name: str = Field(max_length=20, default=None)
