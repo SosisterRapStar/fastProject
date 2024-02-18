@@ -8,6 +8,10 @@ from src.config_file import global_config
 load_dotenv()
 
 
+class SchemasValidationSettings(BaseSettings):
+    extra = 'forbid'
+
+
 class RouterSettings(BaseSettings):
     api_v1_prefix: str = "/api/v1"
 
@@ -25,4 +29,5 @@ class DBSettings(BaseSettings):
 
 
 db_settings = DBSettings()
+schemas_settings = SchemasValidationSettings()
 router_settings = RouterSettings()
