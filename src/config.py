@@ -9,7 +9,7 @@ load_dotenv()
 
 
 class SchemasValidationSettings(BaseSettings):
-    extra = 'forbid'
+    extra: str = 'forbid'
 
 
 class RouterSettings(BaseSettings):

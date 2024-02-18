@@ -1,7 +1,9 @@
 import uuid
 from typing import List
 from fastapi import APIRouter, HTTPException
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, NoResultFound
+
+from src.crud.exceptions import RecordNotFoundError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
 from src.routers.errors import UserAlreadyAddedError, ConversationNotFoundError, AdminUserNotFoundError
 from src.schemas.conversation import (
@@ -44,7 +46,7 @@ async def get_all_users_in_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provide
 
     try:
         return await conv_repo.get_users(conv_id=conv_id)
-    except IntegrityError:
+    except RecordNotFoundError:
         raise ConversationNotFoundError()
 
 
@@ -53,7 +55,7 @@ async def get_conv_by_name(conv_name: str, conv_repo: conv_repo_provider):
 
     try:
         return await conv_repo.get(name=conv_name)
-    except IntegrityError:
+    except RecordNotFoundError:
         raise ConversationNotFoundError()
 
 
@@ -62,7 +64,7 @@ async def get_conv_by_id(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
 
     try:
         return await conv_repo.get(id=conv_id)
-    except IntegrityError:
+    except RecordNotFoundError:
         raise ConversationNotFoundError()
 
 
@@ -70,7 +72,7 @@ async def get_conv_by_id(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     "/{conv_id}/",
     response_model=ConversationResponse,
 )
-async def update_conv(
+async def update_conv_by_id(
     conv_id: uuid.UUID,
     conv_repo: conv_repo_provider,
     conversation: ConversationUpdate,
@@ -80,15 +82,15 @@ async def update_conv(
         return await conv_repo.update(
             conversation.model_dump(exclude_unset=True), id=conv_id
         )
-    except IntegrityError:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+    except NoResultFound:
+        raise ConversationNotFoundError()
 
 
 @router.patch(
     "/by_name/{conv_name}/",
     response_model=ConversationResponse,
 )
-async def update_conv(
+async def update_conv_by_name(
     conv_name: str,
     conv_repo: conv_repo_provider,
     conversation: ConversationUpdate,
@@ -98,7 +100,7 @@ async def update_conv(
         return await conv_repo.update(
             conversation.model_dump(exclude_unset=True), name=conv_name
         )
-    except IntegrityError:
+    except NoResultFound:
         raise ConversationNotFoundError()
 
 
@@ -123,7 +125,5 @@ async def add_user_to_conversation(
 async def delete_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     try:
         return await conv_repo.delete(id=conv_id)
-    except IntegrityError:
-        raise HTTPException(
-            status_code=404, detail="Хз тут все что угодно отъебнуть может"
-        )
+    except NoResultFound:
+        raise ConversationNotFoundError()

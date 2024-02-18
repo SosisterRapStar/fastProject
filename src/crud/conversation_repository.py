@@ -1,8 +1,9 @@
 import uuid
 
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, Result
 from sqlalchemy.orm import joinedload
 
+from src.crud.exceptions import RecordNotFoundError
 from src.crud.repo_abstract import CRUDAlchemyRepository
 from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.user_model import User
@@ -24,7 +25,10 @@ class ConversationRepository(CRUDAlchemyRepository):
             .where(UserConversationSecondary.conversation_id == conv_id)
         )
         res = await self._session.scalars(stmt)
-        return list(res.all())
+        res = list(res.all())
+        if not res:
+            raise RecordNotFoundError
+        return res
 
     async def get_conv_with_admin_info(self, conv_id: uuid.UUID) -> Conversation:
         stmt = (
@@ -47,7 +51,8 @@ class ConversationRepository(CRUDAlchemyRepository):
             .where(Conversation.id == conv_id)
             .options(joinedload(Conversation.messages))
         )
-        conv = await self._session.scalar(stmt)
+        res: Result = await self._session.execute(stmt)
+        conv = res.scalar_one()
         return conv
 
     async def create(self, data: dict) -> Conversation:

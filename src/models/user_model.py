@@ -25,12 +25,6 @@ class User(Base):
         passive_deletes=True,
     )
 
-    # Depricated
-    # conversations: Mapped[list["Conversation"]] = relationship(
-    #     back_populates="users",
-    #     secondary="user_conversation",
-    # )
-
     messages: Mapped[list["Message"] | None] = relationship(
         back_populates="user", uselist=True
     )

@@ -1,20 +1,15 @@
 import uuid
-from typing import List, Annotated
-from fastapi import APIRouter, Path, Depends, HTTPException
+from typing import List
+from fastapi import APIRouter
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.ext.asyncio import AsyncSession
-
-from src.crud.user_repository import UserRepository
 from src.dependencies.hash_dependency import (
     User_on_request_hash_dep,
     User_for_update_hash_dep,
 )
 from src.dependencies.repo_providers_dependency import user_repo_provider
-from src.dependencies.session_dependency import session_dep
 from src.routers.errors import UserNotFoundError
 from src.schemas.conversation import ConversationResponse
-from src.schemas.user_conversation import UserOnResponseWithConvs
-from src.schemas.users import User_on_response, User_on_request
+from src.schemas.users import User_on_response
 
 router = APIRouter(tags=["Users"])
 
