@@ -3,15 +3,14 @@ from typing import List
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
+from src.routers.errors import UserAlreadyAddedError, ConversationNotFoundError, AdminUserNotFoundError
 from src.schemas.conversation import (
     ConversationResponse,
     ConversationRequest,
     ConversationUpdate,
     AddUser,
 )
-from src.schemas.user_conversation import ConversationWithUsersResp
-
-from src.schemas.users import User_on_response, User_on_request
+from src.schemas.users import User_on_response
 
 router = APIRouter(tags=["Conversations"])
 
@@ -31,11 +30,10 @@ async def get_all_conversations(conv_repo: conv_repo_provider):
 async def create_conversation(
     conv_repo: conv_repo_provider, conversation: ConversationRequest
 ):
-
     try:
         return await conv_repo.create(conversation.model_dump())
     except IntegrityError:
-        raise HTTPException(status_code=404, detail="Admin user not found")
+        raise AdminUserNotFoundError()
 
 
 @router.get(
@@ -47,7 +45,7 @@ async def get_all_users_in_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provide
     try:
         return await conv_repo.get_users(conv_id=conv_id)
     except IntegrityError:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        raise ConversationNotFoundError()
 
 
 @router.get("/{conv_name}/", response_model=ConversationResponse)
@@ -56,7 +54,7 @@ async def get_conv_by_name(conv_name: str, conv_repo: conv_repo_provider):
     try:
         return await conv_repo.get(name=conv_name)
     except IntegrityError:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        raise ConversationNotFoundError()
 
 
 @router.get("/by_id/{conv_id}/", response_model=ConversationResponse)
@@ -65,7 +63,7 @@ async def get_conv_by_id(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     try:
         return await conv_repo.get(id=conv_id)
     except IntegrityError:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        raise ConversationNotFoundError()
 
 
 @router.patch(
@@ -87,7 +85,7 @@ async def update_conv(
 
 
 @router.patch(
-    "/by_name/{conv_name/",
+    "/by_name/{conv_name}/",
     response_model=ConversationResponse,
 )
 async def update_conv(
@@ -101,7 +99,7 @@ async def update_conv(
             conversation.model_dump(exclude_unset=True), name=conv_name
         )
     except IntegrityError:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        raise ConversationNotFoundError()
 
 
 @router.post("users/{conv_id}/")
@@ -118,9 +116,7 @@ async def add_user_to_conversation(
             conv_id=conv_id,
         )
     except IntegrityError:
-        raise HTTPException(
-            status_code=404, detail="User already added or some of id not found"
-        )
+        raise UserAlreadyAddedError()
 
 
 @router.delete("/{conv_id}/")
