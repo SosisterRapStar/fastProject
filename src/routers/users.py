@@ -11,6 +11,7 @@ from src.dependencies.hash_dependency import (
 )
 from src.dependencies.repo_providers_dependency import user_repo_provider
 from src.dependencies.session_dependency import session_dep
+from src.routers.errors import UserNotFoundError
 from src.schemas.conversation import ConversationResponse
 from src.schemas.user_conversation import UserOnResponseWithConvs
 from src.schemas.users import User_on_response, User_on_request
@@ -45,10 +46,7 @@ async def get_user_by_name(user_name: str, user_repo: user_repo_provider):
     try:
         return await user_repo.get(name=user_name)
     except IntegrityError:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found",
-        )
+        raise UserNotFoundError()
 
 
 @router.get(
@@ -59,10 +57,7 @@ async def get_user_by_id(user_id: uuid.UUID, user_repo: user_repo_provider):
     try:
         return await user_repo.get(id=user_id)
     except IntegrityError:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found",
-        )
+        raise UserNotFoundError()
 
 
 @router.get(
@@ -73,10 +68,7 @@ async def get_user_convs_by_id(user_id: uuid.UUID, user_repo: user_repo_provider
     try:
         return await user_repo.get_convs(user_id=user_id)
     except IntegrityError:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found",
-        )
+        raise UserNotFoundError()
 
 
 @router.patch(
@@ -91,10 +83,7 @@ async def update_user_by_id(
     try:
         return await user_repo.update(user.model_dump(exclude_unset=True), id=user_id)
     except IntegrityError:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found",
-        )
+        raise UserNotFoundError()
 
 
 @router.patch(
@@ -111,10 +100,8 @@ async def update_user_by_name(
             user.model_dump(exclude_unset=True), name=user_name
         )
     except IntegrityError:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found",
-        )
+        raise UserNotFoundError()
+
 
 
 @router.delete("/{user_id}/")
@@ -125,7 +112,4 @@ async def delete_user_by_id(
     try:
         return await user_repo.delete(id=user_id)
     except IntegrityError:
-        raise HTTPException(
-            status_code=404,
-            detail="User not found",
-        )
+        raise UserNotFoundError()
