@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from .amm import router as auth_router
+from .amm2 import router as auth_router
 
 
 router = APIRouter()
