@@ -28,6 +28,13 @@ class DBSettings(BaseSettings):
     echo_mode: bool = global_config.DEBUG_MODE
 
 
+class SecuritySettings(BaseSettings):
+    JWT_SECRET: str = os.getenv("JWT_SECRET")
+    JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM")
+    ACCES_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCES_TOKEN_EXPIRE_MINUTES"))
+
+
+security_settings = SecuritySettings()
 db_settings = DBSettings()
 schemas_settings = SchemasValidationSettings()
 router_settings = RouterSettings()

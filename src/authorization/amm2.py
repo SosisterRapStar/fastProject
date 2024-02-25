@@ -11,6 +11,10 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 from src.models.user_model import User
 from src.schemas.users import CreateUser
+from fastapi.security import OAuth2PasswordRequestForm
+
+from .dependency_hash import password_hash_dependency
+from .services import get_token
 
 router = APIRouter(
     tags=["Auth"],
@@ -18,14 +22,16 @@ router = APIRouter(
 )
 
 
-@router.post('/register', status_code=status.HTTP_201_CREATED)
-async def create_user(user: CreateUser, repo: user_repo_provider):
-    await repo.create(user.model_dump(exclude={'password_repeat'}))
+#
+@router.post("/register", status_code=status.HTTP_201_CREATED)
+async def create_user(user: password_hash_dependency, repo: user_repo_provider):
+    await repo.create(user.model_dump(exclude={"password_repeat"}))
     payload = {"message": "Man YOO have just created a user account"}
     return JSONResponse(content=payload)
 
 
-
-
-
-
+@router.post("/token", status_code=status.HTTP_201_CREATED)
+async def authontiticate_user(
+    repo: user_repo_provider, data: OAuth2PasswordRequestForm = Depends()
+):
+    return await get_token(data=data, repo=repo)

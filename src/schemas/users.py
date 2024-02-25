@@ -43,6 +43,8 @@ class CreateUser(BaseUser, BaseRequestUser):
     password: str | None = None
     password_repeat: str = None
 
+
+    # password matching verification can be performed on the frontend
     @model_validator(mode='after')
     def check_passwords_match(self) -> 'CreateUser':
         pw1 = self.password
