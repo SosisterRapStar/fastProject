@@ -25,7 +25,7 @@
 # User_for_update_hash_dep = Annotated[User_for_update, Depends(hash_pass_for_update)]
 from datetime import timedelta, datetime
 import asyncio
-from jose import jwt
+from jose import jwt, JWTError
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
 
@@ -62,3 +62,14 @@ async def create_refresh_token(data):
         security_settings.JWT_SECRET,
         algorithm=security_settings.JWT_ALGORITHM,
     )
+
+
+def get_token_payload(token):
+
+    payload = jwt.decode(
+        token,
+        security_settings.JWT_SECRET,
+        algorithms=security_settings.JWT_ALGORITHM,
+    )
+
+    return payload
