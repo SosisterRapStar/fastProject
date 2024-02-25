@@ -51,14 +51,14 @@ async def get_refresh_token(
         )
 
     try:
-        user = user_repo.get(id=user_id)
+        user = await user_repo.get(id=user_id)
     except RecordNotFoundError:
         raise HTTPException(
             status_code=401,
             detail="Invalid refresh token",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    return await _get_user_token(user, refresh_token=token)
+    return await _get_user_token(user=user, refresh_token=token)
 
 
 async def _get_user_token(user: User, refresh_token=None):

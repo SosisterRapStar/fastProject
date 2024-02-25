@@ -5,12 +5,8 @@ from fastapi import FastAPI
 from routers import router as router_api_v1
 from config import router_settings
 from authorization import router as auth_router
-# @asynccontextmanager
-# async def lifespan(app: FastAPI):
-#     async with db_handler.engine.begin() as conn:
-#         await conn.run_sync(Base.metadata.create_all)
-#
-#     yield
+from starlette.middleware.authentication import AuthenticationMiddleware
+from authorization.security import JWTAuth
 
 
 app = FastAPI()
@@ -23,6 +19,7 @@ app.include_router(
     prefix=router_settings.api_v1_prefix,
 )
 
+app.add_middleware(AuthenticationMiddleware, backend=JWTAuth())
 
 if __name__ == "__main__":
     uvicorn.run("main:app", reload=True)
