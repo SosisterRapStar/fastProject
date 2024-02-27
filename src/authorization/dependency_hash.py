@@ -7,6 +7,7 @@ from src.authorization.security import get_password_hash
 from src.schemas.users import CreateUser
 
 
+# this is no async cause of CPU bound nature
 def hash_and_match_passwords(user: CreateUser) -> CreateUser:
     if user.password != user.password_repeat:
         raise HTTPException(
