@@ -1,10 +1,8 @@
 import uuid
 from typing import Type
 from typing_extensions import Unpack, TypedDict
-
 from sqlalchemy import select, update, delete, Result
 from sqlalchemy.ext.asyncio import AsyncSession
-
 from src.crud.exceptions import RecordNotFoundError
 from src.models import Base
 

@@ -1,10 +1,8 @@
 import uuid
-
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload
-
 from src.crud.repo_abstract import CRUDAlchemyRepository
-from src.models.chat_models import Conversation, UserConversationSecondary, Message
+from src.models.chat_models import Conversation, UserConversationSecondary
 from src.models.user_model import User
 
 

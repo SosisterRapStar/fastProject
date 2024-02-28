@@ -1,13 +1,7 @@
-import uuid
 from abc import ABC, abstractmethod
-
 from typing import Type
-
 from typing_extensions import Unpack
-from sqlalchemy import insert, Result
 from sqlalchemy.ext.asyncio import AsyncSession
-
-from src.crud.exceptions import RecordNotFoundError
 from src.crud.utils import get_object, NameOrId, update_object, delete_obj
 from src.models import Base
 

@@ -2,10 +2,10 @@ from pydantic_settings import BaseSettings
 from sqlalchemy import URL
 import os
 from dotenv import load_dotenv
-from src.config_file import global_config
 
 # Load environment variables from .env file
 load_dotenv()
+DEBUG_MODE = bool(os.getenv("DEBUG_MODE"))
 
 
 class SchemasValidationSettings(BaseSettings):
@@ -25,7 +25,7 @@ class DBSettings(BaseSettings):
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
     )
-    echo_mode: bool = global_config.DEBUG_MODE
+    echo_mode: bool = DEBUG_MODE
 
 
 class SecuritySettings(BaseSettings):
@@ -34,7 +34,11 @@ class SecuritySettings(BaseSettings):
     ACCES_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCES_TOKEN_EXPIRE_MINUTES"))
 
 
-security_settings = SecuritySettings()
-db_settings = DBSettings()
-schemas_settings = SchemasValidationSettings()
-router_settings = RouterSettings()
+class Settings(BaseSettings):
+    schemas_settings: SchemasValidationSettings = SchemasValidationSettings()
+    router_settings: RouterSettings = RouterSettings()
+    db_settings: DBSettings = DBSettings()
+    security_settings: SecuritySettings = SecuritySettings()
+
+
+settings = Settings()

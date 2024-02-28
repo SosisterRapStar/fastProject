@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from .annotated_types import created_at_timestamp, UUIDpk
+from .annotated_types import created_at_timestamp, UUIDpk, updated_at_timestamp
 from .base import Base
 from typing import TYPE_CHECKING
 
@@ -37,6 +37,11 @@ class User(Base):
 
     )
 
+    is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
+
+
     password: Mapped[str | None]  # hashed password
+
     created_at: Mapped[created_at_timestamp]
+    updated_at: Mapped[updated_at_timestamp]
 
