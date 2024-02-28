@@ -3,13 +3,13 @@ from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 from routers import router as router_api_v1
-from config import router_settings
+from config import settings
 
 
 app = FastAPI()
 app.include_router(
     router=router_api_v1,
-    prefix=router_settings.api_v1_prefix,
+    prefix=settings.router_settings.api_v1_prefix,
 )
 
 

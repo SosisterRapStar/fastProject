@@ -3,14 +3,14 @@ from typing import Annotated, TYPE_CHECKING
 from pydantic import BaseModel, EmailStr, Field, UUID4, ConfigDict, model_validator
 import uuid
 
-from ..config import schemas_settings
+from ..config import settings
 
 if TYPE_CHECKING:
     from .conversation import ConversationResponse
 
 
 class BaseRequestUser(BaseModel):
-    model_config = ConfigDict(extra=schemas_settings.extra)
+    model_config = ConfigDict(extra=settings.schemas_settings.extra)
 
 
 class BaseUser(BaseModel):

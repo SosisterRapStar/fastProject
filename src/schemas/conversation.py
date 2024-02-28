@@ -1,14 +1,10 @@
-from enum import Enum
-from typing import TYPE_CHECKING
-
-from pydantic import BaseModel, EmailStr, Field, UUID4, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict
 import uuid
-from .users import User_on_response
-from ..config import schemas_settings
+from ..config import settings
 
 
 class ConversationRequestBase(BaseModel):
-    model_config = ConfigDict(extra=schemas_settings.extra)
+    model_config = ConfigDict(extra=settings.schemas_settings.extra)
 
 
 class ConversationBase(BaseModel):

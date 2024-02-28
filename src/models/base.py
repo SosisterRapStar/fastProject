@@ -1,4 +1,3 @@
-from typing import Generator
 
 from sqlalchemy import URL
 from asyncio import current_task
@@ -8,8 +7,8 @@ from sqlalchemy.ext.asyncio import (
     AsyncSession,
 )
 from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy.orm import DeclarativeBase, Mapped, as_declarative
-from src.config import db_settings
+from sqlalchemy.orm import Mapped, as_declarative
+from src.config import settings
 from .annotated_types import UUIDpk
 
 
@@ -26,7 +25,7 @@ class Base:
 
 
 class DatabaseHandler:
-    def __init__(self, url: str | URL, echo: bool = db_settings.echo_mode):
+    def __init__(self, url: str | URL, echo: bool = settings.db_settings.echo_mode):
         self.engine = create_async_engine(url=url, echo=echo)
         self.session = async_sessionmaker(
             bind=self.engine, autoflush=False, autocommit=False, expire_on_commit=False
@@ -45,4 +44,4 @@ class DatabaseHandler:
             yield session
 
 
-db_handler = DatabaseHandler(url=db_settings.db_url, echo=db_settings.echo_mode)
+db_handler = DatabaseHandler(url=settings.db_settings.db_url, echo=settings.db_settings.echo_mode)
