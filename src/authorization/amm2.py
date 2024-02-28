@@ -1,19 +1,10 @@
 from typing import Annotated
-
-from jose import JWTError
-from sqlalchemy import select
 from starlette import status
 from starlette.responses import JSONResponse
-
 from src.dependencies.repo_providers_dependency import user_repo_provider
-from src.models import db_handler
-from fastapi import Depends, FastAPI, APIRouter, HTTPException, Header, Request
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-
-from src.models.user_model import User
-from src.schemas.users import CreateUser, User_on_response
+from fastapi import Depends, APIRouter, HTTPException, Header
+from src.schemas.users import User_on_response
 from fastapi.security import OAuth2PasswordRequestForm
-
 from .dependency_auth import get_current_user
 from .dependency_hash import password_hash_dependency
 from .services import get_token, get_refresh_token
