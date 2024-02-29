@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Type
+
+from pydantic import BaseModel
 from typing_extensions import Unpack
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.crud.utils import get_object, NameOrId, update_object, delete_obj
@@ -58,13 +60,16 @@ class CRUDAlchemyRepository(CRUDRepository):
 
         return res
 
-    async def update(self, data: dict, **criteries: Unpack[NameOrId]):
+    async def update(self, data: dict, model_object: Base | None = None, **criteries: Unpack[NameOrId]):
+
         updated = await update_object(
             async_session=self._session,
             model=self._model,
             data=data,
+            model_object=model_object,
             **criteries,
         )
+
         await self._session.commit()
         return updated
 
@@ -79,3 +84,4 @@ class CRUDAlchemyRepository(CRUDRepository):
         )
         await self._session.commit()
         return returned_id
+

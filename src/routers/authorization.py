@@ -13,8 +13,8 @@ router = APIRouter(
 
 @router.post("/token", status_code=status.HTTP_200_OK)
 async def authontiticate_user(
-        jwt_service: get_jwt_service,
-        data: OAuth2PasswordRequestForm = Depends(),
+    jwt_service: get_jwt_service,
+    data: OAuth2PasswordRequestForm = Depends(),
 ):
     jwt_service.provide_form(data)
     return await jwt_service.get_token()
@@ -31,6 +31,3 @@ async def refresh_access_token(
             detail="Token was not passed",
         )
     return await jwt_service.get_refreshed_token(token=refresh_token)
-
-
-

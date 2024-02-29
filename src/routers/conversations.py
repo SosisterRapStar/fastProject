@@ -3,15 +3,21 @@ from typing import List
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
+from src.authorization.dependency_auth import get_current_user_id
 from src.crud.exceptions import RecordNotFoundError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
-from src.routers.errors import UserAlreadyAddedError, ConversationNotFoundError, AdminUserNotFoundError
+from src.routers.errors import (
+    UserAlreadyAddedError,
+    ConversationNotFoundError,
+    AdminUserNotFoundError,
+)
 from src.schemas.conversation import (
     ConversationResponse,
     ConversationRequest,
     ConversationUpdate,
     AddUser,
 )
+from src.schemas.message import ResponseMessage
 from src.schemas.users import User_on_response
 
 router = APIRouter(tags=["Conversations"])
@@ -30,12 +36,14 @@ async def get_all_conversations(conv_repo: conv_repo_provider):
     response_model=ConversationResponse,
 )
 async def create_conversation(
-    conv_repo: conv_repo_provider, conversation: ConversationRequest
+    user_id: get_current_user_id,
+    conv_repo: conv_repo_provider,
+    conversation: ConversationRequest,
 ):
-    try:
-        return await conv_repo.create(conversation.model_dump())
-    except IntegrityError:
-        raise AdminUserNotFoundError()
+    conv_dict = conversation.model_dump()
+    conv_dict.update({"user_admin_fk": user_id})
+
+    return await conv_repo.create(conv_dict)
 
 
 @router.get(
@@ -43,7 +51,6 @@ async def create_conversation(
     response_model=List[User_on_response],
 )
 async def get_all_users_in_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
-
     try:
         return await conv_repo.get_users(conv_id=conv_id)
     except RecordNotFoundError:
@@ -52,7 +59,6 @@ async def get_all_users_in_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provide
 
 @router.get("/{conv_name}/", response_model=ConversationResponse)
 async def get_conv_by_name(conv_name: str, conv_repo: conv_repo_provider):
-
     try:
         return await conv_repo.get(name=conv_name)
     except RecordNotFoundError:
@@ -61,7 +67,6 @@ async def get_conv_by_name(conv_name: str, conv_repo: conv_repo_provider):
 
 @router.get("/by_id/{conv_id}/", response_model=ConversationResponse)
 async def get_conv_by_id(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
-
     try:
         return await conv_repo.get(id=conv_id)
     except RecordNotFoundError:
@@ -77,7 +82,6 @@ async def update_conv_by_id(
     conv_repo: conv_repo_provider,
     conversation: ConversationUpdate,
 ):
-
     try:
         return await conv_repo.update(
             conversation.model_dump(exclude_unset=True), id=conv_id
@@ -95,7 +99,6 @@ async def update_conv_by_name(
     conv_repo: conv_repo_provider,
     conversation: ConversationUpdate,
 ):
-
     try:
         return await conv_repo.update(
             conversation.model_dump(exclude_unset=True), name=conv_name
@@ -110,7 +113,6 @@ async def add_user_to_conversation(
     conv_repo: conv_repo_provider,
     add_model: AddUser,
 ) -> None:
-
     try:
         await conv_repo.add_user(
             user_id=add_model.user_id,

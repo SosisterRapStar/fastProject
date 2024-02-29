@@ -37,3 +37,6 @@ class UserRepository(CRUDAlchemyRepository):
         )
         user = await self._session.scalar(stmt)
         return user
+
+
+

@@ -13,7 +13,9 @@ class ConversationNotFoundError(HTTPException):
 
 class UserAlreadyAddedError(HTTPException):
     def __init__(self):
-        super().__init__(status_code=404, detail="User already added or some of id not found")
+        super().__init__(
+            status_code=404, detail="User already added or some of id not found"
+        )
 
 
 class UserNotFoundError(HTTPException):

@@ -14,7 +14,7 @@ class Message(Base):
     __tablename__ = "message"
 
     content: Mapped[str] = mapped_column(nullable=False)
-    status: Mapped[str] = mapped_column(nullable=False)
+    status: Mapped[str] = mapped_column(nullable=True)
     user: Mapped["User"] = relationship(
         back_populates="messages",
         uselist=False,
@@ -26,7 +26,7 @@ class Message(Base):
     conversation_fk: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("conversation.id", ondelete="Cascade"), unique=True
     )
-    user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"), unique=True)
+    user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id", ondelete="Cascade"), unique=True)
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
 

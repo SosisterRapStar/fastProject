@@ -52,7 +52,7 @@ class JWTService:
 
         return await self.__get_user_token(user=user, refresh_token=refresh_token)
 
-    # If refresh token wasn't passed creates two rokens else refreshes access
+    # If refresh token wasn't passed creates two tokens, else refreshes access token
     # TODO: create expire time for refresh token
     async def __get_user_token(self, user: User, refresh_token=None):
         payload = {"id": str(user.id)}
