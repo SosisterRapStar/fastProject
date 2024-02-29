@@ -12,7 +12,7 @@ class ConversationBase(BaseModel):
 
 
 class ConversationRequest(ConversationBase, ConversationRequestBase):
-    user_admin_fk: uuid.UUID
+    pass
 
 
 class ConversationResponse(ConversationBase):

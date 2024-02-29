@@ -30,4 +30,4 @@ async def refresh_access_token(
             status_code=400,
             detail="Token was not passed",
         )
-    return await jwt_service.get_refreshed_token(token=refresh_token)
+    return await jwt_service.get_refreshed_token(refresh_token=refresh_token)

@@ -73,22 +73,22 @@ async def get_user_by_name(user_name: str, user_repo: user_repo_provider):
         raise UserNotFoundError()
 
 
-@router.get(
-    "/{user_id}/",
-    response_model=User_on_response,
-)
-async def get_user_by_id(user_id: uuid.UUID, user_repo: user_repo_provider):
-    try:
-        return await user_repo.get(id=user_id)
-    except IntegrityError:
-        raise UserNotFoundError()
+# @router.get(
+#     "/{user_id}/",
+#     response_model=User_on_response,
+# )
+# async def get_user_by_id(user_id: uuid.UUID, user_repo: user_repo_provider):
+#     try:
+#         return await user_repo.get(id=user_id)
+#     except IntegrityError:
+#         raise UserNotFoundError()
 
 
 @router.get(
     "/convs/",
     response_model=List[ConversationResponse],
 )
-async def get_user_convs_by_id(
+async def get_user_convs(
     user_id: get_current_user_id, user_repo: user_repo_provider
 ):
     try:
@@ -97,7 +97,7 @@ async def get_user_convs_by_id(
         raise UserNotFoundError()
 
 
-@router.delete("/{user_id}/")
+@router.delete("/{user_ id}/")
 async def delete_user_by_id(
     user_repo: user_repo_provider,
     user_id: uuid.UUID,

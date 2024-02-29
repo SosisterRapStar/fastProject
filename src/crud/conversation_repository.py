@@ -52,15 +52,17 @@ class ConversationRepository(CRUDAlchemyRepository):
             .options(joinedload(Conversation.messages))
         )
         res: Result = await self._session.execute(stmt)
-        conv = res.scalar_one()
+        conv = res.unique().scalar_one()
         return conv
 
     async def create(self, data: dict) -> Conversation:
         new_conv = Conversation(**data)
         new_asoc = UserConversationSecondary(edit_permission=True)
+        new_conv.id = uuid.uuid4()
         new_asoc.conversation_id = new_conv.id
         new_asoc.user_id = new_conv.user_admin_fk
         self._session.add(new_conv)
+        self._session.add(new_asoc)
         await self._session.commit()
         return new_conv
 

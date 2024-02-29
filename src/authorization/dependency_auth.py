@@ -24,7 +24,7 @@ async def _get_auth_user_id(request: Request) -> uuid.UUID:
     except (LookupError, JWTError):
         raise NonAuthorizedError()
 
-    return user_id
+    return uuid.UUID(user_id)
 
 
 async def _get_auth_user(request: Request, repo: user_repo_provider) -> User:

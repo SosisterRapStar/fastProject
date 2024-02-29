@@ -129,3 +129,5 @@ async def delete_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
         return await conv_repo.delete(id=conv_id)
     except NoResultFound:
         raise ConversationNotFoundError()
+
+

@@ -19,8 +19,7 @@ class UserRepository(CRUDAlchemyRepository):
                 UserConversationSecondary,
                 Conversation.id == UserConversationSecondary.conversation_id,
             )
-            .join(User, User.id == UserConversationSecondary.user_id)
-            .where(User.id == user_id)
+            .where(UserConversationSecondary.user_id == user_id)
         )
         res = await self._session.scalars(stmt)
         return list(res.all())
@@ -33,7 +32,7 @@ class UserRepository(CRUDAlchemyRepository):
         stmt = (
             select(User)
             .where(User.id == user_id)
-            .options(joinedload(User.conversations))
+            .options(joinedload(User.messages))
         )
         user = await self._session.scalar(stmt)
         return user

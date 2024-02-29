@@ -4,10 +4,7 @@ from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import BaseModel, EmailStr, Field, UUID4, ConfigDict
 import uuid
-
-if TYPE_CHECKING:
-    from .users import User_on_response
-    from .conversation import ConversationResponse
+from .users import User_on_response
 
 
 class Message(BaseModel):
@@ -15,15 +12,18 @@ class Message(BaseModel):
 
 
 class RequestMessage(Message):
-    conversation_fk: uuid.UUID
+    conversation_fk: str = Field()
 
 
-class ResponseMessage(BaseModel):
+class ResponseMessage(Message):
     model_config = ConfigDict(from_attributes=True)
+    author: uuid.UUID = Field(validation_alias="user_fk")
     created_at: datetime
     updated_at: datetime
-    content: str
-    author: Optional["User_on_response"] = Field(alies="user")
+
+
+class ResponseWithUserMessage(ResponseMessage):
+    author: Optional[User_on_response] = Field(alies="user")
 
 
 class UpdateMessage(BaseModel):
