@@ -12,7 +12,7 @@ from src.dependencies.repo_providers_dependency import (
     conv_repo_provider,
 )
 from src.routers.errors import ConversationNotFoundError
-from src.schemas.message import RequestMessage, ResponseMessage, UpdateMessage
+from src.schemas.message import RequestMessage, ResponseMessage, UpdateMessage, ResponseWithUserMessage
 
 router = APIRouter(tags=["Messages"])
 
@@ -66,7 +66,7 @@ async def edit_message(
 @router.get(
     "/conv/{conv_id}",
     status_code=status.HTTP_200_OK,
-    response_model=List[ResponseMessage],
+    response_model=List[ResponseWithUserMessage],
 )
 async def get_conv_messages(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     try:

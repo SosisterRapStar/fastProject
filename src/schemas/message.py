@@ -23,7 +23,7 @@ class ResponseMessage(Message):
 
 
 class ResponseWithUserMessage(ResponseMessage):
-    author: Optional[User_on_response] = Field(alies="user")
+    author: Optional[User_on_response] = Field(validation_alias="user")
 
 
 class UpdateMessage(BaseModel):
