@@ -1,9 +1,10 @@
 import uuid
 
 from sqlalchemy import select, insert, Result
+from sqlalchemy.exc import NoResultFound
 from sqlalchemy.orm import joinedload
 
-from src.crud.exceptions import RecordNotFoundError
+from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.crud.repo_abstract import CRUDAlchemyRepository
 from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.user_model import User
@@ -66,18 +67,22 @@ class ConversationRepository(CRUDAlchemyRepository):
         await self._session.commit()
         return new_conv
 
-    async def add_user(self, user_id: uuid.UUID, conv_id: uuid.UUID,
+    async def add_user(self, current_user: uuid.UUID, user_id: uuid.UUID, conv_id: uuid.UUID,
                        permission: bool) -> None:
-        # stmt = (select(UserConversationSecondary.edit_permission).
-        #         where(UserConversationSecondary.user_id == user_editor_id))
-        #
-        # is_editor = await self._session.scalar(stmt)
-        #
-        # if not is_editor:
-        #     raise RecordNotFoundError
+        stmt = (select(UserConversationSecondary.edit_permission).
+                where(UserConversationSecondary.user_id == current_user and UserConversationSecondary.conversation_id == conv_id))
+        try:
+            res: Result = await self._session.execute(stmt)
+            row = res.one()
+        except NoResultFound:
+            raise RecordNotFoundError()
+        if not row:
+            raise NoEditPermissionsError()
 
         new_asoc = UserConversationSecondary(edit_permission=permission)
         new_asoc.conversation_id = conv_id
         new_asoc.user_id = user_id
         self._session.add(new_asoc)
         await self._session.commit()
+
+

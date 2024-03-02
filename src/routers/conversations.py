@@ -4,12 +4,12 @@ from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
 from src.authorization.dependency_auth import get_current_user_id
-from src.crud.exceptions import RecordNotFoundError
+from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
 from src.routers.errors import (
     UserAlreadyAddedError,
     ConversationNotFoundError,
-    AdminUserNotFoundError,
+    AdminUserNotFoundError, EditPermissionsError,
 )
 from src.schemas.conversation import (
     ConversationResponse,
@@ -109,18 +109,26 @@ async def update_conv_by_name(
 
 @router.post("users/{conv_id}/")
 async def add_user_to_conversation(
+    current_user: get_current_user_id,
     conv_id: uuid.UUID,
     conv_repo: conv_repo_provider,
     add_model: AddUser,
 ) -> None:
+
     try:
         await conv_repo.add_user(
+            current_user=current_user,
             user_id=add_model.user_id,
             permission=add_model.is_moder,
             conv_id=conv_id,
         )
     except IntegrityError:
         raise UserAlreadyAddedError()
+    except RecordNotFoundError:
+        raise ConversationNotFoundError()
+    except NoEditPermissionsError:
+        raise EditPermissionsError()
+
 
 
 @router.delete("/{conv_id}/")
