@@ -1,10 +1,16 @@
+import uuid
 from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI, WebSocket
+from starlette.websockets import WebSocketDisconnect
+
 from routers import router as router_api_v1
 from config import settings
 from fastapi.responses import HTMLResponse
+
+from src.authorization.dependency_auth import get_current_user
+from src.connections.connection_manager import ManagersHandler
 
 html = """
 <!DOCTYPE html>
@@ -21,7 +27,10 @@ html = """
         <ul id='messages'>
         </ul>
         <script>
-            var ws = new WebSocket("ws://localhost:8000/ws");
+            // Get the conv_id from the URL
+            var convId = window.location.pathname.split('/')[1];
+            
+            var ws = new WebSocket("ws://localhost:8000/" + convId + "/ws");
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages')
                 var message = document.createElement('li')
@@ -46,18 +55,25 @@ app.include_router(
     prefix=settings.router_settings.api_v1_prefix,
 )
 
+managers_handler = ManagersHandler()
 
-@app.get("/")
+
+@app.get("/{conv_id}")
 async def get():
     return HTMLResponse(html)
 
 
-# @app.websocket("/ws")
-# async def websocket_endpoint(websocket: WebSocket):
-#     await websocket.accept()
-#     while True:
-#         data = await websocket.receive_text()
-#         await websocket.send_text(f"Pososy pisu: {data}")
+@app.websocket("/{conv_id}/ws")
+async def websocket_endpoint(conv_id: uuid.UUID, websocket: WebSocket):
+    manager = await managers_handler.get_manager(key=conv_id)
+    await manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await manager.broadcast(f"Clients #{manager.counter}: {data}")
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+        await manager.broadcast(f"Clients #{manager.counter} left the chat")
 
 
 if __name__ == "__main__":
