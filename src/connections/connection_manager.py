@@ -31,6 +31,20 @@ class ConnectionManagerIsNotEmptyError(Exception):
         return f"Can not delete manager. Connections list not empty."
 
 
+class ConnectionManagerNotFoundError(Exception):
+    def __init__(self, *args):
+        if args:
+            self.message = args[0]
+        else:
+            self.message = None
+
+    # ok it should be useful idk :|
+    def __str__(self):
+        if self.message:
+            return f"{self.message}"
+        return f"There is no such manager"
+
+
 class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
     # maybe it should do redis
 
@@ -52,16 +66,20 @@ class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
         return manager
 
     async def delete_manager(self, key: uuid.UUID | int):
-        manager = self.managers[key]
+        try:
+            manager: ConnectionManager = self.managers[key]
+        except LookupError:
+            raise ConnectionManagerNotFoundError()
+
         if manager.connections:
-            raise ConnectionManagerIsNotEmptyError()
+            await manager.disconnect_all()
         self.managers.pop(key)
 
 
 class ConnectionManager:
 
     def __init__(self):
-        self.connections = list()
+        self.connections: list[WebSocket] = list()
         self.counter = 0
 
     async def connect(self, websocket: WebSocket):
@@ -73,7 +91,9 @@ class ConnectionManager:
         self.connections.remove(websocket)
         self.counter -= 1
 
-    def disconnect_all(self):
+    async def disconnect_all(self):
+        for socket in self.connections:
+            await socket.close()
         self.connections.clear()
 
     async def send(self, websocket: WebSocket, message: str):
