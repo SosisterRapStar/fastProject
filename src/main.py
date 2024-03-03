@@ -1,14 +1,16 @@
 import uuid
-
+from typing import Annotated
 
 import uvicorn
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, Header
 from starlette.websockets import WebSocketDisconnect
 
 from routers import router as router_api_v1
 from config import settings
 from fastapi.responses import HTMLResponse
-from src.connections.connection_manager import ManagersHandler
+
+from src.authorization.dependency_auth import get_current_user
+from src.connections.connection_manager import ConversationConnectionManagersHandler
 from src.dependencies.repo_providers_dependency import message_repo_provider
 
 html = """
@@ -54,7 +56,7 @@ app.include_router(
     prefix=settings.router_settings.api_v1_prefix,
 )
 
-managers_handler = ManagersHandler()
+conv_managers_handler = ConversationConnectionManagersHandler()
 
 
 # Testing
@@ -63,10 +65,10 @@ async def get():
     return HTMLResponse(html)
 
 
-# Testing
+# Testing, acces_token header added for testing in /docs
 @app.websocket("/{conv_id}/ws")
-async def websocket_endpoint(conv_id: uuid.UUID, websocket: WebSocket, message_repo: message_repo_provider, ):
-    manager = await managers_handler.get_manager(key=conv_id)
+async def websocket_endpoint(acces_token: Annotated[str | None, Header()], current_user: get_current_user, conv_id: uuid.UUID, websocket: WebSocket, message_repo: message_repo_provider, ):
+    manager = await conv_managers_handler.get_manager(key=conv_id)
     await manager.connect(websocket)
     try:
         while True:
