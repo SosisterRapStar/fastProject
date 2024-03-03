@@ -5,10 +5,6 @@ from fastapi import WebSocket
 
 class AbstractConnectionManagersHadler(ABC):
     @abstractmethod
-    def __new__(cls, *args, **kwargs):
-        raise NotImplementedError
-
-    @abstractmethod
     def get_manager(self, key: uuid.UUID | int | str) -> "ConnectionManager":
         raise NotImplementedError
 
@@ -102,3 +98,6 @@ class ConnectionManager:
     async def broadcast(self, message: str):
         for connection in self.connections:
             await connection.send_text(message)
+
+
+conv_managers_handler = ConversationConnectionManagersHandler()

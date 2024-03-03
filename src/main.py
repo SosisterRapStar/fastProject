@@ -10,7 +10,7 @@ from config import settings
 from fastapi.responses import HTMLResponse
 
 from src.authorization.dependency_auth import get_current_user
-from src.connections.connection_manager import ConversationConnectionManagersHandler
+from src.connections.connection_manager import ConversationConnectionManagersHandler, conv_managers_handler
 from src.dependencies.repo_providers_dependency import message_repo_provider, conv_repo_provider
 
 html = """
@@ -56,7 +56,7 @@ app.include_router(
     prefix=settings.router_settings.api_v1_prefix,
 )
 
-conv_managers_handler = ConversationConnectionManagersHandler()
+
 
 
 # Testing

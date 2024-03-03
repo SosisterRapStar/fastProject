@@ -4,10 +4,11 @@ from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
 from src.authorization.dependency_auth import get_current_user_id
-from src.connections.connection_manager import ConnectionManagerIsNotEmptyError, ConnectionManagerNotFoundError
+from src.connections.connection_manager import ConnectionManagerIsNotEmptyError, ConnectionManagerNotFoundError, \
+    conv_managers_handler
 from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
-from src.main import conv_managers_handler
+
 from src.routers.errors import (
     UserAlreadyAddedError,
     ConversationNotFoundError,
