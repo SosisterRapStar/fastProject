@@ -4,8 +4,10 @@ from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
 from src.authorization.dependency_auth import get_current_user_id
+from src.connections.connection_manager import ConnectionManagerIsNotEmptyError
 from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
+from src.main import managers_handler
 from src.routers.errors import (
     UserAlreadyAddedError,
     ConversationNotFoundError,
@@ -17,6 +19,8 @@ from src.schemas.conversation import (
     ConversationUpdate,
     AddUser,
 )
+
+
 from src.schemas.message import ResponseMessage
 from src.schemas.users import User_on_response
 
@@ -134,8 +138,12 @@ async def add_user_to_conversation(
 @router.delete("/{conv_id}/")
 async def delete_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     try:
-        return await conv_repo.delete(id=conv_id)
-    except NoResultFound:
+        await conv_repo.delete(id=conv_id)
+        await managers_handler.delete_conv(conv_id)
+
+    except RecordNotFoundError:
         raise ConversationNotFoundError()
+    except NoEditPermissionsError:
+        raise EditPermissionsError()
 
 

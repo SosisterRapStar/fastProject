@@ -1,24 +1,39 @@
 import uuid
-from typing import Annotated
-
-from fastapi import Depends
+from abc import ABC, abstractmethod
 from fastapi import WebSocket
 
 
-class ManagerIsNotEmptyError(Exception):
+class AbstractConnectionManagersHadler(ABC):
+    @abstractmethod
+    def __new__(cls, *args, **kwargs):
+        raise NotImplementedError
+
+    @abstractmethod
+    def get_manager(self, key: uuid.UUID | int | str) -> "ConnectionManager":
+        raise NotImplementedError
+
+    @abstractmethod
+    def delete_manager(self, key: uuid.UUID | int | str):
+        raise NotImplementedError
+
+
+class ConnectionManagerIsNotEmptyError(Exception):
     def __init__(self, *args):
         if args:
             self.message = args[0]
         else:
             self.message = None
 
+    # ok it should be useful idk :|
     def __str__(self):
         if self.message:
             return f"{self.message}"
         return f"Can not delete manager. Connections list not empty."
 
 
-class ManagersHandler:
+class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
+    # maybe it should do redis
+
     __singletone = None
 
     def __new__(cls, *args, **kwargs):
@@ -39,10 +54,8 @@ class ManagersHandler:
     async def delete_manager(self, key: uuid.UUID | int):
         manager = self.managers[key]
         if manager.connections:
-            raise ManagerIsNotEmptyError()
+            raise ConnectionManagerIsNotEmptyError()
         self.managers.pop(key)
-
-
 
 
 class ConnectionManager:
@@ -66,6 +79,3 @@ class ConnectionManager:
     async def broadcast(self, message: str):
         for connection in self.connections:
             await connection.send_text(message)
-
-
-

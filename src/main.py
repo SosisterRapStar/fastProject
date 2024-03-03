@@ -1,5 +1,5 @@
 import uuid
-from contextlib import asynccontextmanager
+
 
 import uvicorn
 from fastapi import FastAPI, WebSocket
@@ -8,8 +8,6 @@ from starlette.websockets import WebSocketDisconnect
 from routers import router as router_api_v1
 from config import settings
 from fastapi.responses import HTMLResponse
-
-from src.authorization.dependency_auth import get_current_user
 from src.connections.connection_manager import ManagersHandler
 from src.dependencies.repo_providers_dependency import message_repo_provider
 

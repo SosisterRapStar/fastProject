@@ -15,7 +15,7 @@ class ConversationRepository(CRUDAlchemyRepository):
 
     # TODO: do something with session identity map for caching
     # TODO: errors handling
-
+    # I think that it shouldn't be async :|
     async def get_users(self, conv_id: uuid.UUID) -> list["User"]:
         stmt = (
             select(User)
@@ -30,6 +30,11 @@ class ConversationRepository(CRUDAlchemyRepository):
         if not res:
             raise RecordNotFoundError
         return res
+
+    async def delete(self, current_user_id, **crtieries):
+
+        await self.get_permissions(current_user_id=current_user_id, conv_id=crtieries['id'])
+        return await super().delete(**crtieries)
 
     async def get_conv_with_admin_info(self, conv_id: uuid.UUID) -> Conversation:
         stmt = (
@@ -67,10 +72,23 @@ class ConversationRepository(CRUDAlchemyRepository):
         await self._session.commit()
         return new_conv
 
-    async def add_user(self, current_user: uuid.UUID, user_id: uuid.UUID, conv_id: uuid.UUID,
+    async def add_user(self, current_user_id: uuid.UUID, user_id: uuid.UUID, conv_id: uuid.UUID,
                        permission: bool) -> None:
+
+        await self.get_permissions(current_user_id=current_user_id, conv_id=conv_id)
+
+        new_asoc = UserConversationSecondary(edit_permission=permission)
+        new_asoc.conversation_id = conv_id
+        new_asoc.user_id = user_id
+        self._session.add(new_asoc)
+        await self._session.commit()
+
+    async def get_permissions(self,  current_user_id: uuid.UUID, conv_id: uuid.UUID):
         stmt = (select(UserConversationSecondary.edit_permission).
-                where(UserConversationSecondary.user_id == current_user and UserConversationSecondary.conversation_id == conv_id))
+                where(
+            UserConversationSecondary.user_id == current_user_id and
+            UserConversationSecondary.conversation_id == conv_id))
+
         try:
             res: Result = await self._session.execute(stmt)
             row = res.one()
@@ -79,10 +97,5 @@ class ConversationRepository(CRUDAlchemyRepository):
         if not row:
             raise NoEditPermissionsError()
 
-        new_asoc = UserConversationSecondary(edit_permission=permission)
-        new_asoc.conversation_id = conv_id
-        new_asoc.user_id = user_id
-        self._session.add(new_asoc)
-        await self._session.commit()
 
 
