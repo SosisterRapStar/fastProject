@@ -7,7 +7,7 @@ from src.authorization.dependency_auth import get_current_user_id
 from src.connections.connection_manager import ConnectionManagerIsNotEmptyError
 from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
-from src.main import managers_handler
+from src.main import conv_managers_handler
 from src.routers.errors import (
     UserAlreadyAddedError,
     ConversationNotFoundError,
@@ -139,7 +139,7 @@ async def add_user_to_conversation(
 async def delete_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     try:
         await conv_repo.delete(id=conv_id)
-        await managers_handler.delete_conv(conv_id)
+        await conv_managers_handler
 
     except RecordNotFoundError:
         raise ConversationNotFoundError()

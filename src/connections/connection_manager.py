@@ -73,6 +73,9 @@ class ConnectionManager:
         self.connections.remove(websocket)
         self.counter -= 1
 
+    def disconnect_all(self):
+        self.connections.clear()
+
     async def send(self, websocket: WebSocket, message: str):
         await websocket.send_text(message)
 
