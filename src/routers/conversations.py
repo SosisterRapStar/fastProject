@@ -139,9 +139,10 @@ async def add_user_to_conversation(
 @router.delete("/{conv_id}/")
 async def delete_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
     try:
-        await conv_managers_handler.delete_manager()
+        await conv_managers_handler.delete_manager(key=conv_id)
     except ConnectionManagerNotFoundError:
-        pass
+        # ?
+        HTTPException(detail="Connection manager doesn't exist")
 
     try:
         await conv_repo.delete(id=conv_id)

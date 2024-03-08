@@ -1,6 +1,6 @@
 import uuid
 from typing import List
-
+from logger import log
 from fastapi import APIRouter
 from sqlalchemy.exc import NoResultFound
 from starlette import status
