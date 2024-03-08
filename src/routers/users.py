@@ -15,7 +15,7 @@ from src.dependencies.repo_providers_dependency import user_repo_provider
 from src.routers.errors import UserNotFoundError
 from src.schemas.conversation import ConversationResponse
 from src.schemas.users import User_on_response
-from logger import log
+from .logger import log
 router = APIRouter(tags=["Users"])
 
 

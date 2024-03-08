@@ -10,9 +10,9 @@ from src.crud.exceptions import RecordNotFoundError
 from src.crud.user_repository import UserRepository
 from src.dependencies.repo_providers_dependency import user_repo_provider
 from src.models.user_model import User
-from logger import log
+from .logger import log
 
-logger = logging.getLogger("__name__")
+
 
 
 async def _get_auth_user(request: Request, repo: user_repo_provider) -> User:
@@ -41,7 +41,7 @@ async def _id_in_payload(request: Request) -> str:
         payload = get_token_payload(await _token_in_headers(request=request))
         user_id = payload["id"]
     except (LookupError, JWTError):
-
+        log.error("Non authorized user")
         raise NonAuthorizedError()
     return user_id
 
@@ -50,6 +50,7 @@ async def _token_in_headers(request: Request) -> str:
     try:
         auth_header = request.headers["Authorization"]
     except LookupError:
+        log.error("Non authorized user")
         raise NonAuthorizedError()
     token_type, token = auth_header.split()
     return token

@@ -19,7 +19,7 @@
     },
     "file": {
       "class": "logging.handlers.RotatingFileHandler",
-      "level": "DEBUG",
+
       "formatter": "detailed",
       "filename": "./fastLog.log",
       "maxBytes": 1000000,
