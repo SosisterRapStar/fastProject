@@ -118,3 +118,51 @@ NoneType: None
 [INFO|on|L76] 2024-03-09T16:59:07+0300: Application shutdown complete.
 [INFO|server|L87] 2024-03-09T16:59:07+0300: Finished server process [11380]
 [INFO|basereload|L117] 2024-03-09T16:59:07+0300: Stopping reloader process [5252]
+[INFO|config|L330] 2024-03-09T19:27:15+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:27:15+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:27:15+0300: Started reloader process [15972] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:27:17+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:27:17+0300: Started server process [23152]
+[INFO|on|L46] 2024-03-09T19:27:17+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T19:27:17+0300: Application startup complete.
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_data with data[21:25]
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_name with data[26:34]
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_data with data[35:39]
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_name with data[40:45]
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_name with data[47:56]
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T19:27:31+0300: Calling on_field_name with data[58:71]
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T19:27:31+0300: Calling on_end with no data
+[DEBUG|security|L19] 2024-03-09T19:27:31+0300: password verifying
+[WARNING|bcrypt|L622] 2024-03-09T19:27:31+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-09T19:27:31+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-09T19:27:31+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|security|L35] 2024-03-09T19:27:31+0300: created acces token
+[DEBUG|security|L40] 2024-03-09T19:27:31+0300: created refresh token
+[INFO|h11_impl|L482] 2024-03-09T19:27:31+0300: 127.0.0.1:62194 - "POST /api/v1/auth/token HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:27:31+0300: {'url': '/api/v1/auth/token', 'process_time': 0.34000349044799805}
+[DEBUG|security|L14] 2024-03-09T19:28:36+0300: password_hashing
+[INFO|h11_impl|L482] 2024-03-09T19:28:36+0300: 127.0.0.1:62236 - "POST /api/v1/users/register HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:28:36+0300: {'url': '/api/v1/users/register', 'process_time': 0.22298979759216309}
+[INFO|h11_impl|L482] 2024-03-09T19:28:46+0300: 127.0.0.1:62237 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:28:46+0300: {'url': '/api/v1/users/', 'process_time': 0.003999948501586914}
+[INFO|h11_impl|L482] 2024-03-09T19:29:02+0300: 127.0.0.1:62240 - "GET /api/v1/conversations/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:29:02+0300: {'url': '/api/v1/conversations/', 'process_time': 0.005997180938720703}

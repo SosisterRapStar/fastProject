@@ -13,6 +13,13 @@ from logger import setup_logging
 from src.authorization.dependency_auth import get_current_user
 from src.connections.connection_manager import ConversationConnectionManagersHandler, conv_managers_handler
 from src.dependencies.repo_providers_dependency import message_repo_provider, conv_repo_provider
+from starlette.middleware import Middleware
+from middlewares.log_middleware import ASGIMiddleware
+
+middleware = [
+    Middleware(ASGIMiddleware),
+]
+
 
 html = """
 <!DOCTYPE html>
@@ -65,7 +72,7 @@ logging.getLogger("sqlalchemy.dialects").setLevel(logging.ERROR)
 
 
 
-app = FastAPI()
+app = FastAPI(middleware=middleware)
 app.include_router(
     router=router_api_v1,
     prefix=settings.router_settings.api_v1_prefix,
