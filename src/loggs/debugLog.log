@@ -2168,3 +2168,460 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 [DEBUG|log_middleware|L17] 2024-03-09T23:48:34+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 115.68939805030823}
 [INFO|server|L87] 2024-03-09T23:48:34+0300: Finished server process [16364]
 [INFO|basereload|L117] 2024-03-09T23:48:35+0300: Stopping reloader process [20888]
+[INFO|config|L330] 2024-03-09T23:53:30+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T23:53:30+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T23:53:30+0300: Started reloader process [27624] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T23:53:32+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:53:32+0300: Started server process [20836]
+[INFO|on|L46] 2024-03-09T23:53:32+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:53:32+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:53:32+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T23:54:27+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T23:58:29+0300: Shutting down
+[INFO|server|L87] 2024-03-09T23:58:29+0300: Finished server process [20836]
+[DEBUG|selector_events|L64] 2024-03-09T23:58:30+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:58:31+0300: Started server process [24236]
+[INFO|on|L46] 2024-03-09T23:58:31+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:58:31+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:58:31+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T23:59:16+0300: StatReload detected changes in 'authorization\dependency_auth.py'. Reloading...
+[INFO|server|L265] 2024-03-10T00:03:29+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:03:29+0300: Finished server process [24236]
+[WARNING|basereload|L54] 2024-03-10T00:04:47+0300: StatReload detected changes in 'authorization\dependency_auth.py'. Reloading...
+[WARNING|basereload|L54] 2024-03-10T00:08:28+0300: StatReload detected changes in 'main.py'. Reloading...
+[INFO|config|L330] 2024-03-10T00:09:00+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:09:00+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:09:00+0300: Started reloader process [23768] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:09:01+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:09:01+0300: Started server process [15980]
+[INFO|on|L46] 2024-03-10T00:09:01+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:09:01+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:09:01+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:09:04+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:09:04+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < sec-websocket-key: twDa47Vy/RvRAwPjmJjPnQ==
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:09:04+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:09:04+0300: ('127.0.0.1', 59272) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:09:04+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0010008811950683594}
+[DEBUG|server|L307] 2024-03-10T00:09:04+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:09:04+0300: > Date: Sat, 09 Mar 2024 21:09:04 GMT
+[DEBUG|server|L309] 2024-03-10T00:09:04+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:09:04+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:09:04+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:09:04+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:09:04+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:09:04+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:09:04+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:09:04+0300: connection closed
+[INFO|server|L265] 2024-03-10T00:09:46+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:09:46+0300: Finished server process [15980]
+[INFO|basereload|L117] 2024-03-10T00:09:46+0300: Stopping reloader process [23768]
+[INFO|config|L330] 2024-03-10T00:09:48+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:09:48+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:09:48+0300: Started reloader process [16504] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:09:49+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:09:49+0300: Started server process [24864]
+[INFO|on|L46] 2024-03-10T00:09:49+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:09:49+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:09:49+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:09:56+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:09:56+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < sec-websocket-key: ymRK8xjlwhBg0NLqSC2RNg==
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:09:56+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:09:56+0300: ('127.0.0.1', 59350) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:09:56+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0010089874267578125}
+[DEBUG|server|L307] 2024-03-10T00:09:56+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:09:56+0300: > Date: Sat, 09 Mar 2024 21:09:56 GMT
+[DEBUG|server|L309] 2024-03-10T00:09:56+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:09:56+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:09:56+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:09:56+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:09:56+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:09:56+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:09:56+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:09:56+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T00:10:50+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:10:50+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < sec-websocket-key: XmJtslxx1TaXvECuRPSF5w==
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:10:50+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:10:50+0300: ('127.0.0.1', 59378) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:10:50+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0009980201721191406}
+[DEBUG|server|L307] 2024-03-10T00:10:50+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:10:50+0300: > Date: Sat, 09 Mar 2024 21:10:50 GMT
+[DEBUG|server|L309] 2024-03-10T00:10:50+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:10:50+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:10:50+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:10:50+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:10:50+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:10:50+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:10:50+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:10:50+0300: connection closed
+[WARNING|basereload|L54] 2024-03-10T00:11:13+0300: StatReload detected changes in 'authorization\dependency_auth.py'. Reloading...
+[INFO|server|L265] 2024-03-10T00:11:16+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:11:17+0300: Finished server process [24864]
+[DEBUG|selector_events|L64] 2024-03-10T00:11:18+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:11:18+0300: Started server process [1288]
+[INFO|on|L46] 2024-03-10T00:11:18+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:11:18+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:11:18+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:11:21+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:11:21+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < sec-websocket-key: sfcU6E7DINId82F5MNxFsQ==
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:11:21+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:11:21+0300: ('127.0.0.1', 59391) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:11:21+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.001005411148071289}
+[DEBUG|server|L307] 2024-03-10T00:11:21+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:11:21+0300: > Date: Sat, 09 Mar 2024 21:11:21 GMT
+[DEBUG|server|L309] 2024-03-10T00:11:21+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:11:21+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:11:21+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:11:21+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:11:21+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:11:21+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:11:21+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:11:21+0300: connection closed
+[WARNING|basereload|L54] 2024-03-10T00:11:32+0300: StatReload detected changes in 'authorization\dependency_auth.py'. Reloading...
+[INFO|config|L330] 2024-03-10T00:15:05+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:15:05+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:15:05+0300: Started reloader process [9896] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:15:06+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:15:06+0300: Started server process [25912]
+[INFO|on|L46] 2024-03-10T00:15:06+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:15:06+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:15:06+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:15:10+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:15:10+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < sec-websocket-key: H8yfHnHwgyVNdfZDeenbOQ==
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:15:10+0300: < host: localhost:8000
+[DEBUG|dependency_auth|L32] 2024-03-10T00:15:10+0300: Request for curr user id
+[DEBUG|dependency_auth|L22] 2024-03-10T00:15:10+0300: User 82233a1f-129c-4c1d-96b9-1c44a197c0c5 authenticated
+[INFO|websockets_impl|L291] 2024-03-10T00:15:10+0300: ('127.0.0.1', 59561) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-10T00:15:10+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-10T00:15:10+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-10T00:15:10+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-10T00:15:10+0300: > Sec-WebSocket-Accept: O4KDPOdkno7m0nbgwQzyturRAAM=
+[DEBUG|server|L309] 2024-03-10T00:15:10+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-10T00:15:10+0300: > date: Sat, 09 Mar 2024 21:15:10 GMT
+[DEBUG|server|L309] 2024-03-10T00:15:10+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-10T00:15:10+0300: connection open
+[DEBUG|protocol|L357] 2024-03-10T00:15:10+0300: = connection is OPEN
+[INFO|server|L265] 2024-03-10T00:15:13+0300: Shutting down
+[DEBUG|protocol|L1412] 2024-03-10T00:15:13+0300: ! failing connection with code 1012
+[DEBUG|protocol|L1436] 2024-03-10T00:15:13+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-10T00:15:13+0300: > CLOSE 1012 (service restart) [2 bytes]
+[DEBUG|protocol|L1497] 2024-03-10T00:15:13+0300: = connection is CLOSED
+[DEBUG|protocol|L1319] 2024-03-10T00:15:13+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-10T00:15:13+0300: connection closed
+[DEBUG|log_middleware|L17] 2024-03-10T00:15:13+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 3.0460712909698486}
+[INFO|server|L87] 2024-03-10T00:15:13+0300: Finished server process [25912]
+[INFO|basereload|L117] 2024-03-10T00:15:13+0300: Stopping reloader process [9896]
+[INFO|config|L330] 2024-03-10T00:15:30+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:15:30+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:15:30+0300: Started reloader process [21632] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:15:32+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:15:32+0300: Started server process [21748]
+[INFO|on|L46] 2024-03-10T00:15:32+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:15:32+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:15:32+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:15:33+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:15:33+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < sec-websocket-key: DljOrAb2YCKzQwinILGlUg==
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:15:33+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:15:33+0300: ('127.0.0.1', 59582) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:15:33+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0010020732879638672}
+[DEBUG|server|L307] 2024-03-10T00:15:33+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:15:33+0300: > Date: Sat, 09 Mar 2024 21:15:33 GMT
+[DEBUG|server|L309] 2024-03-10T00:15:33+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:15:33+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:15:33+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:15:33+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:15:33+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:15:33+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:15:33+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:15:33+0300: connection closed
+[WARNING|basereload|L54] 2024-03-10T00:15:38+0300: StatReload detected changes in 'authorization\dependency_auth.py'. Reloading...
+[INFO|server|L265] 2024-03-10T00:17:44+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:17:44+0300: Finished server process [21748]
+[INFO|config|L330] 2024-03-10T00:17:48+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:17:48+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:17:48+0300: Started reloader process [22320] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:17:50+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:17:50+0300: Started server process [24388]
+[INFO|on|L46] 2024-03-10T00:17:50+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:17:50+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:17:50+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:17:54+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:17:54+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < sec-websocket-key: xqT+hSoI0y88ux6CqEv5ew==
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:17:54+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:17:54+0300: ('127.0.0.1', 59677) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:17:54+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0009915828704833984}
+[DEBUG|server|L307] 2024-03-10T00:17:54+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:17:54+0300: > Date: Sat, 09 Mar 2024 21:17:54 GMT
+[DEBUG|server|L309] 2024-03-10T00:17:54+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:17:54+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:17:54+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:17:54+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:17:54+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:17:54+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:17:54+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:17:54+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T00:17:55+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:17:55+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < sec-websocket-key: X6uU4zzFcdjdASd7jS0VMw==
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:17:55+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:17:55+0300: ('127.0.0.1', 59679) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:17:55+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0010077953338623047}
+[DEBUG|server|L307] 2024-03-10T00:17:55+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:17:55+0300: > Date: Sat, 09 Mar 2024 21:17:55 GMT
+[DEBUG|server|L309] 2024-03-10T00:17:55+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:17:55+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:17:55+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:17:55+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:17:55+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:17:55+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:17:55+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:17:55+0300: connection closed
+[WARNING|basereload|L54] 2024-03-10T00:20:24+0300: StatReload detected changes in 'authorization\dependency_auth.py'. Reloading...
+[INFO|server|L265] 2024-03-10T00:22:46+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:22:46+0300: Finished server process [24388]
+[INFO|config|L330] 2024-03-10T00:24:23+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:24:23+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:24:23+0300: Started reloader process [27304] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:24:25+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:24:25+0300: Started server process [4116]
+[INFO|on|L46] 2024-03-10T00:24:25+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:24:25+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:24:25+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:24:30+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:24:30+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < sec-websocket-key: PQHcOYuw0i0bY5P2HygnhA==
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:24:30+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:24:30+0300: ('127.0.0.1', 59986) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:24:30+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0009887218475341797}
+[DEBUG|server|L307] 2024-03-10T00:24:30+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:24:30+0300: > Date: Sat, 09 Mar 2024 21:24:30 GMT
+[DEBUG|server|L309] 2024-03-10T00:24:30+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:24:30+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:24:30+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:24:30+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:24:30+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:24:30+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:24:30+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:24:30+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T00:24:31+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:24:31+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < sec-websocket-key: E1MvN1hZXtckhFYQiAfIzg==
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:24:31+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:24:31+0300: ('127.0.0.1', 59987) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:24:31+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0010118484497070312}
+[DEBUG|server|L307] 2024-03-10T00:24:31+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:24:31+0300: > Date: Sat, 09 Mar 2024 21:24:31 GMT
+[DEBUG|server|L309] 2024-03-10T00:24:31+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:24:31+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:24:31+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:24:31+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:24:31+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:24:31+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:24:31+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:24:31+0300: connection closed
+[INFO|server|L265] 2024-03-10T00:28:17+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:28:17+0300: Finished server process [4116]
+[INFO|basereload|L117] 2024-03-10T00:28:17+0300: Stopping reloader process [27304]
+[INFO|config|L330] 2024-03-10T00:28:28+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:28:28+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:28:28+0300: Started reloader process [12084] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:28:30+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:28:30+0300: Started server process [18044]
+[INFO|on|L46] 2024-03-10T00:28:30+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:28:30+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:28:30+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:28:33+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:28:33+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < sec-websocket-key: 9q9ZBTPC/DKRBtdceUAkZQ==
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:28:33+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-10T00:28:33+0300: ('127.0.0.1', 60192) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T00:28:33+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.002006053924560547}
+[DEBUG|server|L307] 2024-03-10T00:28:33+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T00:28:33+0300: > Date: Sat, 09 Mar 2024 21:28:33 GMT
+[DEBUG|server|L309] 2024-03-10T00:28:33+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T00:28:33+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T00:28:33+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T00:28:33+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T00:28:33+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T00:28:33+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T00:28:33+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T00:28:33+0300: connection closed
+[INFO|server|L265] 2024-03-10T00:28:40+0300: Shutting down
+[INFO|server|L87] 2024-03-10T00:28:40+0300: Finished server process [18044]
+[INFO|basereload|L117] 2024-03-10T00:28:40+0300: Stopping reloader process [12084]
+[INFO|config|L330] 2024-03-10T00:29:43+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-10T00:29:43+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T00:29:43+0300: Started reloader process [24916] using StatReload
+[DEBUG|selector_events|L64] 2024-03-10T00:29:45+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-10T00:29:45+0300: Started server process [17440]
+[INFO|on|L46] 2024-03-10T00:29:45+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T00:29:45+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T00:29:45+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-10T00:29:48+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:29:48+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < sec-websocket-key: n00m5wnjUnTfz0nCO5UTVw==
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyMjMzYTFmLTEyOWMtNGMxZC05NmI5LTFjNDRhMTk3YzBjNSIsImlhdCI6MTcxMDAxNzE3MiwiZXhwIjoxNzEwMDIwNzcyfQ.-HCRsCS38hJpI4XJxINYqacYIYAQS5KqCRCGBq5s93M
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:29:48+0300: < host: localhost:8000
+[DEBUG|dependency_auth|L42] 2024-03-10T00:29:48+0300: Request for curr user id
+[DEBUG|dependency_auth|L19] 2024-03-10T00:29:48+0300: User 82233a1f-129c-4c1d-96b9-1c44a197c0c5 authenticated
+[INFO|websockets_impl|L291] 2024-03-10T00:29:48+0300: ('127.0.0.1', 60243) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-10T00:29:48+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-10T00:29:48+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-10T00:29:48+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-10T00:29:48+0300: > Sec-WebSocket-Accept: kJ6JS4p54vm05jVpUoVTQsd15/M=
+[DEBUG|server|L309] 2024-03-10T00:29:48+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-10T00:29:48+0300: > date: Sat, 09 Mar 2024 21:29:47 GMT
+[DEBUG|server|L309] 2024-03-10T00:29:48+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-10T00:29:48+0300: connection open
+[DEBUG|protocol|L357] 2024-03-10T00:29:48+0300: = connection is OPEN
+[DEBUG|dependency_auth|L42] 2024-03-10T00:29:55+0300: Request for curr user id
+[ERROR|dependency_auth|L53] 2024-03-10T00:29:55+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-10T00:29:55+0300: 127.0.0.1:60245 - "GET /api/v1/users/me HTTP/1.1" 401
+[DEBUG|log_middleware|L17] 2024-03-10T00:29:55+0300: {'protocol': 'http', 'path': '/api/v1/users/me', 'process_time': 0.003002166748046875}
+[DEBUG|protocol|L1262] 2024-03-10T00:30:08+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T00:30:08+0300: > PING 47 f9 ec 06 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T00:30:08+0300: < PONG 47 f9 ec 06 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T00:30:08+0300: % received keepalive pong
+[DEBUG|dependency_auth|L42] 2024-03-10T00:30:10+0300: Request for curr user id
+[ERROR|dependency_auth|L53] 2024-03-10T00:30:10+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-10T00:30:10+0300: 127.0.0.1:60254 - "GET /api/v1/users/me HTTP/1.1" 401
+[DEBUG|log_middleware|L17] 2024-03-10T00:30:10+0300: {'protocol': 'http', 'path': '/api/v1/users/me', 'process_time': 0.002535104751586914}
+[DEBUG|protocol|L256] 2024-03-10T00:30:17+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:30:17+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < sec-websocket-key: DFpQ4143b3Rxq2hgMR6GLA==
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAxNTk0MiwiZXhwIjoxNzEwMDE5NTQyfQ.-t3g6wCPe-bOmrlmGpwvanngoavqGULtTgkE-3KRmXE
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:30:17+0300: < host: localhost:8000
+[DEBUG|dependency_auth|L42] 2024-03-10T00:30:17+0300: Request for curr user id
+[ERROR|dependency_auth|L53] 2024-03-10T00:30:17+0300: Non authorized user
+[DEBUG|log_middleware|L17] 2024-03-10T00:30:17+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0030035972595214844}
+[ERROR|websockets_impl|L276] 2024-03-10T00:30:17+0300: ASGI callable returned without sending handshake.
+[DEBUG|server|L307] 2024-03-10T00:30:17+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-10T00:30:17+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-10T00:30:17+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-10T00:30:17+0300: > Sec-WebSocket-Accept: ge6yJP9wv6YcAwbgSNpZbFQdpF0=
+[DEBUG|server|L309] 2024-03-10T00:30:17+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-10T00:30:17+0300: > date: Sat, 09 Mar 2024 21:30:17 GMT
+[DEBUG|server|L309] 2024-03-10T00:30:17+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-10T00:30:17+0300: connection open
+[DEBUG|protocol|L357] 2024-03-10T00:30:17+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-10T00:30:17+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-10T00:30:17+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-10T00:30:17+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-10T00:30:17+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T00:30:25+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T00:30:25+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < sec-websocket-key: oQif04AJXQvvuygv3Xa9Rg==
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAxNTk0MiwiZXhwIjoxNzEwMDE5NTQyfQ.-t3g6wCPe-bOmrlmGpwvanngoavqGULtTgkE-3KRmXE
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T00:30:25+0300: < host: localhost:8000
+[DEBUG|dependency_auth|L42] 2024-03-10T00:30:25+0300: Request for curr user id
+[ERROR|dependency_auth|L53] 2024-03-10T00:30:25+0300: Non authorized user
+[DEBUG|log_middleware|L17] 2024-03-10T00:30:25+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.002001523971557617}
+[ERROR|websockets_impl|L276] 2024-03-10T00:30:25+0300: ASGI callable returned without sending handshake.
+[DEBUG|server|L307] 2024-03-10T00:30:25+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-10T00:30:25+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-10T00:30:25+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-10T00:30:25+0300: > Sec-WebSocket-Accept: qStXXoLcN4E+Q83ldpxMbLLjuJs=
+[DEBUG|server|L309] 2024-03-10T00:30:25+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-10T00:30:25+0300: > date: Sat, 09 Mar 2024 21:30:24 GMT
+[DEBUG|server|L309] 2024-03-10T00:30:25+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-10T00:30:25+0300: connection open
+[DEBUG|protocol|L357] 2024-03-10T00:30:25+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-10T00:30:25+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-10T00:30:25+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-10T00:30:25+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-10T00:30:25+0300: connection closed
+[DEBUG|protocol|L1262] 2024-03-10T00:30:28+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T00:30:28+0300: > PING f7 af 73 9b [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T00:30:28+0300: < PONG f7 af 73 9b [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T00:30:28+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T00:30:48+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T00:30:48+0300: > PING 78 e8 7f 59 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T00:30:48+0300: < PONG 78 e8 7f 59 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T00:30:48+0300: % received keepalive pong
+[DEBUG|dependency_auth|L42] 2024-03-10T00:30:54+0300: Request for curr user id
+[DEBUG|dependency_auth|L32] 2024-03-10T00:30:54+0300: User 82233a1f-129c-4c1d-96b9-1c44a197c0c5 authenticated
+[INFO|h11_impl|L482] 2024-03-10T00:30:54+0300: 127.0.0.1:60282 - "GET /api/v1/users/me HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T00:30:54+0300: {'protocol': 'http', 'path': '/api/v1/users/me', 'process_time': 0.1139979362487793}
+[INFO|server|L265] 2024-03-10T00:30:59+0300: Shutting down
+[DEBUG|protocol|L1412] 2024-03-10T00:30:59+0300: ! failing connection with code 1012
+[DEBUG|protocol|L1436] 2024-03-10T00:30:59+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-10T00:30:59+0300: > CLOSE 1012 (service restart) [2 bytes]
+[DEBUG|protocol|L1497] 2024-03-10T00:30:59+0300: = connection is CLOSED
+[DEBUG|protocol|L1319] 2024-03-10T00:30:59+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-10T00:30:59+0300: connection closed
+[DEBUG|log_middleware|L17] 2024-03-10T00:30:59+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 70.62180972099304}
+[INFO|server|L87] 2024-03-10T00:30:59+0300: Finished server process [17440]
+[INFO|basereload|L117] 2024-03-10T00:30:59+0300: Stopping reloader process [24916]
