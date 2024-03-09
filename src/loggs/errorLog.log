@@ -396,3 +396,11 @@ RuntimeError: Expected ASGI message 'websocket.accept', 'websocket.close', or 'w
 [WARNING|basereload|L54] 2024-03-09T23:32:13+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
 [ERROR|auth_middleware|L20] 2024-03-09T23:34:45+0300: websocket Protocol: /9059d519-51d5-47a8-ad22-da2c78a0e074/ws No Authorization in headers
 [WARNING|basereload|L54] 2024-03-09T23:37:10+0300: StatReload detected changes in 'middlewares\log_middleware.py'. Reloading...
+[ERROR|dependency_auth|L49] 2024-03-09T23:42:32+0300: Non authorized user
+[WARNING|basereload|L54] 2024-03-09T23:45:25+0300: StatReload detected changes in 'main.py'. Reloading...
+[WARNING|bcrypt|L622] 2024-03-09T23:46:12+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'

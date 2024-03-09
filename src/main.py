@@ -21,9 +21,9 @@ from src.dependencies.repo_providers_dependency import (
 )
 from starlette.middleware import Middleware
 from middlewares.log_middleware import ASGIMiddleware
-from middlewares.auth_middleware import WebSocketAuthMiddleware
+# from middlewares.auth_middleware import WebSocketAuthMiddleware
 
-middleware = [Middleware(ASGIMiddleware), Middleware(WebSocketAuthMiddleware)]
+middleware = [Middleware(ASGIMiddleware)]
 
 html = """
 <!DOCTYPE html>
