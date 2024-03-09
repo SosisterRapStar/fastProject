@@ -1,0 +1,120 @@
+[DEBUG|selector_events|L64] 2024-03-09T15:56:34+0300: Using selector: SelectSelector
+[ERROR|dependency_auth|L53] 2024-03-09T15:56:39+0300: Non authorized user
+[WARNING|bcrypt|L622] 2024-03-09T15:57:01+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-09T15:57:01+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-09T15:57:01+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|users|L27] 2024-03-09T15:57:02+0300: New user registeredm id c34fc5de-92c5-4bdf-9094-7c17b9d3098b
+[DEBUG|users|L67] 2024-03-09T15:58:03+0300: 
+[DEBUG|selector_events|L64] 2024-03-09T16:08:37+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T16:08:37+0300: Started server process [15132]
+[INFO|on|L46] 2024-03-09T16:08:37+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T16:08:37+0300: Application startup complete.
+[INFO|server|L265] 2024-03-09T16:25:50+0300: Shutting down
+[INFO|on|L65] 2024-03-09T16:25:50+0300: Waiting for application shutdown.
+[INFO|on|L76] 2024-03-09T16:25:50+0300: Application shutdown complete.
+[INFO|server|L87] 2024-03-09T16:25:50+0300: Finished server process [15132]
+[DEBUG|selector_events|L64] 2024-03-09T16:25:54+0300: Using selector: SelectSelector
+[DEBUG|selector_events|L64] 2024-03-09T16:26:51+0300: Using selector: SelectSelector
+[DEBUG|selector_events|L64] 2024-03-09T16:27:33+0300: Using selector: SelectSelector
+[DEBUG|selector_events|L64] 2024-03-09T16:27:55+0300: Using selector: SelectSelector
+[INFO|config|L330] 2024-03-09T16:31:06+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T16:31:06+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T16:31:06+0300: Started reloader process [17996] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T16:31:07+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T16:31:07+0300: Started server process [12940]
+[INFO|on|L46] 2024-03-09T16:31:07+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T16:31:07+0300: Application startup complete.
+[DEBUG|users|L67] 2024-03-09T16:31:29+0300: 
+[INFO|h11_impl|L482] 2024-03-09T16:31:29+0300: 127.0.0.1:54459 - "GET /api/v1/users/ HTTP/1.1" 200
+[WARNING|bcrypt|L622] 2024-03-09T16:32:04+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-09T16:32:04+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-09T16:32:04+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|users|L27] 2024-03-09T16:32:04+0300: New user registeredm id c76e7cf7-bac5-45b6-b5cf-13c385aad2ab
+[INFO|h11_impl|L482] 2024-03-09T16:32:04+0300: 127.0.0.1:54465 - "POST /api/v1/users/register HTTP/1.1" 200
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_data with data[21:25]
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_name with data[26:34]
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_data with data[35:39]
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_name with data[40:45]
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_name with data[47:56]
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:32:42+0300: Calling on_field_name with data[58:71]
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:32:42+0300: Calling on_end with no data
+[INFO|h11_impl|L482] 2024-03-09T16:32:42+0300: 127.0.0.1:54469 - "POST /api/v1/auth/token HTTP/1.1" 200
+[ERROR|dependency_auth|L53] 2024-03-09T16:43:05+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T16:43:05+0300: 127.0.0.1:54552 - "GET /ca8bbca5-5672-49bd-a5ce-c87bcdb45bf1 HTTP/1.1" 401
+[INFO|h11_impl|L482] 2024-03-09T16:44:25+0300: 127.0.0.1:54558 - "GET /api/v1/conversations/ HTTP/1.1" 200
+[INFO|h11_impl|L482] 2024-03-09T16:44:49+0300: 127.0.0.1:54559 - "GET /api/v1/conversations/dkdslkskfd/ HTTP/1.1" 404
+[WARNING|basereload|L54] 2024-03-09T16:47:43+0300: StatReload detected changes in 'authorization\security.py'. Reloading...
+[INFO|server|L265] 2024-03-09T16:56:21+0300: Shutting down
+[INFO|on|L65] 2024-03-09T16:56:21+0300: Waiting for application shutdown.
+[INFO|on|L76] 2024-03-09T16:56:21+0300: Application shutdown complete.
+[INFO|server|L87] 2024-03-09T16:56:21+0300: Finished server process [12940]
+[INFO|config|L330] 2024-03-09T16:56:28+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T16:56:28+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T16:56:28+0300: Started reloader process [5252] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T16:56:29+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T16:56:29+0300: Started server process [11380]
+[INFO|on|L46] 2024-03-09T16:56:29+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T16:56:29+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T16:56:52+0300: 127.0.0.1:54629 - "GET /api/v1/conversations/dkdslkskfd/ HTTP/1.1" 404
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_data with data[21:25]
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_name with data[26:34]
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_data with data[35:40]
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_name with data[41:46]
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_name with data[48:57]
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T16:57:09+0300: Calling on_field_name with data[59:72]
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T16:57:09+0300: Calling on_end with no data
+[DEBUG|security|L19] 2024-03-09T16:57:09+0300: password verifying
+[WARNING|bcrypt|L622] 2024-03-09T16:57:09+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-09T16:57:09+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-09T16:57:09+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[ERROR|security|L21] 2024-03-09T16:57:09+0300: An exception occurred: <class 'src.authorization.exceptions.PasswordVerificationError'>
+NoneType: None
+[INFO|h11_impl|L482] 2024-03-09T16:57:09+0300: 127.0.0.1:54632 - "POST /api/v1/auth/token HTTP/1.1" 401
+[INFO|server|L265] 2024-03-09T16:59:07+0300: Shutting down
+[INFO|on|L65] 2024-03-09T16:59:07+0300: Waiting for application shutdown.
+[INFO|on|L76] 2024-03-09T16:59:07+0300: Application shutdown complete.
+[INFO|server|L87] 2024-03-09T16:59:07+0300: Finished server process [11380]
+[INFO|basereload|L117] 2024-03-09T16:59:07+0300: Stopping reloader process [5252]

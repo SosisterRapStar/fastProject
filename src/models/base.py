@@ -26,7 +26,7 @@ class Base:
 
 class DatabaseHandler:
     def __init__(self, url: str | URL, echo: bool = settings.db_settings.echo_mode):
-        self.engine = create_async_engine(url=url, echo=echo)
+        self.engine = create_async_engine(url=url,)
         self.session = async_sessionmaker(
             bind=self.engine, autoflush=False, autocommit=False, expire_on_commit=False
         )

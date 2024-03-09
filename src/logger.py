@@ -3,6 +3,7 @@ import logging
 import pathlib
 import logging.config
 import logging.handlers
+from abc import ABC, abstractmethod
 
 
 def setup_logging():
@@ -10,3 +11,7 @@ def setup_logging():
     with open(config_file) as f:
         config = json.load(f)
     logging.config.dictConfig(config)
+    return config
+
+
+

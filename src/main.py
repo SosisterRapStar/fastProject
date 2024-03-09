@@ -55,8 +55,15 @@ html = """
 """
 
 
-setup_logging()
+config = setup_logging()
 log = logging.getLogger("__name__")
+
+logging.getLogger("sqlalchemy.orm").setLevel(logging.ERROR)
+logging.getLogger("sqlalchemy.engine").setLevel(logging.ERROR)
+logging.getLogger("sqlalchemy.dialects").setLevel(logging.ERROR)
+
+
+
 
 app = FastAPI()
 app.include_router(
@@ -100,4 +107,4 @@ async def get(conv_id: uuid.UUID, current_user: get_current_user, conv_repo: con
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", reload=True)
+    uvicorn.run("main:app", reload=True, log_config=config)

@@ -2,12 +2,10 @@ import uuid
 from typing import Annotated
 from fastapi import Request, Depends, Header
 from jose import JWTError
-import logging
 from src.authorization.exceptions import NonAuthorizedError, InvalidTokenError
 from src.authorization.security import get_token_payload
 from src.authorization.services import JWTService
 from src.crud.exceptions import RecordNotFoundError
-from src.crud.user_repository import UserRepository
 from src.dependencies.repo_providers_dependency import user_repo_provider
 from src.models.user_model import User
 from .logger import log
@@ -20,18 +18,18 @@ async def _get_auth_user(request: Request, repo: user_repo_provider) -> User:
     log.debug(f"Request for curr user")
 
     try:
-
         user = await repo.get(id=user_id)
         log.debug(f"User {user_id} authenticated")
 
     except RecordNotFoundError:
-        log.error("Non authorized user")
+        log.exception("Non authorized user", RecordNotFoundError)
         raise InvalidTokenError()
 
     return user
 
 
 async def _get_auth_user_id(request: Request) -> uuid.UUID:
+    log.debug(f"Request for curr user id")
     user_id = await _id_in_payload(request=request)
     return uuid.UUID(user_id)
 

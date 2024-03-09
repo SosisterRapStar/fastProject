@@ -1,0 +1,17 @@
+[ERROR|dependency_auth|L53] 2024-03-09T15:56:39+0300: Non authorized user
+[WARNING|bcrypt|L622] 2024-03-09T16:32:04+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[ERROR|dependency_auth|L53] 2024-03-09T16:43:05+0300: Non authorized user
+[WARNING|basereload|L54] 2024-03-09T16:47:43+0300: StatReload detected changes in 'authorization\security.py'. Reloading...
+[WARNING|bcrypt|L622] 2024-03-09T16:57:09+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[ERROR|security|L21] 2024-03-09T16:57:09+0300: An exception occurred: <class 'src.authorization.exceptions.PasswordVerificationError'>
+NoneType: None

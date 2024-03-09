@@ -17,11 +17,19 @@
       "formatter": "simple",
       "stream": "ext://sys.stderr"
     },
-    "file": {
+    "debugFile": {
       "class": "logging.handlers.RotatingFileHandler",
-
       "formatter": "detailed",
-      "filename": "./fastLog.log",
+      "level": "DEBUG",
+      "filename": "./loggs/debugLog.log",
+      "maxBytes": 1000000,
+      "backupCount": 3
+    },
+    "errorFile": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "formatter": "detailed",
+      "level": "WARNING",
+      "filename": "./loggs/errorLog.log",
       "maxBytes": 1000000,
       "backupCount": 3
     }
@@ -31,7 +39,8 @@
       "level": "DEBUG",
       "handlers": [
         "stderr",
-        "file"
+        "debugFile",
+        "errorFile"
       ]
     }
   }

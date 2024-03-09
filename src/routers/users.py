@@ -15,7 +15,6 @@ from src.dependencies.repo_providers_dependency import user_repo_provider
 from src.routers.errors import UserNotFoundError
 from src.schemas.conversation import ConversationResponse
 from src.schemas.users import User_on_response
-from .logger import log
 router = APIRouter(tags=["Users"])
 
 
@@ -23,8 +22,6 @@ router = APIRouter(tags=["Users"])
 async def create_user(user: password_hash_dependency, repo: user_repo_provider):
 
     user = await repo.create(user.model_dump(exclude={"password_repeat"}))
-
-    log.debug(f"New user registeredm id {user.id}")
 
     payload = {"message": "Man YOO have just created a user account"}
     return JSONResponse(content=payload)
@@ -63,8 +60,6 @@ async def update_curr_user(
     status_code=status.HTTP_200_OK,
 )
 async def get_users(user_repo: user_repo_provider):
-
-    log.debug("")
     return await user_repo.get()
 
 
@@ -75,10 +70,8 @@ async def get_users(user_repo: user_repo_provider):
 )
 async def get_user_by_name(user_name: str, user_repo: user_repo_provider):
     try:
-        log.debug("")
         return await user_repo.get(name=user_name)
     except RecordNotFoundError:
-        log.error("")
         raise UserNotFoundError()
 
 
