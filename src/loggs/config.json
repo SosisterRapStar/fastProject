@@ -11,6 +11,10 @@
     }
   },
   "handlers": {
+    "papertrail": {
+      "class": "logging.StreamHandler",
+      ""
+    },
     "stderr": {
       "class": "logging.StreamHandler",
       "level": "WARNING",
