@@ -8,14 +8,14 @@ class ASGIMiddleware:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        if scope["type"] != "http":
-            await self.app(scope, receive, send)
-            return
+        type = scope["type"]
+        path = scope['path']
         start = time.time()
         await self.app(scope, receive, send)
         process_time = time.time() - start
         log_dict = {
-            "url": scope['path'],
+            "protocol": type,
+            "path": path,
             "process_time": process_time
         }
         log.debug(log_dict)

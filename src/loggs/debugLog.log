@@ -166,3 +166,85 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 [DEBUG|log_middleware|L21] 2024-03-09T19:28:46+0300: {'url': '/api/v1/users/', 'process_time': 0.003999948501586914}
 [INFO|h11_impl|L482] 2024-03-09T19:29:02+0300: 127.0.0.1:62240 - "GET /api/v1/conversations/ HTTP/1.1" 200
 [DEBUG|log_middleware|L21] 2024-03-09T19:29:02+0300: {'url': '/api/v1/conversations/', 'process_time': 0.005997180938720703}
+[WARNING|basereload|L54] 2024-03-09T19:34:36+0300: StatReload detected changes in 'middlewares\log_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T19:34:45+0300: Shutting down
+[INFO|on|L65] 2024-03-09T19:34:46+0300: Waiting for application shutdown.
+[INFO|on|L76] 2024-03-09T19:34:46+0300: Application shutdown complete.
+[INFO|server|L87] 2024-03-09T19:34:46+0300: Finished server process [23152]
+[DEBUG|selector_events|L64] 2024-03-09T19:34:47+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:34:47+0300: Started server process [24280]
+[INFO|on|L46] 2024-03-09T19:34:47+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T19:34:47+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T19:35:15+0300: 127.0.0.1:62527 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:35:15+0300: {'url': '/api/v1/users/', 'process_time': 0.09899020195007324}
+[INFO|config|L330] 2024-03-09T19:35:26+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:35:26+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:35:26+0300: Started reloader process [25224] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:35:28+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:35:28+0300: Started server process [21492]
+[INFO|on|L46] 2024-03-09T19:35:28+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T19:35:28+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T19:35:32+0300: 127.0.0.1:62541 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:35:32+0300: {'url': '/api/v1/users/', 'process_time': 0.09400749206542969}
+[WARNING|basereload|L54] 2024-03-09T19:37:58+0300: StatReload detected changes in 'middlewares\log_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T19:40:25+0300: Shutting down
+[INFO|on|L65] 2024-03-09T19:40:25+0300: Waiting for application shutdown.
+[INFO|on|L76] 2024-03-09T19:40:25+0300: Application shutdown complete.
+[INFO|server|L87] 2024-03-09T19:40:25+0300: Finished server process [21492]
+[DEBUG|selector_events|L64] 2024-03-09T19:40:27+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:40:27+0300: Started server process [24220]
+[INFO|on|L46] 2024-03-09T19:40:27+0300: Waiting for application startup.
+[INFO|on|L60] 2024-03-09T19:40:27+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T19:42:15+0300: StatReload detected changes in 'middlewares\log_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T19:45:25+0300: Shutting down
+[INFO|on|L65] 2024-03-09T19:45:25+0300: Waiting for application shutdown.
+[INFO|on|L94] 2024-03-09T19:45:25+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L76] 2024-03-09T19:45:25+0300: Application shutdown complete.
+[INFO|server|L87] 2024-03-09T19:45:25+0300: Finished server process [24220]
+[DEBUG|selector_events|L64] 2024-03-09T19:45:27+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:45:27+0300: Started server process [16096]
+[INFO|on|L46] 2024-03-09T19:45:27+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:45:27+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:45:27+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T19:45:40+0300: StatReload detected changes in 'middlewares\log_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T19:45:44+0300: Shutting down
+[INFO|h11_impl|L482] 2024-03-09T19:45:44+0300: 127.0.0.1:62952 - "GET /api/v1/conversations/dkdslkskfd/ HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T19:45:44+0300: log_dict
+[INFO|server|L87] 2024-03-09T19:45:44+0300: Finished server process [16096]
+[DEBUG|selector_events|L64] 2024-03-09T19:45:46+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:45:46+0300: Started server process [24316]
+[INFO|on|L46] 2024-03-09T19:45:46+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:45:46+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:45:46+0300: Application startup complete.
+[INFO|server|L265] 2024-03-09T19:45:56+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:45:57+0300: Finished server process [24316]
+[INFO|basereload|L117] 2024-03-09T19:45:57+0300: Stopping reloader process [25224]
+[INFO|config|L330] 2024-03-09T19:45:59+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:45:59+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:45:59+0300: Started reloader process [24236] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:46:00+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:46:00+0300: Started server process [15224]
+[INFO|on|L46] 2024-03-09T19:46:00+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:46:00+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:46:00+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T19:46:02+0300: 127.0.0.1:62963 - "GET /api/v1/conversations/dkdslkskfd/ HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T19:46:02+0300: log_dict
+[INFO|server|L265] 2024-03-09T19:46:35+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:46:35+0300: Finished server process [15224]
+[INFO|basereload|L117] 2024-03-09T19:46:36+0300: Stopping reloader process [24236]
+[INFO|config|L330] 2024-03-09T19:46:37+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:46:37+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:46:37+0300: Started reloader process [22740] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:46:39+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:46:39+0300: Started server process [24604]
+[INFO|on|L46] 2024-03-09T19:46:39+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:46:39+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:46:39+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T19:46:41+0300: 127.0.0.1:63007 - "GET /api/v1/conversations/dkdslkskfd/ HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T19:46:41+0300: {'protocol': 'http', 'path': '/api/v1/conversations/dkdslkskfd/', 'process_time': 0.20012760162353516}
+[INFO|h11_impl|L482] 2024-03-09T19:47:02+0300: 127.0.0.1:63017 - "GET /api/v1/conversations/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:47:02+0300: {'protocol': 'http', 'path': '/api/v1/conversations/', 'process_time': 0.00400233268737793}
+[INFO|h11_impl|L482] 2024-03-09T19:47:07+0300: 127.0.0.1:63017 - "GET /api/v1/conversations/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:47:07+0300: {'protocol': 'http', 'path': '/api/v1/conversations/', 'process_time': 0.0019996166229248047}
+[INFO|h11_impl|L482] 2024-03-09T19:47:23+0300: 127.0.0.1:63030 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:47:23+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.010985374450683594}
