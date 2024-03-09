@@ -18,7 +18,7 @@ def hash_and_match_passwords(user: CreateUser) -> CreateUser:
 
 
 def hash_pass_for_update(
-        user: User_for_update,
+    user: User_for_update,
 ) -> User_for_update:
     if user.password is not None:
         user.password = get_password_hash(user.password)

@@ -1,4 +1,3 @@
-
 from sqlalchemy import URL
 from asyncio import current_task
 from sqlalchemy.ext.asyncio import (
@@ -26,7 +25,9 @@ class Base:
 
 class DatabaseHandler:
     def __init__(self, url: str | URL, echo: bool = settings.db_settings.echo_mode):
-        self.engine = create_async_engine(url=url,)
+        self.engine = create_async_engine(
+            url=url,
+        )
         self.session = async_sessionmaker(
             bind=self.engine, autoflush=False, autocommit=False, expire_on_commit=False
         )
@@ -44,4 +45,6 @@ class DatabaseHandler:
             yield session
 
 
-db_handler = DatabaseHandler(url=settings.db_settings.db_url, echo=settings.db_settings.echo_mode)
+db_handler = DatabaseHandler(
+    url=settings.db_settings.db_url, echo=settings.db_settings.echo_mode
+)

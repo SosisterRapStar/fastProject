@@ -12,6 +12,3 @@ def setup_logging():
         config = json.load(f)
     logging.config.dictConfig(config)
     return config
-
-
-

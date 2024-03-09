@@ -12,7 +12,12 @@ from src.dependencies.repo_providers_dependency import (
     conv_repo_provider,
 )
 from src.routers.errors import ConversationNotFoundError
-from src.schemas.message import RequestMessage, ResponseMessage, UpdateMessage, ResponseWithUserMessage
+from src.schemas.message import (
+    RequestMessage,
+    ResponseMessage,
+    UpdateMessage,
+    ResponseWithUserMessage,
+)
 
 router = APIRouter(tags=["Messages"])
 

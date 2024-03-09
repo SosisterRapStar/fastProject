@@ -15,6 +15,7 @@ from src.dependencies.repo_providers_dependency import user_repo_provider
 from src.routers.errors import UserNotFoundError
 from src.schemas.conversation import ConversationResponse
 from src.schemas.users import User_on_response
+
 router = APIRouter(tags=["Users"])
 
 
@@ -90,9 +91,7 @@ async def get_user_by_name(user_name: str, user_repo: user_repo_provider):
     "/convs/",
     response_model=List[ConversationResponse],
 )
-async def get_user_convs(
-    user_id: get_current_user_id, user_repo: user_repo_provider
-):
+async def get_user_convs(user_id: get_current_user_id, user_repo: user_repo_provider):
     try:
         return await user_repo.get_convs(user_id=user_id)
     except IntegrityError:

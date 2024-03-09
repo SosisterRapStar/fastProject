@@ -9,7 +9,7 @@ DEBUG_MODE = bool(os.getenv("DEBUG_MODE"))
 
 
 class SchemasValidationSettings(BaseSettings):
-    extra: str = 'forbid'
+    extra: str = "forbid"
 
 
 class RouterSettings(BaseSettings):

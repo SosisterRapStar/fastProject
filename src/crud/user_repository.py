@@ -29,13 +29,6 @@ class UserRepository(CRUDAlchemyRepository):
         return user.messages
 
     async def get_user_with_messages(self, user_id: uuid.UUID) -> User:
-        stmt = (
-            select(User)
-            .where(User.id == user_id)
-            .options(joinedload(User.messages))
-        )
+        stmt = select(User).where(User.id == user_id).options(joinedload(User.messages))
         user = await self._session.scalar(stmt)
         return user
-
-
-

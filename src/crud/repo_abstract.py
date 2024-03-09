@@ -61,7 +61,12 @@ class CRUDAlchemyRepository(CRUDRepository):
 
         return res
 
-    async def update(self, data: dict, model_object: Base | None = None, **criteries: Unpack[NameOrId]):
+    async def update(
+        self,
+        data: dict,
+        model_object: Base | None = None,
+        **criteries: Unpack[NameOrId],
+    ):
         updated = await update_object(
             async_session=self._session,
             model=self._model,
@@ -84,4 +89,3 @@ class CRUDAlchemyRepository(CRUDRepository):
         )
         await self._session.commit()
         return returned_id
-

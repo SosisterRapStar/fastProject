@@ -11,8 +11,6 @@ from src.models.user_model import User
 from .logger import log
 
 
-
-
 async def _get_auth_user(request: Request, repo: user_repo_provider) -> User:
     user_id = await _get_auth_user_id(request)
     log.debug(f"Request for curr user")
@@ -54,9 +52,7 @@ async def _token_in_headers(request: Request) -> str:
     return token
 
 
-async def _get_JWT_service(
-        repo: user_repo_provider
-):
+async def _get_JWT_service(repo: user_repo_provider):
     return JWTService(repo=repo)
 
 

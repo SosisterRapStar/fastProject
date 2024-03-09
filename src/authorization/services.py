@@ -16,7 +16,9 @@ from src.schemas.token_schema import TokenResponse
 
 
 class JWTService:
-    __EXPIRE_TIME = timedelta(minutes=settings.security_settings.ACCES_TOKEN_EXPIRE_MINUTES)
+    __EXPIRE_TIME = timedelta(
+        minutes=settings.security_settings.ACCES_TOKEN_EXPIRE_MINUTES
+    )
 
     def __init__(self, repo: UserRepository):
         self.repo = repo

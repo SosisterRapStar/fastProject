@@ -21,7 +21,9 @@ class User(Base):
     )
     email: Mapped[str | None] = mapped_column(nullable=False)
     admin_convs: Mapped[list["Conversation"]] = relationship(
-        back_populates="user_admin", uselist=True, cascade="all, delete",
+        back_populates="user_admin",
+        uselist=True,
+        cascade="all, delete",
         passive_deletes=True,
     )
 
@@ -34,14 +36,11 @@ class User(Base):
         uselist=True,
         cascade="all, delete",
         passive_deletes=True,
-
     )
 
     is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
-
 
     password: Mapped[str | None]  # hashed password
 
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
-

@@ -248,3 +248,1682 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 [DEBUG|log_middleware|L21] 2024-03-09T19:47:07+0300: {'protocol': 'http', 'path': '/api/v1/conversations/', 'process_time': 0.0019996166229248047}
 [INFO|h11_impl|L482] 2024-03-09T19:47:23+0300: 127.0.0.1:63030 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
 [DEBUG|log_middleware|L21] 2024-03-09T19:47:23+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.010985374450683594}
+[INFO|server|L265] 2024-03-09T19:52:04+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:52:04+0300: Finished server process [24604]
+[INFO|basereload|L117] 2024-03-09T19:52:04+0300: Stopping reloader process [22740]
+[INFO|config|L330] 2024-03-09T19:52:06+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:52:06+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:52:06+0300: Started reloader process [24244] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:52:08+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:52:08+0300: Started server process [24444]
+[INFO|on|L46] 2024-03-09T19:52:08+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:52:08+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:52:08+0300: Application startup complete.
+[INFO|server|L265] 2024-03-09T19:52:14+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:52:14+0300: Finished server process [24444]
+[INFO|basereload|L117] 2024-03-09T19:52:14+0300: Stopping reloader process [24244]
+[INFO|config|L330] 2024-03-09T19:52:24+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:52:24+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:52:24+0300: Started reloader process [13364] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:52:25+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:52:25+0300: Started server process [25512]
+[INFO|on|L46] 2024-03-09T19:52:25+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:52:25+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:52:25+0300: Application startup complete.
+[INFO|server|L265] 2024-03-09T19:52:30+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:52:30+0300: Finished server process [25512]
+[INFO|basereload|L117] 2024-03-09T19:52:31+0300: Stopping reloader process [13364]
+[INFO|config|L330] 2024-03-09T19:52:32+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:52:32+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:52:32+0300: Started reloader process [19120] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:52:34+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:52:34+0300: Started server process [24444]
+[INFO|on|L46] 2024-03-09T19:52:34+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:52:34+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:52:34+0300: Application startup complete.
+[INFO|server|L265] 2024-03-09T19:52:45+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:52:45+0300: Finished server process [24444]
+[INFO|basereload|L117] 2024-03-09T19:52:45+0300: Stopping reloader process [19120]
+[INFO|config|L330] 2024-03-09T19:53:01+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T19:53:01+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T19:53:01+0300: Started reloader process [15284] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T19:53:02+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T19:53:02+0300: Started server process [2512]
+[INFO|on|L46] 2024-03-09T19:53:02+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T19:53:03+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T19:53:03+0300: Application startup complete.
+[INFO|base_events|L1601] 2024-03-09T19:53:03+0300: <Server sockets=(<asyncio.TransportSocket fd=368, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>,)> is serving
+[DEBUG|selector_events|L180] 2024-03-09T19:53:31+0300: <Server sockets=(<asyncio.TransportSocket fd=368, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>,)> got a new connection from ('127.0.0.1', 63362): <socket.socket fd=672, family=2, type=1, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 63362)>
+[DEBUG|base_events|L879] 2024-03-09T19:53:32+0300: Get address info localhost:5432, type=<SocketKind.SOCK_STREAM: 1>
+[DEBUG|base_events|L889] 2024-03-09T19:53:32+0300: Getting address info localhost:5432, type=<SocketKind.SOCK_STREAM: 1> took 0.000ms: [(<AddressFamily.AF_INET6: 23>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('::1', 5432, 0, 0)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('127.0.0.1', 5432))]
+[DEBUG|base_events|L1155] 2024-03-09T19:53:32+0300: <asyncio.TransportSocket fd=924, family=23, type=1, proto=0, laddr=('::1', 63363, 0, 0), raddr=('::1', 5432, 0, 0)> connected to localhost:5432: (<_SelectorSocketTransport fd=924 read=polling write=<idle, bufsize=0>>, <asyncpg.connect_utils.TLSUpgradeProto object at 0x0000010E17E1C2C0>)
+[INFO|h11_impl|L482] 2024-03-09T19:53:32+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:32+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.21704411506652832}
+[INFO|h11_impl|L482] 2024-03-09T19:53:32+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:32+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.014007329940795898}
+[INFO|h11_impl|L482] 2024-03-09T19:53:32+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:32+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.009992361068725586}
+[INFO|h11_impl|L482] 2024-03-09T19:53:32+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:32+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.00900125503540039}
+[INFO|h11_impl|L482] 2024-03-09T19:53:33+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:33+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.012003421783447266}
+[INFO|h11_impl|L482] 2024-03-09T19:53:34+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:34+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.013012170791625977}
+[INFO|h11_impl|L482] 2024-03-09T19:53:34+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:34+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.016001224517822266}
+[INFO|h11_impl|L482] 2024-03-09T19:53:35+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:35+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.011004924774169922}
+[INFO|h11_impl|L482] 2024-03-09T19:53:35+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:35+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.00899815559387207}
+[INFO|h11_impl|L482] 2024-03-09T19:53:35+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:35+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.011998653411865234}
+[INFO|h11_impl|L482] 2024-03-09T19:53:35+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:35+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.016985416412353516}
+[INFO|h11_impl|L482] 2024-03-09T19:53:37+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:37+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.009998083114624023}
+[INFO|h11_impl|L482] 2024-03-09T19:53:37+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:37+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.009999752044677734}
+[INFO|h11_impl|L482] 2024-03-09T19:53:37+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:37+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.00899815559387207}
+[INFO|h11_impl|L482] 2024-03-09T19:53:37+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:37+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.007993459701538086}
+[INFO|h11_impl|L482] 2024-03-09T19:53:37+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:37+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.011004447937011719}
+[INFO|h11_impl|L482] 2024-03-09T19:53:37+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:37+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.00899505615234375}
+[INFO|h11_impl|L482] 2024-03-09T19:53:38+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:38+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.009992837905883789}
+[INFO|h11_impl|L482] 2024-03-09T19:53:38+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:38+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.008990764617919922}
+[INFO|h11_impl|L482] 2024-03-09T19:53:38+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:38+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.008995532989501953}
+[INFO|h11_impl|L482] 2024-03-09T19:53:38+0300: 127.0.0.1:63362 - "GET /api/v1/usersby_name/Auth/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:38+0300: {'protocol': 'http', 'path': '/api/v1/usersby_name/Auth/', 'process_time': 0.009995460510253906}
+[INFO|h11_impl|L482] 2024-03-09T19:53:40+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:40+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.011998176574707031}
+[INFO|h11_impl|L482] 2024-03-09T19:53:40+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:40+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.011001825332641602}
+[INFO|h11_impl|L482] 2024-03-09T19:53:40+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:40+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.009992361068725586}
+[INFO|h11_impl|L482] 2024-03-09T19:53:40+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:40+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.011005401611328125}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.009993791580200195}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.01098322868347168}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.009003162384033203}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.008994340896606445}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.008985519409179688}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.008990764617919922}
+[INFO|h11_impl|L482] 2024-03-09T19:53:41+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:41+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.009992837905883789}
+[INFO|h11_impl|L482] 2024-03-09T19:53:42+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:42+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.00998997688293457}
+[INFO|h11_impl|L482] 2024-03-09T19:53:42+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:42+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.012011051177978516}
+[INFO|h11_impl|L482] 2024-03-09T19:53:43+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:43+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.012004375457763672}
+[INFO|h11_impl|L482] 2024-03-09T19:53:44+0300: 127.0.0.1:63362 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T19:53:44+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.016993284225463867}
+[INFO|server|L265] 2024-03-09T19:53:47+0300: Shutting down
+[INFO|server|L87] 2024-03-09T19:53:47+0300: Finished server process [2512]
+[DEBUG|base_events|L708] 2024-03-09T19:53:47+0300: Close <_WindowsSelectorEventLoop running=False closed=False debug=True>
+[INFO|basereload|L117] 2024-03-09T19:53:47+0300: Stopping reloader process [15284]
+[INFO|config|L330] 2024-03-09T21:38:04+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T21:38:04+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T21:38:04+0300: Started reloader process [27312] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T21:38:06+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T21:38:06+0300: Started server process [27424]
+[INFO|on|L46] 2024-03-09T21:38:06+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T21:38:06+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T21:38:06+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T21:38:17+0300: 127.0.0.1:51149 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:38:17+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.09900927543640137}
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_data with data[21:25]
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_name with data[26:34]
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_data with data[35:39]
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_name with data[40:45]
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_name with data[47:56]
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T21:39:21+0300: Calling on_field_name with data[58:71]
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T21:39:21+0300: Calling on_end with no data
+[DEBUG|security|L19] 2024-03-09T21:39:21+0300: password verifying
+[WARNING|bcrypt|L622] 2024-03-09T21:39:21+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-09T21:39:22+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-09T21:39:22+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|security|L35] 2024-03-09T21:39:22+0300: created acces token
+[DEBUG|security|L40] 2024-03-09T21:39:22+0300: created refresh token
+[INFO|h11_impl|L482] 2024-03-09T21:39:22+0300: 127.0.0.1:51185 - "POST /api/v1/auth/token HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:39:22+0300: {'protocol': 'http', 'path': '/api/v1/auth/token', 'process_time': 0.2640058994293213}
+[INFO|h11_impl|L482] 2024-03-09T21:39:36+0300: 127.0.0.1:51203 - "GET /api/v1/user HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T21:39:36+0300: {'protocol': 'http', 'path': '/api/v1/user', 'process_time': 0.0009958744049072266}
+[INFO|h11_impl|L482] 2024-03-09T21:39:42+0300: 127.0.0.1:51205 - "GET /api/v1/user/me HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T21:39:42+0300: {'protocol': 'http', 'path': '/api/v1/user/me', 'process_time': 0.0010066032409667969}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:39:54+0300: Request for curr user id
+[DEBUG|dependency_auth|L18] 2024-03-09T21:39:54+0300: Request for curr user
+[DEBUG|dependency_auth|L22] 2024-03-09T21:39:54+0300: User 891eefdc-9271-4699-8915-dc2f6613e935 authenticated
+[INFO|h11_impl|L482] 2024-03-09T21:39:54+0300: 127.0.0.1:51211 - "GET /api/v1/users/me HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:39:54+0300: {'protocol': 'http', 'path': '/api/v1/users/me', 'process_time': 0.007004737854003906}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:40:38+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:40:38+0300: 127.0.0.1:51243 - "GET /api/v1/users/convs/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:40:38+0300: {'protocol': 'http', 'path': '/api/v1/users/convs/', 'process_time': 0.013410806655883789}
+[INFO|h11_impl|L482] 2024-03-09T21:40:57+0300: 127.0.0.1:51256 - "GET /api/v1/users/create/ HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T21:40:57+0300: {'protocol': 'http', 'path': '/api/v1/users/create/', 'process_time': 0.0009913444519042969}
+[INFO|h11_impl|L482] 2024-03-09T21:41:05+0300: 127.0.0.1:51261 - "POST /api/v1/users/create/ HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T21:41:05+0300: {'protocol': 'http', 'path': '/api/v1/users/create/', 'process_time': 0.0009984970092773438}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:41:15+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:41:15+0300: 127.0.0.1:51269 - "POST /api/v1/conversations/create/ HTTP/1.1" 422
+[DEBUG|log_middleware|L21] 2024-03-09T21:41:15+0300: {'protocol': 'http', 'path': '/api/v1/conversations/create/', 'process_time': 0.002000093460083008}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:41:20+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:41:20+0300: 127.0.0.1:51275 - "POST /api/v1/conversations/create/ HTTP/1.1" 422
+[DEBUG|log_middleware|L21] 2024-03-09T21:41:20+0300: {'protocol': 'http', 'path': '/api/v1/conversations/create/', 'process_time': 0.001999378204345703}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:41:53+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:41:53+0300: 127.0.0.1:51318 - "POST /api/v1/conversations/create/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:41:53+0300: {'protocol': 'http', 'path': '/api/v1/conversations/create/', 'process_time': 0.015982627868652344}
+[INFO|h11_impl|L482] 2024-03-09T21:42:30+0300: 127.0.0.1:51331 - "POST /api/v1/users/convs HTTP/1.1" 307
+[DEBUG|log_middleware|L21] 2024-03-09T21:42:30+0300: {'protocol': 'http', 'path': '/api/v1/users/convs', 'process_time': 0.001001596450805664}
+[INFO|h11_impl|L482] 2024-03-09T21:42:30+0300: 127.0.0.1:51331 - "POST /api/v1/users/convs/ HTTP/1.1" 405
+[DEBUG|log_middleware|L21] 2024-03-09T21:42:30+0300: {'protocol': 'http', 'path': '/api/v1/users/convs/', 'process_time': 0.0010111331939697266}
+[INFO|h11_impl|L482] 2024-03-09T21:42:37+0300: 127.0.0.1:51349 - "GET /api/v1/users/convs HTTP/1.1" 307
+[DEBUG|log_middleware|L21] 2024-03-09T21:42:37+0300: {'protocol': 'http', 'path': '/api/v1/users/convs', 'process_time': 0.0009961128234863281}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:42:37+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:42:37+0300: 127.0.0.1:51349 - "GET /api/v1/users/convs/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:42:37+0300: {'protocol': 'http', 'path': '/api/v1/users/convs/', 'process_time': 0.003002166748046875}
+[INFO|h11_impl|L482] 2024-03-09T21:42:53+0300: 127.0.0.1:51357 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:42:53+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.0030019283294677734}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:44:21+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:44:21+0300: 127.0.0.1:51390 - "POST /api/v1/conversationsusers/9059d519-51d5-47a8-ad22-da2c78a0e074/ HTTP/1.1" 500
+[ERROR|h11_impl|L417] 2024-03-09T21:44:21+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 74, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 299, in app
+    raise e
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\fastProject\src\routers\conversations.py", line 124, in add_user_to_conversation
+    await conv_repo.add_user(
+          ^^^^^^^^^^^^^^^^^^^
+TypeError: ConversationRepository.add_user() got an unexpected keyword argument 'current_user'
+[INFO|server|L265] 2024-03-09T21:46:16+0300: Shutting down
+[INFO|server|L87] 2024-03-09T21:46:16+0300: Finished server process [27424]
+[INFO|basereload|L117] 2024-03-09T21:46:16+0300: Stopping reloader process [27312]
+[INFO|config|L330] 2024-03-09T21:46:18+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T21:46:18+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T21:46:18+0300: Started reloader process [22452] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T21:46:19+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T21:46:19+0300: Started server process [22064]
+[INFO|on|L46] 2024-03-09T21:46:19+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T21:46:19+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T21:46:19+0300: Application startup complete.
+[DEBUG|dependency_auth|L32] 2024-03-09T21:46:28+0300: Request for curr user id
+[INFO|h11_impl|L482] 2024-03-09T21:46:28+0300: 127.0.0.1:51447 - "POST /api/v1/conversationsusers/9059d519-51d5-47a8-ad22-da2c78a0e074/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:46:28+0300: {'protocol': 'http', 'path': '/api/v1/conversationsusers/9059d519-51d5-47a8-ad22-da2c78a0e074/', 'process_time': 0.09902524948120117}
+[INFO|h11_impl|L482] 2024-03-09T21:47:11+0300: 127.0.0.1:51488 - "POST /api/v1/conversations/users/9059d519-51d5-47a8-ad22-da2c78a0e074/ HTTP/1.1" 405
+[DEBUG|log_middleware|L21] 2024-03-09T21:47:11+0300: {'protocol': 'http', 'path': '/api/v1/conversations/users/9059d519-51d5-47a8-ad22-da2c78a0e074/', 'process_time': 0.00099945068359375}
+[INFO|h11_impl|L482] 2024-03-09T21:47:18+0300: 127.0.0.1:51492 - "GET /api/v1/conversations/users/9059d519-51d5-47a8-ad22-da2c78a0e074/ HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:47:18+0300: {'protocol': 'http', 'path': '/api/v1/conversations/users/9059d519-51d5-47a8-ad22-da2c78a0e074/', 'process_time': 0.010996341705322266}
+[DEBUG|protocol|L256] 2024-03-09T21:49:02+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:49:02+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < sec-websocket-key: hXGYpwvJSd8fKf7wROJJ/w==
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:49:02+0300: < host: localhost:8000
+[ERROR|websockets_impl|L266] 2024-03-09T21:49:02+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 350, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\dependencies\utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+                   ^^^^^^^^^^^^^^^^^^
+TypeError: _get_auth_user() missing 1 required positional argument: 'request'
+[DEBUG|server|L307] 2024-03-09T21:49:02+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T21:49:02+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T21:49:02+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T21:49:02+0300: > Sec-WebSocket-Accept: tu6yj2w5YyaHjAElQEU0BmF+OYY=
+[DEBUG|server|L309] 2024-03-09T21:49:02+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T21:49:02+0300: > date: Sat, 09 Mar 2024 18:49:02 GMT
+[DEBUG|server|L309] 2024-03-09T21:49:02+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T21:49:02+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T21:49:02+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T21:49:02+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T21:49:02+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T21:49:02+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T21:49:02+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-09T21:49:17+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:49:17+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/ HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < sec-websocket-key: rVSzaxtN12EnvNTz4AS0Bw==
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:49:17+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-09T21:49:17+0300: ('127.0.0.1', 51557) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/" 403
+[DEBUG|log_middleware|L21] 2024-03-09T21:49:17+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws/', 'process_time': 0.0010077953338623047}
+[DEBUG|server|L307] 2024-03-09T21:49:17+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-09T21:49:17+0300: > Date: Sat, 09 Mar 2024 18:49:17 GMT
+[DEBUG|server|L309] 2024-03-09T21:49:17+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-09T21:49:17+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-09T21:49:17+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-09T21:49:17+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-09T21:49:17+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-09T21:49:17+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T21:49:17+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T21:49:17+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-09T21:49:20+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:49:20+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < sec-websocket-key: EcJEeTQEqEcd0opXHVmVZQ==
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:49:20+0300: < host: localhost:8000
+[ERROR|websockets_impl|L266] 2024-03-09T21:49:20+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 350, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\dependencies\utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+                   ^^^^^^^^^^^^^^^^^^
+TypeError: _get_auth_user() missing 1 required positional argument: 'request'
+[DEBUG|server|L307] 2024-03-09T21:49:20+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T21:49:20+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T21:49:20+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T21:49:20+0300: > Sec-WebSocket-Accept: VJZ2Ynm6zVE1YLzpUEI+k8ws4Gg=
+[DEBUG|server|L309] 2024-03-09T21:49:20+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T21:49:20+0300: > date: Sat, 09 Mar 2024 18:49:19 GMT
+[DEBUG|server|L309] 2024-03-09T21:49:20+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T21:49:20+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T21:49:20+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T21:49:20+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T21:49:20+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T21:49:20+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T21:49:20+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-09T21:49:22+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:49:22+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/ HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < sec-websocket-key: cmHxAoKnebTDm6KnvcXvkQ==
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:49:22+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-09T21:49:22+0300: ('127.0.0.1', 51559) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/" 403
+[DEBUG|log_middleware|L21] 2024-03-09T21:49:22+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws/', 'process_time': 0.0010156631469726562}
+[DEBUG|server|L307] 2024-03-09T21:49:22+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-09T21:49:22+0300: > Date: Sat, 09 Mar 2024 18:49:22 GMT
+[DEBUG|server|L309] 2024-03-09T21:49:22+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-09T21:49:22+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-09T21:49:22+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-09T21:49:22+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-09T21:49:22+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-09T21:49:22+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T21:49:22+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T21:49:22+0300: connection closed
+[INFO|h11_impl|L482] 2024-03-09T21:51:07+0300: 127.0.0.1:51653 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:51:07+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0009968280792236328}
+[INFO|h11_impl|L482] 2024-03-09T21:51:07+0300: 127.0.0.1:51653 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:51:07+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.01099848747253418}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:51:18+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T21:51:18+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T21:51:18+0300: 127.0.0.1:51656 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T21:51:18+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.0010042190551757812}
+[DEBUG|dependency_auth|L32] 2024-03-09T21:51:18+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T21:51:18+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T21:51:18+0300: 127.0.0.1:51656 - "GET /favicon.ico HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T21:51:18+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.0030059814453125}
+[DEBUG|protocol|L256] 2024-03-09T21:56:53+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:56:53+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/ HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < sec-websocket-key: PD6sZ1UaWAruMHOyr/jPPA==
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:56:53+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-09T21:56:53+0300: ('127.0.0.1', 52025) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/" 403
+[DEBUG|log_middleware|L21] 2024-03-09T21:56:53+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws/', 'process_time': 0.000990152359008789}
+[DEBUG|server|L307] 2024-03-09T21:56:53+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-09T21:56:53+0300: > Date: Sat, 09 Mar 2024 18:56:53 GMT
+[DEBUG|server|L309] 2024-03-09T21:56:53+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-09T21:56:53+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-09T21:56:53+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-09T21:56:53+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-09T21:56:53+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-09T21:56:53+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T21:56:53+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T21:56:53+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-09T21:57:05+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:57:05+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/ HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < sec-websocket-key: hbIzJHGzt3/QMFmXtWeSlg==
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:57:05+0300: < host: localhost:8000
+[INFO|websockets_impl|L311] 2024-03-09T21:57:05+0300: ('127.0.0.1', 52032) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws/" 403
+[DEBUG|log_middleware|L21] 2024-03-09T21:57:05+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws/', 'process_time': 0.0}
+[DEBUG|server|L307] 2024-03-09T21:57:05+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-09T21:57:05+0300: > Date: Sat, 09 Mar 2024 18:57:05 GMT
+[DEBUG|server|L309] 2024-03-09T21:57:05+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-09T21:57:05+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-09T21:57:05+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-09T21:57:05+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-09T21:57:05+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-09T21:57:05+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T21:57:05+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T21:57:05+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-09T21:57:09+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:57:09+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < sec-websocket-key: wfcnUmINOzVSyQCnJv4tBQ==
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:57:09+0300: < host: localhost:8000
+[ERROR|websockets_impl|L266] 2024-03-09T21:57:09+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 350, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\dependencies\utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+                   ^^^^^^^^^^^^^^^^^^
+TypeError: _get_auth_user() missing 1 required positional argument: 'request'
+[DEBUG|server|L307] 2024-03-09T21:57:09+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T21:57:09+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T21:57:09+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T21:57:09+0300: > Sec-WebSocket-Accept: w/+rgxA9HsHtK8Xzx7UeT1TfB5k=
+[DEBUG|server|L309] 2024-03-09T21:57:09+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T21:57:09+0300: > date: Sat, 09 Mar 2024 18:57:09 GMT
+[DEBUG|server|L309] 2024-03-09T21:57:09+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T21:57:09+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T21:57:09+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T21:57:09+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T21:57:09+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T21:57:09+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T21:57:09+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-09T21:58:38+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T21:58:38+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < sec-websocket-key: 1FQaQN3yORKFQWVUn2qMdQ==
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T21:58:38+0300: < host: localhost:8000
+[ERROR|websockets_impl|L266] 2024-03-09T21:58:38+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 350, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\dependencies\utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+                   ^^^^^^^^^^^^^^^^^^
+TypeError: _get_auth_user() missing 1 required positional argument: 'request'
+[DEBUG|server|L307] 2024-03-09T21:58:38+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T21:58:38+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T21:58:38+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T21:58:38+0300: > Sec-WebSocket-Accept: Qg+k47Mm2u7FVgpR3GPL5oysxGY=
+[DEBUG|server|L309] 2024-03-09T21:58:38+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T21:58:38+0300: > date: Sat, 09 Mar 2024 18:58:38 GMT
+[DEBUG|server|L309] 2024-03-09T21:58:38+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T21:58:38+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T21:58:38+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T21:58:38+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T21:58:38+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T21:58:38+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T21:58:38+0300: connection closed
+[DEBUG|dependency_auth|L32] 2024-03-09T21:59:18+0300: Request for curr user id
+[DEBUG|dependency_auth|L18] 2024-03-09T21:59:18+0300: Request for curr user
+[DEBUG|dependency_auth|L22] 2024-03-09T21:59:18+0300: User 891eefdc-9271-4699-8915-dc2f6613e935 authenticated
+[INFO|h11_impl|L482] 2024-03-09T21:59:18+0300: 127.0.0.1:52240 - "GET /api/v1/users/me HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T21:59:18+0300: {'protocol': 'http', 'path': '/api/v1/users/me', 'process_time': 0.0060024261474609375}
+[INFO|server|L265] 2024-03-09T22:00:07+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:00:07+0300: Finished server process [22064]
+[INFO|basereload|L117] 2024-03-09T22:00:07+0300: Stopping reloader process [22452]
+[INFO|config|L330] 2024-03-09T22:00:09+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T22:00:09+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T22:00:09+0300: Started reloader process [15844] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T22:00:10+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:00:10+0300: Started server process [25800]
+[INFO|on|L46] 2024-03-09T22:00:10+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:00:10+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:00:10+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-09T22:00:16+0300: 127.0.0.1:52305 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T22:00:16+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0010006427764892578}
+[INFO|h11_impl|L482] 2024-03-09T22:00:16+0300: 127.0.0.1:52305 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T22:00:16+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.01102137565612793}
+[DEBUG|dependency_auth|L32] 2024-03-09T22:00:25+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T22:00:25+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T22:00:25+0300: 127.0.0.1:52314 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T22:00:25+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.0020101070404052734}
+[DEBUG|dependency_auth|L32] 2024-03-09T22:00:25+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T22:00:25+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T22:00:25+0300: 127.0.0.1:52314 - "GET /favicon.ico HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T22:00:25+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.002004861831665039}
+[INFO|server|L265] 2024-03-09T22:01:08+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:01:09+0300: Finished server process [25800]
+[INFO|basereload|L117] 2024-03-09T22:01:09+0300: Stopping reloader process [15844]
+[INFO|config|L330] 2024-03-09T22:01:11+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T22:01:11+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T22:01:11+0300: Started reloader process [26548] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T22:01:12+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:01:12+0300: Started server process [27112]
+[INFO|on|L46] 2024-03-09T22:01:12+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:01:12+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:01:12+0300: Application startup complete.
+[DEBUG|dependency_auth|L32] 2024-03-09T22:01:16+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T22:01:16+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T22:01:16+0300: 127.0.0.1:52384 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T22:01:16+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.002992391586303711}
+[DEBUG|dependency_auth|L32] 2024-03-09T22:01:16+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T22:01:16+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T22:01:16+0300: 127.0.0.1:52384 - "GET /favicon.ico HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T22:01:16+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.001989603042602539}
+[INFO|h11_impl|L482] 2024-03-09T22:01:19+0300: 127.0.0.1:52384 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ HTTP/1.1" 307
+[DEBUG|log_middleware|L21] 2024-03-09T22:01:19+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/', 'process_time': 0.0}
+[DEBUG|dependency_auth|L32] 2024-03-09T22:01:19+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T22:01:19+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T22:01:19+0300: 127.0.0.1:52384 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T22:01:19+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.0010025501251220703}
+[DEBUG|dependency_auth|L32] 2024-03-09T22:01:19+0300: Request for curr user id
+[ERROR|dependency_auth|L51] 2024-03-09T22:01:19+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-09T22:01:19+0300: 127.0.0.1:52384 - "GET /favicon.ico HTTP/1.1" 401
+[DEBUG|log_middleware|L21] 2024-03-09T22:01:19+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.002000570297241211}
+[WARNING|basereload|L54] 2024-03-09T22:01:45+0300: StatReload detected changes in 'main.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:01:56+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:01:57+0300: Finished server process [27112]
+[DEBUG|selector_events|L64] 2024-03-09T22:01:58+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:01:58+0300: Started server process [27360]
+[INFO|on|L46] 2024-03-09T22:01:58+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:01:58+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:01:58+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:01:59+0300: StatReload detected changes in 'main.py'. Reloading...
+[DEBUG|main|L88] 2024-03-09T22:02:00+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T22:02:00+0300: 127.0.0.1:52409 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T22:02:00+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.0010018348693847656}
+[DEBUG|main|L88] 2024-03-09T22:02:01+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T22:02:01+0300: 127.0.0.1:52409 - "GET /favicon.ico HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T22:02:01+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.0019943714141845703}
+[DEBUG|main|L88] 2024-03-09T22:02:01+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T22:02:01+0300: 127.0.0.1:52409 - "GET /favicon.ico HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T22:02:01+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.0009989738464355469}
+[DEBUG|protocol|L256] 2024-03-09T22:02:02+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:02:02+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < host: localhost:8000
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < pragma: no-cache
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < cache-control: no-cache
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < origin: http://127.0.0.1:8000
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < accept-encoding: gzip, deflate, br
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < accept-language: ru,en;q=0.9
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < sec-websocket-key: 415qI42JvlyhAxxTjPknOA==
+[DEBUG|server|L288] 2024-03-09T22:02:02+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[INFO|websockets_impl|L291] 2024-03-09T22:02:02+0300: ('127.0.0.1', 52424) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T22:02:02+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:02:02+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:02:02+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:02:02+0300: > Sec-WebSocket-Accept: hCQOas2lvAuK5jERapuxBtWd/8M=
+[DEBUG|server|L309] 2024-03-09T22:02:02+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:02:02+0300: > date: Sat, 09 Mar 2024 19:02:01 GMT
+[DEBUG|server|L309] 2024-03-09T22:02:02+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:02:02+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:02:02+0300: = connection is OPEN
+[DEBUG|protocol|L1172] 2024-03-09T22:02:03+0300: < TEXT 'ds' [2 bytes]
+[INFO|server|L265] 2024-03-09T22:02:03+0300: Shutting down
+[DEBUG|protocol|L1412] 2024-03-09T22:02:03+0300: ! failing connection with code 1012
+[DEBUG|protocol|L1436] 2024-03-09T22:02:03+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-09T22:02:03+0300: > CLOSE 1012 (service restart) [2 bytes]
+[DEBUG|protocol|L1497] 2024-03-09T22:02:03+0300: = connection is CLOSED
+[DEBUG|protocol|L1319] 2024-03-09T22:02:03+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T22:02:03+0300: connection closed
+[DEBUG|log_middleware|L21] 2024-03-09T22:02:03+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 1.2909986972808838}
+[INFO|server|L87] 2024-03-09T22:02:03+0300: Finished server process [27360]
+[DEBUG|selector_events|L64] 2024-03-09T22:02:05+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:02:05+0300: Started server process [26004]
+[INFO|on|L46] 2024-03-09T22:02:05+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:02:05+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:02:05+0300: Application startup complete.
+[DEBUG|main|L88] 2024-03-09T22:02:30+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T22:02:30+0300: 127.0.0.1:52450 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T22:02:30+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.001989603042602539}
+[DEBUG|protocol|L256] 2024-03-09T22:02:30+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:02:30+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < host: localhost:8000
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < pragma: no-cache
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < cache-control: no-cache
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < origin: http://127.0.0.1:8000
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < accept-encoding: gzip, deflate, br
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < accept-language: ru,en;q=0.9
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < sec-websocket-key: WED9GAh1mauUB5eqfk45Nw==
+[DEBUG|server|L288] 2024-03-09T22:02:30+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[INFO|websockets_impl|L291] 2024-03-09T22:02:30+0300: ('127.0.0.1', 52455) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T22:02:30+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:02:30+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:02:30+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:02:30+0300: > Sec-WebSocket-Accept: 3GAG4WI2c0WnOyT+a3X+gnfH0E0=
+[DEBUG|server|L309] 2024-03-09T22:02:30+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:02:30+0300: > date: Sat, 09 Mar 2024 19:02:30 GMT
+[DEBUG|server|L309] 2024-03-09T22:02:30+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:02:30+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:02:30+0300: = connection is OPEN
+[DEBUG|protocol|L1262] 2024-03-09T22:02:50+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:02:50+0300: > PING 14 c6 57 30 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:02:50+0300: < PONG 14 c6 57 30 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:02:50+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:03:06+0300: < TEXT 'dsd' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:06+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:03:10+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:03:10+0300: > PING d1 58 e6 cd [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:10+0300: < PONG d1 58 e6 cd [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:03:10+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:03:25+0300: < TEXT 'sddssd' [6 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:25+0300: > TEXT 'Clients #: sddssd' [17 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:26+0300: < TEXT 'sds' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:26+0300: > TEXT 'Clients #: sds' [14 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:26+0300: < TEXT 'd' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:26+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:26+0300: < TEXT 'dsd' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:26+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:26+0300: < TEXT 'sd' [2 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:26+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:26+0300: < TEXT 's' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:26+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:27+0300: < TEXT 'd' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:27+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:27+0300: < TEXT 'sd' [2 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:03:27+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:03:30+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:03:30+0300: > PING 5b 81 9f fb [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:30+0300: < PONG 5b 81 9f fb [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:03:30+0300: % received keepalive pong
+[DEBUG|protocol|L256] 2024-03-09T22:03:37+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:03:37+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < host: localhost:8000
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < pragma: no-cache
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < cache-control: no-cache
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < origin: http://127.0.0.1:8000
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < accept-encoding: gzip, deflate, br
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < accept-language: ru,en;q=0.9
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < sec-websocket-key: QrJ5AzdimbBjRg1EI/mQ8Q==
+[DEBUG|server|L288] 2024-03-09T22:03:37+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[INFO|websockets_impl|L291] 2024-03-09T22:03:37+0300: ('127.0.0.1', 52527) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T22:03:37+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:03:37+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:03:37+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:03:37+0300: > Sec-WebSocket-Accept: 7zx89/Jz2Csc9aQqujhDdbf7S24=
+[DEBUG|server|L309] 2024-03-09T22:03:37+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:03:37+0300: > date: Sat, 09 Mar 2024 19:03:37 GMT
+[DEBUG|server|L309] 2024-03-09T22:03:37+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:03:37+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:03:37+0300: = connection is OPEN
+[DEBUG|protocol|L1262] 2024-03-09T22:03:50+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:03:50+0300: > PING 83 f3 46 42 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:50+0300: < PONG 83 f3 46 42 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:03:50+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:03:57+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:03:57+0300: > PING 1a 26 13 ca [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:03:57+0300: < PONG 1a 26 13 ca [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:03:57+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:04:10+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:04:10+0300: > PING 61 a8 9f 69 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:10+0300: < PONG 61 a8 9f 69 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:04:10+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:04:17+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:04:17+0300: > PING 03 aa 9b ce [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:17+0300: < PONG 03 aa 9b ce [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:04:17+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:04:26+0300: < TEXT 'sddssd' [6 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:26+0300: > TEXT 'Clients #: sddssd' [17 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:26+0300: > TEXT 'Clients #: sddssd' [17 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:26+0300: < TEXT 'sd' [2 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:26+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:26+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:27+0300: < TEXT '' [0 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:27+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:27+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:28+0300: < TEXT 'sds' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:28+0300: > TEXT 'Clients #: sds' [14 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:28+0300: > TEXT 'Clients #: sds' [14 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:28+0300: < TEXT '' [0 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:28+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:28+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:28+0300: < TEXT '' [0 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:28+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:28+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:29+0300: < TEXT '' [0 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:29+0300: < TEXT 's' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:29+0300: < TEXT 'd' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:29+0300: < TEXT 'sdd' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: sdd' [14 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: sdd' [14 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:29+0300: < TEXT 's' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:29+0300: < TEXT 'd' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:29+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:30+0300: < TEXT 's' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:30+0300: < TEXT 'd' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: d' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:30+0300: < TEXT 's' [1 byte]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: s' [12 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:30+0300: < TEXT 'dd' [2 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: dd' [13 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > TEXT 'Clients #: dd' [13 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:04:30+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:04:30+0300: > PING e6 51 3c a0 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:30+0300: < PONG e6 51 3c a0 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:04:30+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:04:37+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:04:37+0300: > PING '\x90cE' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:37+0300: < PONG '\x90cE' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:04:37+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:04:50+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:04:50+0300: > PING 'uYp&' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:50+0300: < PONG 'uYp&' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:04:50+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:04:53+0300: < TEXT 'Блять как подулючиться с POST MAAN' [55 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:53+0300: > TEXT 'Clients #: Блять как подулючиться с POST MAAN' [66 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:04:53+0300: > TEXT 'Clients #: Блять как подулючиться с POST MAAN' [66 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:04:57+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:04:57+0300: > PING f2 1d 9f a1 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:04:57+0300: < PONG f2 1d 9f a1 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:04:57+0300: % received keepalive pong
+[DEBUG|protocol|L256] 2024-03-09T22:05:01+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:05:01+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < sec-websocket-key: GxVvY1yeC0mM17/Q0qj9+A==
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T22:05:01+0300: < host: localhost:8000
+[INFO|websockets_impl|L291] 2024-03-09T22:05:01+0300: ('127.0.0.1', 52577) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T22:05:01+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:05:01+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:05:01+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:05:01+0300: > Sec-WebSocket-Accept: DnBRHJp4rkyWE+BtLDG6NCSvMY4=
+[DEBUG|server|L309] 2024-03-09T22:05:01+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:05:01+0300: > date: Sat, 09 Mar 2024 19:05:01 GMT
+[DEBUG|server|L309] 2024-03-09T22:05:01+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:05:01+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:05:01+0300: = connection is OPEN
+[DEBUG|protocol|L1262] 2024-03-09T22:05:10+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:10+0300: > PING 1d d4 34 99 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:10+0300: < PONG 1d d4 34 99 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:10+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:05:17+0300: % sending keepalive ping
+[DEBUG|protocol|L1269] 2024-03-09T22:05:17+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:05:17+0300: < TEXT '"ВDSS"\r\nDSSDSD\r\nжsds\r\n' [24 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:17+0300: > TEXT 'Clients #: "ВDSS"\r\nDSSDSD\r\nжsds\r\n' [35 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:17+0300: > TEXT 'Clients #: "ВDSS"\r\nDSSDSD\r\nжsds\r\n' [35 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:17+0300: > TEXT 'Clients #: "ВDSS"\r\nDSSDSD\r\nжsds\r\n' [35 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:05:21+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:21+0300: > PING 'r\x18 [' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:21+0300: < PONG 'r\x18 [' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:21+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:05:27+0300: < TEXT 'dsddsd' [6 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:27+0300: > TEXT 'Clients #: dsddsd' [17 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:27+0300: > TEXT 'Clients #: dsddsd' [17 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:27+0300: > TEXT 'Clients #: dsddsd' [17 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:05:30+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:30+0300: > PING 9c b9 df 2d [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:30+0300: < PONG 9c b9 df 2d [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:30+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:05:36+0300: < TEXT 'sdssd' [5 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:36+0300: > TEXT 'Clients #: sdssd' [16 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:36+0300: > TEXT 'Clients #: sdssd' [16 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:36+0300: > TEXT 'Clients #: sdssd' [16 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:05:37+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:37+0300: > PING 2b 5d 37 c7 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:37+0300: < PONG 2b 5d 37 c7 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:37+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:05:38+0300: < TEXT 'dsd' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:38+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:38+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:38+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:05:41+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:41+0300: > PING 14 67 f7 ba [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:41+0300: < PONG 14 67 f7 ba [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:41+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:05:46+0300: < TEXT 'sdsds' [5 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: sdsds' [16 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: sdsds' [16 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: sdsds' [16 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:46+0300: < TEXT 'dsd' [3 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: dsd' [14 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:46+0300: < TEXT 'sd' [2 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: sd' [13 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:46+0300: < TEXT '' [0 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:46+0300: > TEXT 'Clients #: ' [11 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:05:50+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:50+0300: > PING e6 1c e0 42 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:50+0300: < PONG e6 1c e0 42 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:50+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:05:51+0300: < TEXT 'dsdfsdsf\r\n' [10 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:51+0300: > TEXT 'Clients #: dsdfsdsf\r\n' [21 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:51+0300: > TEXT 'Clients #: dsdfsdsf\r\n' [21 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:05:51+0300: > TEXT 'Clients #: dsdfsdsf\r\n' [21 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:05:57+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:05:57+0300: > PING 78 38 6d ca [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:05:57+0300: < PONG 78 38 6d ca [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:05:57+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:06:00+0300: < TEXT 'sdsdsd' [6 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:06:00+0300: > TEXT 'Clients #: sdsdsd' [17 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:06:00+0300: > TEXT 'Clients #: sdsdsd' [17 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:06:00+0300: > TEXT 'Clients #: sdsdsd' [17 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:06:01+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:06:01+0300: > PING 53 da 78 ed [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:06:01+0300: < PONG 53 da 78 ed [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:06:01+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:06:07+0300: < CLOSE 1001 (going away) [2 bytes]
+[DEBUG|protocol|L1227] 2024-03-09T22:06:07+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-09T22:06:07+0300: > CLOSE 1001 (going away) [2 bytes]
+[DEBUG|protocol|L1319] 2024-03-09T22:06:07+0300: x half-closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T22:06:07+0300: = connection is CLOSED
+[DEBUG|protocol|L1178] 2024-03-09T22:06:07+0300: > TEXT 'Clients # left the chat' [23 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:06:07+0300: > TEXT 'Clients # left the chat' [23 bytes]
+[DEBUG|log_middleware|L21] 2024-03-09T22:06:07+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 150.70329809188843}
+[INFO|server|L264] 2024-03-09T22:06:07+0300: connection closed
+[DEBUG|protocol|L1172] 2024-03-09T22:06:08+0300: < CLOSE 1001 (going away) [2 bytes]
+[DEBUG|protocol|L1227] 2024-03-09T22:06:08+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-09T22:06:08+0300: > CLOSE 1001 (going away) [2 bytes]
+[DEBUG|protocol|L1319] 2024-03-09T22:06:08+0300: x half-closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T22:06:08+0300: = connection is CLOSED
+[DEBUG|protocol|L1178] 2024-03-09T22:06:08+0300: > TEXT 'Clients # left the chat' [23 bytes]
+[DEBUG|log_middleware|L21] 2024-03-09T22:06:08+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 218.02666592597961}
+[INFO|server|L264] 2024-03-09T22:06:08+0300: connection closed
+[DEBUG|protocol|L1172] 2024-03-09T22:06:12+0300: < TEXT 'dsdfsdsf\r\ndsdsddssd' [19 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:06:12+0300: > TEXT 'Clients #: dsdfsdsf\r\ndsdsddssd' [30 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T22:06:21+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:06:21+0300: > PING '\x05h}G' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:06:21+0300: < PONG '\x05h}G' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:06:21+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:06:41+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:06:41+0300: > PING 70 fb 03 ea [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:06:41+0300: < PONG 70 fb 03 ea [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:06:41+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T22:07:01+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T22:07:01+0300: > PING d8 8c 91 e0 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:07:01+0300: < PONG d8 8c 91 e0 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T22:07:01+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T22:07:08+0300: < TEXT 'dsdfsdsf\r\ndsdsddssdds\r\n' [23 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T22:07:08+0300: > TEXT 'Clients #: dsdfsdsf\r\ndsdsddssdds\r\n' [34 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T22:07:12+0300: < CLOSE 1000 (OK) [2 bytes]
+[DEBUG|protocol|L1227] 2024-03-09T22:07:12+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-09T22:07:12+0300: > CLOSE 1000 (OK) [2 bytes]
+[DEBUG|protocol|L1319] 2024-03-09T22:07:12+0300: x half-closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T22:07:12+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T22:07:12+0300: connection closed
+[DEBUG|log_middleware|L21] 2024-03-09T22:07:12+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 130.6979374885559}
+[DEBUG|protocol|L256] 2024-03-09T22:14:49+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:14:49+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < sec-websocket-key: 2d1z2pHYNuwupbBq/ebhvw==
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T22:14:49+0300: < host: localhost:8000
+[INFO|websockets_impl|L291] 2024-03-09T22:14:49+0300: ('127.0.0.1', 53045) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T22:14:49+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:14:49+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:14:49+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:14:49+0300: > Sec-WebSocket-Accept: NW6pg/idAD7aBjqyD0pbkYWOKqg=
+[DEBUG|server|L309] 2024-03-09T22:14:49+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:14:49+0300: > date: Sat, 09 Mar 2024 19:14:48 GMT
+[DEBUG|server|L309] 2024-03-09T22:14:49+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:14:49+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:14:49+0300: = connection is OPEN
+[DEBUG|protocol|L1172] 2024-03-09T22:14:51+0300: < CLOSE 1000 (OK) [2 bytes]
+[DEBUG|protocol|L1227] 2024-03-09T22:14:51+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-09T22:14:51+0300: > CLOSE 1000 (OK) [2 bytes]
+[DEBUG|protocol|L1319] 2024-03-09T22:14:51+0300: x half-closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T22:14:51+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T22:14:51+0300: connection closed
+[DEBUG|log_middleware|L21] 2024-03-09T22:14:51+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 2.1295313835144043}
+[WARNING|basereload|L54] 2024-03-09T22:15:27+0300: StatReload detected changes in 'main.py'. Reloading...
+[DEBUG|protocol|L256] 2024-03-09T22:15:30+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:15:30+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < sec-websocket-key: RTrihnN6CODFXXDDgy91gQ==
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T22:15:30+0300: < host: localhost:8000
+[INFO|websockets_impl|L291] 2024-03-09T22:15:30+0300: ('127.0.0.1', 53065) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T22:15:30+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:15:30+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:15:30+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:15:30+0300: > Sec-WebSocket-Accept: Y94zvHAeYVNB/sKjjDaZFCow4hU=
+[DEBUG|server|L309] 2024-03-09T22:15:30+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:15:30+0300: > date: Sat, 09 Mar 2024 19:15:30 GMT
+[DEBUG|server|L309] 2024-03-09T22:15:30+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:15:30+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:15:30+0300: = connection is OPEN
+[INFO|config|L330] 2024-03-09T22:15:36+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T22:15:36+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T22:15:36+0300: Started reloader process [25404] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T22:15:37+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:15:37+0300: Started server process [21448]
+[INFO|on|L46] 2024-03-09T22:15:37+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:15:37+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:15:37+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-09T22:15:45+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T22:15:45+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < sec-websocket-key: C/Cyhj47IQIKewmCkx1ywg==
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T22:15:45+0300: < host: localhost:8000
+[ERROR|websockets_impl|L266] 2024-03-09T22:15:45+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\routing.py", line 350, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\dependencies\utils.py", line 598, in solve_dependencies
+    solved = await call(**sub_values)
+                   ^^^^^^^^^^^^^^^^^^
+TypeError: _get_auth_user() missing 1 required positional argument: 'request'
+[DEBUG|server|L307] 2024-03-09T22:15:45+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T22:15:45+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T22:15:45+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T22:15:45+0300: > Sec-WebSocket-Accept: vtRRzt0C4vswR8vpValux9U0Y3A=
+[DEBUG|server|L309] 2024-03-09T22:15:45+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T22:15:45+0300: > date: Sat, 09 Mar 2024 19:15:45 GMT
+[DEBUG|server|L309] 2024-03-09T22:15:45+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T22:15:45+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T22:15:45+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T22:15:45+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T22:15:45+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T22:15:45+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T22:15:45+0300: connection closed
+[WARNING|basereload|L54] 2024-03-09T22:20:19+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:20:34+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:20:35+0300: Finished server process [21448]
+[DEBUG|selector_events|L64] 2024-03-09T22:20:36+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:20:36+0300: Started server process [24632]
+[INFO|on|L46] 2024-03-09T22:20:36+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:20:36+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:20:36+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:21:22+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:25:34+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:25:35+0300: Finished server process [24632]
+[DEBUG|selector_events|L64] 2024-03-09T22:25:36+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:25:36+0300: Started server process [16904]
+[INFO|on|L46] 2024-03-09T22:25:36+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:25:36+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:25:36+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:25:40+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:30:35+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:30:35+0300: Finished server process [16904]
+[DEBUG|selector_events|L64] 2024-03-09T22:30:37+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:30:37+0300: Started server process [23528]
+[INFO|on|L46] 2024-03-09T22:30:37+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:30:37+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:30:37+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:30:54+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:35:35+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:35:35+0300: Finished server process [23528]
+[DEBUG|selector_events|L64] 2024-03-09T22:35:37+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:35:37+0300: Started server process [26756]
+[INFO|on|L46] 2024-03-09T22:35:37+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:35:37+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:35:37+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:39:25+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:40:35+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:40:36+0300: Finished server process [26756]
+[DEBUG|selector_events|L64] 2024-03-09T22:40:37+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:40:37+0300: Started server process [20068]
+[INFO|on|L46] 2024-03-09T22:40:37+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:40:37+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:40:37+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:42:07+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:45:36+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:45:36+0300: Finished server process [20068]
+[DEBUG|selector_events|L64] 2024-03-09T22:45:38+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:45:38+0300: Started server process [9712]
+[INFO|on|L46] 2024-03-09T22:45:38+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:45:38+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:45:38+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:47:33+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:50:36+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:50:36+0300: Finished server process [9712]
+[DEBUG|selector_events|L64] 2024-03-09T22:50:38+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:50:38+0300: Started server process [26032]
+[INFO|on|L46] 2024-03-09T22:50:38+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:50:38+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:50:38+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:51:14+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T22:55:37+0300: Shutting down
+[INFO|server|L87] 2024-03-09T22:55:37+0300: Finished server process [26032]
+[DEBUG|selector_events|L64] 2024-03-09T22:55:38+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T22:55:38+0300: Started server process [16932]
+[INFO|on|L46] 2024-03-09T22:55:38+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T22:55:38+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T22:55:38+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T22:59:58+0300: StatReload detected changes in 'main.py'. Reloading...
+[INFO|server|L265] 2024-03-09T23:00:37+0300: Shutting down
+[INFO|server|L87] 2024-03-09T23:00:37+0300: Finished server process [16932]
+[INFO|basereload|L117] 2024-03-09T23:00:41+0300: Stopping reloader process [25404]
+[INFO|config|L330] 2024-03-09T23:01:23+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T23:01:23+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T23:01:23+0300: Started reloader process [26764] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T23:01:24+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:01:24+0300: Started server process [14416]
+[INFO|on|L46] 2024-03-09T23:01:24+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:01:24+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:01:24+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-09T23:01:49+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T23:01:49+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < sec-websocket-key: LO4/c5ZoIUIPS/oRaUO8yw==
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAwOTU2MiwiZXhwIjoxNzEwMDEzMTYyfQ.C11jOj1KhketfwlHJCnTeM627lUXL21cXNeMst1_kIo
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T23:01:49+0300: < host: localhost:8000
+[ERROR|websockets_impl|L266] 2024-03-09T23:01:49+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\auth_middleware.py", line 16, in __call__
+    token_type, token = scope['headers']['Authorization'].split()
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+[DEBUG|server|L307] 2024-03-09T23:01:49+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T23:01:49+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T23:01:49+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T23:01:49+0300: > Sec-WebSocket-Accept: pLdh4ELtB907Atkb38XtnyToS28=
+[DEBUG|server|L309] 2024-03-09T23:01:49+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T23:01:49+0300: > date: Sat, 09 Mar 2024 20:01:49 GMT
+[DEBUG|server|L309] 2024-03-09T23:01:49+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T23:01:49+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T23:01:49+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T23:01:49+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T23:01:49+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T23:01:49+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T23:01:49+0300: connection closed
+[WARNING|basereload|L54] 2024-03-09T23:15:35+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T23:24:34+0300: Shutting down
+[INFO|server|L87] 2024-03-09T23:24:34+0300: Finished server process [14416]
+[DEBUG|selector_events|L64] 2024-03-09T23:24:35+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:24:35+0300: Started server process [23012]
+[INFO|on|L46] 2024-03-09T23:24:35+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:24:35+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:24:35+0300: Application startup complete.
+[WARNING|basereload|L54] 2024-03-09T23:24:43+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[INFO|h11_impl|L482] 2024-03-09T23:25:02+0300: 127.0.0.1:56797 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T23:25:02+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.000997781753540039}
+[INFO|h11_impl|L482] 2024-03-09T23:25:02+0300: 127.0.0.1:56797 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T23:25:02+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.012006282806396484}
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_data with data[21:25]
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_name with data[26:34]
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_data with data[35:39]
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_name with data[40:45]
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_name with data[47:56]
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-09T23:25:42+0300: Calling on_field_name with data[58:71]
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-09T23:25:42+0300: Calling on_end with no data
+[INFO|server|L265] 2024-03-09T23:25:42+0300: Shutting down
+[DEBUG|security|L19] 2024-03-09T23:25:42+0300: password verifying
+[WARNING|bcrypt|L622] 2024-03-09T23:25:42+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-09T23:25:42+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-09T23:25:42+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|security|L35] 2024-03-09T23:25:42+0300: created acces token
+[DEBUG|security|L40] 2024-03-09T23:25:42+0300: created refresh token
+[INFO|server|L303] 2024-03-09T23:25:42+0300: Waiting for connections to close. (CTRL+C to force quit)
+[INFO|h11_impl|L482] 2024-03-09T23:25:42+0300: 127.0.0.1:56798 - "POST /api/v1/auth/token HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T23:25:42+0300: {'protocol': 'http', 'path': '/api/v1/auth/token', 'process_time': 0.34000539779663086}
+[INFO|server|L87] 2024-03-09T23:25:42+0300: Finished server process [23012]
+[DEBUG|selector_events|L64] 2024-03-09T23:25:44+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:25:44+0300: Started server process [2368]
+[INFO|on|L46] 2024-03-09T23:25:44+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:25:44+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:25:44+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-09T23:25:55+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T23:25:55+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < sec-websocket-key: 3mCHf5ql6zVu6iRwlb29xw==
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAxNTk0MiwiZXhwIjoxNzEwMDE5NTQyfQ.-t3g6wCPe-bOmrlmGpwvanngoavqGULtTgkE-3KRmXE
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T23:25:55+0300: < host: localhost:8000
+[DEBUG|auth_middleware|L41] 2024-03-09T23:25:55+0300: Request for curr user id
+[INFO|websockets_impl|L291] 2024-03-09T23:25:55+0300: ('127.0.0.1', 56865) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T23:25:55+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T23:25:55+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T23:25:55+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T23:25:55+0300: > Sec-WebSocket-Accept: RtXS0U2VzTHh3TMHIZd/sZLMNdc=
+[DEBUG|server|L309] 2024-03-09T23:25:55+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T23:25:55+0300: > date: Sat, 09 Mar 2024 20:25:54 GMT
+[DEBUG|server|L309] 2024-03-09T23:25:55+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T23:25:55+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T23:25:55+0300: = connection is OPEN
+[DEBUG|protocol|L1172] 2024-03-09T23:26:10+0300: < TEXT 'dsdfsdsf\r\ndsdsddssdds\r\nsdsdsdds' [31 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T23:26:10+0300: > TEXT 'Clients 891eefdc-9271-4699-8915-dc2f6613e935: d...dsdsddssdds\r\nsdsdsdds' [77 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T23:26:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:26:15+0300: > PING 2e d4 2b 5e [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:26:15+0300: < PONG 2e d4 2b 5e [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:26:15+0300: % received keepalive pong
+[DEBUG|protocol|L1172] 2024-03-09T23:26:17+0300: < TEXT 'dsdfsdsf\r\ndsdsddssdds\r\nsdsdsddsdsd\r\nsddsdsds' [44 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T23:26:17+0300: > TEXT 'Clients 891eefdc-9271-4699-8915-dc2f6613e935: d...sdsdsddsdsd\r\nsddsdsds' [90 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:26:29+0300: < TEXT 'О боже блять\r\nЭто работает' [47 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T23:26:29+0300: > TEXT 'Clients 891eefdc-9271-4699-8915-dc2f6613e935: О...е блять\r\nЭто работает' [93 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T23:26:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:26:35+0300: > PING 47 cb ce 49 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:26:35+0300: < PONG 47 cb ce 49 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:26:35+0300: % received keepalive pong
+[INFO|h11_impl|L482] 2024-03-09T23:26:49+0300: 127.0.0.1:56908 - "GET / HTTP/1.1" 404
+[DEBUG|log_middleware|L21] 2024-03-09T23:26:49+0300: {'protocol': 'http', 'path': '/', 'process_time': 0.0010037422180175781}
+[DEBUG|protocol|L1262] 2024-03-09T23:26:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:26:55+0300: > PING 5e 1a b7 ec [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:26:55+0300: < PONG 5e 1a b7 ec [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:26:55+0300: % received keepalive pong
+[DEBUG|main|L89] 2024-03-09T23:27:08+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T23:27:08+0300: 127.0.0.1:56911 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T23:27:08+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.0009984970092773438}
+[DEBUG|protocol|L256] 2024-03-09T23:27:09+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T23:27:09+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < host: localhost:8000
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < pragma: no-cache
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < cache-control: no-cache
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < origin: http://127.0.0.1:8000
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < accept-encoding: gzip, deflate, br
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < accept-language: ru,en;q=0.9
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < sec-websocket-key: 1iLZVfeSnDrUnv9Tubjrdw==
+[DEBUG|server|L288] 2024-03-09T23:27:09+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[ERROR|auth_middleware|L19] 2024-03-09T23:27:09+0300: No Authorization in headers
+[ERROR|websockets_impl|L266] 2024-03-09T23:27:09+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\auth_middleware.py", line 21, in __call__
+    await response(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\responses.py", line 151, in __call__
+    await send(
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 342, in asgi_send
+    raise RuntimeError(msg % message_type)
+RuntimeError: Expected ASGI message 'websocket.accept', 'websocket.close', or 'websocket.http.response.start' but got 'http.response.start'.
+[DEBUG|server|L307] 2024-03-09T23:27:09+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T23:27:09+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T23:27:09+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T23:27:09+0300: > Sec-WebSocket-Accept: Efv9TsNVVpcc+Xvq2yqSVQPSPtM=
+[DEBUG|server|L309] 2024-03-09T23:27:09+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T23:27:09+0300: > date: Sat, 09 Mar 2024 20:27:08 GMT
+[DEBUG|server|L309] 2024-03-09T23:27:09+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T23:27:09+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T23:27:09+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T23:27:09+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T23:27:09+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T23:27:09+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T23:27:09+0300: connection closed
+[DEBUG|protocol|L1262] 2024-03-09T23:27:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:27:15+0300: > PING ea e3 b5 ef [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:27:15+0300: < PONG ea e3 b5 ef [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:27:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:27:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:27:35+0300: > PING c7 58 d4 f4 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:27:35+0300: < PONG c7 58 d4 f4 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:27:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:27:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:27:55+0300: > PING 87 51 6a b4 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:27:55+0300: < PONG 87 51 6a b4 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:27:55+0300: % received keepalive pong
+[DEBUG|main|L89] 2024-03-09T23:28:00+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T23:28:00+0300: 127.0.0.1:56954 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T23:28:00+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.0019905567169189453}
+[DEBUG|protocol|L256] 2024-03-09T23:28:00+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T23:28:00+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < host: localhost:8000
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < pragma: no-cache
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < cache-control: no-cache
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < origin: http://127.0.0.1:8000
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < accept-encoding: gzip, deflate, br
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < accept-language: ru,en;q=0.9
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < sec-websocket-key: nBbSATlRP0iFn5u4B290EQ==
+[DEBUG|server|L288] 2024-03-09T23:28:00+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[ERROR|auth_middleware|L19] 2024-03-09T23:28:00+0300: No Authorization in headers
+[ERROR|websockets_impl|L266] 2024-03-09T23:28:00+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 259, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\log_middleware.py", line 14, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\User\projects\fastProject\src\middlewares\auth_middleware.py", line 21, in __call__
+    await response(scope, receive, send)
+  File "C:\Users\User\projects\venv\Lib\site-packages\starlette\responses.py", line 151, in __call__
+    await send(
+  File "C:\Users\User\projects\venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 342, in asgi_send
+    raise RuntimeError(msg % message_type)
+RuntimeError: Expected ASGI message 'websocket.accept', 'websocket.close', or 'websocket.http.response.start' but got 'http.response.start'.
+[DEBUG|server|L307] 2024-03-09T23:28:00+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T23:28:00+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T23:28:00+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T23:28:00+0300: > Sec-WebSocket-Accept: jHAqNHIr21NWMPGB+T23XQ4ITYI=
+[DEBUG|server|L309] 2024-03-09T23:28:00+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T23:28:00+0300: > date: Sat, 09 Mar 2024 20:27:59 GMT
+[DEBUG|server|L309] 2024-03-09T23:28:00+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T23:28:00+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T23:28:00+0300: = connection is OPEN
+[DEBUG|protocol|L1497] 2024-03-09T23:28:00+0300: = connection is CLOSED
+[DEBUG|protocol|L1412] 2024-03-09T23:28:00+0300: ! failing connection with code 1006
+[DEBUG|protocol|L1319] 2024-03-09T23:28:00+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T23:28:00+0300: connection closed
+[DEBUG|protocol|L1172] 2024-03-09T23:28:10+0300: < TEXT 'О боже блять\r\nЭто работает' [47 bytes]
+[DEBUG|protocol|L1178] 2024-03-09T23:28:10+0300: > TEXT 'Clients 891eefdc-9271-4699-8915-dc2f6613e935: О...е блять\r\nЭто работает' [93 bytes]
+[DEBUG|protocol|L1262] 2024-03-09T23:28:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:28:15+0300: > PING 8b 8f 69 8c [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:28:15+0300: < PONG 8b 8f 69 8c [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:28:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:28:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:28:35+0300: > PING 19 c4 b5 8e [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:28:35+0300: < PONG 19 c4 b5 8e [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:28:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:28:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:28:55+0300: > PING 4d b7 a9 4f [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:28:55+0300: < PONG 4d b7 a9 4f [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:28:55+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:29:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1269] 2024-03-09T23:29:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:29:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:29:35+0300: > PING 51 5a 87 41 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:29:35+0300: < PONG 51 5a 87 41 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:29:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:29:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:29:55+0300: > PING 2b f6 93 fc [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:29:55+0300: < PONG 2b f6 93 fc [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:29:55+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:30:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:30:15+0300: > PING 59 13 58 ea [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:30:15+0300: < PONG 59 13 58 ea [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:30:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:30:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:30:35+0300: > PING '[\rTb' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:30:35+0300: < PONG '[\rTb' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:30:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:30:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:30:55+0300: > PING 18 dd 59 06 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:30:55+0300: < PONG 18 dd 59 06 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:30:55+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:31:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:31:15+0300: > PING 14 27 6b b5 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:31:15+0300: < PONG 14 27 6b b5 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:31:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:31:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:31:35+0300: > PING 83 de df 7e [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:31:35+0300: < PONG 83 de df 7e [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:31:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:31:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:31:55+0300: > PING 4b 65 65 f7 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:31:55+0300: < PONG 4b 65 65 f7 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:31:55+0300: % received keepalive pong
+[WARNING|basereload|L54] 2024-03-09T23:32:13+0300: StatReload detected changes in 'middlewares\auth_middleware.py'. Reloading...
+[DEBUG|protocol|L1262] 2024-03-09T23:32:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:32:15+0300: > PING 9d ac 1a 7b [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:32:15+0300: < PONG 9d ac 1a 7b [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:32:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:32:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:32:35+0300: > PING e6 a6 2c a6 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:32:35+0300: < PONG e6 a6 2c a6 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:32:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:32:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:32:55+0300: > PING 4c e7 fc ea [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:32:55+0300: < PONG 4c e7 fc ea [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:32:55+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:33:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:33:15+0300: > PING e2 a1 06 81 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:33:15+0300: < PONG e2 a1 06 81 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:33:15+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:33:35+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:33:35+0300: > PING d1 da 40 47 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:33:35+0300: < PONG d1 da 40 47 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:33:35+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:33:55+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:33:55+0300: > PING 1a 16 b9 44 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:33:55+0300: < PONG 1a 16 b9 44 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:33:55+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:34:15+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:34:15+0300: > PING 06 97 67 6f [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:34:15+0300: < PONG 06 97 67 6f [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:34:15+0300: % received keepalive pong
+[INFO|config|L330] 2024-03-09T23:34:22+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T23:34:22+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T23:34:22+0300: Started reloader process [23008] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T23:34:23+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:34:23+0300: Started server process [18096]
+[INFO|on|L46] 2024-03-09T23:34:23+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:34:23+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:34:23+0300: Application startup complete.
+[INFO|server|L265] 2024-03-09T23:34:28+0300: Shutting down
+[INFO|server|L87] 2024-03-09T23:34:28+0300: Finished server process [18096]
+[INFO|basereload|L117] 2024-03-09T23:34:29+0300: Stopping reloader process [23008]
+[INFO|config|L330] 2024-03-09T23:34:30+0300: Will watch for changes in these directories: ['C:\\Users\\User\\projects\\fastProject\\src']
+[INFO|config|L562] 2024-03-09T23:34:30+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-09T23:34:30+0300: Started reloader process [25224] using StatReload
+[DEBUG|selector_events|L64] 2024-03-09T23:34:32+0300: Using selector: SelectSelector
+[INFO|server|L77] 2024-03-09T23:34:32+0300: Started server process [1288]
+[INFO|on|L46] 2024-03-09T23:34:32+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-09T23:34:32+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-09T23:34:32+0300: Application startup complete.
+[DEBUG|protocol|L256] 2024-03-09T23:34:38+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T23:34:38+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < sec-websocket-key: 6eeIbW7OsMpjxR2TQg3DPw==
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MWVlZmRjLTkyNzEtNDY5OS04OTE1LWRjMmY2NjEzZTkzNSIsImlhdCI6MTcxMDAxNTk0MiwiZXhwIjoxNzEwMDE5NTQyfQ.-t3g6wCPe-bOmrlmGpwvanngoavqGULtTgkE-3KRmXE
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-09T23:34:38+0300: < host: localhost:8000
+[DEBUG|auth_middleware|L39] 2024-03-09T23:34:38+0300: Request for curr user id
+[INFO|websockets_impl|L291] 2024-03-09T23:34:38+0300: ('127.0.0.1', 57223) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" [accepted]
+[DEBUG|server|L307] 2024-03-09T23:34:38+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-09T23:34:38+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-09T23:34:38+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-09T23:34:38+0300: > Sec-WebSocket-Accept: zkDejMZXVo95nwsVsVdiyRgpv8k=
+[DEBUG|server|L309] 2024-03-09T23:34:38+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-09T23:34:38+0300: > date: Sat, 09 Mar 2024 20:34:37 GMT
+[DEBUG|server|L309] 2024-03-09T23:34:38+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-09T23:34:38+0300: connection open
+[DEBUG|protocol|L357] 2024-03-09T23:34:38+0300: = connection is OPEN
+[DEBUG|main|L89] 2024-03-09T23:34:44+0300: aam
+[INFO|h11_impl|L482] 2024-03-09T23:34:44+0300: 127.0.0.1:57228 - "GET /9059d519-51d5-47a8-ad22-da2c78a0e074 HTTP/1.1" 200
+[DEBUG|log_middleware|L21] 2024-03-09T23:34:44+0300: {'protocol': 'http', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074', 'process_time': 0.001997709274291992}
+[DEBUG|protocol|L256] 2024-03-09T23:34:45+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-09T23:34:45+0300: < GET /9059d519-51d5-47a8-ad22-da2c78a0e074/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < host: localhost:8000
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < pragma: no-cache
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < cache-control: no-cache
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 YaBrowser/24.1.0.0 Safari/537.36
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < origin: http://127.0.0.1:8000
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < accept-encoding: gzip, deflate, br
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < accept-language: ru,en;q=0.9
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < sec-websocket-key: 4IEbXDgltC60JgNVHdN9ig==
+[DEBUG|server|L288] 2024-03-09T23:34:45+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[ERROR|auth_middleware|L20] 2024-03-09T23:34:45+0300: websocket Protocol: /9059d519-51d5-47a8-ad22-da2c78a0e074/ws No Authorization in headers
+[INFO|websockets_impl|L311] 2024-03-09T23:34:45+0300: ('127.0.0.1', 57239) - "WebSocket /9059d519-51d5-47a8-ad22-da2c78a0e074/ws" 403
+[DEBUG|log_middleware|L21] 2024-03-09T23:34:45+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 0.0}
+[DEBUG|server|L307] 2024-03-09T23:34:45+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-09T23:34:45+0300: > Date: Sat, 09 Mar 2024 20:34:45 GMT
+[DEBUG|server|L309] 2024-03-09T23:34:45+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-09T23:34:45+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-09T23:34:45+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-09T23:34:45+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-09T23:34:45+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-09T23:34:45+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-09T23:34:45+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-09T23:34:45+0300: connection closed
+[DEBUG|protocol|L1262] 2024-03-09T23:34:58+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:34:58+0300: > PING 06 0c a7 cd [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:34:58+0300: < PONG 06 0c a7 cd [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:34:58+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:35:18+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:35:18+0300: > PING f4 51 5e 12 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:35:18+0300: < PONG f4 51 5e 12 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:35:18+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:35:38+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:35:38+0300: > PING 58 ae c5 18 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:35:38+0300: < PONG 58 ae c5 18 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:35:38+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:35:58+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:35:58+0300: > PING df f7 dc 88 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:35:58+0300: < PONG df f7 dc 88 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:35:58+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:36:18+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:36:18+0300: > PING 4e 7f e9 86 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:36:18+0300: < PONG 4e 7f e9 86 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:36:18+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:36:38+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:36:38+0300: > PING 8d 62 aa 5d [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:36:38+0300: < PONG 8d 62 aa 5d [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:36:38+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-09T23:36:58+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-09T23:36:58+0300: > PING 11 cc ea 68 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-09T23:36:58+0300: < PONG 11 cc ea 68 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-09T23:36:58+0300: % received keepalive pong
+[WARNING|basereload|L54] 2024-03-09T23:37:10+0300: StatReload detected changes in 'middlewares\log_middleware.py'. Reloading...
+[INFO|server|L265] 2024-03-09T23:37:14+0300: Shutting down
+[DEBUG|protocol|L1412] 2024-03-09T23:37:14+0300: ! failing connection with code 1012
+[DEBUG|protocol|L1436] 2024-03-09T23:37:14+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-09T23:37:14+0300: > CLOSE 1012 (service restart) [2 bytes]
+[DEBUG|protocol|L1497] 2024-03-09T23:37:14+0300: = connection is CLOSED
+[DEBUG|protocol|L1319] 2024-03-09T23:37:14+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-09T23:37:14+0300: connection closed
+[DEBUG|log_middleware|L21] 2024-03-09T23:37:14+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 155.96431851387024}
+[INFO|server|L87] 2024-03-09T23:37:14+0300: Finished server process [1288]

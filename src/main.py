@@ -11,15 +11,19 @@ from config import settings
 from fastapi.responses import HTMLResponse
 from logger import setup_logging
 from src.authorization.dependency_auth import get_current_user
-from src.connections.connection_manager import ConversationConnectionManagersHandler, conv_managers_handler
-from src.dependencies.repo_providers_dependency import message_repo_provider, conv_repo_provider
+from src.connections.connection_manager import (
+    ConversationConnectionManagersHandler,
+    conv_managers_handler,
+)
+from src.dependencies.repo_providers_dependency import (
+    message_repo_provider,
+    conv_repo_provider,
+)
 from starlette.middleware import Middleware
 from middlewares.log_middleware import ASGIMiddleware
+from middlewares.auth_middleware import WebSocketAuthMiddleware
 
-middleware = [
-    Middleware(ASGIMiddleware),
-]
-
+middleware = [Middleware(ASGIMiddleware), Middleware(WebSocketAuthMiddleware)]
 
 html = """
 <!DOCTYPE html>
@@ -61,16 +65,12 @@ html = """
 </html>
 """
 
-
 config = setup_logging()
 log = logging.getLogger("__name__")
 
 logging.getLogger("sqlalchemy.orm").setLevel(logging.ERROR)
 logging.getLogger("sqlalchemy.engine").setLevel(logging.ERROR)
 logging.getLogger("sqlalchemy.dialects").setLevel(logging.ERROR)
-
-
-
 
 app = FastAPI(middleware=middleware)
 app.include_router(
@@ -79,38 +79,41 @@ app.include_router(
 )
 
 
-
-
 # Testing
 @app.get("/{conv_id}")
-async def get(conv_id: uuid.UUID, current_user: get_current_user, conv_repo: conv_repo_provider,):
+async def get(
+    current_user: get_current_user,
+    conv_id: uuid.UUID,
+    conv_repo: conv_repo_provider,
+):
     # await conv_repo.get_conv_messages(conv_id=conv_id)
-    log.debug("aam")
     return HTMLResponse(html)
 
 
 # Testing. Acces_token header added for testing in /docs
-# @app.websocket("/{conv_id}/ws")
-# async def websocket_endpoint(
-#     conv_id: uuid.UUID,
-#     websocket: WebSocket,
-#     message_repo: message_repo_provider,
-# ):
-#     manager = await conv_managers_handler.get_manager(key=conv_id)
-#     await manager.connect(websocket)
-#     try:
-#         while True:
-#             data = await websocket.receive_text()
-#             message_data = {
-#                 "conversation_fk": conv_id,
-#                 "content": data,
-#                 "user_fk": ,
-#             }
-#             await message_repo.create(message_data)
-#             await manager.broadcast(f"Clients #{current_user.name}: {data}")
-#     except WebSocketDisconnect:
-#         manager.disconnect(websocket)
-#         await manager.broadcast(f"Clients #{current_user.name} left the chat")
+@app.websocket("/{conv_id}/ws")
+async def websocket_endpoint(
+    conv_id: uuid.UUID,
+    websocket: WebSocket,
+    message_repo: message_repo_provider,
+):
+    manager = await conv_managers_handler.get_manager(key=conv_id)
+    await manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            message_data = {
+                "conversation_fk": conv_id,
+                "content": data,
+                "user_fk": websocket.scope.get("user_id"),
+            }
+            await message_repo.create(message_data)
+            await manager.broadcast(f"Clients {websocket.scope.get('user_id')}: {data}")
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+        await manager.broadcast(
+            f"Clients {websocket.scope.get('user_id')}: left the chat"
+        )
 
 
 if __name__ == "__main__":

@@ -7,6 +7,7 @@ from passlib.context import CryptContext
 
 from src.authorization.exceptions import PasswordVerificationError
 from src.config import settings
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 

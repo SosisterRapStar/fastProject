@@ -19,6 +19,7 @@ async def get_conv_repo(session: session_dep) -> ConversationRepository:
 async def get_message_repo(session: session_dep) -> MessageRepository:
     return MessageRepository(session=session)
 
+
 user_repo_provider = Annotated[UserRepository, Depends(get_user_repo)]
 conv_repo_provider = Annotated[ConversationRepository, Depends(get_conv_repo)]
 message_repo_provider = Annotated[MessageRepository, Depends(get_message_repo)]

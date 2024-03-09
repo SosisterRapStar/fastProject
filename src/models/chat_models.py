@@ -26,7 +26,9 @@ class Message(Base):
     conversation_fk: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("conversation.id", ondelete="Cascade")
     )
-    user_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id", ondelete="Cascade"))
+    user_fk: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("user.id", ondelete="Cascade")
+    )
     created_at: Mapped[created_at_timestamp]
     updated_at: Mapped[updated_at_timestamp]
 
@@ -40,15 +42,21 @@ class Conversation(Base):
         back_populates="admin_convs",
         uselist=False,
     )
-    user_admin_fk: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
+    user_admin_fk: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("user.id", ondelete="CASCADE")
+    )
 
     messages: Mapped[list["Message"]] = relationship(
-        back_populates="in_conversation", uselist=True, cascade="all, delete",
-        passive_deletes=True
+        back_populates="in_conversation",
+        uselist=True,
+        cascade="all, delete",
+        passive_deletes=True,
     )
 
     asoc_users: Mapped[list["UserConversationSecondary"]] = relationship(
-        back_populates="conversation", uselist=True, cascade="all, delete",
+        back_populates="conversation",
+        uselist=True,
+        cascade="all, delete",
         passive_deletes=True,
     )
 
@@ -68,8 +76,12 @@ class UserConversationSecondary(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
     edit_permission: Mapped[bool] = mapped_column(default=False, server_default="False")
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
-    conversation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("conversation.id", ondelete="CASCADE"))
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("user.id", ondelete="CASCADE")
+    )
+    conversation_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("conversation.id", ondelete="CASCADE")
+    )
 
     conversation: Mapped["Conversation"] = relationship(back_populates="asoc_users")
     user: Mapped["User"] = relationship(back_populates="asoc_conversations")

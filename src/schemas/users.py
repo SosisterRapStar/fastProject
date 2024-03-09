@@ -43,14 +43,13 @@ class CreateUser(BaseUser, BaseRequestUser):
     password: str | None = None
     password_repeat: str = None
 
-
     # password matching verification can be performed on the frontend
-    @model_validator(mode='after')
-    def check_passwords_match(self) -> 'CreateUser':
+    @model_validator(mode="after")
+    def check_passwords_match(self) -> "CreateUser":
         pw1 = self.password
         pw2 = self.password_repeat
         if pw1 is not None and pw2 is not None and pw1 != pw2:
-            raise ValueError('Passwords do nah match')
+            raise ValueError("Passwords do nah match")
         return self
 
 

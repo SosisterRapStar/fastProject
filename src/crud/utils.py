@@ -13,9 +13,9 @@ class NameOrId(TypedDict):
 
 
 async def get_object(
-        async_session: AsyncSession,
-        model: Type[Base],
-        **criteries: Unpack[NameOrId | None],
+    async_session: AsyncSession,
+    model: Type[Base],
+    **criteries: Unpack[NameOrId | None],
 ) -> Base | list[Base]:
     if "name" not in criteries.keys() and "id" not in criteries.keys():
         stmt = select(model)
@@ -34,19 +34,16 @@ async def get_object(
 async def get_statement(model: Type[Base], criterias: dict[str, str]):
     first_key = next(iter(criterias))
     value = criterias[first_key]  # HOROSHAYA RABOTA
-    stmt = (
-        select(model).
-        where(getattr(model, first_key) == value)
-    )
+    stmt = select(model).where(getattr(model, first_key) == value)
     return stmt
 
 
 async def update_object(
-        async_session: AsyncSession,
-        model: Type[Base],
-        data: dict,
-        model_object: Base | None = None,
-        **criteries: Unpack[NameOrId],
+    async_session: AsyncSession,
+    model: Type[Base],
+    data: dict,
+    model_object: Base | None = None,
+    **criteries: Unpack[NameOrId],
 ) -> Base:
     if model_object:
         return await update_using_object(model_object, data)
@@ -60,7 +57,9 @@ async def update_object(
     return result.scalar_one()
 
 
-async def get_update_statement(model: Type[Base], data: dict, criterias: dict[str, str]):
+async def get_update_statement(
+    model: Type[Base], data: dict, criterias: dict[str, str]
+):
     first_key = next(iter(criterias))
     value = criterias[first_key]  # HOROSHAYA RABOTA
     stmt = (
@@ -79,9 +78,9 @@ async def update_using_object(model_object: Base, data: dict):
 
 
 async def delete_obj(
-        async_session: AsyncSession,
-        model: Type[Base],
-        **criterias: Unpack[NameOrId],
+    async_session: AsyncSession,
+    model: Type[Base],
+    **criterias: Unpack[NameOrId],
 ) -> None:
     if "name" not in criterias.keys() and "id" not in criterias.keys():
         raise ValueError("You must specify id or name")
@@ -94,9 +93,5 @@ async def delete_obj(
 async def get_delete_statement(model: Type[Base], criterias: dict[str, str]):
     first_key = next(iter(criterias))
     value = criterias[first_key]  # HOROSHAYA RABOTA
-    stmt = (
-        delete(model).
-        where(getattr(model, first_key) == value).
-        returning(model.id)
-    )
+    stmt = delete(model).where(getattr(model, first_key) == value).returning(model.id)
     return stmt

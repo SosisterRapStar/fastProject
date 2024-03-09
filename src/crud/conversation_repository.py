@@ -33,7 +33,9 @@ class ConversationRepository(CRUDAlchemyRepository):
 
     async def delete(self, current_user_id, **crtieries):
 
-        await self.get_permissions(current_user_id=current_user_id, conv_id=crtieries['id'])
+        await self.get_permissions(
+            current_user_id=current_user_id, conv_id=crtieries["id"]
+        )
         return await super().delete(**crtieries)
 
     async def get_conv_with_admin_info(self, conv_id: uuid.UUID) -> Conversation:
@@ -72,8 +74,13 @@ class ConversationRepository(CRUDAlchemyRepository):
         await self._session.commit()
         return new_conv
 
-    async def add_user(self, current_user_id: uuid.UUID, user_id: uuid.UUID, conv_id: uuid.UUID,
-                       permission: bool) -> None:
+    async def add_user(
+        self,
+        current_user_id: uuid.UUID,
+        user_id: uuid.UUID,
+        conv_id: uuid.UUID,
+        permission: bool,
+    ) -> None:
 
         await self.get_permissions(current_user_id=current_user_id, conv_id=conv_id)
 
@@ -83,11 +90,11 @@ class ConversationRepository(CRUDAlchemyRepository):
         self._session.add(new_asoc)
         await self._session.commit()
 
-    async def get_permissions(self,  current_user_id: uuid.UUID, conv_id: uuid.UUID):
-        stmt = (select(UserConversationSecondary.edit_permission).
-                where(
-            UserConversationSecondary.user_id == current_user_id and
-            UserConversationSecondary.conversation_id == conv_id))
+    async def get_permissions(self, current_user_id: uuid.UUID, conv_id: uuid.UUID):
+        stmt = select(UserConversationSecondary.edit_permission).where(
+            UserConversationSecondary.user_id == current_user_id
+            and UserConversationSecondary.conversation_id == conv_id
+        )
 
         try:
             res: Result = await self._session.execute(stmt)
@@ -96,6 +103,3 @@ class ConversationRepository(CRUDAlchemyRepository):
             raise RecordNotFoundError()
         if not row:
             raise NoEditPermissionsError()
-
-
-
