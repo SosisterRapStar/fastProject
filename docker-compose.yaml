@@ -1,0 +1,28 @@
+version: '1'
+
+services:
+  db:
+    image: postgres:12
+    container_name: db_app
+    env_file:
+      - .env-docker-comm
+    volumes:
+      - ~/fast_app/database:/var/lib/postgresql/data
+  
+
+  fast_app:
+    build: 
+      context: .
+    env_file:
+      - .env-docker-comm
+    container_name: fast_app
+    ports:
+      - 8000:8000
+    
+    depends_on:
+      - db
+
+    command: ["/app/alembic_script.sh"]
+
+    volumes:
+      - .:/app

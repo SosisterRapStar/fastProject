@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
-from src.authorization.dependency_auth import get_current_user_id
+from src.authorization.dependency_auth import get_current_user_id, get_current_user
 from src.connections.connection_manager import (
     ConnectionManagerIsNotEmptyError,
     ConnectionManagerNotFoundError,
@@ -45,12 +45,12 @@ async def get_all_conversations(conv_repo: conv_repo_provider):
     response_model=ConversationResponse,
 )
 async def create_conversation(
-    user_id: get_current_user_id,
+    user: get_current_user,
     conv_repo: conv_repo_provider,
     conversation: ConversationRequest,
 ):
     conv_dict = conversation.model_dump()
-    conv_dict.update({"user_admin_fk": user_id})
+    conv_dict.update({"user_admin_fk": user.id})
 
     return await conv_repo.create(conv_dict)
 

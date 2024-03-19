@@ -418,3 +418,244 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 [ERROR|websockets_impl|L276] 2024-03-10T00:30:17+0300: ASGI callable returned without sending handshake.
 [ERROR|dependency_auth|L53] 2024-03-10T00:30:25+0300: Non authorized user
 [ERROR|websockets_impl|L276] 2024-03-10T00:30:25+0300: ASGI callable returned without sending handshake.
+[ERROR|h11_impl|L417] 2024-03-10T14:04:20+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/vanya/fastProject/src/middlewares/log_middleware.py", line 13, in __call__
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 299, in app
+    raise e
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/vanya/fastProject/src/routers/users.py", line 64, in get_users
+    return await user_repo.get()
+  File "/home/vanya/fastProject/src/crud/repo_abstract.py", line 50, in get
+    res = await get_object(
+  File "/home/vanya/fastProject/src/crud/utils.py", line 22, in get_object
+    models = await async_session.scalars(stmt)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 565, in scalars
+    result = await self.execute(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 452, in execute
+    result = await greenlet_spawn(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 197, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2181, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2050, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1144, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3258, in connect
+    return self._connection_cls(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3282, in raw_connection
+    return self.pool.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 168, in _do_get
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+    return self._create_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 937, in connect
+    await_only(creator_fn(*arg, **kw)),
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 127, in await_only
+    return current.driver.switch(awaitable)  # type: ignore[no-any-return]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 192, in greenlet_spawn
+    value = await result
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connection.py", line 2329, in connect
+    return await connect_utils._connect(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 991, in _connect
+    conn = await _connect_addr(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 833, in _connect_addr
+    return await __connect_addr(params_retry, False, *args)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 876, in __connect_addr
+    await connected
+asyncpg.exceptions.InvalidPasswordError: password authentication failed for user "postgres"
+[ERROR|h11_impl|L417] 2024-03-10T14:18:32+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/vanya/fastProject/src/middlewares/log_middleware.py", line 13, in __call__
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 299, in app
+    raise e
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/vanya/fastProject/src/routers/conversations.py", line 40, in get_all_conversations
+    return await conv_repo.get()
+  File "/home/vanya/fastProject/src/crud/repo_abstract.py", line 50, in get
+    res = await get_object(
+  File "/home/vanya/fastProject/src/crud/utils.py", line 22, in get_object
+    models = await async_session.scalars(stmt)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 565, in scalars
+    result = await self.execute(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 452, in execute
+    result = await greenlet_spawn(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 197, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2181, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2050, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1144, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3258, in connect
+    return self._connection_cls(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3282, in raw_connection
+    return self.pool.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 168, in _do_get
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+    return self._create_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 937, in connect
+    await_only(creator_fn(*arg, **kw)),
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 127, in await_only
+    return current.driver.switch(awaitable)  # type: ignore[no-any-return]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 192, in greenlet_spawn
+    value = await result
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connection.py", line 2329, in connect
+    return await connect_utils._connect(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 991, in _connect
+    conn = await _connect_addr(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 833, in _connect_addr
+    return await __connect_addr(params_retry, False, *args)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 876, in __connect_addr
+    await connected
+asyncpg.exceptions.InvalidPasswordError: password authentication failed for user "postgres"
+[WARNING|bcrypt|L622] 2024-03-10T14:56:59+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[WARNING|basereload|L54] 2024-03-10T15:00:31+0300: StatReload detected changes in 'routers/conversations.py'. Reloading...
+[ERROR|dependency_auth|L53] 2024-03-10T15:00:59+0300: Non authorized user
+[WARNING|bcrypt|L622] 2024-03-10T16:55:32+0000: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[WARNING|bcrypt|L622] 2024-03-19T17:54:49+0000: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'

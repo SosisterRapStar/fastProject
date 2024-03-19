@@ -24,6 +24,7 @@ class DBSettings(BaseSettings):
         password=os.getenv("DB_PASSWORD"),
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
+        port = int(os.getenv("DB_PORT"))
     )
     echo_mode: bool = DEBUG_MODE
 
@@ -31,7 +32,7 @@ class DBSettings(BaseSettings):
 class SecuritySettings(BaseSettings):
     JWT_SECRET: str = os.getenv("JWT_SECRET")
     JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM")
-    ACCES_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCES_TOKEN_EXPIRE_MINUTES"))
+    ACCES_TOKEN_EXPIRE_MINUTES: int = 60
 
 
 class Settings(BaseSettings):

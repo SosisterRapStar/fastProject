@@ -2625,3 +2625,798 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 [DEBUG|log_middleware|L17] 2024-03-10T00:30:59+0300: {'protocol': 'websocket', 'path': '/9059d519-51d5-47a8-ad22-da2c78a0e074/ws', 'process_time': 70.62180972099304}
 [INFO|server|L87] 2024-03-10T00:30:59+0300: Finished server process [17440]
 [INFO|basereload|L117] 2024-03-10T00:30:59+0300: Stopping reloader process [24916]
+[INFO|config|L330] 2024-03-10T14:03:49+0300: Will watch for changes in these directories: ['/home/vanya/fastProject/src']
+[INFO|config|L562] 2024-03-10T14:03:49+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T14:03:49+0300: Started reloader process [12623] using StatReload
+[DEBUG|selector_events|L54] 2024-03-10T14:03:50+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T14:03:50+0300: Started server process [12631]
+[INFO|on|L46] 2024-03-10T14:03:50+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T14:03:50+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T14:03:50+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-10T14:04:07+0300: 127.0.0.1:55432 - "GET / HTTP/1.1" 404
+[DEBUG|log_middleware|L17] 2024-03-10T14:04:07+0300: {'protocol': 'http', 'path': '/', 'process_time': 0.0012674331665039062}
+[INFO|h11_impl|L482] 2024-03-10T14:04:07+0300: 127.0.0.1:55432 - "GET /favicon.ico HTTP/1.1" 404
+[DEBUG|log_middleware|L17] 2024-03-10T14:04:07+0300: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.0010409355163574219}
+[INFO|h11_impl|L482] 2024-03-10T14:04:10+0300: 127.0.0.1:55432 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:04:10+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0008111000061035156}
+[INFO|h11_impl|L482] 2024-03-10T14:04:11+0300: 127.0.0.1:55432 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:04:11+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.01880025863647461}
+[INFO|h11_impl|L482] 2024-03-10T14:04:11+0300: 127.0.0.1:55432 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:04:11+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0006687641143798828}
+[INFO|h11_impl|L482] 2024-03-10T14:04:11+0300: 127.0.0.1:55432 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:04:11+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0010991096496582031}
+[INFO|h11_impl|L482] 2024-03-10T14:04:20+0300: 127.0.0.1:55446 - "GET /api/v1/users/ HTTP/1.1" 500
+[ERROR|h11_impl|L417] 2024-03-10T14:04:20+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/vanya/fastProject/src/middlewares/log_middleware.py", line 13, in __call__
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 299, in app
+    raise e
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/vanya/fastProject/src/routers/users.py", line 64, in get_users
+    return await user_repo.get()
+  File "/home/vanya/fastProject/src/crud/repo_abstract.py", line 50, in get
+    res = await get_object(
+  File "/home/vanya/fastProject/src/crud/utils.py", line 22, in get_object
+    models = await async_session.scalars(stmt)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 565, in scalars
+    result = await self.execute(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 452, in execute
+    result = await greenlet_spawn(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 197, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2181, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2050, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1144, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3258, in connect
+    return self._connection_cls(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3282, in raw_connection
+    return self.pool.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 168, in _do_get
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+    return self._create_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 937, in connect
+    await_only(creator_fn(*arg, **kw)),
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 127, in await_only
+    return current.driver.switch(awaitable)  # type: ignore[no-any-return]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 192, in greenlet_spawn
+    value = await result
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connection.py", line 2329, in connect
+    return await connect_utils._connect(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 991, in _connect
+    conn = await _connect_addr(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 833, in _connect_addr
+    return await __connect_addr(params_retry, False, *args)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 876, in __connect_addr
+    await connected
+asyncpg.exceptions.InvalidPasswordError: password authentication failed for user "postgres"
+[INFO|server|L265] 2024-03-10T14:17:26+0300: Shutting down
+[INFO|server|L87] 2024-03-10T14:17:26+0300: Finished server process [12631]
+[INFO|basereload|L117] 2024-03-10T14:17:26+0300: Stopping reloader process [12623]
+[INFO|config|L330] 2024-03-10T14:18:15+0300: Will watch for changes in these directories: ['/home/vanya/fastProject/src']
+[INFO|config|L562] 2024-03-10T14:18:15+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T14:18:15+0300: Started reloader process [15372] using StatReload
+[DEBUG|selector_events|L54] 2024-03-10T14:18:17+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T14:18:17+0300: Started server process [15380]
+[INFO|on|L46] 2024-03-10T14:18:17+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T14:18:17+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T14:18:17+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-10T14:18:20+0300: 127.0.0.1:46698 - "GET / HTTP/1.1" 404
+[DEBUG|log_middleware|L17] 2024-03-10T14:18:20+0300: {'protocol': 'http', 'path': '/', 'process_time': 0.0010573863983154297}
+[INFO|h11_impl|L482] 2024-03-10T14:18:24+0300: 127.0.0.1:46698 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:18:24+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0007898807525634766}
+[INFO|h11_impl|L482] 2024-03-10T14:18:24+0300: 127.0.0.1:46698 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:18:24+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0198214054107666}
+[INFO|h11_impl|L482] 2024-03-10T14:18:32+0300: 127.0.0.1:46712 - "GET /api/v1/conversations/ HTTP/1.1" 500
+[ERROR|h11_impl|L417] 2024-03-10T14:18:32+0300: Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/vanya/fastProject/src/middlewares/log_middleware.py", line 13, in __call__
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/starlette/routing.py", line 74, in app
+    response = await func(request)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 299, in app
+    raise e
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/vanya/fastProject/src/routers/conversations.py", line 40, in get_all_conversations
+    return await conv_repo.get()
+  File "/home/vanya/fastProject/src/crud/repo_abstract.py", line 50, in get
+    res = await get_object(
+  File "/home/vanya/fastProject/src/crud/utils.py", line 22, in get_object
+    models = await async_session.scalars(stmt)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 565, in scalars
+    result = await self.execute(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 452, in execute
+    result = await greenlet_spawn(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 197, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2181, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2050, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1144, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3258, in connect
+    return self._connection_cls(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3282, in raw_connection
+    return self.pool.connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 168, in _do_get
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+    return self._create_connection()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 937, in connect
+    await_only(creator_fn(*arg, **kw)),
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 127, in await_only
+    return current.driver.switch(awaitable)  # type: ignore[no-any-return]
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 192, in greenlet_spawn
+    value = await result
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connection.py", line 2329, in connect
+    return await connect_utils._connect(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 991, in _connect
+    conn = await _connect_addr(
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 833, in _connect_addr
+    return await __connect_addr(params_retry, False, *args)
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/asyncpg/connect_utils.py", line 876, in __connect_addr
+    await connected
+asyncpg.exceptions.InvalidPasswordError: password authentication failed for user "postgres"
+[INFO|server|L265] 2024-03-10T14:19:16+0300: Shutting down
+[INFO|server|L87] 2024-03-10T14:19:16+0300: Finished server process [15380]
+[INFO|basereload|L117] 2024-03-10T14:19:16+0300: Stopping reloader process [15372]
+[INFO|config|L330] 2024-03-10T14:34:01+0300: Will watch for changes in these directories: ['/home/vanya/fastProject/src']
+[INFO|config|L562] 2024-03-10T14:34:01+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T14:34:01+0300: Started reloader process [18265] using StatReload
+[DEBUG|selector_events|L54] 2024-03-10T14:34:03+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T14:34:03+0300: Started server process [18273]
+[INFO|on|L46] 2024-03-10T14:34:03+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T14:34:03+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T14:34:03+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-10T14:34:06+0300: 127.0.0.1:37166 - "GET / HTTP/1.1" 404
+[DEBUG|log_middleware|L17] 2024-03-10T14:34:06+0300: {'protocol': 'http', 'path': '/', 'process_time': 0.0016863346099853516}
+[INFO|h11_impl|L482] 2024-03-10T14:34:08+0300: 127.0.0.1:37166 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:34:08+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0008614063262939453}
+[INFO|h11_impl|L482] 2024-03-10T14:34:09+0300: 127.0.0.1:37166 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:34:09+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.018227100372314453}
+[INFO|h11_impl|L482] 2024-03-10T14:34:09+0300: 127.0.0.1:37166 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:34:09+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0007538795471191406}
+[INFO|h11_impl|L482] 2024-03-10T14:34:09+0300: 127.0.0.1:37166 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:34:09+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0011539459228515625}
+[INFO|h11_impl|L482] 2024-03-10T14:34:15+0300: 127.0.0.1:37178 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:34:15+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.04537487030029297}
+[INFO|h11_impl|L482] 2024-03-10T14:37:32+0300: 127.0.0.1:50384 - "GET / HTTP/1.1" 404
+[DEBUG|log_middleware|L17] 2024-03-10T14:37:32+0300: {'protocol': 'http', 'path': '/', 'process_time': 0.001703023910522461}
+[INFO|h11_impl|L482] 2024-03-10T14:37:35+0300: 127.0.0.1:50384 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:37:35+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0007240772247314453}
+[INFO|h11_impl|L482] 2024-03-10T14:37:35+0300: 127.0.0.1:50384 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:37:35+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0012857913970947266}
+[INFO|h11_impl|L482] 2024-03-10T14:37:35+0300: 127.0.0.1:50384 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:37:35+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0007181167602539062}
+[INFO|h11_impl|L482] 2024-03-10T14:37:35+0300: 127.0.0.1:50384 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:37:35+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0012516975402832031}
+[INFO|h11_impl|L482] 2024-03-10T14:56:32+0300: 127.0.0.1:37842 - "GET /api/v1/users/ HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:56:32+0300: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.0037856101989746094}
+[INFO|h11_impl|L482] 2024-03-10T14:56:53+0300: 127.0.0.1:56644 - "POST /api/v1/users/register HTTP/1.1" 422
+[DEBUG|log_middleware|L17] 2024-03-10T14:56:53+0300: {'protocol': 'http', 'path': '/api/v1/users/register', 'process_time': 0.09626150131225586}
+[DEBUG|security|L15] 2024-03-10T14:56:59+0300: password_hashing
+[WARNING|bcrypt|L622] 2024-03-10T14:56:59+0300: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/vanya/fastProject/myenv/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-10T14:56:59+0300: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-10T14:56:59+0300: 'bcrypt' backend lacks $2$ support, enabling workaround
+[INFO|h11_impl|L482] 2024-03-10T14:57:00+0300: 127.0.0.1:56656 - "POST /api/v1/users/register HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:57:00+0300: {'protocol': 'http', 'path': '/api/v1/users/register', 'process_time': 0.26850295066833496}
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_data with data[21:24]
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_name with data[25:33]
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_data with data[34:38]
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_name with data[39:44]
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_name with data[46:55]
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T14:57:13+0300: Calling on_field_name with data[57:70]
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T14:57:13+0300: Calling on_end with no data
+[DEBUG|security|L20] 2024-03-10T14:57:13+0300: password verifying
+[DEBUG|security|L36] 2024-03-10T14:57:14+0300: created acces token
+[DEBUG|security|L41] 2024-03-10T14:57:14+0300: created refresh token
+[INFO|h11_impl|L482] 2024-03-10T14:57:14+0300: 127.0.0.1:56646 - "POST /api/v1/auth/token HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T14:57:14+0300: {'protocol': 'http', 'path': '/api/v1/auth/token', 'process_time': 0.22884058952331543}
+[INFO|h11_impl|L482] 2024-03-10T14:58:27+0300: 127.0.0.1:37434 - "POST /api/v1/conversations/create/ HTTP/1.1" 422
+[DEBUG|log_middleware|L17] 2024-03-10T14:58:27+0300: {'protocol': 'http', 'path': '/api/v1/conversations/create/', 'process_time': 0.0012488365173339844}
+[WARNING|basereload|L54] 2024-03-10T15:00:31+0300: StatReload detected changes in 'routers/conversations.py'. Reloading...
+[INFO|server|L265] 2024-03-10T15:00:31+0300: Shutting down
+[INFO|server|L87] 2024-03-10T15:00:31+0300: Finished server process [18273]
+[DEBUG|selector_events|L54] 2024-03-10T15:00:32+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T15:00:32+0300: Started server process [22775]
+[INFO|on|L46] 2024-03-10T15:00:32+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T15:00:32+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T15:00:32+0300: Application startup complete.
+[INFO|server|L265] 2024-03-10T15:00:50+0300: Shutting down
+[INFO|server|L87] 2024-03-10T15:00:50+0300: Finished server process [22775]
+[INFO|basereload|L117] 2024-03-10T15:00:50+0300: Stopping reloader process [18265]
+[INFO|config|L330] 2024-03-10T15:00:53+0300: Will watch for changes in these directories: ['/home/vanya/fastProject/src']
+[INFO|config|L562] 2024-03-10T15:00:53+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T15:00:53+0300: Started reloader process [22864] using StatReload
+[DEBUG|selector_events|L54] 2024-03-10T15:00:54+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T15:00:54+0300: Started server process [22866]
+[INFO|on|L46] 2024-03-10T15:00:54+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T15:00:54+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T15:00:54+0300: Application startup complete.
+[DEBUG|dependency_auth|L42] 2024-03-10T15:00:59+0300: Request for curr user id
+[ERROR|dependency_auth|L53] 2024-03-10T15:00:59+0300: Non authorized user
+[INFO|h11_impl|L482] 2024-03-10T15:00:59+0300: 127.0.0.1:48558 - "POST /api/v1/conversations/create/ HTTP/1.1" 401
+[DEBUG|log_middleware|L17] 2024-03-10T15:00:59+0300: {'protocol': 'http', 'path': '/api/v1/conversations/create/', 'process_time': 0.00422978401184082}
+[DEBUG|dependency_auth|L42] 2024-03-10T15:01:28+0300: Request for curr user id
+[DEBUG|dependency_auth|L32] 2024-03-10T15:01:28+0300: User 40219e35-cd2d-444d-a222-d280c4b881d7 authenticated
+[INFO|h11_impl|L482] 2024-03-10T15:01:28+0300: 127.0.0.1:41386 - "POST /api/v1/conversations/create/ HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T15:01:28+0300: {'protocol': 'http', 'path': '/api/v1/conversations/create/', 'process_time': 0.05662941932678223}
+[DEBUG|protocol|L256] 2024-03-10T15:01:53+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T15:01:53+0300: < GET /12670677-2f69-4160-b6d3-e86ae2df5990/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < sec-websocket-key: gedhdGmAj0bLNeyOqcXJqg==
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQwMjE5ZTM1LWNkMmQtNDQ0ZC1hMjIyLWQyODBjNGI4ODFkNyIsImlhdCI6MTcxMDA3MTgzNCwiZXhwIjoxNzEwMDc1NDM0fQ.oDSL7Vll-vQWGn_VRWIHzNtOnogjeaVXESmNQw5hK-s
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T15:01:53+0300: < host: localhost:8000
+[INFO|websockets_impl|L307] 2024-03-10T15:01:53+0300: ('127.0.0.1', 59636) - "WebSocket /12670677-2f69-4160-b6d3-e86ae2df5990/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T15:01:53+0300: {'protocol': 'websocket', 'path': '/12670677-2f69-4160-b6d3-e86ae2df5990/ws', 'process_time': 0.0003979206085205078}
+[DEBUG|server|L307] 2024-03-10T15:01:53+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T15:01:53+0300: > Date: Sun, 10 Mar 2024 12:01:53 GMT
+[DEBUG|server|L309] 2024-03-10T15:01:53+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T15:01:53+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T15:01:53+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T15:01:53+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T15:01:53+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T15:01:53+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T15:01:53+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T15:01:53+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T15:02:01+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T15:02:01+0300: < GET /12670677-2f69-4160-b6d3-e86ae2df5990/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < sec-websocket-key: hxetn1hH+qmyhCsYMDKF3g==
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQwMjE5ZTM1LWNkMmQtNDQ0ZC1hMjIyLWQyODBjNGI4ODFkNyIsImlhdCI6MTcxMDA3MTgzNCwiZXhwIjoxNzEwMDc1NDM0fQ.oDSL7Vll-vQWGn_VRWIHzNtOnogjeaVXESmNQw5hK-s
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T15:02:01+0300: < host: localhost:8000
+[INFO|websockets_impl|L307] 2024-03-10T15:02:01+0300: ('127.0.0.1', 59638) - "WebSocket /12670677-2f69-4160-b6d3-e86ae2df5990/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T15:02:01+0300: {'protocol': 'websocket', 'path': '/12670677-2f69-4160-b6d3-e86ae2df5990/ws', 'process_time': 0.0001652240753173828}
+[DEBUG|server|L307] 2024-03-10T15:02:01+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T15:02:01+0300: > Date: Sun, 10 Mar 2024 12:02:01 GMT
+[DEBUG|server|L309] 2024-03-10T15:02:01+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T15:02:01+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T15:02:01+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T15:02:01+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T15:02:01+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T15:02:01+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T15:02:01+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T15:02:01+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T15:02:54+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T15:02:54+0300: < GET /chat/12670677-2f69-4160-b6d3-e86ae2df5990/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < sec-websocket-key: UIlk0+ftWf0+rvdOnKJ/OQ==
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQwMjE5ZTM1LWNkMmQtNDQ0ZC1hMjIyLWQyODBjNGI4ODFkNyIsImlhdCI6MTcxMDA3MTgzNCwiZXhwIjoxNzEwMDc1NDM0fQ.oDSL7Vll-vQWGn_VRWIHzNtOnogjeaVXESmNQw5hK-s
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T15:02:54+0300: < host: localhost:8000
+[INFO|websockets_impl|L307] 2024-03-10T15:02:54+0300: ('127.0.0.1', 51516) - "WebSocket /chat/12670677-2f69-4160-b6d3-e86ae2df5990/ws" 403
+[DEBUG|log_middleware|L17] 2024-03-10T15:02:54+0300: {'protocol': 'websocket', 'path': '/chat/12670677-2f69-4160-b6d3-e86ae2df5990/ws', 'process_time': 0.0003304481506347656}
+[DEBUG|server|L307] 2024-03-10T15:02:54+0300: > HTTP/1.1 403 Forbidden
+[DEBUG|server|L309] 2024-03-10T15:02:54+0300: > Date: Sun, 10 Mar 2024 12:02:54 GMT
+[DEBUG|server|L309] 2024-03-10T15:02:54+0300: > Content-Length: 0
+[DEBUG|server|L309] 2024-03-10T15:02:54+0300: > Content-Type: text/plain
+[DEBUG|server|L309] 2024-03-10T15:02:54+0300: > Connection: close
+[DEBUG|server|L311] 2024-03-10T15:02:54+0300: > [body] (0 bytes)
+[INFO|server|L229] 2024-03-10T15:02:54+0300: connection rejected (403 Forbidden)
+[DEBUG|protocol|L1352] 2024-03-10T15:02:54+0300: x closing TCP connection
+[DEBUG|protocol|L1497] 2024-03-10T15:02:54+0300: = connection is CLOSED
+[INFO|server|L264] 2024-03-10T15:02:54+0300: connection closed
+[DEBUG|protocol|L256] 2024-03-10T15:03:06+0300: = connection is CONNECTING
+[DEBUG|server|L286] 2024-03-10T15:03:06+0300: < GET /api/v1/chat/12670677-2f69-4160-b6d3-e86ae2df5990/ws HTTP/1.1
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < sec-websocket-version: 13
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < sec-websocket-key: +ezwQzKp0bXqeZSga+1RAg==
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < connection: Upgrade
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < upgrade: websocket
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQwMjE5ZTM1LWNkMmQtNDQ0ZC1hMjIyLWQyODBjNGI4ODFkNyIsImlhdCI6MTcxMDA3MTgzNCwiZXhwIjoxNzEwMDc1NDM0fQ.oDSL7Vll-vQWGn_VRWIHzNtOnogjeaVXESmNQw5hK-s
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < sec-websocket-extensions: permessage-deflate; client_max_window_bits
+[DEBUG|server|L288] 2024-03-10T15:03:06+0300: < host: localhost:8000
+[DEBUG|dependency_auth|L42] 2024-03-10T15:03:06+0300: Request for curr user id
+[DEBUG|dependency_auth|L19] 2024-03-10T15:03:06+0300: User 40219e35-cd2d-444d-a222-d280c4b881d7 authenticated
+[INFO|websockets_impl|L287] 2024-03-10T15:03:06+0300: ('127.0.0.1', 57712) - "WebSocket /api/v1/chat/12670677-2f69-4160-b6d3-e86ae2df5990/ws" [accepted]
+[DEBUG|server|L307] 2024-03-10T15:03:06+0300: > HTTP/1.1 101 Switching Protocols
+[DEBUG|server|L309] 2024-03-10T15:03:06+0300: > Upgrade: websocket
+[DEBUG|server|L309] 2024-03-10T15:03:06+0300: > Connection: Upgrade
+[DEBUG|server|L309] 2024-03-10T15:03:06+0300: > Sec-WebSocket-Accept: B6XshNALXhISlj6ydSpUQwMIsk0=
+[DEBUG|server|L309] 2024-03-10T15:03:06+0300: > Sec-WebSocket-Extensions: permessage-deflate
+[DEBUG|server|L309] 2024-03-10T15:03:06+0300: > date: Sun, 10 Mar 2024 12:03:06 GMT
+[DEBUG|server|L309] 2024-03-10T15:03:06+0300: > server: uvicorn
+[INFO|server|L642] 2024-03-10T15:03:06+0300: connection open
+[DEBUG|protocol|L357] 2024-03-10T15:03:06+0300: = connection is OPEN
+[DEBUG|protocol|L1172] 2024-03-10T15:03:11+0300: < TEXT 'Ой блять иди нахуй ' [34 bytes]
+[DEBUG|protocol|L1178] 2024-03-10T15:03:11+0300: > TEXT 'Clients NEW: Ой блять иди нахуй ' [47 bytes]
+[DEBUG|protocol|L1262] 2024-03-10T15:03:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:03:26+0300: > PING 88 61 2d 5b [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:03:26+0300: < PONG 88 61 2d 5b [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:03:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:03:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:03:46+0300: > PING 4b 34 8a 21 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:03:46+0300: < PONG 4b 34 8a 21 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:03:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:04:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:04:06+0300: > PING fa e4 4b cf [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:04:06+0300: < PONG fa e4 4b cf [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:04:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:04:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:04:26+0300: > PING ab e0 78 0d [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:04:26+0300: < PONG ab e0 78 0d [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:04:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:04:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:04:46+0300: > PING b8 0a 6b 37 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:04:46+0300: < PONG b8 0a 6b 37 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:04:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:05:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:05:06+0300: > PING 'H\x1e5_' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:05:06+0300: < PONG 'H\x1e5_' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:05:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:05:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:05:26+0300: > PING 'LsFk' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:05:26+0300: < PONG 'LsFk' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:05:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:05:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:05:46+0300: > PING 97 72 53 2c [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:05:46+0300: < PONG 97 72 53 2c [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:05:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:06:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:06:06+0300: > PING 00 df 14 b1 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:06:06+0300: < PONG 00 df 14 b1 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:06:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:06:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:06:26+0300: > PING 0a e3 e1 6c [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:06:26+0300: < PONG 0a e3 e1 6c [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:06:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:06:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:06:46+0300: > PING 65 05 b9 33 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:06:46+0300: < PONG 65 05 b9 33 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:06:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:07:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:07:06+0300: > PING 61 fa 08 8d [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:07:06+0300: < PONG 61 fa 08 8d [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:07:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:07:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:07:26+0300: > PING c5 25 2c 19 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:07:26+0300: < PONG c5 25 2c 19 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:07:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:07:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:07:46+0300: > PING 63 de e2 bd [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:07:46+0300: < PONG 63 de e2 bd [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:07:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:08:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:08:06+0300: > PING 3b a7 79 de [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:08:06+0300: < PONG 3b a7 79 de [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:08:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:08:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:08:26+0300: > PING 30 94 62 c4 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:08:26+0300: < PONG 30 94 62 c4 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:08:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:08:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:08:46+0300: > PING 48 1f f7 89 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:08:46+0300: < PONG 48 1f f7 89 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:08:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:09:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:09:06+0300: > PING 8b af 6b ce [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:09:06+0300: < PONG 8b af 6b ce [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:09:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:09:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:09:26+0300: > PING ed 72 f5 09 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:09:26+0300: < PONG ed 72 f5 09 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:09:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:09:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:09:46+0300: > PING 8d 4c a4 f8 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:09:46+0300: < PONG 8d 4c a4 f8 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:09:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:10:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:10:06+0300: > PING bb 3b 72 cf [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:10:06+0300: < PONG bb 3b 72 cf [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:10:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:10:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:10:26+0300: > PING 89 51 26 78 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:10:26+0300: < PONG 89 51 26 78 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:10:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:10:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:10:46+0300: > PING e9 9a 9e a9 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:10:46+0300: < PONG e9 9a 9e a9 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:10:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:11:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:11:06+0300: > PING 87 39 bc 4b [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:11:06+0300: < PONG 87 39 bc 4b [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:11:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:11:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:11:26+0300: > PING 78 d6 78 d1 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:11:26+0300: < PONG 78 d6 78 d1 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:11:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:11:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:11:46+0300: > PING ac 68 57 27 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:11:46+0300: < PONG ac 68 57 27 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:11:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:12:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:12:06+0300: > PING 72 31 c4 c5 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:12:06+0300: < PONG 72 31 c4 c5 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:12:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:12:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:12:26+0300: > PING c5 ac 80 a9 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:12:26+0300: < PONG c5 ac 80 a9 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:12:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:12:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:12:46+0300: > PING 46 6c 14 e4 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:12:46+0300: < PONG 46 6c 14 e4 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:12:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:13:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:13:06+0300: > PING dd 42 75 cc [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:13:06+0300: < PONG dd 42 75 cc [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:13:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:13:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:13:26+0300: > PING 31 a7 15 e3 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:13:26+0300: < PONG 31 a7 15 e3 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:13:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:13:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:13:46+0300: > PING 90 b1 90 44 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:13:46+0300: < PONG 90 b1 90 44 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:13:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:14:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:14:06+0300: > PING 2d 0b ab b3 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:14:06+0300: < PONG 2d 0b ab b3 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:14:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:14:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:14:26+0300: > PING 67 90 7c d1 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:14:26+0300: < PONG 67 90 7c d1 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:14:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:14:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:14:46+0300: > PING ce fd 4c bf [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:14:46+0300: < PONG ce fd 4c bf [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:14:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:15:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:15:06+0300: > PING 7b 78 c0 98 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:15:06+0300: < PONG 7b 78 c0 98 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:15:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:15:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:15:26+0300: > PING f3 b6 71 99 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:15:26+0300: < PONG f3 b6 71 99 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:15:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:15:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:15:46+0300: > PING ed 42 9b 03 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:15:46+0300: < PONG ed 42 9b 03 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:15:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:16:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:16:06+0300: > PING 51 94 a1 ea [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:16:06+0300: < PONG 51 94 a1 ea [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:16:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:16:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:16:26+0300: > PING 27 eb d0 d9 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:16:26+0300: < PONG 27 eb d0 d9 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:16:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:16:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:16:46+0300: > PING f5 d0 48 69 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:16:46+0300: < PONG f5 d0 48 69 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:16:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:17:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:17:06+0300: > PING 04 44 2b a6 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:17:06+0300: < PONG 04 44 2b a6 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:17:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:17:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:17:26+0300: > PING 45 b0 7f f8 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:17:26+0300: < PONG 45 b0 7f f8 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:17:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:17:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:17:46+0300: > PING 65 88 67 53 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:17:46+0300: < PONG 65 88 67 53 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:17:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:18:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:18:06+0300: > PING '\x7f\x16 \n' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:18:06+0300: < PONG '\x7f\x16 \n' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:18:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:18:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:18:26+0300: > PING 3d 74 8d 00 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:18:26+0300: < PONG 3d 74 8d 00 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:18:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:18:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:18:46+0300: > PING 82 9a 4e cb [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:18:46+0300: < PONG 82 9a 4e cb [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:18:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:19:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:19:06+0300: > PING c9 7b 8d 2b [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:19:06+0300: < PONG c9 7b 8d 2b [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:19:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:19:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:19:26+0300: > PING 15 7c 8c e0 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:19:26+0300: < PONG 15 7c 8c e0 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:19:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:19:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:19:46+0300: > PING ba 75 bc 66 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:19:46+0300: < PONG ba 75 bc 66 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:19:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:20:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:20:06+0300: > PING bc 25 e8 ab [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:20:06+0300: < PONG bc 25 e8 ab [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:20:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:20:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:20:26+0300: > PING 7b c3 21 ac [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:20:26+0300: < PONG 7b c3 21 ac [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:20:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:20:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:20:46+0300: > PING b8 94 3a 81 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:20:46+0300: < PONG b8 94 3a 81 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:20:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:21:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:21:06+0300: > PING 61 10 1d f7 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:21:06+0300: < PONG 61 10 1d f7 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:21:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:21:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:21:26+0300: > PING 0c 4d 69 f4 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:21:26+0300: < PONG 0c 4d 69 f4 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:21:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:21:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:21:46+0300: > PING '\x10\n7+' [text, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:21:46+0300: < PONG '\x10\n7+' [text, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:21:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:22:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:22:06+0300: > PING 5e 42 7a 99 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:22:06+0300: < PONG 5e 42 7a 99 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:22:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:22:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:22:26+0300: > PING 69 3c 9b 7a [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:22:26+0300: < PONG 69 3c 9b 7a [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:22:26+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:22:46+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:22:46+0300: > PING f7 3a 1b 79 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:22:46+0300: < PONG f7 3a 1b 79 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:22:46+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:23:06+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:23:06+0300: > PING c4 c1 c9 19 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:23:06+0300: < PONG c4 c1 c9 19 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:23:06+0300: % received keepalive pong
+[DEBUG|protocol|L1262] 2024-03-10T15:23:26+0300: % sending keepalive ping
+[DEBUG|protocol|L1178] 2024-03-10T15:23:26+0300: > PING e9 4f a4 40 [binary, 4 bytes]
+[DEBUG|protocol|L1172] 2024-03-10T15:23:26+0300: < PONG e9 4f a4 40 [binary, 4 bytes]
+[DEBUG|protocol|L1269] 2024-03-10T15:23:26+0300: % received keepalive pong
+[INFO|server|L265] 2024-03-10T15:23:29+0300: Shutting down
+[DEBUG|protocol|L1412] 2024-03-10T15:23:29+0300: ! failing connection with code 1012
+[DEBUG|protocol|L1436] 2024-03-10T15:23:29+0300: = connection is CLOSING
+[DEBUG|protocol|L1178] 2024-03-10T15:23:29+0300: > CLOSE 1012 (service restart) [2 bytes]
+[DEBUG|protocol|L1497] 2024-03-10T15:23:29+0300: = connection is CLOSED
+[DEBUG|protocol|L1319] 2024-03-10T15:23:29+0300: x half-closing TCP connection
+[INFO|server|L264] 2024-03-10T15:23:29+0300: connection closed
+[DEBUG|log_middleware|L17] 2024-03-10T15:23:29+0300: {'protocol': 'websocket', 'path': '/api/v1/chat/12670677-2f69-4160-b6d3-e86ae2df5990/ws', 'process_time': 1223.2154586315155}
+[INFO|server|L87] 2024-03-10T15:23:29+0300: Finished server process [22866]
+[INFO|basereload|L117] 2024-03-10T15:23:29+0300: Stopping reloader process [22864]
+[INFO|config|L330] 2024-03-10T16:08:24+0300: Will watch for changes in these directories: ['/home/vanya/fastProject/src']
+[INFO|config|L562] 2024-03-10T16:08:24+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T16:08:24+0300: Started reloader process [35117] using StatReload
+[DEBUG|selector_events|L54] 2024-03-10T16:08:25+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T16:08:25+0300: Started server process [35119]
+[INFO|on|L46] 2024-03-10T16:08:25+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T16:08:25+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T16:08:25+0300: Application startup complete.
+[INFO|server|L265] 2024-03-10T16:08:28+0300: Shutting down
+[INFO|server|L87] 2024-03-10T16:08:28+0300: Finished server process [35119]
+[INFO|basereload|L117] 2024-03-10T16:08:28+0300: Stopping reloader process [35117]
+[INFO|config|L330] 2024-03-10T18:19:08+0300: Will watch for changes in these directories: ['/home/vanya/fastProject/src']
+[INFO|config|L562] 2024-03-10T18:19:08+0300: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[INFO|basereload|L79] 2024-03-10T18:19:08+0300: Started reloader process [64342] using StatReload
+[DEBUG|selector_events|L54] 2024-03-10T18:19:08+0300: Using selector: EpollSelector
+[INFO|server|L77] 2024-03-10T18:19:09+0300: Started server process [64350]
+[INFO|on|L46] 2024-03-10T18:19:09+0300: Waiting for application startup.
+[INFO|on|L94] 2024-03-10T18:19:09+0300: ASGI 'lifespan' protocol appears unsupported.
+[INFO|on|L60] 2024-03-10T18:19:09+0300: Application startup complete.
+[INFO|h11_impl|L482] 2024-03-10T18:19:18+0300: 127.0.0.1:36540 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:18+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0010173320770263672}
+[INFO|h11_impl|L482] 2024-03-10T18:19:18+0300: 127.0.0.1:36540 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:18+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.012482166290283203}
+[INFO|h11_impl|L482] 2024-03-10T18:19:18+0300: 127.0.0.1:36540 - "GET /docs HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:18+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0012271404266357422}
+[INFO|h11_impl|L482] 2024-03-10T18:19:18+0300: 127.0.0.1:36540 - "GET /openapi.json HTTP/1.1" 200
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:18+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0009253025054931641}
+[INFO|server|L265] 2024-03-10T18:19:29+0300: Shutting down
+[INFO|server|L87] 2024-03-10T18:19:29+0300: Finished server process [64350]
+[INFO|basereload|L117] 2024-03-10T18:19:29+0300: Stopping reloader process [64342]
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:52+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0006988048553466797}
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:52+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.012618780136108398}
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:54+0300: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0005524158477783203}
+[DEBUG|log_middleware|L17] 2024-03-10T18:19:54+0300: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.0017714500427246094}
+[DEBUG|log_middleware|L17] 2024-03-10T16:55:19+0000: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0012979507446289062}
+[DEBUG|log_middleware|L17] 2024-03-10T16:55:19+0000: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.017061948776245117}
+[DEBUG|security|L15] 2024-03-10T16:55:32+0000: password_hashing
+[WARNING|bcrypt|L622] 2024-03-10T16:55:32+0000: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-10T16:55:32+0000: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-10T16:55:32+0000: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|log_middleware|L17] 2024-03-10T16:55:33+0000: {'protocol': 'http', 'path': '/api/v1/users/register', 'process_time': 0.28542661666870117}
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_name with data[0:10]
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_name with data[12:20]
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_data with data[21:42]
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_name with data[43:51]
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_data with data[52:58]
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_name with data[59:64]
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_data with data[65:71]
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_name with data[72:81]
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_start with no data
+[DEBUG|multipart|L623] 2024-03-10T16:55:53+0000: Calling on_field_name with data[83:96]
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_field_end with no data
+[DEBUG|multipart|L626] 2024-03-10T16:55:53+0000: Calling on_end with no data
+[DEBUG|security|L20] 2024-03-10T16:55:53+0000: password verifying
+[DEBUG|security|L36] 2024-03-10T16:55:53+0000: created acces token
+[DEBUG|security|L41] 2024-03-10T16:55:53+0000: created refresh token
+[DEBUG|log_middleware|L17] 2024-03-10T16:55:53+0000: {'protocol': 'http', 'path': '/api/v1/auth/token', 'process_time': 0.23864436149597168}
+[DEBUG|dependency_auth|L42] 2024-03-10T16:56:38+0000: Request for curr user id
+[DEBUG|dependency_auth|L19] 2024-03-10T16:56:38+0000: User 344c8ea1-8017-4ab1-b85a-85bf13fe94b5 authenticated
+[DEBUG|log_middleware|L17] 2024-03-10T17:00:32+0000: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.03955197334289551}
+[DEBUG|log_middleware|L17] 2024-03-19T17:53:29+0000: {'protocol': 'http', 'path': '/', 'process_time': 0.0009195804595947266}
+[DEBUG|log_middleware|L17] 2024-03-19T17:53:30+0000: {'protocol': 'http', 'path': '/favicon.ico', 'process_time': 0.0012247562408447266}
+[DEBUG|log_middleware|L17] 2024-03-19T17:53:36+0000: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0006651878356933594}
+[DEBUG|log_middleware|L17] 2024-03-19T17:53:36+0000: {'protocol': 'http', 'path': '/docs', 'process_time': 0.0007560253143310547}
+[DEBUG|log_middleware|L17] 2024-03-19T17:53:37+0000: {'protocol': 'http', 'path': '/openapi.json', 'process_time': 0.017038583755493164}
+[DEBUG|log_middleware|L17] 2024-03-19T17:54:20+0000: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.04863715171813965}
+[DEBUG|security|L15] 2024-03-19T17:54:49+0000: password_hashing
+[WARNING|bcrypt|L622] 2024-03-19T17:54:49+0000: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[DEBUG|bcrypt|L625] 2024-03-19T17:54:49+0000: detected 'bcrypt' backend, version '<unknown>'
+[DEBUG|bcrypt|L406] 2024-03-19T17:54:49+0000: 'bcrypt' backend lacks $2$ support, enabling workaround
+[DEBUG|log_middleware|L17] 2024-03-19T17:54:49+0000: {'protocol': 'http', 'path': '/api/v1/users/register', 'process_time': 0.2502713203430176}
+[DEBUG|log_middleware|L17] 2024-03-19T17:55:05+0000: {'protocol': 'http', 'path': '/api/v1/users/', 'process_time': 0.004931449890136719}
