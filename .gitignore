@@ -10,3 +10,5 @@ querie.sql
 alembic_script.sh
 querie.sql
 src/utils.py
+.env-test
+get-pip.py

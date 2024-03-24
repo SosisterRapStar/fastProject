@@ -52,12 +52,12 @@ app.dependency_overrides[db_handler.session_dependency] = override_session_dep
 @pytest.fixture(scope="session", autouse=True)
 def up_db():
     print("Start DB for tests")
-    client.compose.up(detach=True, file=DOCKER_COMPOSE_FILE)
+    client.containers.run("test_db", detach=True)
     
     yield
     
     print("Stop DB")
-    client.compose.down(file=DOCKER_COMPOSE_FILE)
+    client.containers.kill(file=DOCKER_COMPOSE_FILE)
 
 @pytest.fixture(scope="session", autouse=True)
 def create_migrations():
