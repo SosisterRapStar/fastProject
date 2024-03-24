@@ -11,6 +11,8 @@ from sqlalchemy.ext.asyncio import (
     AsyncSession,
 )
 
+from sqlalchemy import MetaData
+
 import os
 
 from sqlalchemy import URL
@@ -23,11 +25,8 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.models import db_handler
+from src.models.base import Base
 
-# session_dep = Annotated[AsyncSession, Depends(db_handler.session_dependency)]
-
-# compose_file_path = '/home/vanya/'
-# client = docker.from_env()
 
 DOCKER_COMPOSE_FILE = "docker-compose-test.yaml"
 client = docker.from_env()
@@ -41,35 +40,38 @@ session = async_sessionmaker(
     bind=engine, autoflush=False, autocommit=False, expire_on_commit=False
 )
 
+
+
 async def override_session_dep() -> AsyncSession:
     global session
     async with session() as ses:
         yield ses
+    
+   
         
 app.dependency_overrides[db_handler.session_dependency] = override_session_dep
 
 
 @pytest.fixture(scope="session", autouse=True)
-def up_db():
-    print("Start DB for tests")
-    client.containers.run("test_db", detach=True)
-    
-    yield
-    
-    print("Stop DB")
-    client.containers.kill(file=DOCKER_COMPOSE_FILE)
-
-@pytest.fixture(scope="session", autouse=True)
 def create_migrations():
+    global metadata
     print("Running migrations")
     os.system(f'alembic upgrade head')
+   
+    
     
 
-# @pytest.fixture(scope="session")
-# async def ses():
-#     global session
-#     async with session() as ses:
-#         yield ses
+@pytest.fixture(scope="session", autouse=True)
+async def delete_all():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.reflect)
+    yield
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+   
+    
+    
+        
         
   
     

@@ -8,7 +8,7 @@ from src.models.user_model import User
 
 async def test_async_register(ac: AsyncClient):
     payload = {
-        "name": "A2yncUser2",
+        "name": "A2yncUser32", 
         "email": "user@example.com",
         "password": "string",
         "password_repeat": "string"
@@ -23,6 +23,7 @@ async def test_async_register(ac: AsyncClient):
         
     assert user.name == payload["name"]
     assert user.email == payload["email"]   
+    print(user.name)
     
         
     
