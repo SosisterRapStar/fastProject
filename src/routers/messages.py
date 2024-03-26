@@ -5,7 +5,7 @@ from fastapi import APIRouter
 from sqlalchemy.exc import NoResultFound
 from starlette import status
 
-from src.authorization.dependency_auth import get_current_user_id
+from src.authorization.dependency_auth import get_current_user
 from src.dependencies.repo_providers_dependency import (
     user_repo_provider,
     message_repo_provider,
@@ -27,8 +27,9 @@ router = APIRouter(tags=["Messages"])
     status_code=status.HTTP_200_OK,
     response_model=List[ResponseMessage],
 )
-async def get_user_messages(user_id: get_current_user_id, repo: user_repo_provider):
-    return await repo.get_user_messages(user_id)
+async def get_user_messages(user: get_current_user, 
+                            repo: user_repo_provider):
+    return await repo.get_user_messages(user.id)
 
 
 @router.post(

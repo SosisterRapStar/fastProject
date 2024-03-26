@@ -60,20 +60,29 @@ async def update_curr_user(
     response_model=List[User_on_response],
     status_code=status.HTTP_200_OK,
 )
-async def get_users(user_repo: user_repo_provider):
-    return await user_repo.get()
-
-
-@router.get(
-    "by_name/{user_name}/",
-    response_model=User_on_response,
-    status_code=status.HTTP_200_OK,
-)
-async def get_user_by_name(user_name: str, user_repo: user_repo_provider):
+async def get_users(user_repo: user_repo_provider, id: uuid.UUID | None, name: str | None):
     try:
-        return await user_repo.get(name=user_name)
+        if id:
+            return await user_repo.get(id=id)
+        elif name:
+            return await user_repo.get(name=name)
     except RecordNotFoundError:
         raise UserNotFoundError()
+    
+    return await user_repo.get()
+    
+
+
+# @router.get(
+#     "by_name/{user_name}/",
+#     response_model=User_on_response,
+#     status_code=status.HTTP_200_OK,
+# )
+# async def get_user_by_name(user_name: str, user_repo: user_repo_provider):
+#     try:
+#         return await user_repo.get(name=user_name)
+#     except RecordNotFoundError:
+#         raise UserNotFoundError()
 
 
 # @router.get(
