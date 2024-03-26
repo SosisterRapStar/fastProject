@@ -92,6 +92,6 @@ async def delete_obj(
 
 async def get_delete_statement(model: Type[Base], criterias: dict[str, str]):
     first_key = next(iter(criterias))
-    value = criterias[first_key]  # HOROSHAYA RABOTA
+    value = criterias[first_key] 
     stmt = delete(model).where(getattr(model, first_key) == value).returning(model.id)
     return stmt
