@@ -60,7 +60,7 @@ async def update_curr_user(
     response_model=List[User_on_response],
     status_code=status.HTTP_200_OK,
 )
-async def get_users(user_repo: user_repo_provider, id: uuid.UUID | None, name: str | None):
+async def get_users(user_repo: user_repo_provider, id: uuid.UUID | None = None, name: str | None = None):
     try:
         if id:
             return await user_repo.get(id=id)

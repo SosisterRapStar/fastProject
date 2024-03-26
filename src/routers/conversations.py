@@ -66,18 +66,13 @@ async def get_all_users_in_conv(conv_id: uuid.UUID, conv_repo: conv_repo_provide
         raise ConversationNotFoundError()
 
 
-@router.get("/{conv_name}/", response_model=ConversationResponse)
-async def get_conv_by_name(conv_name: str, conv_repo: conv_repo_provider):
+@router.get("/", response_model=ConversationResponse)
+async def get_conv_by_name(conv_repo: conv_repo_provider, conv_id: uuid.UUID | None = None, conv_name: str | None = None):
     try:
-        return await conv_repo.get(name=conv_name)
-    except RecordNotFoundError:
-        raise ConversationNotFoundError()
-
-
-@router.get("/by_id/{conv_id}/", response_model=ConversationResponse)
-async def get_conv_by_id(conv_id: uuid.UUID, conv_repo: conv_repo_provider):
-    try:
-        return await conv_repo.get(id=conv_id)
+        if conv_name:
+            return await conv_repo.get(name=conv_name)
+        elif conv_id:
+            return await conv_repo.get(id=conv_id)
     except RecordNotFoundError:
         raise ConversationNotFoundError()
 
