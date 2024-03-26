@@ -51,7 +51,7 @@ async def _id_in_payload(scope) -> str:
         user_id = payload["id"]
     except (LookupError, JWTError):
         log.error("Non authorized user")
-        raise NonAuthorizedError()
+        raise InvalidTokenError()
     return user_id
 
 
@@ -62,6 +62,8 @@ async def _token_in_headers(headers) -> str:
         log.error("Non authorized user")
         raise NonAuthorizedError()
     token_type, token = auth_header.split()
+    if token_type != "Bearer":
+        raise InvalidTokenError()
     return token
 
 

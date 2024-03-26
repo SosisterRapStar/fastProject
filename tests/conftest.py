@@ -1,3 +1,4 @@
+from enum import auto
 from typing import AsyncGenerator
 import pytest
 from httpx import AsyncClient
@@ -58,8 +59,11 @@ def create_migrations():
     print("Running migrations")
     os.system(f'alembic upgrade head')
    
-    
-    
+@pytest.fixture(scope="session")
+def sync_client():
+    tc = TestClient(app)
+    return tc
+
 
 @pytest.fixture(scope="session", autouse=True)
 async def delete_all():
@@ -73,7 +77,12 @@ async def delete_all():
     
         
         
-  
+@pytest.fixture(scope='session')
+def event_loop():
+    policy = asyncio.get_event_loop_policy()
+    loop = policy.new_event_loop()
+    yield loop
+    loop.close()
     
 @pytest.fixture(scope="session")
 async def ac() -> AsyncGenerator[AsyncClient, None]:

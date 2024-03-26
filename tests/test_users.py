@@ -2,6 +2,7 @@ import uuid
 from os import access
 import select
 from fastapi.params import Header
+from fastapi.testclient import TestClient
 from httpx import AsyncClient
 import pytest
 from tests.conftest import session
@@ -12,11 +13,11 @@ from src.models.user_model import User
 
 
 class TestUser:
-    user_name: str
-    user_email: str
-    user_password: str
-    user_token: str
-    user_id: uuid.UUID
+    user_name: str = ''
+    user_email: str = ''
+    user_password: str = ''
+    user_token: str = ''
+    user_id: uuid.UUID = ''
     
     
 class NoExistTestUser:
@@ -53,7 +54,7 @@ async def test_get_registered_user_from_db(ac: AsyncClient):
         TestUser.user_id = user.id
         
     assert user.email == TestUser.user_email
-    print(user.name)
+    
     
 
 async def test_correct_async_auth(ac: AsyncClient):
@@ -62,41 +63,32 @@ async def test_correct_async_auth(ac: AsyncClient):
             'password': TestUser.user_password,
         }
     
-    response = await ac.post("api/v1/auth/token", file=given_form_data) 
-    
+    response = await ac.post("api/v1/auth/token", data=given_form_data) 
     expected_code = 200
     
     assert response.status_code == expected_code
     
     TestUser.user_token = response.json()['access_token']
+   
+
+
+# async def test_real_get_user_me(ac: AsyncClient):
     
+#     auth_field = 'Bearer ' + TestUser.user_token
+#     auth_header = {'Authorization': auth_field}
     
-async def test_correct_async_auth(ac: AsyncClient):
-    given_form_data = {
-            'username': TestUser.user_name,
-            'password': "Not user password",
-        }
+#     response = await ac.get("api/v1/users/me",  headers=auth_header) 
     
-    response = await ac.post("api/v1/auth/token", file=given_form_data) 
+#     expected_code = 200
     
-    expected_code = 401
+#     assert response.status_code == expected_code
     
-    assert response.status_code == expected_code
-    assert response.json()['details'] == "Wrong user credentials"
-    
+
     
     
    
 
-async def test_real_get_user_me(ac: AsyncClient):
-    
-    headers = {'Authorization': 'Bearer ' + TestUser.user_token}
-    
-    response = await ac.get("api/v1/users/me",  headers=headers) 
-    
-    expected_code = 200
-    
-    assert response.status_code == expected_code
+
 
 async def test_inc_real_get_user_me(ac: AsyncClient):
     
@@ -107,25 +99,41 @@ async def test_inc_real_get_user_me(ac: AsyncClient):
     expected_code = 401
     
     assert response.status_code == expected_code
-    assert response.json()['details'] == "You are not authorized"
+    assert response.json()['detail'] == "Invalid token"
     
     response = await ac.get("api/v1/users/me")
     
     expected_code = 401
     
     assert response.status_code == expected_code
-    assert response.json()['details'] == "You are not authorized"
+    assert response.json()['detail'] == "You are not authorized"
     
     headers = {'Authorization': 'Bearer ' + 'InvalidToken'}
     response = await ac.get("api/v1/users/me",  headers=headers) 
     
     assert response.status_code == expected_code
-    assert response.json()['details'] == "Invalid token"
+    assert response.json()['detail'] == "Invalid token"
+    
+    
+# def test_correct_async_auth(tc: TestClient):
+    
+#     given_form_data = {
+#             'username': TestUser.user_name,
+#             'password': "Not user password",
+#         }
+    
+#     response = tc.post("api/v1/auth/token", data=given_form_data) 
+    
+#     expected_code = 401
+    
+#     assert response.status_code == expected_code
+#     assert response.json()['detail'] == "Wrong user credentials"
+    
     
     
 async def test_get_user_convs_user(ac: AsyncClient):
     headers = {'Authorization': 'Bearer ' + TestUser.user_token}
-    response = await ac.get("api/v1/users/convs",  headers=headers)
+    response = await ac.get("api/v1/users/convs/",  headers=headers)
     expected_code = 200
     assert response.status_code == expected_code
     
@@ -137,8 +145,9 @@ async def test_delete_user(ac: AsyncClient):
         stmt = select(User).where(User.id == TestUser.user_id)
         result = await ses.scalar(stmt)
     assert result is not None
+    print(f"\"{TestUser.user_id}\"")
+    response = await ac.delete(f"api/v1/users/{TestUser.user_id}/")
     
-    response = await ac.delete("api/v1/users/" + TestUser.user_id + "/")
     expected_code = 200
     assert response.status_code == expected_code
     

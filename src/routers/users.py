@@ -102,12 +102,12 @@ async def get_users(user_repo: user_repo_provider, id: uuid.UUID | None = None, 
 )
 async def get_user_convs(user: get_current_user, user_repo: user_repo_provider):
     try:
-        return await user_repo.get_convs(user=user.id)
+        return await user_repo.get_convs(user_id=user.id)
     except IntegrityError:
         raise UserNotFoundError()
 
 
-@router.delete("/{user_ id}/")
+@router.delete("/{user_id}/")
 async def delete_user_by_id(
     user_repo: user_repo_provider,
     user_id: uuid.UUID,
