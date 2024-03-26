@@ -25,6 +25,12 @@ async def test_async_register(ac: AsyncClient):
     assert user.email == payload["email"]   
     print(user.name)
     
+    
+async def test_async_auth(ac: AsyncClient):
+    payload = {
+        
+    }
+    
         
     
     

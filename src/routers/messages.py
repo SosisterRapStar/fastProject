@@ -39,11 +39,11 @@ async def get_user_messages(user: get_current_user,
 )
 async def create_message(
     message: RequestMessage,
-    user_id: get_current_user_id,
+    user: get_current_user,
     message_repo: message_repo_provider,
 ):
     model_dict = message.model_dump()
-    model_dict.update({"user_fk": user_id})
+    model_dict.update({"user_fk": user.id})
     return await message_repo.create(model_dict)
 
 
@@ -65,7 +65,8 @@ async def edit_message(
     message_id: uuid.UUID, message: UpdateMessage, message_repo: message_repo_provider
 ):
     return await message_repo.update(
-        message.model_dump(exclude_unset=True), id=message_id
+        message.model_dump(exclude_unset=True), 
+        id=message_id
     )
 
 

@@ -100,9 +100,9 @@ async def get_users(user_repo: user_repo_provider, id: uuid.UUID | None, name: s
     "/convs/",
     response_model=List[ConversationResponse],
 )
-async def get_user_convs(user_id: get_current_user_id, user_repo: user_repo_provider):
+async def get_user_convs(user: get_current_user, user_repo: user_repo_provider):
     try:
-        return await user_repo.get_convs(user_id=user_id)
+        return await user_repo.get_convs(user=user.id)
     except IntegrityError:
         raise UserNotFoundError()
 

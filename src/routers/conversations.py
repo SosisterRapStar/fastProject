@@ -118,7 +118,7 @@ async def update_conv_by_name(
 
 @router.post("users/{conv_id}/")
 async def add_user_to_conversation(
-    current_user_id: get_current_user_id,
+    current_user: get_current_user,
     conv_id: uuid.UUID,
     conv_repo: conv_repo_provider,
     add_model: AddUser,
@@ -126,7 +126,7 @@ async def add_user_to_conversation(
 
     try:
         await conv_repo.add_user(
-            current_user_id=current_user_id,
+            current_user=current_user.id,
             user_id=add_model.user_id,
             permission=add_model.is_moder,
             conv_id=conv_id,
