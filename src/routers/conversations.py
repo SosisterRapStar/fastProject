@@ -7,7 +7,6 @@ from src.authorization.dependency_auth import get_current_user_id, get_current_u
 from src.services.connection_manager import (
     # ConnectionManagerIsNotEmptyError,
     ConnectionManagerNotFoundError,
-    conv_managers_handler,
 )
 from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.dependencies.repo_providers_dependency import conv_repo_provider

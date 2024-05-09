@@ -1,18 +1,19 @@
 import uuid
 from abc import ABC, abstractmethod
 from fastapi import WebSocket
-
 from crud.repo_abstract import CRUDRepository
 from typing import Callable
 from starlette.websockets import WebSocketDisconnect
+import contextvars
+
 
 class AbstractConnectionManagersHadler(ABC):
     @abstractmethod
-    def get_manager(self, key: uuid.UUID | int | str) -> "ConnectionManager":
+    def get_manager(self, key: str) -> "ConnectionManager":
         raise NotImplementedError
 
     @abstractmethod
-    def delete_manager(self, key: uuid.UUID | int | str):
+    def delete_manager(self, key: str):
         raise NotImplementedError
 
 
@@ -39,21 +40,25 @@ class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
     def __new__(cls, *args, **kwargs):
         if cls.__singletone is None:
             cls.__singletone = super().__new__(cls, *args, **kwargs)
+            cls.__managers = dict()
         return cls.__singletone
 
     def __init__(self):
-        self.__managers = dict()
+        pass
+        
+    async def get_all(self):
+        return self.__managers
         
     
-    async def is_conv_registered(self, key: uuid.UUID | int) -> bool:
+    async def is_conv_registered(self, key: str) -> bool:
         return key in self.__managers
     
-    async def registrate_conv(self, key: uuid.UUID | int) -> "ConnectionManager":
+    async def registrate_conv(self, key: str) -> "ConnectionManager":
         manager = ConnectionManager()
         self.__managers[key] = manager
         return manager
     
-    async def get_manager(self, key: uuid.UUID | int, create_if_no: bool = True) -> "ConnectionManager":
+    async def get_manager(self, key: str, create_if_no: bool = True) -> "ConnectionManager":
         if await self.is_conv_registered(key):
             return self.__managers[key]
         if create_if_no:
@@ -61,7 +66,7 @@ class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
         return None # WARNING
         
     
-    async def delete_manager(self, key: uuid.UUID | int, delete_if_not_empty: bool = False):
+    async def delete_manager(self, key: str, delete_if_not_empty: bool = False):
         try:
             manager: ConnectionManager = self.__managers[key]
         except LookupError:
@@ -70,6 +75,8 @@ class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
         if not manager.is_empty:
             if delete_if_not_empty:
                 await manager.disconnect_all()
+            else:
+                return ...
         del self.__managers[key]
     
    
@@ -79,6 +86,7 @@ class ConnectionManager:
     def __init__(self):
         self.__connections: list[WebSocket] = list()
         self.__counter = 0
+        
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
@@ -98,13 +106,14 @@ class ConnectionManager:
         await websocket.send_text(message)
 
     async def broadcast(self, message: str):
+        print(self.__connections)
         for connection in self.__connections:
             await connection.send_text(message)
             
     def is_empty(self) -> bool:
         return self.__counter
             
-conv_managers_handler = ConversationConnectionManagersHandler()
+
 
 
 
