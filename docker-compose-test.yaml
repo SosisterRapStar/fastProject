@@ -26,49 +26,59 @@ services:
     networks:
       - my_network
 
-  fast_app:
-    build: 
-      context: .
-    env_file:
-      - .env-docker-comm
-    container_name: fast_app
+  nginx:
+    image: nginx:latest
     ports:
-      - 8000:8000
-    
-    depends_on:
-      - redis
-      - test_db  
-
-    command: uvicorn main:app --host 0.0.0.0 --port 8000  
-
+      - "8080:80"
     volumes:
-      - ./src:/app/src
-      - ./alembic:/app/alembic
-      - ./redis:/app/redis
-    networks:
-      - my_network
-    
-  fast_app_second_app:
-    build: 
-      context: .
-    env_file:
-      - .env-docker-comm
-    container_name: fast_app_second_app
-    ports:
-      - 8001:8000
-    
-    depends_on:
-      - redis
-      - test_db  
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/html/error.log:/spool/logs/nginx/nginx.error_log
+      
+    restart: always
 
-    command: uvicorn main:app --host 0.0.0.0 --port 8000  
+  # fast_app:
+  #   build: 
+  #     context: .
+  #   env_file:
+  #     - .env-docker-comm
+  #   container_name: fast_app
+  #   ports:
+  #     - 8000:8000
+    
+  #   depends_on:
+  #     - redis
+  #     - test_db  
 
-    volumes:
-      - ./src:/app/src
-      - ./alembic:/app/alembic
-      - ./redis:/app/redis
-    networks:
-      - my_network
+  #   command: uvicorn main:app --host 0.0.0.0 --port 8000  
+
+  #   volumes:
+  #     - ./src:/app/src
+  #     - ./alembic:/app/alembic
+  #     - ./redis:/app/redis
+  #   networks:
+  #     - my_network
+    
+  # fast_app_second_app:
+  #   build: 
+  #     context: .
+  #   env_file:
+  #     - .env-docker-comm
+  #   container_name: fast_app_second_app
+  #   ports:
+  #     - 8001:8000
+    
+  #   depends_on:
+  #     - redis
+  #     - test_db  
+
+  #   command: uvicorn main:app --host 0.0.0.0 --port 8000  
+
+  #   volumes:
+  #     - ./src:/app/src
+  #     - ./alembic:/app/alembic
+  #     - ./redis:/app/redis
+  #   networks:
+  #     - my_network
 
 networks:
   my_network:
