@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  test_db:
+    image: postgres:16.2-alpine3.19
+    restart: always
+    container_name: test_db
+    env_file:
+      - .env-test-db
+    ports:
+      - '5433:5432'
+    networks:
+      - my_network
+
+  redis:
+    image: redis:latest
+    restart: always
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/root/redis
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    env_file:
+      - .env-test-db
+    networks:
+      - my_network
+
+  fast_app:
+    build: 
+      context: .
+    env_file:
+      - .env-docker-comm
+    container_name: fast_app
+    ports:
+      - 8000:8000
+    
+    depends_on:
+      - redis
+      - test_db  
+
+    command: uvicorn main:app --host 0.0.0.0 --port 8000  
+
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+      - ./redis:/app/redis
+    networks:
+      - my_network
+    
+  fast_app_second_app:
+    build: 
+      context: .
+    env_file:
+      - .env-docker-comm
+    container_name: fast_app_second_app
+    ports:
+      - 8001:8000
+    
+    depends_on:
+      - redis
+      - test_db  
+
+    command: uvicorn main:app --host 0.0.0.0 --port 8000  
+
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+      - ./redis:/app/redis
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

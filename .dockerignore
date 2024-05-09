@@ -1,0 +1,15 @@
+# Ignore virtual environment directory
+myvenv/
+#Ignore tests
+tests/
+#Ignore gitignore
+.gitignore
+
+# Ignore Docker Compose files
+docker-compose.yml
+docker-compose.yaml
+docker-compose.*.yml
+docker-compose.*.yaml
+
+# Ignore Dockerfiles
+Dockerfile

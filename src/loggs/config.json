@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "simple": {
+      "format": "%(levelname)s: %(message)s"
+    },
+    "detailed": {
+      "format": "[%(levelname)s|%(module)s|L%(lineno)d] %(asctime)s: %(message)s",
+      "datefmt": "%Y-%m-%dT%H:%M:%S%z"
+    }
+  },
+  "handlers": {
+    "stderr": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "detailed",
+      "stream": "ext://sys.stderr"
+    },
+    "debugFile": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "formatter": "detailed",
+      "level": "DEBUG",
+      "filename": "/home/vanya/fastProject/src/loggs/debugLog.log",
+      "maxBytes": 1000000,
+      "backupCount": 3
+    },
+    "errorFile": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "formatter": "detailed",
+      "level": "WARNING",
+      "filename": "/home/vanya/fastProject/src/loggs/debugLog.log",
+      "maxBytes": 1000000,
+      "backupCount": 3
+    }
+  },
+  "loggers": {
+    "root": {
+      "level": "DEBUG",
+      "handlers": [
+        "stderr",
+        "debugFile",
+        "errorFile"
+      ]
+    }
+  }
+}
