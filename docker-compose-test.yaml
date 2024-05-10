@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   test_db:
@@ -11,6 +10,7 @@ services:
       - '5433:5432'
     networks:
       - my_network
+    
 
   redis:
     image: redis:latest
@@ -26,37 +26,38 @@ services:
     networks:
       - my_network
 
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/html:/usr/share/nginx/html
-      - ./nginx/html/error.log:/spool/logs/nginx/nginx.error_log
-      
-    restart: always
-
-  # fast_app:
-  #   build: 
-  #     context: .
-  #   env_file:
-  #     - .env-docker-comm
-  #   container_name: fast_app
+  # nginx:
+  #   image: nginx:latest
   #   ports:
-  #     - 8000:8000
-    
-  #   depends_on:
-  #     - redis
-  #     - test_db  
-
-  #   command: uvicorn main:app --host 0.0.0.0 --port 8000  
-
+  #     - "80:80"
   #   volumes:
-  #     - ./src:/app/src
-  #     - ./alembic:/app/alembic
-  #     - ./redis:/app/redis
-  #   networks:
-  #     - my_network
+  #     - ./nginx/html:/usr/share/nginx/html
+  #     - ./nginx/html/error.log:/spool/logs/nginx/nginx.error_log
+      
+  #   restart: always
+
+  fast_app:
+    build: 
+      context: .
+    env_file:
+      - .env-docker-comm
+    container_name: fast_app
+    ports:
+      - 80:80
+    
+    depends_on:
+      - redis
+      - test_db  
+
+   
+    command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:80"]
+
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+      - ./redis:/app/redis
+    networks:
+      - my_network
     
   # fast_app_second_app:
   #   build: 

@@ -46,7 +46,7 @@ class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
     def __init__(self):
         pass
         
-    async def get_all(self):
+    def get_all(self):
         return self.__managers
         
     
@@ -106,9 +106,11 @@ class ConnectionManager:
         await websocket.send_text(message)
 
     async def broadcast(self, message: str):
-        print(self.__connections)
         for connection in self.__connections:
             await connection.send_text(message)
+            
+    def get_all(self):
+        return self.__connections
             
     def is_empty(self) -> bool:
         return self.__counter

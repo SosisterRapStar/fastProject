@@ -8,7 +8,7 @@ from src.authorization.dependency_auth import get_current_user, get_current_user
 from src.dependencies.repo_providers_dependency import conv_repo_provider, message_repo_provider
 from dependencies.connection_dependencies import conv_managers_handler_provider
 from services.message_handlers import chat_message_handler
-
+from .logger import log
 import asyncio
 router = APIRouter(
     tags=["chat"],
@@ -69,12 +69,7 @@ async def get(
     conv_managers_handler: conv_managers_handler_provider,
     broker: broker_provider,
 ):
-    print("chat")
-    print(id(broker))
     
-    if not await conv_managers_handler.is_conv_registered(key=str(conv_id)):
-        await conv_managers_handler.registrate_conv(key=str(conv_id))
-        await broker.subscribe(channel=str(conv_id), handler=chat_message_handler)
     return HTMLResponse(html)
 
 
@@ -88,10 +83,15 @@ async def websocket_endpoint(
     broker: broker_provider, 
 ):
     
-    
-    manager = await conv_managers_handler.get_manager(key=str(conv_id))
-    a = await conv_managers_handler.get_all()
+    if not await conv_managers_handler.is_conv_registered(key=str(conv_id)):
+        manager = await conv_managers_handler.registrate_conv(key=str(conv_id))
+        await broker.subscribe(channel=str(conv_id), handler=chat_message_handler)
+    else:
+        manager = await conv_managers_handler.get_manager(key=str(conv_id))
+    # a = await conv_managers_handler.get_all()
     await manager.connect(websocket)
+    
+    print(f"In chat {manager.get_all()}")
     
     try:
         while True:
