@@ -1,0 +1,6 @@
+redis/
+myvenv/
+**/__pycache__/
+.env
+.env-test-db
+.env-docker-comm

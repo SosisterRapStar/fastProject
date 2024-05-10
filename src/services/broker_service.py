@@ -41,29 +41,26 @@ class Broker:
             await self.pubsub.subscribe(channel)
             
         if self.channels_counter == 0:
-            await asyncio.create_task(self.__listener(self.pubsub))
+            future = asyncio.create_task(self.__listener(self.pubsub))
         self.channels_counter += 1
             
     
     async def __listener(self, channel: redis.client.PubSub):
         while True:
             try:
-                async with async_timeout.timeout(1):
-                    message = await channel.get_message(ignore_subscribe_messages=True)
-                    if message is not None:
-                        print(f"(Reader) Message Received: {message}")
-                        if message["data"] == "STOP":
-                            print("(Reader) STOP")
-                            break
-                    await asyncio.sleep(0.01)
+            
+                message = await channel.get_message(ignore_subscribe_messages=True)
+                if message is not None:
+                    print(f"(Reader) Message Received: {message}")
+                    if message["data"] == "STOP":
+                        print("(Reader) STOP")
+                        break
+                await asyncio.sleep(0.01)
             except asyncio.TimeoutError:
                 pass
                 
 
-broker = Broker(redis.Redis.from_url( "redis://localhost", max_connections=10, decode_responses=True),
-                redis.Redis.from_url(
-        "redis://localhost", max_connections=10, decode_responses=True
-    ))
+
     
 
         

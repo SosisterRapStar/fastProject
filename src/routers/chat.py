@@ -3,10 +3,10 @@ from schemas.message import MessageToDb, MessageForResponse
 from fastapi import APIRouter, WebSocket
 from starlette.responses import HTMLResponse
 from starlette.websockets import WebSocketDisconnect
-from services.broker_service import broker 
+from dependencies.broker_dependency import broker_provider 
 from src.authorization.dependency_auth import get_current_user, get_current_user_ws
 from src.dependencies.repo_providers_dependency import conv_repo_provider, message_repo_provider
-from services.connection_manager import ConversationConnectionManagersHandler
+from dependencies.connection_dependencies import conv_managers_handler_provider
 from services.message_handlers import chat_message_handler
 
 import asyncio
@@ -14,6 +14,7 @@ router = APIRouter(
     tags=["chat"],
     responses={404: {"detai": "Not found"}},
 )
+
 
 
 
@@ -65,11 +66,15 @@ async def get(
     current_user: get_current_user,
     conv_id: uuid.UUID,
     conv_repo: conv_repo_provider,
+    conv_managers_handler: conv_managers_handler_provider,
+    broker: broker_provider,
 ):
-    conv_managers_handler = ConversationConnectionManagersHandler()
+    print("chat")
+    print(id(broker))
+    
     if not await conv_managers_handler.is_conv_registered(key=str(conv_id)):
         await conv_managers_handler.registrate_conv(key=str(conv_id))
-        asyncio.create_task(broker.subscribe(channel=str(conv_id), handler=chat_message_handler))
+        await broker.subscribe(channel=str(conv_id), handler=chat_message_handler)
     return HTMLResponse(html)
 
 
@@ -79,12 +84,13 @@ async def websocket_endpoint(
     conv_id: uuid.UUID,
     websocket: WebSocket,
     message_repo: message_repo_provider,
+    conv_managers_handler: conv_managers_handler_provider,
+    broker: broker_provider, 
 ):
-    conv_managers_handler = ConversationConnectionManagersHandler()
+    
+    
     manager = await conv_managers_handler.get_manager(key=str(conv_id))
     a = await conv_managers_handler.get_all()
-    print(f"in first {id(conv_managers_handler)}")
-    print(f"in first {a}")
     await manager.connect(websocket)
     
     try:
