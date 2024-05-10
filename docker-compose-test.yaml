@@ -29,7 +29,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/html/error.log:/spool/logs/nginx/nginx.error_log
