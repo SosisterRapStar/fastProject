@@ -42,23 +42,56 @@ services:
     image: fastproject-fast_app:latest
     env_file:
       - .env-docker-comm
-    container_name: fast_app
+    container_name: app
     expose:
       - "8000"
     depends_on:
       - redis
       - test_db  
-      
-
-   
-    command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
     volumes:
       - ./src:/app/src
       - ./alembic:/app/alembic
-      - ./redis:/app/redis
     networks:
       - my_network
+
+  fast_app_2:
+    image: fastproject-fast_app:latest
+    env_file:
+      - .env-docker-comm
+    container_name: app2
+    expose:
+      - "8000"
+    depends_on:
+      - redis
+      - test_db  
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+    networks:
+      - my_network
+
+  fast_app_3:
+    image: fastproject-fast_app:latest
+    env_file:
+      - .env-docker-comm
+    container_name: app3
+    expose:
+      - "8000"
+    depends_on:
+      - redis
+      - test_db  
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+    networks:
+      - my_network
+
     
   # fast_app_second_app:
   #   build: 

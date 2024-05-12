@@ -8,7 +8,8 @@ tasks_file=tasks
 host=0.0.0.0
 port=8000
 loglevel=INFO
-
+uvicorn-compose=docker-uvicorn.yaml
+gunicorn-compose=docker-gunicorn.yaml
 
 db:
 	$(new_terminal) "psql -U $(db_user) -d $(db_name); exec bash"
@@ -24,5 +25,9 @@ celery-beat:
 
 run: 
 	$(activate) && uvicorn ${working_dir}.main:app --host $(host) --port $(port)
+up-uvi:
+	docker compose -f $(uvicorn-compose) up
+up-guni:
+	docker compose -f $(gunicorn-compose) up
 
 
