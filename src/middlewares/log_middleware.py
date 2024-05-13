@@ -15,3 +15,4 @@ class ASGIMiddleware:
 
         log_dict = {"protocol": type, "path": path, "process_time": process_time}
         log.debug(log_dict)
+        log.debug(scope.get("headers", []))

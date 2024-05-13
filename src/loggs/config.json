@@ -21,16 +21,16 @@
       "class": "logging.handlers.RotatingFileHandler",
       "formatter": "detailed",
       "level": "DEBUG",
-      "filename": "/home/vanya/fastProject/src/loggs/debugLog.log",
-      "maxBytes": 1000000,
+      "filename": "./debugLog.log",
+      "maxBytes": 10000,
       "backupCount": 3
     },
     "errorFile": {
       "class": "logging.handlers.RotatingFileHandler",
       "formatter": "detailed",
       "level": "WARNING",
-      "filename": "/home/vanya/fastProject/src/loggs/debugLog.log",
-      "maxBytes": 1000000,
+      "filename": "./errorLog.log",
+      "maxBytes": 10000,
       "backupCount": 3
     }
   },
