@@ -48,17 +48,32 @@ services:
     depends_on:
       - redis
       - test_db  
-      
-
-   
     command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
 
     volumes:
       - ./src:/app/src
       - ./alembic:/app/alembic
-      - ./redis:/app/redis
     networks:
       - my_network
+
+  fast_app_2:
+    image: fastproject-fast_app:latest
+    env_file:
+      - .env-docker-comm
+    container_name: fast_app_2
+    expose:
+      - "8000"
+    depends_on:
+      - redis
+      - test_db  
+    command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+    networks:
+      - my_network
+
     
   # fast_app_second_app:
   #   build: 

@@ -73,7 +73,7 @@ async def get(
     return HTMLResponse(html)
 
 
-@router.websocket("/{conv_id}/ws")
+@router.websocket("/ws/{conv_id}")
 async def websocket_endpoint(
     current_user: get_current_user_ws,
     conv_id: uuid.UUID,

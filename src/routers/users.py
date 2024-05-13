@@ -20,6 +20,9 @@ from src.routers.errors import UserNotFoundError
 from src.schemas.conversation import ConversationResponse
 from src.schemas.invite_schema import InviteResponse, ReceivedInviteResponse, SendedInviteResponse
 from src.schemas.users import User_on_response
+# for test
+import socket
+
 
 
 router = APIRouter(tags=["Users"])
@@ -30,7 +33,7 @@ async def create_user(user: password_hash_dependency, repo: user_repo_provider):
 
     user = await repo.create(user.model_dump(exclude={"password_repeat"}))
 
-    payload = {"message": "Man YOO have just created a user account"}
+    payload = f"pid: {socket.gethostname()}"
     return JSONResponse(content=payload)
 
 
