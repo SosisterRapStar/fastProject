@@ -34,6 +34,8 @@ services:
       - ./nginx/html/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - fast_app
+      - fast_app_2
+      - fast_app_3
     restart: always
     networks:
       - my_network
