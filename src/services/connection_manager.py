@@ -5,6 +5,7 @@ from crud.repo_abstract import CRUDRepository
 from typing import Callable
 from starlette.websockets import WebSocketDisconnect
 import contextvars
+from crud.conversation_repository import ConversationRepository
 
 
 class AbstractConnectionManagersHadler(ABC):
@@ -143,6 +144,11 @@ class ConnectionManager:
             
     # def is_empty(self) -> bool:
     #     return self.__counter
+    
+class ChatService:
+    def __init__(self, conv_repo:):
+        
+    
             
 
 

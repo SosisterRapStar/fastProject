@@ -9,7 +9,11 @@ from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.crud.repo_abstract import CRUDAlchemyRepository
 from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.user_model import User
+from typing import TYPE_CHECKING
 
+
+if TYPE_CHECKING:
+    from .user_model import User
 
 class ConversationRepository(CRUDAlchemyRepository):
     _model = Conversation
@@ -17,9 +21,14 @@ class ConversationRepository(CRUDAlchemyRepository):
     # TODO: do something with session identity map for caching
     # TODO: errors handling
     # I think that it shouldn't be async :|
-    async def get_users(self, conv_id: uuid.UUID) -> list["User"]:
+    async def get_users(self, conv_id: uuid.UUID, selectable: "str" = None) -> list["User"]:
+        if selectable is None:
+            selectable = User
+        else:
+            selectable = getattr(User, selectable)
+                
         stmt = (
-            select(User)
+            select(selectable)
             .join(
                 UserConversationSecondary,
                 User.id == UserConversationSecondary.user_id,
