@@ -12,7 +12,6 @@ class InviteRepository(CRUDAlchemyRepository):
         
         
     async def declain_invite(self, invite: Invite):
-        print("fddffd")
         await self.update(data={"status": StatusEnum.REJECTED.value}, model_object=invite)
         
    
