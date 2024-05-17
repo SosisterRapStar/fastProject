@@ -61,19 +61,19 @@ router = APIRouter(
 
 
 
-@router.get("/{conv_id}")
-async def get(
-    current_user: get_current_user,
-    conv_id: uuid.UUID,
-    conv_repo: conv_repo_provider,
-    conv_managers_handler: conv_managers_handler_provider,
-    broker: broker_provider,
-):
+# @router.get("/{conv_id}")
+# async def get(
+#     current_user: get_current_user,
+#     conv_id: uuid.UUID,
+#     conv_repo: conv_repo_provider,
+#     conv_managers_handler: conv_managers_handler_provider,
+#     broker: broker_provider,
+# ):
     
-    return HTMLResponse(html)
+#     return HTMLResponse(html)
 
 
-@router.websocket("/ws/{conv_id}")
+@router.websocket("/ws")
 async def websocket_endpoint(
     current_user: get_current_user_ws,
     conv_id: uuid.UUID,
@@ -83,23 +83,15 @@ async def websocket_endpoint(
     broker: broker_provider, 
 ):
     
-    if not await conv_managers_handler.is_conv_registered(key=str(conv_id)):
-        manager = await conv_managers_handler.registrate_conv(key=str(conv_id))
-        await broker.subscribe(channel=str(conv_id), handler=chat_message_handler)
-    else:
-        manager = await conv_managers_handler.get_manager(key=str(conv_id))
-    # a = await conv_managers_handler.get_all()
-    await manager.connect(websocket)
-    
-    print(f"In chat {manager.get_all()}")
     
     try:
         while True:
-            data = await websocket.receive_text()
+            data = await websocket.receive_json()
+            await broker.subscribe(channel=str(conv_id), handler=chat_message_handler)
             
-            messageToSaveInDb = MessageToDb(conversation_fk=conv_id, 
-                                   content=data, 
-                                   user_fk=current_user.id,)
+            messageToSaveInDb = {"conversation_fk": data["conv_id"], 
+                                   "content": data["message"], 
+                                   "user_fk": current_user.id}
             
             await message_repo.create(messageToSaveInDb.model_dump())
             
@@ -114,7 +106,4 @@ async def websocket_endpoint(
             
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        await manager.broadcast(
-            f"Clients {current_user.name}: left the chat"
-        )
         await conv_managers_handler.delete_manager(key=str(conv_id))

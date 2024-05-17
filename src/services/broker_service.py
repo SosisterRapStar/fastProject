@@ -6,14 +6,14 @@ from .redis_service import RedisManager
 from abc import ABC, abstractmethod
 from typing import Callable
 import async_timeout
-
+from functools import partial
 
 
 
 class Broker:
     
     __singletone = None
-
+    
 
     def __new__(cls, subscriber, publisher):
         if cls.__singletone is None:
@@ -25,6 +25,7 @@ class Broker:
         self.publisher = publisher
         self.pubsub = self.subscriber.pubsub()
         self.channels_counter = 0
+        self.channel_to_handler = {}
         
             
     async def publish(self, channel: str, message: str):
@@ -33,11 +34,15 @@ class Broker:
         except Exception:
             print("Я не знаю пока что не так, но что-то не так") 
     
-    async def subscribe(self, channel: str, handler: Callable = None):
-       
+    async def subscribe(self, channel: str, handler: Callable = None, *handler_args, **handler_kwargs):
+        if channel in self.channel_to_handler: # it means that app is already subscribed to channel
+            return
+        
         if handler:
+            self.channel_to_handler[channel] = partial(handler, *handler_args, **handler_kwargs) # partial use
             await self.pubsub.subscribe(**{channel: handler})
         else:
+            self.channel_to_handler[channel] = None
             await self.pubsub.subscribe(channel)
             
         if self.channels_counter == 0:

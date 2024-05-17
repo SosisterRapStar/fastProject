@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from .user_model import User
+    from src.models.user_model import User
 
 class ConversationRepository(CRUDAlchemyRepository):
     _model = Conversation

@@ -128,16 +128,16 @@ async def add_user_to_conversation(
         raise EditPermissionsError()
 
 
-@router.delete("/{conv_id}/")
-async def delete_conv(user: get_current_user, conv_id: uuid.UUID, conv_repo: conv_repo_provider):
-    try:
-        await conv_managers_handler.delete_manager(key=conv_id)
-    except ConnectionManagerNotFoundError:
-        pass
+# @router.delete("/{conv_id}/")
+# async def delete_conv(user: get_current_user, conv_id: uuid.UUID, conv_repo: conv_repo_provider):
+#     try:
+#         await conv_managers_handler.delete_manager(key=conv_id)
+#     except ConnectionManagerNotFoundError:
+#         pass
 
-    try:
-        await conv_repo.delete(id=conv_id, current_user_id=user.id)
-    except RecordNotFoundError:
-        raise ConversationNotFoundError()
-    except NoEditPermissionsError:
-        raise EditPermissionsError()
+#     try:
+#         await conv_repo.delete(id=conv_id, current_user_id=user.id)
+#     except RecordNotFoundError:
+#         raise ConversationNotFoundError()
+#     except NoEditPermissionsError:
+#         raise EditPermissionsError()

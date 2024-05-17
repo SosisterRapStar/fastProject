@@ -116,7 +116,7 @@ class ConnectionManager:
         
     async def send_to_users(self, users: list[uuid.UUID], message: str):
         for user_id in users:
-            if user_id in self.users_websockets:
+            if user_id in self.__users_websockets:
                 for websocket in self.__users_websockets[user_id]:
                     await websocket.send_text(message)
             
@@ -146,7 +146,25 @@ class ConnectionManager:
     #     return self.__counter
     
 class ChatService:
-    def __init__(self, conv_repo:):
+    __singletone = None
+    
+    def __new__(cls, conv_repo, manager, *args, **kwargs):
+        if cls.__singletone is None:
+            cls.__singletone = super().__new__(conv_repo, manager, cls, *args, **kwargs)
+        return cls.__singletone
+    
+    def __init__(self, conv_repo: ConversationRepository, manager: ConnectionManager):
+        self.conv_repo = conv_repo
+        self.manager = manager
+    
+    async def handle_message_from_user(self, user_id: uuid.UUID, message: dict): # message может быть и json
+        users_list = ConversationRepository.get_users(message['conv_id'], selectable="id") 
+        self.manager.send_to_users(users=users_list)
+    
+    
+    
+    
+        
         
     
             
