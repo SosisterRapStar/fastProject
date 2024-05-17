@@ -95,11 +95,14 @@ async def websocket_endpoint(
             
             await message_repo.create(messageToSaveInDb.model_dump())
             
-            # вынести в отдельную функцию 
+            
             messageForUsersAndOtherServers = \
             f"""
+            {{
+            conversation_id: {data["conv_id"]},
             user_name: {current_user.name},
-            data: {data}
+            content: {data["message"]}
+            }}
             """
             
             await broker.publish(channel=str(conv_id), message=messageForUsersAndOtherServers)

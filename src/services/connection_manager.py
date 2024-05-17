@@ -6,7 +6,10 @@ from typing import Callable
 from starlette.websockets import WebSocketDisconnect
 import contextvars
 from crud.conversation_repository import ConversationRepository
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from schemas.message import MessageFromBroker
 
 class AbstractConnectionManagersHadler(ABC):
     @abstractmethod
@@ -18,20 +21,6 @@ class AbstractConnectionManagersHadler(ABC):
         raise NotImplementedError
 
 
-
-
-# class ConnectionManagerNotFoundError(Exception):
-#     def __init__(self, *args):
-#         if args:
-#             self.message = args[0]
-#         else:
-#             self.message = None
-
-#     # ok it should be useful idk :|
-#     def __str__(self):
-#         if self.message:
-#             return f"{self.message}"
-#         return f"There is no such manager"
 class ConnectionWithUserNotFound(Exception):
     def __init__(self, *args):
         if args:
@@ -43,54 +32,23 @@ class ConnectionWithUserNotFound(Exception):
             return f"{self.message}"
         return f"NoAnyConnectionsWithUser"
 
-
-# class ConversationConnectionManagersHandler(AbstractConnectionManagersHadler):
-#     # maybe it should do redis
-
-#     __singletone = None
-
-#     def __new__(cls, *args, **kwargs):
-#         if cls.__singletone is None:
-#             cls.__singletone = super().__new__(cls, *args, **kwargs)
-#             cls.__managers = dict()
-#         return cls.__singletone
-
-#     def __init__(self):
-#         pass
-        
-#     def get_all(self):
-#         return self.__managers
-        
     
-#     async def is_conv_registered(self, key: str) -> bool:
-#         return key in self.__managers
+class ChatService:
+    __singletone = None
     
-#     async def registrate_conv(self, key: str) -> "ConnectionManager":
-#         manager = ConnectionManager()
-#         self.__managers[key] = manager
-#         return manager
+    def __new__(cls, conv_repo, manager, *args, **kwargs):
+        if cls.__singletone is None:
+            cls.__singletone = super().__new__(conv_repo, manager, cls, *args, **kwargs)
+        return cls.__singletone
     
-#     async def get_manager(self, key: str, create_if_no: bool = True) -> "ConnectionManager":
-#         if await self.is_conv_registered(key):
-#             return self.__managers[key]
-#         if create_if_no:
-#             return await self.registrate_conv(key)
-#         return None # WARNING
-        
+    def __init__(self, conv_repo: ConversationRepository, manager: "ConnectionManager"):
+        self.conv_repo = conv_repo
+        self.manager = manager
     
-#     async def delete_manager(self, key: str, delete_if_not_empty: bool = False):
-#         try:
-#             manager: ConnectionManager = self.__managers[key]
-#         except LookupError:
-#             raise ConnectionManagerNotFoundError()
+    async def handle_message_from_user(self, message: "MessageFromBroker"): # message может быть и json
+        users_list = ConversationRepository.get_users(conv_id=message.conversation_id, selectable="id") 
+        self.manager.send_to_users(users=users_list, message=message['data'])
 
-#         if not manager.is_empty:
-#             if delete_if_not_empty:
-#                 await manager.disconnect_all()
-#             else:
-#                 return ...
-#         del self.__managers[key]
-    
    
 
 class ConnectionManager:
@@ -118,7 +76,7 @@ class ConnectionManager:
         for user_id in users:
             if user_id in self.__users_websockets:
                 for websocket in self.__users_websockets[user_id]:
-                    await websocket.send_text(message)
+                    await websocket.send_json(message)
             
 
     async def disconnect(self, user_id: uuid.UUID, websocket: WebSocket):
@@ -144,61 +102,10 @@ class ConnectionManager:
             
     # def is_empty(self) -> bool:
     #     return self.__counter
-    
-class ChatService:
-    __singletone = None
-    
-    def __new__(cls, conv_repo, manager, *args, **kwargs):
-        if cls.__singletone is None:
-            cls.__singletone = super().__new__(conv_repo, manager, cls, *args, **kwargs)
-        return cls.__singletone
-    
-    def __init__(self, conv_repo: ConversationRepository, manager: ConnectionManager):
-        self.conv_repo = conv_repo
-        self.manager = manager
-    
-    async def handle_message_from_user(self, user_id: uuid.UUID, message: dict): # message может быть и json
-        users_list = ConversationRepository.get_users(message['conv_id'], selectable="id") 
-        self.manager.send_to_users(users=users_list)
-    
-    
-    
-    
-        
-        
-    
-            
 
-
-
-
-# class WebsocketListener:
     
-   
-#     def __init__ (self, websocket: WebSocket, manager: ConnectionManager, repo: CRUDRepository) -> None:
-#         self.websocket = websocket
-#         self.manager = manager
-#         self.repo = repo
     
-#     async def __listen(self, message_handler: Callable, **kwargs):
-#         try:
-#             while True:
-#                 data = await self.websocket.receive_text()
-                
-               
-                
-#                 messageForUsersAndOtherServers = \
-#                 f"""
-#                 user_name: {current_user.name},
-#                 data: {data}
-#                 """
-#                 await manager.broadcast(f"Clients {current_user.name}: {data}")
-            
-#         except WebSocketDisconnect:
-#             self.manager.disconnect(websocket)
-#             await manager.broadcast(
-#                 f"Clients {current_user.name}: left the chat"
-#             )
+    
         
         
     

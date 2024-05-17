@@ -18,6 +18,9 @@ class MessageToDb(Message):
 class MessageForResponse(Message):
     user_name: str
 
+class MessageFromBroker(MessageForResponse):
+    conversation_id: uuid.UUID
+    
 class ResponseMessage(Message):
     model_config = ConfigDict(from_attributes=True)
     author: uuid.UUID = Field(validation_alias="user_fk")

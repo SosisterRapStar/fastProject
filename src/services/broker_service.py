@@ -38,8 +38,16 @@ class Broker:
         if channel in self.channel_to_handler: # it means that app is already subscribed to channel
             return
         
+        
+        
         if handler:
-            self.channel_to_handler[channel] = partial(handler, *handler_args, **handler_kwargs) # partial use
+            
+            self.channel_to_handler[channel] = partial(handler, **handler_kwargs)
+            
+            # WARNING partial is order sensitive so if handler_args were passed they must be orderd in right way for 
+            # handler correct working 
+            
+            
             await self.pubsub.subscribe(**{channel: handler})
         else:
             self.channel_to_handler[channel] = None

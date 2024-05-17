@@ -6,17 +6,13 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .connection_manager import ChatService
     
-async def chat_message_handler(message: str, chatService: "ChatService"):
+from src.schemas.message import MessageFromBroker
+
+async def chat_message_handler(message: str, chat: "ChatService"):
+    message = MessageFromBroker.model_validate_json(message['data'])
+    await chat.handle_message_from_user(message)
     
-    # conv_managers_handler = conv_managers_handler_provider()
-    # response = message["data"]
-    # conv_id = message['channel']
-    # print(message)
-    # print(f"Handler {conv_managers_handler.get_all()}")
-    # manager = await conv_managers_handler.get_manager(key=conv_id)   
-    # if manager:
-    #     print(f"Handler {manager.get_all()}")
-    #     await manager.broadcast(response)
-    chat_service = ChatService
+   
+    
    
     
