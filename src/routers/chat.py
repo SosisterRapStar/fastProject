@@ -8,7 +8,9 @@ from src.authorization.dependency_auth import get_current_user, get_current_user
 from src.dependencies.repo_providers_dependency import conv_repo_provider, message_repo_provider
 from dependencies.connection_dependencies import conv_managers_handler_provider
 from services.message_handlers import chat_message_handler
+from src.dependencies.chat_service_dependency import chat_service_provider
 from .logger import log
+from json import JSONDecodeError
 import asyncio
 router = APIRouter(
     tags=["chat"],
@@ -61,52 +63,62 @@ router = APIRouter(
 
 
 
-# @router.get("/{conv_id}")
-# async def get(
-#     current_user: get_current_user,
-#     conv_id: uuid.UUID,
-#     conv_repo: conv_repo_provider,
-#     conv_managers_handler: conv_managers_handler_provider,
-#     broker: broker_provider,
-# ):
-    
-#     return HTMLResponse(html)
-
-
-@router.websocket("/ws")
-async def websocket_endpoint(
-    current_user: get_current_user_ws,
+@router.get("/{conv_id}")
+async def get(
+    current_user: get_current_user,
     conv_id: uuid.UUID,
-    websocket: WebSocket,
-    message_repo: message_repo_provider,
+    conv_repo: conv_repo_provider,
     conv_managers_handler: conv_managers_handler_provider,
-    broker: broker_provider, 
+    broker: broker_provider,
 ):
     
+    pass
+
+
+@router.websocket("/ws/")
+async def websocket_endpoint(
+    current_user: get_current_user_ws,
+    websocket: WebSocket,
+    message_repo: message_repo_provider,
+    manager: conv_managers_handler_provider,
+    broker: broker_provider, 
+    chat: chat_service_provider,
+):
+    log.debug("websocket endpoint")
+    await manager.connect(user_id=current_user.id, websocket=websocket)
     
     try:
         while True:
-            data = await websocket.receive_json()
-            await broker.subscribe(channel=str(conv_id), handler=chat_message_handler)
+            try:
+                data = await websocket.receive_json()
+            except JSONDecodeError as e:
+                log.error("WTF DUDE !!!!")
+                
+            log.debug(f"{current_user.name=} start subscribe")
+            log.debug(f"{broker=}")
+            await broker.subscribe(channel=data["conv_id"], handler=chat_message_handler, chat=chat)
             
+        
             messageToSaveInDb = {"conversation_fk": data["conv_id"], 
                                    "content": data["message"], 
                                    "user_fk": current_user.id}
             
-            await message_repo.create(messageToSaveInDb.model_dump())
+            await message_repo.create(messageToSaveInDb)
             
             
             messageForUsersAndOtherServers = \
             f"""
             {{
-            conversation_id: {data["conv_id"]},
-            user_name: {current_user.name},
-            content: {data["message"]}
+            "conversation_id": "{data["conv_id"]}",
+            "user_name": "{current_user.name}",
+            "content": "{data["message"]}"
             }}
             """
             
-            await broker.publish(channel=str(conv_id), message=messageForUsersAndOtherServers)
+        
+            await broker.publish(channel=data["conv_id"], message=messageForUsersAndOtherServers)
+        
             
     except WebSocketDisconnect:
-        manager.disconnect(websocket)
-        await conv_managers_handler.delete_manager(key=str(conv_id))
+        await manager.disconnect(user_id=current_user.id, websocket=websocket)
+        

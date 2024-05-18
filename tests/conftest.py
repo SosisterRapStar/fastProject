@@ -94,7 +94,6 @@ async def override_session_dep(db_session) -> AsyncSession:
 
     return _override_session_dep
 
-
 @pytest.fixture(scope="function")
 async def function_conv_request_model():
     model = data_generator.ConversationRequestFactory.build()

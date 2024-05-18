@@ -7,6 +7,7 @@ from starlette.websockets import WebSocketDisconnect
 import contextvars
 from crud.conversation_repository import ConversationRepository
 from typing import TYPE_CHECKING
+from .logger import log
 
 if TYPE_CHECKING:
     from schemas.message import MessageFromBroker
@@ -38,7 +39,7 @@ class ChatService:
     
     def __new__(cls, conv_repo, manager, *args, **kwargs):
         if cls.__singletone is None:
-            cls.__singletone = super().__new__(conv_repo, manager, cls, *args, **kwargs)
+            cls.__singletone = super().__new__(cls, *args, **kwargs)
         return cls.__singletone
     
     def __init__(self, conv_repo: ConversationRepository, manager: "ConnectionManager"):
@@ -46,8 +47,8 @@ class ChatService:
         self.manager = manager
     
     async def handle_message_from_user(self, message: "MessageFromBroker"): # message может быть и json
-        users_list = ConversationRepository.get_users(conv_id=message.conversation_id, selectable="id") 
-        self.manager.send_to_users(users=users_list, message=message['data'])
+        users_list = await self.conv_repo.get_users(conv_id=message.conversation_id, selectable="id") 
+        await self.manager.send_to_users(users=users_list, message=message.content)
 
    
 
@@ -65,8 +66,11 @@ class ConnectionManager:
         
         
     async def connect(self, user_id: uuid.UUID, websocket: WebSocket):
+        log.debug(f"{user_id=} start connecting")
         await websocket.accept()
         self.__counter += 1
+        
+        log.debug(f"{user_id=} connected")
         
         if user_id not in self.__users_websockets:
             self.__users_websockets[user_id] = set()
@@ -80,6 +84,7 @@ class ConnectionManager:
             
 
     async def disconnect(self, user_id: uuid.UUID, websocket: WebSocket):
+        
         if user_id in self.__users_websockets:
             self.__users_websockets[user_id].remove(websocket)
             self.__counter -= 1

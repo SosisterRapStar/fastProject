@@ -4,10 +4,10 @@ from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
 from src.authorization.dependency_auth import get_current_user_id, get_current_user
-from src.services.connection_manager import (
-    # ConnectionManagerIsNotEmptyError,
-    ConnectionManagerNotFoundError,
-)
+# from src.services.connection_manager import (
+#     # ConnectionManagerIsNotEmptyError,
+#     ConnectionManagerNotFoundError,
+# )
 from src.crud.exceptions import RecordNotFoundError, NoEditPermissionsError
 from src.dependencies.repo_providers_dependency import conv_repo_provider
 
@@ -36,17 +36,11 @@ router = APIRouter(tags=["Conversations"])
     response_model=Union[List[ConversationResponse], ConversationResponse],
 )
 async def get_all_conversations(conv_repo: conv_repo_provider, id: uuid.UUID | None = None, name: str | None = None,):
-    if id:
-        try:
-            return await conv_repo.get(id=id)
-        except NoResultFound:
-            raise ConversationNotFoundError()
-    elif name:
-        try:
-            return await conv_repo.get(name=name)
-        except NoResultFound:
-            raise ConversationNotFoundError()
-    return await conv_repo.get()
+    try:
+        return await conv_repo.get(id=id, name=name)
+    except NoResultFound:
+        raise ConversationNotFoundError()
+    
 
 @router.get(
     "/users/{conv_id}/",

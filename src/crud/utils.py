@@ -17,13 +17,13 @@ async def get_object(
     model: Type[Base],
     **criteries: Unpack[NameOrId | None],
 ) -> Base | list[Base]:
-    if "name" not in criteries.keys() and "id" not in criteries.keys():
+
+    if criteries.get("name", None) is None and criteries.get("id", None) is None:
         stmt = select(model)
         models = await async_session.scalars(stmt)
         return list(models)
 
     stmt = await get_statement(model=model, criterias=criteries)
-    print(stmt)
     obj = await async_session.scalar(stmt)
 
     if obj is None:
