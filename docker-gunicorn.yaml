@@ -50,7 +50,7 @@ services:
     depends_on:
       - redis
       - test_db  
-    command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+    command: ["gunicorn", "main:app", "--workers", "12", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
 
     volumes:
       - ./src:/app/src
@@ -64,11 +64,11 @@ services:
       - .env-docker-comm
     container_name: app2
     expose:
-      - "8000"
+      - "8001"
     depends_on:
       - redis
       - test_db  
-    command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+    command: ["gunicorn", "main:app", "--workers", "12", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8001"]
 
     volumes:
       - ./src:/app/src
@@ -82,11 +82,11 @@ services:
       - .env-docker-comm
     container_name: app3
     expose:
-      - "8000"
+      - "8002"
     depends_on:
       - redis
       - test_db  
-    command: ["gunicorn", "main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
+    command: ["gunicorn", "main:app", "--workers", "12", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8002"]
 
     volumes:
       - ./src:/app/src

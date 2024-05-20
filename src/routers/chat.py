@@ -16,7 +16,9 @@ router = APIRouter(
     tags=["chat"],
     responses={404: {"detai": "Not found"}},
 )
-
+import sys
+from src.models import db_handler
+from crud.message_repository import MessageRepository
 
 
 
@@ -79,7 +81,6 @@ async def get(
 async def websocket_endpoint(
     current_user: get_current_user_ws,
     websocket: WebSocket,
-    message_repo: message_repo_provider,
     manager: conv_managers_handler_provider,
     broker: broker_provider, 
     chat: chat_service_provider,
@@ -87,6 +88,7 @@ async def websocket_endpoint(
     log.debug("websocket endpoint")
     await manager.connect(user_id=current_user.id, websocket=websocket)
     
+    log.debug(f"websocket_size={sys.getsizeof(websocket)}")
     try:
         while True:
             try:
@@ -103,9 +105,12 @@ async def websocket_endpoint(
                                    "content": data["message"], 
                                    "user_fk": current_user.id}
             
-            await message_repo.create(messageToSaveInDb)
             
-            
+            session = db_handler.get_scoped_session() 
+            async with session() as session:
+                message_repo = MessageRepository(session=session)
+                await message_repo.create(messageToSaveInDb)
+                
             messageForUsersAndOtherServers = \
             f"""
             {{

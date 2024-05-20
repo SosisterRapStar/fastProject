@@ -8,6 +8,7 @@ import contextvars
 from crud.conversation_repository import ConversationRepository
 from typing import TYPE_CHECKING
 from .logger import log
+import sys
 
 if TYPE_CHECKING:
     from schemas.message import MessageFromBroker
@@ -66,6 +67,7 @@ class ConnectionManager:
         
         
     async def connect(self, user_id: uuid.UUID, websocket: WebSocket):
+        log.debug(f"dict_size={sys.getsizeof(self.__users_websockets)}")
         log.debug(f"{user_id=} start connecting")
         await websocket.accept()
         self.__counter += 1
