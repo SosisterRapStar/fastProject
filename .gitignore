@@ -4,3 +4,4 @@ myvenv/
 .env
 .env-test-db
 .env-docker-comm
+*.log
