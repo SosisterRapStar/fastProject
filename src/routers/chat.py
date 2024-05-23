@@ -1,26 +1,24 @@
 import uuid
-from schemas.message import MessageToDb, MessageForResponse
+
 from fastapi import APIRouter, WebSocket
-from starlette.responses import HTMLResponse
-from starlette.websockets import WebSocketDisconnect
-from dependencies.broker_dependency import broker_provider 
+from dependencies.broker_dependency import broker_provider
 from src.authorization.dependency_auth import get_current_user, get_current_user_ws
-from src.dependencies.repo_providers_dependency import conv_repo_provider, message_repo_provider
+from src.dependencies.repo_providers_dependency import (
+    conv_repo_provider,
+    message_repo_provider,
+)
 from dependencies.connection_dependencies import conv_managers_handler_provider
 from services.message_handlers import chat_message_handler
 from src.dependencies.chat_service_dependency import chat_service_provider
 from .logger import log
-from json import JSONDecodeError
 import asyncio
+from src.services.websocket_server import start_server
+
 router = APIRouter(
     tags=["chat"],
     responses={404: {"detai": "Not found"}},
 )
 import sys
-from src.models import db_handler
-from crud.message_repository import MessageRepository
-
-
 
 
 # html = """
@@ -64,7 +62,6 @@ from crud.message_repository import MessageRepository
 # """
 
 
-
 @router.get("/{conv_id}")
 async def get(
     current_user: get_current_user,
@@ -73,7 +70,7 @@ async def get(
     conv_managers_handler: conv_managers_handler_provider,
     broker: broker_provider,
 ):
-    
+
     pass
 
 
@@ -82,48 +79,19 @@ async def websocket_endpoint(
     current_user: get_current_user_ws,
     websocket: WebSocket,
     manager: conv_managers_handler_provider,
-    broker: broker_provider, 
+    broker: broker_provider,
     chat: chat_service_provider,
 ):
-    log.debug("websocket endpoint")
-    await manager.connect(user_id=current_user.id, websocket=websocket)
     
-    log.debug(f"websocket_size={sys.getsizeof(websocket)}")
-    try:
-        while True:
-            try:
-                data = await websocket.receive_json()
-            except JSONDecodeError as e:
-                log.error("WTF DUDE !!!!")
-                
-            log.debug(f"{current_user.name=} start subscribe")
-            log.debug(f"{broker=}")
-            await broker.subscribe(channel=data["conv_id"], handler=chat_message_handler, chat=chat)
-            
+    await manager.connect(user_id=current_user.id, websocket=websocket)
+
+    server = asyncio.create_task(start_server(
+        manager=manager,
+        websocket=websocket,
+        current_user=current_user,
+        broker=broker,
+        chat=chat,
+        )
         
-            messageToSaveInDb = {"conversation_fk": data["conv_id"], 
-                                   "content": data["message"], 
-                                   "user_fk": current_user.id}
-            
-            
-            session = db_handler.get_scoped_session() 
-            async with session() as session:
-                message_repo = MessageRepository(session=session)
-                await message_repo.create(messageToSaveInDb)
-                
-            messageForUsersAndOtherServers = \
-            f"""
-            {{
-            "conversation_id": "{data["conv_id"]}",
-            "user_name": "{current_user.name}",
-            "content": "{data["message"]}"
-            }}
-            """
-            
-        
-            await broker.publish(channel=data["conv_id"], message=messageForUsersAndOtherServers)
-        
-            
-    except WebSocketDisconnect:
-        await manager.disconnect(user_id=current_user.id, websocket=websocket)
-        
+    )
+    

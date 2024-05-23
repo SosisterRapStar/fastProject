@@ -32,7 +32,7 @@ class DatabaseHandler:
 
     def get_scoped_session(self):
         session = async_scoped_session(
-            session_factory=self.session,
+            session_factory=self.session,   
             scopefunc=current_task,
         )
         return session

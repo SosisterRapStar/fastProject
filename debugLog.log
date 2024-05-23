@@ -1,0 +1,41 @@
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'ztnBCf+gxrIlOqHqDV5RvQ=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'iyyPtMhPAVgD3XdI+jo9+A=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'cFHFqsqysmoDVBxF/bu0lw=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'UWkdBMV3VkuiKDVzBK+7pg=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'YbD7OaOs3fWXqz3yx3VoTQ=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'NjaQ6l91MgwMTbfYlNQS2A=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'BRTLqNHab2I3vrRQLTmdcg=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|log_middleware|L13] 2024-05-23T15:59:20+0300: [(b'host', b'localhost:8000'), (b'upgrade', b'websocket'), (b'connection', b'Upgrade'), (b'sec-websocket-key', b'bW91GwZj96TG3+O+HJViJA=='), (b'sec-websocket-version', b'13'), (b'sec-websocket-extensions', b'permessage-deflate; client_max_window_bits'), (b'authorization', b'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4MTYyMDhlLTdkOGItNGRiZi05YjFmLTRmMjZjN2IzY2FiYSIsImlhdCI6MTcxNjQ2ODQyNCwiZXhwIjoxNzE2NDcyMDI0fQ.ykhQjFzOsP8Z-L0UcFWV_jzMOhb00SBLx3Du9Ocp4PI'), (b'user-agent', b'Python/3.10 websockets/12.0')]
+[DEBUG|dependency_auth|L42] 2024-05-23T15:59:20+0300: Request for curr user id
+[DEBUG|dependency_auth|L19] 2024-05-23T15:59:20+0300: User 2816208e-7d8b-4dbf-9b1f-4f26c7b3caba authenticated
+[DEBUG|dependency_auth|L19] 2024-05-23T15:59:20+0300: User 2816208e-7d8b-4dbf-9b1f-4f26c7b3caba authenticated
+[DEBUG|dependency_auth|L19] 2024-05-23T15:59:20+0300: User 2816208e-7d8b-4dbf-9b1f-4f26c7b3caba authenticated
+[DEBUG|dependency_auth|L19] 2024-05-23T15:59:20+0300: User 2816208e-7d8b-4dbf-9b1f-4f26c7b3caba authenticated
+[DEBUG|dependency_auth|L19] 2024-05-23T15:59:20+0300: User 2816208e-7d8b-4dbf-9b1f-4f26c7b3caba authenticated
+[DEBUG|connection_manager|L70] 2024-05-23T15:59:20+0300: dict_size=232
+[DEBUG|connection_manager|L71] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') start connecting
+[DEBUG|connection_manager|L75] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') connected
+[DEBUG|connection_manager|L70] 2024-05-23T15:59:20+0300: dict_size=232
+[DEBUG|connection_manager|L71] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') start connecting
+[DEBUG|connection_manager|L75] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') connected
+[DEBUG|log_middleware|L20] 2024-05-23T15:59:20+0300: {'protocol': 'websocket', 'path': '/api/v1/chat/ws/', 'process_time': 0.0320584774017334}
+[DEBUG|connection_manager|L70] 2024-05-23T15:59:20+0300: dict_size=232
+[DEBUG|connection_manager|L71] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') start connecting
+[DEBUG|connection_manager|L75] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') connected
+[DEBUG|log_middleware|L20] 2024-05-23T15:59:20+0300: {'protocol': 'websocket', 'path': '/api/v1/chat/ws/', 'process_time': 0.03058624267578125}
+[DEBUG|connection_manager|L70] 2024-05-23T15:59:20+0300: dict_size=232
+[DEBUG|connection_manager|L71] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') start connecting
+[DEBUG|connection_manager|L75] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') connected
+[DEBUG|connection_manager|L70] 2024-05-23T15:59:20+0300: dict_size=232
+[DEBUG|connection_manager|L71] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') start connecting
+[DEBUG|connection_manager|L75] 2024-05-23T15:59:20+0300: user_id=UUID('2816208e-7d8b-4dbf-9b1f-4f26c7b3caba') connected
+[DEBUG|log_middleware|L20] 2024-05-23T15:59:20+0300: {'protocol': 'websocket', 'path': '/api/v1/chat/ws/', 'process_time': 0.031986236572265625}
+[DEBUG|log_middleware|L20] 2024-05-23T15:59:20+0300: {'protocol': 'websocket', 'path': '/api/v1/chat/ws/', 'process_time': 0.03493022918701172}
+[DEBUG|log_middleware|L20] 2024-05-23T15:59:20+0300: {'protocol': 'websocket', 'path': '/api/v1/chat/ws/', 'process_time': 0.038134098052978516}
