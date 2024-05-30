@@ -14,14 +14,44 @@ from repo_abstract import CRUDRepository
 
 class AbstractUserRepository(CRUDRepository):
     @abstractmethod
-    async def get_convs():
-        raise NotImplemented
+    async def get_convs(self):
+        raise NotImplementedError
     
     @abstractmethod
-    async def get_user_messages():
-        raise NotImplemented
+    async def get_user_messages(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def get_user_with_messages(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def add_friend(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def remove_friend(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def remove_friend(self):
+        raise NotImplementedError
+    
+    
+    @abstractmethod
+    async def  get_all_friends(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def  get_received_invites(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def  get_sended_invites(self):
+        raise NotImplementedError
+    
 
-class UserRepository(CRUDAlchemyRepository):
+class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
     _model = User
 
     # TODO: do something with session identity map for caching

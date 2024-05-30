@@ -43,7 +43,7 @@ class CRUDAlchemyRepository(CRUDRepository):
         new_obj = self._model(**data)
         self._session.add(new_obj)
 
-        await self._session.commit()  
+        await self._session.commit()
         return new_obj
 
     async def get(self, **criteries: Unpack[NameOrId | None]) -> Base:
@@ -88,6 +88,6 @@ class CRUDAlchemyRepository(CRUDRepository):
             model_obj=model_object,
             model=self._model,
             **criteries,
-            )
+        )
         await self._session.commit()
         return returned_id

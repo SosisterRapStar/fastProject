@@ -24,8 +24,7 @@ class NoEditPermissionsError(Exception):
         return f"User has no edit permissions"
 
 
-
-# TODO: change these BAD EXCEPTIONS 
+# TODO: change these BAD EXCEPTIONS
 class AlreadyFriendException(Exception):
     def __init__(self, *args):
         if args:
@@ -37,7 +36,7 @@ class AlreadyFriendException(Exception):
         if self.message:
             return f"{self.message}"
         return f"User already in friends"
-    
+
 
 class NoFriendsException(Exception):
     def __init__(self, *args):

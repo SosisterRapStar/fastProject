@@ -31,7 +31,7 @@ async def get_object(
 
     return obj
 
-    
+
 async def update_object(
     async_session: AsyncSession,
     model: Type[Base],
@@ -51,16 +51,17 @@ async def update_object(
     return result.scalar_one()
 
 
-async def update_using_object(async_session: AsyncSession, model_object: Base, data: dict):
+async def update_using_object(
+    async_session: AsyncSession, model_object: Base, data: dict
+):
     for key, arg in data.items():
         setattr(model_object, key, arg)
     return model_object
 
 
-
 async def delete_obj(
     async_session: AsyncSession,
-    model: Type[Base], 
+    model: Type[Base],
     model_obj: Base | None = None,
     **criterias: Unpack[NameOrId],
 ) -> None:
@@ -74,13 +75,15 @@ async def delete_obj(
     result: Result = await async_session.execute(stmt)
     return result.scalar()
 
+
 async def get_statement(model: Type[Base], criterias: dict[str, str]):
     for key in criterias:
         if value := criterias[key]:
             attribute = valid_attribute(model=model, key=key)
             stmt = select(model).where(attribute == value)
             return stmt
-        
+
+
 async def get_update_statement(
     model: Type[Base], data: dict, criterias: dict[str, str]
 ):
@@ -88,19 +91,18 @@ async def get_update_statement(
         if value := criterias[key]:
             attribute = valid_attribute(model=model, key=key)
             stmt = (
-                update(model)
-                .where(attribute == value)
-                .values(**data)
-                .returning(model)
+                update(model).where(attribute == value).values(**data).returning(model)
             )
             return stmt
-        
+
+
 async def get_delete_statement(model: Type[Base], criterias: dict[str, str]):
     for key in criterias:
         if value := criterias[key]:
             attribute = valid_attribute(model=model, key=key)
             stmt = delete(model).where(attribute == value).returning(model.id)
             return stmt
+
 
 def valid_attribute(model, key):
     try:

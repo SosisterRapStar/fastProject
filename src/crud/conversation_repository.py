@@ -15,26 +15,25 @@ from repo_abstract import CRUDRepository
 
 if TYPE_CHECKING:
     from src.models.user_model import User
-    
-    
-    
+
+
 class AbstractConversationRepository(CRUDRepository):
     @abstractmethod
     async def get_users(self):
         raise NotImplementedError
-    
+
     @abstractmethod
     async def get_conv_messages(self):
         raise NotImplementedError
-    
+
     @abstractmethod
     async def add_user(self):
         raise NotImplementedError
-    
+
     @abstractmethod
     async def get_conv_with_messages(self):
         raise NotImplementedError
-    
+
 
 class ConversationRepository(CRUDAlchemyRepository, AbstractConversationRepository):
     _model = Conversation
@@ -42,12 +41,14 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
     # TODO: do something with session identity map for caching
     # TODO: errors handling
     # I think that it shouldn't be async :|
-    async def get_users(self, conv_id: uuid.UUID, selectable: "str" = None) -> list["User"]:
+    async def get_users(
+        self, conv_id: uuid.UUID, selectable: "str" = None
+    ) -> list["User"]:
         if selectable is None:
             selectable = User
         else:
             selectable = getattr(User, selectable)
-                
+
         stmt = (
             select(selectable)
             .join(
@@ -93,23 +94,27 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
         res: Result = await self._session.execute(stmt)
         conv = res.unique().scalar_one()
         return conv
-    
-    async def update(self,
+
+    async def update(
+        self,
         current_user_id,
         data,
         model_object: Conversation | None = None,
-        **criteries):
-        
-        if not criteries.get('id', None):
-            await self.get_permissions( current_user_id=current_user_id, conv_id=criteries["name"])
+        **criteries
+    ):
+
+        if not criteries.get("id", None):
+            await self.get_permissions(
+                current_user_id=current_user_id, conv_id=criteries["name"]
+            )
         else:
-            await self.get_permissions( current_user_id=current_user_id, conv_id=criteries["id"])
+            await self.get_permissions(
+                current_user_id=current_user_id, conv_id=criteries["id"]
+            )
         return await super().update(data, model_object, **criteries)
-        
 
     async def create(self, data: dict) -> Conversation:
-        
-         
+
         new_conv = Conversation(**data)
         new_asoc = UserConversationSecondary(edit_permission=True)
         new_conv.id = uuid.uuid4()
@@ -136,9 +141,16 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
         self._session.add(new_asoc)
         await self._session.commit()
 
-    async def get_permissions(self, current_user_id: uuid.UUID, conv_id: uuid.UUID | None = None, name: str | None = None):
+    async def get_permissions(
+        self,
+        current_user_id: uuid.UUID,
+        conv_id: uuid.UUID | None = None,
+        name: str | None = None,
+    ):
         if name and not conv_id:
-            conv_id = await self._session.scalar(select(Conversation.id).where(Conversation.name == name))
+            conv_id = await self._session.scalar(
+                select(Conversation.id).where(Conversation.name == name)
+            )
         stmt = select(UserConversationSecondary.edit_permission).where(
             UserConversationSecondary.user_id == current_user_id
             and UserConversationSecondary.conversation_id == conv_id
@@ -151,7 +163,3 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
             raise RecordNotFoundError()
         if not row:
             raise NoEditPermissionsError()
-
-
-
-
