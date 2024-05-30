@@ -10,12 +10,33 @@ from src.crud.repo_abstract import CRUDAlchemyRepository
 from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.user_model import User
 from typing import TYPE_CHECKING
-
+from abc import abstractmethod
+from repo_abstract import CRUDRepository
 
 if TYPE_CHECKING:
     from src.models.user_model import User
+    
+    
+    
+class AbstractConversationRepository(CRUDRepository):
+    @abstractmethod
+    async def get_users():
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def get_conv_messages():
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def add_user():
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def get_conv_with_messages():
+        raise NotImplementedError
+    
 
-class ConversationRepository(CRUDAlchemyRepository):
+class ConversationRepository(CRUDAlchemyRepository, AbstractConversationRepository):
     _model = Conversation
 
     # TODO: do something with session identity map for caching
