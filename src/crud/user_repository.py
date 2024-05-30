@@ -8,7 +8,18 @@ from src.models.chat_models import Conversation, UserConversationSecondary
 from src.models.friends_model import Invite
 from src.models.user_model import User
 from .exceptions import RecordNotFoundError, AlreadyFriendException, NoFriendsException
+from abc import abstractmethod
+from repo_abstract import CRUDRepository
 
+
+class AbstractUserRepository(CRUDRepository):
+    @abstractmethod
+    async def get_convs():
+        raise NotImplemented
+    
+    @abstractmethod
+    async def get_user_messages():
+        raise NotImplemented
 
 class UserRepository(CRUDAlchemyRepository):
     _model = User

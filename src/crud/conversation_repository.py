@@ -20,19 +20,19 @@ if TYPE_CHECKING:
     
 class AbstractConversationRepository(CRUDRepository):
     @abstractmethod
-    async def get_users():
+    async def get_users(self):
         raise NotImplementedError
     
     @abstractmethod
-    async def get_conv_messages():
+    async def get_conv_messages(self):
         raise NotImplementedError
     
     @abstractmethod
-    async def add_user():
+    async def add_user(self):
         raise NotImplementedError
     
     @abstractmethod
-    async def get_conv_with_messages():
+    async def get_conv_with_messages(self):
         raise NotImplementedError
     
 
@@ -151,3 +151,7 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
             raise RecordNotFoundError()
         if not row:
             raise NoEditPermissionsError()
+
+
+
+
