@@ -1,6 +1,6 @@
 from src.crud.exceptions import RecordNotFoundError
-from src.crud.invite_repo import InviteRepository
-from src.crud.user_repository import UserRepository
+from src.crud.invite_repo import AbstractInviteRepository
+from src.crud.user_repository import AbstractUserRepository
 from src.schemas.invite_schema import InviteToDB
 from src.models.user_model import User
 from src.models.friends_model import Invite
@@ -20,7 +20,7 @@ class NoAbleToAccept(Exception):
 # TODO: refactor error handling
 class FriendsService:
     def __init__(
-        self, invite_repo: InviteRepository, user_repo: UserRepository
+        self, invite_repo: AbstractInviteRepository, user_repo: AbstractUserRepository
     ) -> None:
         self.invite_repo = invite_repo
         self.user_repo = user_repo

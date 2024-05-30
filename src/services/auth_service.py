@@ -1,7 +1,7 @@
 from fastapi.security import OAuth2PasswordRequestForm
 from src.authorization.security import verify_password
 from src.crud.exceptions import RecordNotFoundError
-from src.crud.user_repository import UserRepository
+from src.crud.user_repository import AbstractUserRepository
 from src.models.user_model import User
 from src.config import settings
 from datetime import timedelta
@@ -24,7 +24,7 @@ class JWTService:
         minutes=settings.security_settings.REFRESH_TOKEN_EXPIRE_MINUTES
     )
 
-    def __init__(self, repo: UserRepository):
+    def __init__(self, repo: AbstractUserRepository):
         self.repo = repo
         self.data = None
 
