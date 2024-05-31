@@ -13,5 +13,5 @@ class RedisManager:
     )
 
     @classmethod
-    def get_connection(cls):
+    def get_connection(cls) -> Redis:
         return redis.Redis(connection_pool=cls.pool)

@@ -1,5 +1,4 @@
 from celery import Celery
-from requests import session
 from sqlalchemy import create_engine, select, delete
 from sqlalchemy.orm import sessionmaker
 import datetime

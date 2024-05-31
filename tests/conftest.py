@@ -38,7 +38,7 @@ from src.crud.conversation_repository import ConversationRepository
 from src.crud.message_repository import MessageRepository
 from src.crud.user_repository import UserRepository
 from sqlalchemy.pool import NullPool
-from utils import TestFullUser
+from models.utils import TestFullUser
 
 
 DB_ENTIIIES_COUNTER = 10

@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, relationship, mapped_column
 
 from .annotated_types import created_at_timestamp, UUIDpk, updated_at_timestamp
 from .base import Base

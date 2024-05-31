@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.crud.utils import get_object, NameOrId, update_object, delete_obj
 from src.models import Base
 
+from redis.asyncio import Redis
 
 class CRUDRepository(ABC):
 
@@ -34,6 +35,9 @@ class CRUDRepository(ABC):
 
 class CRUDAlchemyRepository(CRUDRepository):
     _model: Type[Base] = None
+    
+    def get_model_name(self):
+        return str(self._model.__name__)
 
     def __init__(self, session: AsyncSession):
         self._session = session
@@ -91,3 +95,37 @@ class CRUDAlchemyRepository(CRUDRepository):
         )
         await self._session.commit()
         return returned_id
+
+
+class CacheCrudAlchemyRepository(CRUDRepository):
+    def __init__(self, repo: CRUDAlchemyRepository, cache: Redis) -> None:
+        self.repo = repo
+        self.cache = cache
+        
+    async def create(self, data: dict):
+        obj = self.repo.create(data=data)
+        if await self.cache.exists(f"{self.repo.get_model_name()}:{obj.id}"):
+            return obj
+        
+        await self.cache.hset(f"{self.repo.get_model_name()}:{obj.id}", mapping=obj.__dict__)
+    
+    async def delete(self,
+        model_object: Base | None = None,
+        **criteries: Unpack[NameOrId]):
+        
+        self.repo.delete(model_object, **criteries)
+    
+    async def update( self,
+        data: dict,
+        model_object: Base | None = None,
+        **criteries: Unpack[NameOrId],):
+        
+        self.repo.update(data, model_object, **criteries)
+    
+    async def get(self, **criteries: Unpack[NameOrId | None]):
+        self.repo.get(**criteries)
+        
+    async def get_all(self):
+        self.repo.get_all()
+        
+    
