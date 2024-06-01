@@ -104,23 +104,41 @@ class CacheCrudAlchemyRepository(CRUDRepository):
         
     async def create(self, data: dict):
         obj = self.repo.create(data=data)
-        if await self.cache.exists(f"{self.repo.get_model_name()}:{obj.id}"):
-            return obj
         
-        await self.cache.hset(f"{self.repo.get_model_name()}:{obj.id}", mapping=obj.__dict__)
+        #write to cache after creating
+        async with self.cache() as c:
+            if not await c.exists(f"{self.repo.get_model_name()}:{obj.id}"):           
+                await c.hset(f"{self.repo.get_model_name()}:{obj.id}", mapping=obj.__dict__)
+                await c.expire(f"{self.repo.get_model_name()}:{obj.id}", 3600)
+                
+        return obj
     
     async def delete(self,
         model_object: Base | None = None,
         **criteries: Unpack[NameOrId]):
         
-        self.repo.delete(model_object, **criteries)
+        id = self.repo.delete(model_object, **criteries)
+        
+        # clean cache after deleting
+        async with self.cache() as c:
+            if await c.exists(f"{self.repo.get_model_name()}:{id}"):           
+                await c.delete(f"{self.repo.get_model_name()}:{id}")
+                
+        return id
     
     async def update( self,
         data: dict,
         model_object: Base | None = None,
         **criteries: Unpack[NameOrId],):
         
-        self.repo.update(data, model_object, **criteries)
+        updated = self.repo.update(data, model_object, **criteries)
+        
+        async with self.cache() as c:
+            if await c.exists(f"{self.repo.get_model_name()}:{id}"):           
+                await c.hset(f"{self.repo.get_model_name()}:{updated.id}", mapping=updated.__dict__)
+                
+        return updated
+        
     
     async def get(self, **criteries: Unpack[NameOrId | None]):
         self.repo.get(**criteries)

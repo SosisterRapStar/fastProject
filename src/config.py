@@ -55,6 +55,7 @@ class RedisSettings(BaseSettings):
     port: int = int(os.getenv("REDIS_PORT"))
     db: int = int(os.getenv("REDIS_DB"))
     max_pool_size: int = 5
+    DEFAULT_TTL: int = 3600
     
 class Settings(BaseSettings):
     schemas_settings: SchemasValidationSettings = SchemasValidationSettings()
