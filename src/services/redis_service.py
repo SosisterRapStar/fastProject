@@ -4,6 +4,7 @@ from redis import Redis
 from config import settings
 from typing import Any, Dict, List
 from src.config import settings
+from abc import ABC, abstractmethod
 
 class RedisManager:
     pool = redis.ConnectionPool(
@@ -20,15 +21,51 @@ class RedisManager:
 
 
 
+class AbstractCache(ABC):
+    
+    @abstractmethod
+    def set_ttl_for_namespace(self, namespace: str):
+        raise NotImplementedError
+    
+    @abstractmethod
+    def get_ttl_for_namespace(self, namespace: str):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def get_value(self, key: str):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def set_value(self, key: str, value: Any):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def set_object(self, key: str, object: Dict[str, Any]):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def get_object(self, key: str) -> Dict[str, Any]:
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def set_list(self, key: str, value: List[Any]):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def get_list(self, key: str):
+        raise NotImplementedError
 
-class RedisCache:
+
+class RedisCache(AbstractCache):
     # stores ttls for namespaces in cache like: {user: {ttl (ttl of user namespace): 10s, messages: {ttl: 15s ...}}}
-    _ttl_for_namespaces = {}
+    _ttl_for_namespaces = {} # helps to regulate ttl for different purposes
+    
     DEFAULT_TTL = settings.redis.DEFAULT_TTL
     
     def __init__(self, redis: Redis) -> None:
         self.redis = redis 
     
+
     def set_ttl_for_namespace(self, key: str, ttl: int) -> int:
         namespaces = key.split(":")[:-1]
         curr_namespace = self._ttl_for_namespaces
@@ -50,27 +87,27 @@ class RedisCache:
         return curr_namespace["ttl"] 
         
         
-    async def get_key(self, key: str) -> Any | None:
+    async def get_string(self, key: str) -> Any | None:
         async with self.redis() as r:
             return await r.get(key)
     
         
-    async def set_key(self, key: str, value: str) -> Dict[str, str]:
+    async def set_string(self, key: str, value: str) -> Dict[str, str]:
         async with self.redis() as r:
             await r.set(key, value)
             await r.expire(key, self.get_ttl_for_namespace(key=key))
             return {key: value}
     
-    async def set_hset(self, key: str, value: Dict[str, Any]) -> None:
+    async def set_object(self, key: str, value: Dict[str, Any]) -> None:
         async with self.redis() as r:
             await r.hset(key, mapping=value)
             await r.expire(key, self.get_ttl_for_namespace(key=key))
     
-    async def get_hset(self, key: str) -> Dict[str, Any] | None:
+    async def get_object(self, key: str) -> Dict[str, Any] | None:
         async with self.redis() as r:
             value = await r.hgetall(key)
             if value is not None:
-                decoded_value = {k.decode('utf-8'): v.decode('utf-8') for k, v in value.items()}
+                decoded_value = {k.decode('utf-8'): v.decode('utf-8') for k, v in value.items()} # from bytes to utf-8
                 return decoded_value
             return None # WARN
             
@@ -84,5 +121,5 @@ class RedisCache:
         async with self.redis() as r:
             res = await r.lrange(key, 0, -1)
             if res is not None:
-                return [v.decode('utf-8') for v in res]
+                return [v.decode('utf-8') for v in res] # from bytes to utf-8
             return None # WARNING

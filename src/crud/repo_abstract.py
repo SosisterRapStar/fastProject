@@ -7,7 +7,7 @@ from typing_extensions import Unpack
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.crud.utils import get_object, NameOrId, update_object, delete_obj
 from src.models import Base
-
+from src.services.redis_service import RedisCache
 from redis.asyncio import Redis
 
 class CRUDRepository(ABC):
@@ -98,19 +98,16 @@ class CRUDAlchemyRepository(CRUDRepository):
 
 
 class CacheCrudAlchemyRepository(CRUDRepository):
-    def __init__(self, repo: CRUDAlchemyRepository, cache: Redis) -> None:
+    def __init__(self, repo: CRUDAlchemyRepository, cache: RedisCache, namespace_ttl: int) -> None:
         self.repo = repo
         self.cache = cache
+        self.default_cache_namespace = f"{self.repo.get_model_name()}"
+        self.cache.set_ttl_for_namespace(key=f"{self.default_cache_namespace}:id") # method set_ttl cuts all symbols after the last : 
+        # so set_ttl for user:manager:list:1234 will be parsed to user->manager->list 
         
     async def create(self, data: dict):
         obj = self.repo.create(data=data)
-        
-        #write to cache after creating
-        async with self.cache() as c:
-            if not await c.exists(f"{self.repo.get_model_name()}:{obj.id}"):           
-                await c.hset(f"{self.repo.get_model_name()}:{obj.id}", mapping=obj.__dict__)
-                await c.expire(f"{self.repo.get_model_name()}:{obj.id}", 3600)
-                
+        await self.cache.set_hset(key=f"{self.default_cache_namespace}:{obj.id}", value=obj.__dict__)
         return obj
     
     async def delete(self,
@@ -119,11 +116,6 @@ class CacheCrudAlchemyRepository(CRUDRepository):
         
         id = self.repo.delete(model_object, **criteries)
         
-        # clean cache after deleting
-        async with self.cache() as c:
-            if await c.exists(f"{self.repo.get_model_name()}:{id}"):           
-                await c.delete(f"{self.repo.get_model_name()}:{id}")
-                
         return id
     
     async def update( self,
