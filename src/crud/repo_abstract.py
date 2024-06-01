@@ -20,9 +20,9 @@ class CRUDRepository(ABC):
     async def get(self, **criteries):
         raise NotImplementedError
 
-    @abstractmethod
-    async def get_all(self):
-        raise NotImplementedError
+    # @abstractmethod
+    # async def get_all(self):
+    #     raise NotImplementedError
 
     @abstractmethod
     async def update(self, data: dict, **criteries):
@@ -51,19 +51,21 @@ class CRUDAlchemyRepository(CRUDRepository):
         return new_obj
 
     async def get(self, **criteries: Unpack[NameOrId | None]) -> Base:
+        
         res = await get_object(
             async_session=self._session,
             model=self._model,
             **criteries,
         )
+        
         return res
 
-    async def get_all(self) -> list[Base]:
-        # В данном случае функция вернет все записи
+    # async def get_all(self) -> list[Base]:
+    #     # В данном случае функция вернет все записи
 
-        res = await get_object(async_session=self._session, model=self._model)
+    #     res = await get_object(async_session=self._session, model=self._model)
 
-        return res
+    #     return res
 
     async def update(
         self,
@@ -106,16 +108,18 @@ class CacheCrudAlchemyRepository(CRUDRepository):
         # so set_ttl for user:manager:list:1234 will be parsed to user->manager->list 
         
     async def create(self, data: dict):
-        obj = self.repo.create(data=data)
-        await self.cache.set_hset(key=f"{self.default_cache_namespace}:{obj.id}", value=obj.__dict__)
+        obj = await self.repo.create(data=data)
+        await self.cache.set_object(key=f"{self.default_cache_namespace}:{obj.id}", object=obj.__dict__)
         return obj
     
     async def delete(self,
         model_object: Base | None = None,
         **criteries: Unpack[NameOrId]):
         
-        id = self.repo.delete(model_object, **criteries)
-        
+        id = await self.repo.delete(model_object, **criteries)
+        if await self.cache.get_object(key=f"{self.default_cache_namespace}:{model_object.id}") is not None:
+            await self.cache.delete_key(key=f"{self.default_cache_namespace}:{id}")
+            
         return id
     
     async def update( self,
@@ -123,19 +127,25 @@ class CacheCrudAlchemyRepository(CRUDRepository):
         model_object: Base | None = None,
         **criteries: Unpack[NameOrId],):
         
-        updated = self.repo.update(data, model_object, **criteries)
-        
-        async with self.cache() as c:
-            if await c.exists(f"{self.repo.get_model_name()}:{id}"):           
-                await c.hset(f"{self.repo.get_model_name()}:{updated.id}", mapping=updated.__dict__)
-                
+        updated = await self.repo.update(data, model_object, **criteries)
+        self.cache.set_object(key=f"{self.default_cache_namespace}:{updated.id}", object=updated.__dict__)
         return updated
         
     
     async def get(self, **criteries: Unpack[NameOrId | None]):
-        self.repo.get(**criteries)
+        if 'name' not in criteries and 'id' not in criteries:
+            return await self.repo.get(**criteries)
         
-    async def get_all(self):
-        self.repo.get_all()
+        for key in criteries:
+            if value := criteries[key]:
+                if cached := await self.cache.get_object(key=f"{self.default_cache_namespace}:{value}") is not None:
+                    return cached
+                else:
+                    obj = await self.repo.get(**criteries)
+                    await self.cache.set_object(key=f"{self.default_cache_namespace}:{value}", object=obj.__dict__)
+                    return obj
+        
+        
+
         
     

@@ -54,6 +54,10 @@ class AbstractCache(ABC):
     @abstractmethod
     async def get_list(self, key: str):
         raise NotImplementedError
+    
+    @abstractmethod
+    async def delete_key(self, key: str) -> str:
+        raise NotImplementedError
 
 
 class RedisCache(AbstractCache):
@@ -98,9 +102,9 @@ class RedisCache(AbstractCache):
             await r.expire(key, self.get_ttl_for_namespace(key=key))
             return {key: value}
     
-    async def set_object(self, key: str, value: Dict[str, Any]) -> None:
+    async def set_object(self, key: str, object: Dict[str, Any]) -> None:
         async with self.redis() as r:
-            await r.hset(key, mapping=value)
+            await r.hset(key, mapping=object)
             await r.expire(key, self.get_ttl_for_namespace(key=key))
     
     async def get_object(self, key: str) -> Dict[str, Any] | None:
@@ -109,7 +113,7 @@ class RedisCache(AbstractCache):
             if value is not None:
                 decoded_value = {k.decode('utf-8'): v.decode('utf-8') for k, v in value.items()} # from bytes to utf-8
                 return decoded_value
-            return None # WARN
+            return None # BAN
             
         
     async def set_list(self, key: str, value:  List[Any]) -> None:
@@ -123,3 +127,8 @@ class RedisCache(AbstractCache):
             if res is not None:
                 return [v.decode('utf-8') for v in res] # from bytes to utf-8
             return None # WARNING
+        
+    async def delete_key(self, key: str) -> str:
+        async with self.redis() as r:
+             await r.delete(key)
+        return key
