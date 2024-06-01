@@ -24,11 +24,11 @@ class RedisManager:
 class AbstractCache(ABC):
     
     @abstractmethod
-    def set_ttl_for_namespace(self, namespace: str):
+    def set_ttl_for_namespace(self, key: str, ttl: int):
         raise NotImplementedError
     
     @abstractmethod
-    def get_ttl_for_namespace(self, namespace: str):
+    def get_ttl_for_namespace(self, key: str):
         raise NotImplementedError
     
     @abstractmethod
@@ -58,11 +58,23 @@ class AbstractCache(ABC):
     @abstractmethod
     async def delete_key(self, key: str) -> str:
         raise NotImplementedError
-
+    
+    @abstractmethod
+    async def add_to_list(self, key: str, value: Any):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def remove_from_the_list(self, key: str, value: Any):
+        raise NotImplemented
 
 class RedisCache(AbstractCache):
     # stores ttls for namespaces in cache like: {user: {ttl (ttl of user namespace): 10s, messages: {ttl: 15s ...}}}
     _ttl_for_namespaces = {} # helps to regulate ttl for different purposes
+    
+    '''
+    Structure of namespace should implement the following format 
+    main_namespace:sub_namespace1:...:id (id of entity in the main namespace)
+    '''
     
     DEFAULT_TTL = settings.redis.DEFAULT_TTL
     
@@ -111,8 +123,7 @@ class RedisCache(AbstractCache):
         async with self.redis() as r:
             value = await r.hgetall(key)
             if value is not None:
-                decoded_value = {k.decode('utf-8'): v.decode('utf-8') for k, v in value.items()} # from bytes to utf-8
-                return decoded_value
+                return value
             return None # BAN
             
         
@@ -125,10 +136,19 @@ class RedisCache(AbstractCache):
         async with self.redis() as r:
             res = await r.lrange(key, 0, -1)
             if res is not None:
-                return [v.decode('utf-8') for v in res] # from bytes to utf-8
+                return res
             return None # WARNING
         
     async def delete_key(self, key: str) -> str:
         async with self.redis() as r:
              await r.delete(key)
         return key
+    
+    
+    async def add_to_list(self, key: str, value: Any):
+        async with self.redis() as r:
+            await r.rpush(key, value)
+            
+    async def remove_from_the_list(self, key: str, value: Any):
+        return await super().remove_from_the_list(key, value)
+        

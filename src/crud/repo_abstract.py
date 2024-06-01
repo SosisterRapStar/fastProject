@@ -7,7 +7,7 @@ from typing_extensions import Unpack
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.crud.utils import get_object, NameOrId, update_object, delete_obj
 from src.models import Base
-from src.services.redis_service import RedisCache
+from src.services.redis_service import AbstractCache
 from redis.asyncio import Redis
 
 class CRUDRepository(ABC):
@@ -60,13 +60,6 @@ class CRUDAlchemyRepository(CRUDRepository):
         
         return res
 
-    # async def get_all(self) -> list[Base]:
-    #     # В данном случае функция вернет все записи
-
-    #     res = await get_object(async_session=self._session, model=self._model)
-
-    #     return res
-
     async def update(
         self,
         data: dict,
@@ -100,9 +93,10 @@ class CRUDAlchemyRepository(CRUDRepository):
 
 
 class CacheCrudAlchemyRepository(CRUDRepository):
-    def __init__(self, repo: CRUDAlchemyRepository, cache: RedisCache, namespace_ttl: int) -> None:
+    def __init__(self, repo: CRUDAlchemyRepository, cache: AbstractCache, namespace_ttl: int) -> None:
         self.repo = repo
         self.cache = cache
+        # maybe create it like class var
         self.default_cache_namespace = f"{self.repo.get_model_name()}"
         self.cache.set_ttl_for_namespace(key=f"{self.default_cache_namespace}:id") # method set_ttl cuts all symbols after the last : 
         # so set_ttl for user:manager:list:1234 will be parsed to user->manager->list 

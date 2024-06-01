@@ -3,51 +3,58 @@ import uuid
 from requests import session
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload, selectinload, contains_eager
+from services.redis_service import AbstractCache
 from src.crud.repo_abstract import CRUDAlchemyRepository
-from src.models.chat_models import Conversation, UserConversationSecondary
+from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.friends_model import Invite
 from src.models.user_model import User
 from .exceptions import RecordNotFoundError, AlreadyFriendException, NoFriendsException
 from abc import abstractmethod
-from repo_abstract import CRUDRepository
+from repo_abstract import CRUDRepository, CacheCrudAlchemyRepository
+from conversation_repository import ConversationRepository
+
+from typing import List, TYPE_CHECKING
+
+
+    
 
 
 class AbstractUserRepository(CRUDRepository):
     @abstractmethod
-    async def get_convs(self):
+    async def get_convs(self, user_id: uuid.UUID) -> list:
         raise NotImplementedError
     
     @abstractmethod
-    async def get_user_messages(self):
+    async def get_user_messages(self, user: User) -> list:
+        raise NotImplementedError
+    
+    # @abstractmethod
+    # async def get_user_with_messages(self):
+    #     raise NotImplementedError
+    
+    @abstractmethod
+    async def add_friend(self, user: User) -> "AbstractUserRepository":
         raise NotImplementedError
     
     @abstractmethod
-    async def get_user_with_messages(self):
+    async def remove_friend(self, user: User) -> "AbstractUserRepository":
         raise NotImplementedError
     
     @abstractmethod
-    async def add_friend(self):
-        raise NotImplementedError
-    
-    @abstractmethod
-    async def remove_friend(self):
-        raise NotImplementedError
-    
-    @abstractmethod
-    async def remove_friend(self):
+    async def remove_friend(self, user: User):
         raise NotImplementedError
     
     
     @abstractmethod
-    async def  get_all_friends(self):
+    async def  get_all_friends(self, user: User):
         raise NotImplementedError
     
     @abstractmethod
-    async def  get_received_invites(self):
+    async def  get_received_invites(self, user: User):
         raise NotImplementedError
     
     @abstractmethod
-    async def  get_sended_invites(self):
+    async def  get_sended_invites(self, user: User):
         raise NotImplementedError
     
 
@@ -57,7 +64,7 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
     # TODO: do something with session identity map for caching
     # TODO: errors handling
 
-    async def get_convs(self, user_id: uuid.UUID) -> list["Conversation"]:
+    async def get_convs(self, user_id: uuid.UUID) -> List["Conversation"]:
         stmt = (
             select(Conversation)
             .join(
@@ -69,10 +76,14 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
         res = await self._session.scalars(stmt)
         return list(res.all())
 
-    async def get_user_messages(self, user_id: uuid.UUID):
+    async def get_user_messages(self, user_id: uuid.UUID) -> List["Message"]:
         user = await self.get_user_with_messages(user_id)
         return user.messages
-
+    
+    '''
+    TODO: create service for messages in this service create logic for lazy loading 
+    awaitable attrs using sqlalchemy functional like in services.friends_service
+    '''
     async def get_user_with_messages(self, user_id: uuid.UUID) -> User:
         stmt = select(User).where(User.id == user_id).options(joinedload(User.messages))
         user = await self._session.scalar(stmt)
@@ -120,15 +131,15 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
         
         
 
-    async def is_in_friend(self, user: User, friend: User) -> User:
+    async def is_in_friend(self, user: User, friend: User) -> bool:
         return friend in await user.awaitable_attrs.friends
     
         
-    async def get_all_friends(self, user: User) -> list[User]:
+    async def get_all_friends(self, user: User) -> List[User]:
         user_friends = await user.awaitable_attrs.friends
         return list(user_friends)
     
-    async def get_received_invites(self, user: User) -> list[Invite]:
+    async def get_received_invites(self, user: User) -> List[Invite]:
         stmt = (
                 select(Invite)
                 .join(User, Invite.inviter_id == User.id)
@@ -138,7 +149,7 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
        
         return await self._session.scalars(stmt)
     
-    async def get_sended_invites(self, user: User) -> list[Invite]:
+    async def get_sended_invites(self, user: User) -> List[Invite]:
         stmt = (
                 select(Invite)
                 .join(User, Invite.invitee_id == User.id)
@@ -146,3 +157,87 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
                 .options(contains_eager(Invite.invitee))
             )
         return await self._session.scalars(stmt)
+    
+    
+
+class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
+    def __init__(self, repo: UserRepository, cache: AbstractCache, namespace_ttl: int) -> None:
+        super().__init__(repo, cache, namespace_ttl)
+        # will be refactored
+        self.user_convs_namespace = f"{self.default_cache_namespace}:convs"
+        self.user_sended_invites_namespace = f"{self.default_cache_namespace}:invites:sended"
+        self.user_received_invites_namespace = f"{self.default_cache_namespace}:invites:received"
+        self.user_friends_namespace = f"{self.default_cache_namespace}:friends"
+        self.user_messages_namespace = f"{self.default_cache_namespace}:messages"
+        
+        self.cache.set_ttl_for_namespace(f"{self.user_convs_namespace}:id", ttl=500) # ttl is small because of duplicated info 
+        self.cache.set_ttl_for_namespace(f"{self.user_sended_invites_namespace}:id", ttl=500)
+        self.cache.set_ttl_for_namespace(f"{self.user_received_invites_namespace}:id", ttl=1000)
+        self.cache.set_ttl_for_namespace(f"{self.user_friends_namespace}:id", ttl=1000)
+        self.cache.set_ttl_for_namespace(f"{self.user_messages_namespace}:id", ttl=1000)
+    
+    async def get_convs(self, user_id: uuid.UUID):
+        # this cache stores only cache keys of conversation objects
+        
+        # if convs := await self.cache.get_list(key=f"{self.user_convs_namespace}:{user_id}") is not None:
+        #     list = []
+        #     for conv in convs:
+        #         list.append(await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}"))
+        #     return list
+        
+        # list_convs = await self.repo.get_convs(user_id=user_id)
+        # # sync instead of async
+        # for conv in list_convs:
+        #     if await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is None:
+        #         await self.cache.set_object(key=f"{conv.__class.__name__}:{conv.id}", object=conv.__dict__)
+        #     await self.cache.add_to_list(key=f"{self.user_convs_namespace}:{user_id}", value=f"{conv.__class.__name__}:{conv.id}")
+            
+        # return list_convs
+        if convs := await self.cache.get_list(key=f"{self.user_convs_namespace}:{user_id}") is not None:
+            return convs
+        list_convs = await self.repo.get_convs(user_id=user_id)
+        
+        dict_list = []
+        for conv in list_convs:
+            dict_list.append(conv.__dict__)
+        await self.cache.set_list(key=f"{self.user_convs_namespace}:{user_id}", value=dict_list)
+        return list_convs
+            
+
+        
+        
+    async def get_user_messages(self, user_id: uuid.UUID) -> List["Message"]:
+        if messages := await self.cache.get_list(key=f"{self.user_messages_namespace}:{user_id}") is not None:
+            return messages
+        
+        messages = await self.repo.get_user_messages(user_id=user_id)
+        
+        dict_list = []
+        
+        for message in message:
+            dict_list.append(message.__dict__)
+        await self.cache.set_list(key=f"{self.user_messages_namespace}:{user_id}", value=dict_list)
+        return messages
+    
+    
+    async def add_friend(self, user: User, **criteries) -> User:
+        try:
+            friend = await self.repo.add_friend(user, **criteries)
+        except RecordNotFoundError as a:
+            raise a
+        
+        if await self.cache.get_list(key = f"{self.user_friends_namespace}:{user.id}") is not None:
+            await self.cache.add_to_list(key = f"{self.user_friends_namespace}:{user.id}", value=friend.__dict__)
+        if await self.cache.get_list(key=f"{self.user_friends_namespace}:{friend.id}:{friend.id}") is not None:
+            await self.cache.add_to_list(key = f"{self.user_friends_namespace}:{friend.id}", value=user.__dict__)
+        return friend
+
+
+        
+            
+    async def remove_friend(self, user: User, **criteries) -> User:
+        return await self.repo.remove_friend(user, **criteries)
+       
+    
+    
+    
