@@ -179,65 +179,82 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
     async def get_convs(self, user_id: uuid.UUID):
         # this cache stores only cache keys of conversation objects
         
-        # if convs := await self.cache.get_list(key=f"{self.user_convs_namespace}:{user_id}") is not None:
-        #     list = []
-        #     for conv in convs:
-        #         list.append(await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}"))
-        #     return list
-        
-        # list_convs = await self.repo.get_convs(user_id=user_id)
-        # # sync instead of async
-        # for conv in list_convs:
-        #     if await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is None:
-        #         await self.cache.set_object(key=f"{conv.__class.__name__}:{conv.id}", object=conv.__dict__)
-        #     await self.cache.add_to_list(key=f"{self.user_convs_namespace}:{user_id}", value=f"{conv.__class.__name__}:{conv.id}")
-            
-        # return list_convs
         if convs := await self.cache.get_list(key=f"{self.user_convs_namespace}:{user_id}") is not None:
-            return convs
-        list_convs = await self.repo.get_convs(user_id=user_id)
+            list = []
+            for conv in convs:
+                if cur_conv := await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is not None:
+                    list.append(await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}"))
+                    await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
+                else:
+                    return await self.set_conv_user_cache(user_id=user_id)
+            return list
         
-        dict_list = []
+        return await self.set_conv_user_cache(user_id=user_id)
+        
+        
+    async def set_conv_user_cache(self, user_id):
+        list_convs = await self.repo.get_convs(user_id=user_id)
         for conv in list_convs:
-            dict_list.append(conv.__dict__)
-        await self.cache.set_list(key=f"{self.user_convs_namespace}:{user_id}", value=dict_list)
-        return list_convs
-            
+            if await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is None:
+                await self.cache.set_object(key=f"{conv.__class.__name__}:{conv.id}", object=conv.__dict__)
+            else:
+                await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
 
+            await self.cache.add_to_list(key=f"{self.user_convs_namespace}:{user_id}", value=f"{conv.__class.__name__}:{conv.id}")
+            
+        return list_convs
+        
+    async def set_messages_user_cache(self, user_id):
+        list_messages = await self.repo.get_user_messages(user_id=user_id)
+
+        for message in list_messages:
+            if await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}") is None:
+                await self.cache.set_object(key=f"{message.__class.__name__}:{message.id}", object=message.__dict__)
+            await self.cache.add_to_list(key=f"{self.user_messages_namespace}:{user_id}", value=f"{message.__class.__name__}:{message.id}")
+            
+        return list_messages
+      
         
         
     async def get_user_messages(self, user_id: uuid.UUID) -> List["Message"]:
+    
         if messages := await self.cache.get_list(key=f"{self.user_messages_namespace}:{user_id}") is not None:
-            return messages
+            list = []
+            for message in messages:
+                if cur_message := await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}") is not None:
+                    list.append(await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}"))
+                    await self.cache.update_ttl(key=f"{message.__class.__name__}:{message.id}")
+                else:
+                    return await self.set_messages_user_cache(user_id=user_id)
+            return list
         
-        messages = await self.repo.get_user_messages(user_id=user_id)
+        return await self.set_messages_user_cache(user_id=user_id)
+
         
-        dict_list = []
-        
-        for message in message:
-            dict_list.append(message.__dict__)
-        await self.cache.set_list(key=f"{self.user_messages_namespace}:{user_id}", value=dict_list)
-        return messages
+
     
     
     async def add_friend(self, user: User, **criteries) -> User:
-        try:
-            friend = await self.repo.add_friend(user, **criteries)
-        except RecordNotFoundError as a:
-            raise a
-        
-        if await self.cache.get_list(key = f"{self.user_friends_namespace}:{user.id}") is not None:
-            await self.cache.add_to_list(key = f"{self.user_friends_namespace}:{user.id}", value=friend.__dict__)
-        if await self.cache.get_list(key=f"{self.user_friends_namespace}:{friend.id}:{friend.id}") is not None:
-            await self.cache.add_to_list(key = f"{self.user_friends_namespace}:{friend.id}", value=user.__dict__)
-        return friend
+        for i in criteries:
+            if i is not None:
+                if friend := self.cache.get_object(key=f"{self.default_cache_namespace}:{criteries[i]}") is not None:
+                    return friend
+        return await self.repo.add_friend(user, **criteries)
 
 
         
             
     async def remove_friend(self, user: User, **criteries) -> User:
+        for i in criteries:
+            if i is not None:
+                if friend := self.cache.get_object(key=f"{self.default_cache_namespace}:{criteries[i]}") is not None:
+                    return friend
         return await self.repo.remove_friend(user, **criteries)
        
     
     
-    
+    async def get_received_invites(self, user: User) -> List[Invite]:
+        await self.get_received_invites(user=user)
+        
+    async def get_sended_invites(self, user: User) -> List[Invite]:
+        await self.get_sended_invites(user=user)

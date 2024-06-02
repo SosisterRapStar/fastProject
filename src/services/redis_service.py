@@ -66,7 +66,11 @@ class AbstractCache(ABC):
     @abstractmethod
     async def remove_from_the_list(self, key: str, value: Any):
         raise NotImplemented
-
+    
+    @abstractmethod
+    async def update_ttl(self, key: str):
+        raise NotImplemented
+    
 class RedisCache(AbstractCache):
     # stores ttls for namespaces in cache like: {user: {ttl (ttl of user namespace): 10s, messages: {ttl: 15s ...}}}
     _ttl_for_namespaces = {} # helps to regulate ttl for different purposes
@@ -146,9 +150,18 @@ class RedisCache(AbstractCache):
     
     
     async def add_to_list(self, key: str, value: Any):
+        
         async with self.redis() as r:
+            if await self.get_list(key=key) is None:
+                await r.expire(key, self.get_ttl_for_namespace(key=key))
             await r.rpush(key, value)
             
     async def remove_from_the_list(self, key: str, value: Any):
         return await super().remove_from_the_list(key, value)
+    
+    
+    async def update_ttl(self, key):
+        async with self.redis() as r:
+            await r.expire(key, self.get_ttl_for_namespace(key=key))
+    
         
