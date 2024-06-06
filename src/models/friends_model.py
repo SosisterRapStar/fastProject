@@ -55,7 +55,7 @@ def update_expiration_timestamp(mapper, connection, target):
     history = get_history(target, "status")
     if history and history.deleted[0] == StatusEnum.PENDING.value and target.status in (StatusEnum.ACCEPTED.value, StatusEnum.REJECTED.value):
         target.expire_at = datetime.datetime.utcnow() + timedelta(seconds=10)
-        print('sosi')
+       
 
 
 event.listen(Invite, 'before_update', update_expiration_timestamp)

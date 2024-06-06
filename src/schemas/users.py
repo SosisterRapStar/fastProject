@@ -21,10 +21,6 @@ class BaseUser(BaseModel):
     email: EmailStr
 
 
-class UserInDB(BaseUser):
-    password: str  # hashed
-
-
 class User_on_request(BaseUser, BaseRequestUser):
     password: str | None = Field(
         max_length=20,

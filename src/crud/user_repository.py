@@ -186,33 +186,13 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
                     list.append(await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}"))
                     await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
                 else:
-                    return await self.set_conv_user_cache(user_id=user_id)
+                    return await self.__set_conv_user_cache(user_id=user_id)
             return list
         
-        return await self.set_conv_user_cache(user_id=user_id)
+        return await self.__set_conv_user_cache(user_id=user_id)
         
         
-    async def set_conv_user_cache(self, user_id):
-        list_convs = await self.repo.get_convs(user_id=user_id)
-        for conv in list_convs:
-            if await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is None:
-                await self.cache.set_object(key=f"{conv.__class.__name__}:{conv.id}", object=conv.__dict__)
-            else:
-                await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
-
-            await self.cache.add_to_list(key=f"{self.user_convs_namespace}:{user_id}", value=f"{conv.__class.__name__}:{conv.id}")
-            
-        return list_convs
-        
-    async def set_messages_user_cache(self, user_id):
-        list_messages = await self.repo.get_user_messages(user_id=user_id)
-
-        for message in list_messages:
-            if await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}") is None:
-                await self.cache.set_object(key=f"{message.__class.__name__}:{message.id}", object=message.__dict__)
-            await self.cache.add_to_list(key=f"{self.user_messages_namespace}:{user_id}", value=f"{message.__class.__name__}:{message.id}")
-            
-        return list_messages
+    
       
         
         
@@ -225,14 +205,11 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
                     list.append(await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}"))
                     await self.cache.update_ttl(key=f"{message.__class.__name__}:{message.id}")
                 else:
-                    return await self.set_messages_user_cache(user_id=user_id)
+                    return await self.__set_messages_user_cache(user_id=user_id)
             return list
         
-        return await self.set_messages_user_cache(user_id=user_id)
+        return await self.__set_messages_user_cache(user_id=user_id)
 
-        
-
-    
     
     async def add_friend(self, user: User, **criteries) -> User:
         for i in criteries:
@@ -241,9 +218,6 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
                     return friend
         return await self.repo.add_friend(user, **criteries)
 
-
-        
-            
     async def remove_friend(self, user: User, **criteries) -> User:
         for i in criteries:
             if i is not None:
@@ -251,7 +225,27 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
                     return friend
         return await self.repo.remove_friend(user, **criteries)
        
-    
+    async def __set_conv_user_cache(self, user_id):
+        list_convs = await self.repo.get_convs(user_id=user_id)
+        for conv in list_convs:
+            if await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is None:
+                await self.cache.set_object(key=f"{conv.__class.__name__}:{conv.id}", object=conv.__dict__)
+            else:
+                await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
+
+            await self.cache.add_to_list(key=f"{self.user_convs_namespace}:{user_id}", value=f"{conv.__class.__name__}:{conv.id}")
+            
+        return list_convs
+        
+    async def __set_messages_user_cache(self, user_id):
+        list_messages = await self.repo.get_user_messages(user_id=user_id)
+
+        for message in list_messages:
+            if await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}") is None:
+                await self.cache.set_object(key=f"{message.__class.__name__}:{message.id}", object=message.__dict__)
+            await self.cache.add_to_list(key=f"{self.user_messages_namespace}:{user_id}", value=f"{message.__class.__name__}:{message.id}")
+            
+        return list_messages
     
     async def get_received_invites(self, user: User) -> List[Invite]:
         await self.get_received_invites(user=user)

@@ -10,6 +10,7 @@ from src.crud.repo_abstract import CRUDAlchemyRepository
 from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.user_model import User
 from typing import TYPE_CHECKING
+from typing import List
 from abc import abstractmethod
 from repo_abstract import CRUDRepository
 
@@ -19,20 +20,22 @@ if TYPE_CHECKING:
 
 class AbstractConversationRepository(CRUDRepository):
     @abstractmethod
-    async def get_users(self):
+    async def get_users(self,  conv_id: uuid.UUID, selectable: "str" = None) -> List["User"]:
         raise NotImplementedError
 
     @abstractmethod
-    async def get_conv_messages(self):
+    async def get_conv_messages(self, conv_id: uuid.UUID) -> List["Message"]:
         raise NotImplementedError
 
     @abstractmethod
-    async def add_user(self):
+    async def add_user(self,
+        current_user_id: uuid.UUID,
+        user_id: uuid.UUID,
+        conv_id: uuid.UUID,
+        permission: bool,) -> None:
         raise NotImplementedError
 
-    @abstractmethod
-    async def get_conv_with_messages(self):
-        raise NotImplementedError
+  
 
 
 class ConversationRepository(CRUDAlchemyRepository, AbstractConversationRepository):
@@ -43,7 +46,7 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
     # I think that it shouldn't be async :|
     async def get_users(
         self, conv_id: uuid.UUID, selectable: "str" = None
-    ) -> list["User"]:
+    ) -> List["User"]:
         if selectable is None:
             selectable = User
         else:
@@ -80,11 +83,13 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
         return conv
 
     # may be it will be better to make it using one querie
-    # this function do it with two queries using loaded messages and than selecting them
-    async def get_conv_messages(self, conv_id: uuid.UUID) -> list["Message"]:
+    # this function do it with two queries using loaded messages and thEn selecting them
+    async def get_conv_messages(self, conv_id: uuid.UUID) -> List["Message"]:
         conv = await self.get_conv_with_messages(conv_id)
         return conv.messages
-
+    
+    
+    # TODO: This method should'n be in interface and should be implemented in the separated service
     async def get_conv_with_messages(self, conv_id: uuid.UUID) -> Conversation:
         stmt = (
             select(Conversation)
@@ -163,3 +168,7 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
             raise RecordNotFoundError()
         if not row:
             raise NoEditPermissionsError()
+
+
+
+class CacheConversationRepository(CacheCrudAlchemyRepository, AbstractConversationRepository):

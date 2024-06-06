@@ -13,7 +13,7 @@ from src.schemas.users import CreateUser, User_on_response, UserInDB
 from src.schemas.token_schema import TokenResponse
 from pydantic import BaseModel
 from src.crud.user_repository import UserRepository
-from models.utils import create_auth_form, validate_detail_error_response_field, validate_user_response_schema
+from utils import create_auth_form, validate_detail_error_response_field, validate_user_response_schema
 from auth_mocks import mock_get_token
 from src.schemas.conversation import ConversationResponse
 import data_generator

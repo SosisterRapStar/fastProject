@@ -5,7 +5,7 @@ from src.models.chat_models import Conversation
 from src.models.user_model import User
 from sqlalchemy import select
 from src.schemas.conversation import ConversationResponse
-from models.utils import mock_conv_add, validate_detail_error_response_field, mock_get_permissions, validate_user_response_schema
+from utils import mock_conv_add, validate_detail_error_response_field, mock_get_permissions, validate_user_response_schema
 
 
 def validate_conversation_response_schema(schema: dict):

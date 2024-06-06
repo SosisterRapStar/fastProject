@@ -8,19 +8,23 @@ from .users import User_on_response
 
 
 class Message(BaseModel):
-    content: str
+    model_config = ConfigDict(from_attributes=True)
+    content: str = Field(max_length=100)
 
 
 class MessageToDb(Message):
+    status: str | None
     conversation_fk: uuid.UUID = Field()
-    user_fk: uuid.UUID
     
-class MessageForResponse(Message):
-    user_name: str
 
-class MessageFromBroker(MessageForResponse):
+class MessageFromDb(MessageToDb):
+    created_at: datetime
+    updated_at: datetime
+
+class MessageFromBroker(Message):
     conversation_id: uuid.UUID
-    
+
+# TODO: here should be the name not UUID
 class ResponseMessage(Message):
     model_config = ConfigDict(from_attributes=True)
     author: uuid.UUID = Field(validation_alias="user_fk")

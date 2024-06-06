@@ -1,37 +1,54 @@
 
-import os
-import sys
-from dotenv import load_dotenv
-
+import asyncio
 # Ensure the src directory is in the PYTHONPATH
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '.')))
-
-load_dotenv()
+from sqlalchemy.utils.
 
 from src.models.user_model import User
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.ext.asyncio import (
+    async_sessionmaker,
+    async_scoped_session,
+    AsyncSession,
+    AsyncAttrs,
+)
+from src.models.chat_models import Conversation
+from src.services.redis_service import RedisManager
+from schemas.shcemas_from_db import ConversationFromDb
+from sqlalchemy import select
+from sqlalchemy.orm.base import instance_dict
+import json 
+from sqlalchemy import inspect
+from sqlalchemy.orm import DeclarativeBase
 
-
-
-def main():
+async def main():
     print(User.__name__)
-    engine = create_engine("postgresql+psycopg2://vanya:1234@localhost:5433/test_fast_db")
-    Session = sessionmaker(bind=engine)
-    with Session() as ses:  
+    redis = RedisManager.get_connection()
+    
+    engine = create_async_engine("postgresql+asyncpg://vanya:1234@localhost:5433/test_fast_db")
+    Session = async_sessionmaker(bind=engine)
+    a = " "
+    async with Session() as ses:  
             stmt = (
-                select(User)
-                .where(User.name=="gunicorn1")
+                select(Conversation)
+                .where(Conversation.name=="fuck")
             )
-            ans = ses.scalar(stmt)
-            a = str(ans.__dict__)
-            print(a)
-            ses.commit()
+            ans = await ses.scalar(stmt)
+            
+            await ans.awaitable_attrs.messages
+            print(instance_dict(ans))
+            try:
+                ConversationFromDb.model_validate(ans.__dict__).model_dump_json()
+            except: 
+            # # await redis.hset("hz", mapping=a)
+            
+    
+    
+    
             
     
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
 # ttl_dict = dict()
 
 # def g(key: str):

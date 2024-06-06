@@ -1,7 +1,9 @@
 from pydantic import BaseModel, Field, ConfigDict
 import uuid
 from ..config import settings
-
+from .message import MessageFromDb
+from typing import List
+import datetime
 
 class ConversationRequestBase(BaseModel):
     model_config = ConfigDict(extra=settings.schemas_settings.extra)
@@ -25,6 +27,9 @@ class ConversationUpdate(ConversationBase, ConversationRequestBase):
     name: str = Field(max_length=20, default=None)
 
 
+        
 class AddUser(BaseModel):
     user_id: str
     is_moder: bool = False
+    
+    
