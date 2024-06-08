@@ -28,9 +28,13 @@ class AbstractUserRepository(CRUDRepository):
     async def get_user_messages(self, user: User) -> list:
         raise NotImplementedError
     
-    # @abstractmethod
-    # async def get_user_with_messages(self):
-    #     raise NotImplementedError
+    @abstractmethod
+    async def get_user_with_messages(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    async def is_in_friend(self):
+        raise NotImplementedError
     
     @abstractmethod
     async def add_friend(self, user: User) -> "AbstractUserRepository":
@@ -80,10 +84,7 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
         user = await self.get_user_with_messages(user_id)
         return user.messages
     
-    '''
-    TODO: create service for messages in this service create logic for lazy loading 
-    awaitable attrs using sqlalchemy functional like in services.friends_service
-    '''
+    
     async def get_user_with_messages(self, user_id: uuid.UUID) -> User:
         stmt = select(User).where(User.id == user_id).options(joinedload(User.messages))
         user = await self._session.scalar(stmt)

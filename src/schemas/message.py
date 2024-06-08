@@ -15,15 +15,12 @@ class Message(BaseModel):
 class MessageToDb(Message):
     status: str | None
     conversation_fk: uuid.UUID = Field()
-    
 
-class MessageFromDb(MessageToDb):
-    created_at: datetime
-    updated_at: datetime
 
 class MessageFromBroker(Message):
     conversation_id: uuid.UUID
 
+    
 # TODO: here should be the name not UUID
 class ResponseMessage(Message):
     model_config = ConfigDict(from_attributes=True)

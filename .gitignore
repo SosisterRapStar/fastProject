@@ -5,3 +5,16 @@ myvenv/
 .env-test-db
 .env-docker-comm
 *.log
+User/
+Backups/
+blob_storage/
+Cache/
+CacheData/
+Code Cache/
+DawnCache/
+CrashPad/
+Dictionaries/
+GPUCache/
+Local Storage/
+logs/
+data/
