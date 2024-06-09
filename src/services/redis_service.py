@@ -74,9 +74,9 @@ class AbstractCache(ABC):
     async def remove_from_the_list(self, key: str, value: Any):
         raise NotImplemented
     
-    # @abstractmethod
-    # async def set_set(self, key: str, value: Any):
-    #     raise NotImplemented
+    @abstractmethod
+    async def set_sets(self, key: str, value: List[Any]) -> None:
+        raise NotImplementedError
     
     # @abstractmethod
     # async def get_set(self, key: str):
@@ -85,6 +85,23 @@ class AbstractCache(ABC):
     @abstractmethod
     async def update_ttl(self, key: str):
         raise NotImplemented
+    
+    @abstractmethod
+    async def get_sets(self, key: str):
+        raise NotImplemented
+    
+    @abstractmethod
+    async def is_in_set(self, key: str, value: Any):
+        raise NotImplemented
+
+    @abstractmethod
+    async def add_to_set(self, key: str, value: Any):
+        raise NotImplemented
+
+    @abstractmethod
+    async def remove_from_set(self, key: str, value):
+        raise NotImplemented
+
     
     
     
