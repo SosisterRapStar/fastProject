@@ -59,7 +59,8 @@ async def main():
                 
                 # await r.json().set('hz', Path.root_path(), schema)
                 # await r.expire("hz", 1000)
-                # print(await r.hgetall("ads"))
+                await r.sadd("set", *[1, 1, 2, 3, 4, 5, 6, 7, 10])
+                print(await r.smembers('set'))
 
             # redis.close()
             await redis.aclose()

@@ -47,11 +47,12 @@ class AbstractCache(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    async def set_object(self, key: str, object: Dict[str, Any]):
+    async def set_object(self, key: str, object: Union[Dict[str, Any], Any] | Any, schema: Optional[BaseModel] = None, as_json: bool=False, ) -> None:
         raise NotImplementedError
     
     @abstractmethod
-    async def get_object(self, key: str) -> Dict[str, Any]:
+    async def get_object(self, key: str, json: bool = False, schema: Optional[BaseModel] = None) -> Optional[Union[Any, Dict[str, Any]]]:
+
         raise NotImplementedError
     
     @abstractmethod
@@ -152,7 +153,7 @@ class RedisCache(AbstractCache):
             await r.expire(key, self.get_ttl_for_namespace(key=key))
             return {key: value}
     
-    async def set_object(self, key: str, object: Union[Dict[str, Any], Any] | Any, schema: Optional[BaseModel] = None, as_json: bool=False, ) -> None:
+    async def set_object(self, key: str, object: Dict[str, Any] | Any, schema: Optional[BaseModel] = None, as_json: bool=False, ) -> None:
         
         if not isinstance(object, dict):
             if schema is None:

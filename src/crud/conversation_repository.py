@@ -10,9 +10,11 @@ from src.crud.repo_abstract import CRUDAlchemyRepository
 from src.models.chat_models import Conversation, UserConversationSecondary, Message
 from src.models.user_model import User
 from typing import TYPE_CHECKING
+from services.redis_service import AbstractCache
 from typing import List
 from abc import abstractmethod
-from repo_abstract import CRUDRepository
+from repo_abstract import CRUDRepository, CacheCrudAlchemyRepository
+from src.schemas.shcemas_from_db import RawDBConversation
 
 if TYPE_CHECKING:
     from src.models.user_model import User
@@ -172,3 +174,77 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
 
 
 class CacheConversationRepository(CacheCrudAlchemyRepository, AbstractConversationRepository):
+    _schema = RawDBConversation
+
+    def __init__(self, repo: ConversationRepository, cache: AbstractCache, namespace_ttl: int) -> None:
+        super().__init__(repo, cache, namespace_ttl)
+        # will be refactored
+        self.convs_users_namespace = f"{self.default_cache_namespace}:users"
+        self.convs_messages_namespace = f"{self.default_cache_namespace}:messages"
+        # self.user_received_invites_namespace = f"{self.default_cache_namespace}:invites:received"
+        # self.user_friends_namespace = f"{self.default_cache_namespace}:friends"
+        # self.user_messages_namespace = f"{self.default_cache_namespace}:messages"
+        
+        self.cache.set_ttl_for_namespace(f"{self.convs_messages_namespace}:id", ttl=500)  
+        self.cache.set_ttl_for_namespace(f"{self.convs_users_namespace}:id", ttl=500)
+
+    async def get_users(
+        self, conv_id: uuid.UUID, selectable: "str" = None
+    ) -> List["User"]:
+        if users := await self.cache.get_sets(key=f"{self.convs_users_namespace}:{conv_id}") is not None:
+            list = []
+            for user in users:
+                if cur_user := await self.cache.get_object(key=f"{user.__class.__name__}:{user.id}", schema=RawDBConversation) is not None:
+                    list.append(cur_conv)
+                    await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
+                else:
+                    return await self.__set_conv_user_cache(user_id=user_id)
+            return list
+        
+        return await self.__set_conv_user_cache(user_id=user_id)
+        
+
+
+    async def _set_user_conv_cache(self, conv_id):
+        pass
+
+
+    async def delete(self, current_user_id, **crtieries):
+        pass
+
+    async def get_conv_messages(self, conv_id: uuid.UUID) -> List["Message"]:
+        pass
+
+    async def get_conv_with_messages(self, conv_id: uuid.UUID) -> Conversation:
+        pass
+
+    async def update(
+        self,
+        current_user_id,
+        data,
+        model_object: Conversation | None = None,
+        **criteries
+    ):
+
+        pass
+
+    async def create(self, data: dict) -> Conversation:
+        pass
+
+    async def add_user(
+        self,
+        current_user_id: uuid.UUID,
+        user_id: uuid.UUID,
+        conv_id: uuid.UUID,
+        permission: bool,
+    ) -> None:
+
+        pass
+
+    async def get_permissions(
+        self,
+        current_user_id: uuid.UUID,
+        conv_id: uuid.UUID | None = None,
+        name: str | None = None,
+    ):
+        pass

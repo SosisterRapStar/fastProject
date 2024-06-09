@@ -93,6 +93,8 @@ class CRUDAlchemyRepository(CRUDRepository):
 
 
 class CacheCrudAlchemyRepository(CRUDRepository):
+    _schema: Type[BaseModel] = None
+
     def __init__(self, repo: CRUDAlchemyRepository, cache: AbstractCache, namespace_ttl: int) -> None:
         self.repo = repo
         self.cache = cache
