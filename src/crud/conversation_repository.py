@@ -11,14 +11,15 @@ from src.models.chat_models import Conversation, UserConversationSecondary, Mess
 from src.models.user_model import User
 from typing import TYPE_CHECKING
 from services.redis_service import AbstractCache
-from typing import List
+from typing import List, Type
 from abc import abstractmethod
 from repo_abstract import CRUDRepository, CacheCrudAlchemyRepository
 from src.schemas.shcemas_from_db import RawDBConversation
 
 if TYPE_CHECKING:
     from src.models.user_model import User
-
+    from pydantic import BaseModel
+    from sqlalchemy.orm import DeclarativeBase
 
 class AbstractConversationRepository(CRUDRepository):
     @abstractmethod
@@ -67,7 +68,20 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
         if not res:
             raise RecordNotFoundError
         return res
+    
 
+    async def update_permissions(self, user_id: uuid.UUID, conv_id: uuid.UUID, can_edit: bool):
+        stmt = (
+            select(UserConversationSecondary.edit_permission)
+            .where(UserConversationSecondary.conversation_id == conv_id and UserConversationSecondary.user_id == user_id)
+        )
+        user_conv_row = await self._session.scalar(stmt)
+        if user_conv_row.edit_permission == can_edit:
+            return can_edit
+        user_conv_row.edit_permission = can_edit
+        await self._session.commit()
+        return can_edit
+    
     async def delete(self, current_user_id, **crtieries):
 
         await self.get_permissions(
@@ -140,7 +154,7 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
         permission: bool,
     ) -> None:
 
-        await self.get_permissions(current_user_id=current_user_id, conv_id=conv_id)
+        # await self.get_permissions(current_user_id=current_user_id, conv_id=conv_id)
 
         new_asoc = UserConversationSecondary(edit_permission=permission)
         new_asoc.conversation_id = conv_id
@@ -176,47 +190,71 @@ class ConversationRepository(CRUDAlchemyRepository, AbstractConversationReposito
 class CacheConversationRepository(CacheCrudAlchemyRepository, AbstractConversationRepository):
     _schema = RawDBConversation
 
-    def __init__(self, repo: ConversationRepository, cache: AbstractCache, namespace_ttl: int) -> None:
+    def __init__(self, repo: ConversationRepository, cache: AbstractCache, namespace_ttl: int, user_schema: Type["BaseModel"], message_schema: Type["BaseModel"]) -> None:
         super().__init__(repo, cache, namespace_ttl)
-        # will be refactored
-        self.convs_users_namespace = f"{self.default_cache_namespace}:users"
-        self.convs_messages_namespace = f"{self.default_cache_namespace}:messages"
-        # self.user_received_invites_namespace = f"{self.default_cache_namespace}:invites:received"
-        # self.user_friends_namespace = f"{self.default_cache_namespace}:friends"
-        # self.user_messages_namespace = f"{self.default_cache_namespace}:messages"
-        
-        self.cache.set_ttl_for_namespace(f"{self.convs_messages_namespace}:id", ttl=500)  
-        self.cache.set_ttl_for_namespace(f"{self.convs_users_namespace}:id", ttl=500)
+        self.user_schema = user_schema
+        self.message_schema = message_schema
 
     async def get_users(
         self, conv_id: uuid.UUID, selectable: "str" = None
-    ) -> List["User"]:
-        if users := await self.cache.get_sets(key=f"{self.convs_users_namespace}:{conv_id}") is not None:
+    ) -> List["User" | "BaseModel"]:
+        if users := await self.cache.get_sets(key=f"{self.users_in_conv_namespace}:{conv_id}") is not None:
             list = []
             for user in users:
-                if cur_user := await self.cache.get_object(key=f"{user.__class.__name__}:{user.id}", schema=RawDBConversation) is not None:
-                    list.append(cur_conv)
-                    await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
+                if cur_user := await self.cache.get_object(key=user, schema=self.user_schema) is not None:
+                    list.append(cur_user)
+                    await self.cache.update_ttl(key=user)
                 else:
-                    return await self.__set_conv_user_cache(user_id=user_id)
+                    return await self. __set_users_in_conv_cache(conv_id=conv_id)
             return list
         
-        return await self.__set_conv_user_cache(user_id=user_id)
-        
+        return await self.__set_users_in_conv_cache(self, conv_id=conv_id)
+    
+    
+    async def __set_users_in_conv_cache(self, conv_id) -> List["User"]:
+        list_users = await self.repo.get_users(conv_id=conv_id)
+        return await self.__update_cache_for_connected_objects(obj_list=list_users, conv_id=conv_id, schema=self.user_schema, namespace=f'{self.users_in_conv_namespace}',)
 
 
-    async def _set_user_conv_cache(self, conv_id):
-        pass
+    async def __update_cache_for_connected_objects(self, obj_list: List["DeclarativeBase"], conv_id, schema: Type["BaseModel"], namespace: str):
+        for obj in obj_list:
+            if await self.cache.get_object(key=f"{obj.__class.__name__}:{obj.id}") is None:
+                await self.cache.set_object(key=f"{obj.__class.__name__}:{obj.id}", object=obj, schema=schema)
+            else:
+                await self.cache.update_ttl(key=f"{obj.__class.__name__}:{obj.id}")
+
+            await self.cache.add_to_set(key=f"{namespace}:{conv_id}", value=f"{obj.__class.__name__}:{obj.id}")
+            
+        return obj_list
+    
+
+    async def __set_messages_in_conv_cache(self, conv_id) -> List["Message"]:
+        list_messages = await self.repo.get_conv_messages(conv_id=conv_id)
+        return await self.__update_cache_for_connected_objects(obj_list=list_messages, conv_id=conv_id, schema=self.message_schema, namespace=f'{self.convs_messages_namespace}')
 
 
     async def delete(self, current_user_id, **crtieries):
-        pass
+        await self.get_permissions(
+            current_user_id=current_user_id, conv_id=crtieries["id"]
+        )
+        return await super().delete(**crtieries)
 
     async def get_conv_messages(self, conv_id: uuid.UUID) -> List["Message"]:
-        pass
 
+        if messages := await self.cache.get_sets(key=f"{self.convs_messages_namespace}:{conv_id}") is not None:
+            list = []
+            for message in messages:
+                if cur_message := await self.cache.get_object(key=message, schema=self.message_schema) is not None:
+                    list.append(cur_message)
+                    await self.cache.update_ttl(key=cur_message)
+                else:
+                    return await self. __set_messages_in_conv_cache(conv_id=conv_id)
+            return list
+        
+        return await self.__set_messages_in_conv_cache(self, conv_id=conv_id)
+    
     async def get_conv_with_messages(self, conv_id: uuid.UUID) -> Conversation:
-        pass
+        return await self.repo.get_conv_with_messages(conv_id=conv_id)
 
     async def update(
         self,
@@ -226,10 +264,12 @@ class CacheConversationRepository(CacheCrudAlchemyRepository, AbstractConversati
         **criteries
     ):
 
-        pass
+        self.repo.update(current_user_id, data=data, model_object=model_object, **criteries)
 
     async def create(self, data: dict) -> Conversation:
-        pass
+        new_conv = self.repo.create(new_conv)
+        await self.cache.set_object(key=f"{self.default_cache_namespace}:{new_conv.id}", schema=self._schema)
+        return new_conv
 
     async def add_user(
         self,
@@ -238,8 +278,17 @@ class CacheConversationRepository(CacheCrudAlchemyRepository, AbstractConversati
         conv_id: uuid.UUID,
         permission: bool,
     ) -> None:
+        
+        await self.get_permissions(current_user_id=current_user_id, conv_id=conv_id)
 
-        pass
+        await self.repo.add_user(current_user_id=current_user_id, user_id = user_id, conv_id = conv_id, permission=permission)
+
+        if conv := await self.cache.get_object(key=f"{self.default_cache_namespace}:{conv_id}") is not None:
+            if set_of_users := await self.cache.get_sets(key=f"{self.users_in_conv_namespace}:{conv_id}") is not None:
+                self.cache.add_to_set(key=f"{self.users_in_conv_namespace}:{conv_id}", value=f'{User.__class__.__name__}:{user_id}')
+            if set_of_convs_in_user_cache := await self.cache.get_sets(key=f"{self.user_convs_namespace}:{user_id}") is not None:
+                self.cache.add_to_set(key=f"{self.user_convs_namespace}:{user_id}", value=f'{self.default_cache_namespace}:{conv_id}')
+            
 
     async def get_permissions(
         self,
@@ -247,4 +296,25 @@ class CacheConversationRepository(CacheCrudAlchemyRepository, AbstractConversati
         conv_id: uuid.UUID | None = None,
         name: str | None = None,
     ):
-        pass
+        if permission := await self.cache.get_dict(key=f"{self.convs_permission_namespace}", dict_key=f'{current_user_id}') is not None:
+            if not int(permission):
+                raise NoEditPermissionsError()
+        else:
+            if name and not conv_id:
+                conv_id = await self._session.scalar(
+                    select(Conversation.id).where(Conversation.name == name)
+                )
+            stmt = select(UserConversationSecondary.edit_permission).where(
+                UserConversationSecondary.user_id == current_user_id
+                and UserConversationSecondary.conversation_id == conv_id
+            )
+
+            try:
+                res: Result = await self._session.execute(stmt)
+                permission = res.scalar()
+                permission_in_cache = 1 if permission else 0
+                self.cache.set_dict(key=f"{self.convs_permission_namespace}", dict_key=f'{current_user_id}', dict_value=permission)
+            except NoResultFound:
+                raise RecordNotFoundError()
+        if not permission:
+            raise NoEditPermissionsError()

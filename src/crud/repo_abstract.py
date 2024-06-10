@@ -94,18 +94,41 @@ class CRUDAlchemyRepository(CRUDRepository):
 
 class CacheCrudAlchemyRepository(CRUDRepository):
     _schema: Type[BaseModel] = None
+      # will be refactored
+    
 
     def __init__(self, repo: CRUDAlchemyRepository, cache: AbstractCache, namespace_ttl: int) -> None:
         self.repo = repo
         self.cache = cache
+        # I know it looks like shit
         # maybe create it like class var
         self.default_cache_namespace = f"{self.repo.get_model_name()}"
         self.cache.set_ttl_for_namespace(key=f"{self.default_cache_namespace}:id") # method set_ttl cuts all symbols after the last : 
         # so set_ttl for user:manager:list:1234 will be parsed to user->manager->list 
+        self.users_in_conv_namespace = f"{self.default_cache_namespace}:users"
+        self.convs_messages_namespace = f"{self.default_cache_namespace}:messages"
+        self.convs_permission_namespace = f"{self.default_cache_namespace}:permissions"
+    
+        self.cache.set_ttl_for_namespace(f"{self.convs_messages_namespace}:id", ttl=500)  
+        self.cache.set_ttl_for_namespace(f"{self.users_in_conv_namespace }:id", ttl=500)
+        self.cache.set_ttl_for_namespace(f"{self.convs_permission_namespace}:id", ttl=500)
+        
+        self.user_convs_namespace = f"{self.default_cache_namespace}:convs"
+        self.user_sended_invites_namespace = f"{self.default_cache_namespace}:invites:sended"
+        self.user_received_invites_namespace = f"{self.default_cache_namespace}:invites:received"
+        self.user_friends_namespace = f"{self.default_cache_namespace}:friends"
+        self.user_messages_namespace = f"{self.default_cache_namespace}:messages"
+        
+        self.cache.set_ttl_for_namespace(f"{self.user_convs_namespace}:id", ttl=500) # ttl is small because of duplicated info 
+        self.cache.set_ttl_for_namespace(f"{self.user_sended_invites_namespace}:id", ttl=500)
+        self.cache.set_ttl_for_namespace(f"{self.user_received_invites_namespace}:id", ttl=1000)
+        self.cache.set_ttl_for_namespace(f"{self.user_friends_namespace}:id", ttl=1000)
+        self.cache.set_ttl_for_namespace(f"{self.user_messages_namespace}:id", ttl=1000)
+
         
     async def create(self, data: dict):
         obj = await self.repo.create(data=data)
-        await self.cache.set_object(key=f"{self.default_cache_namespace}:{obj.id}", object=obj.__dict__)
+        await self.cache.set_object(key=f"{self.default_cache_namespace}:{obj.id}", object=obj, schema=self._schema)
         return obj
     
     async def delete(self,
@@ -115,7 +138,6 @@ class CacheCrudAlchemyRepository(CRUDRepository):
         id = await self.repo.delete(model_object, **criteries)
         if await self.cache.get_object(key=f"{self.default_cache_namespace}:{model_object.id}") is not None:
             await self.cache.delete_key(key=f"{self.default_cache_namespace}:{id}")
-            
         return id
     
     async def update( self,
@@ -124,7 +146,7 @@ class CacheCrudAlchemyRepository(CRUDRepository):
         **criteries: Unpack[NameOrId],):
         
         updated = await self.repo.update(data, model_object, **criteries)
-        self.cache.set_object(key=f"{self.default_cache_namespace}:{updated.id}", object=updated.__dict__)
+        self.cache.set_object(key=f"{self.default_cache_namespace}:{updated.id}", object=updated, schema=self._schema)
         return updated
         
     

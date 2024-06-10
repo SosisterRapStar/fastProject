@@ -12,8 +12,12 @@ from .exceptions import RecordNotFoundError, AlreadyFriendException, NoFriendsEx
 from abc import abstractmethod
 from repo_abstract import CRUDRepository, CacheCrudAlchemyRepository
 from conversation_repository import ConversationRepository
-from src.schemas.shcemas_from_db import RawDBUser, RawDBConversation, RawDBMessage
-from typing import List, TYPE_CHECKING
+from src.schemas.shcemas_from_db import RawDBUser
+from typing import List, TYPE_CHECKING, Type
+
+if TYPE_CHECKING:
+    from sqlalchemy.orm import DeclarativeBase
+    from pydantic import BaseModel
 
 
     
@@ -163,20 +167,13 @@ class UserRepository(CRUDAlchemyRepository, AbstractUserRepository):
 
 class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
     _schema = RawDBUser
-    def __init__(self, repo: UserRepository, cache: AbstractCache, namespace_ttl: int) -> None:
+    def __init__(self, repo: UserRepository, cache: AbstractCache, namespace_ttl: int, conv_schema: Type[BaseModel], message_schema: Type[BaseModel]) -> None:
         super().__init__(repo, cache, namespace_ttl)
         # will be refactored
-        self.user_convs_namespace = f"{self.default_cache_namespace}:convs"
-        self.user_sended_invites_namespace = f"{self.default_cache_namespace}:invites:sended"
-        self.user_received_invites_namespace = f"{self.default_cache_namespace}:invites:received"
-        self.user_friends_namespace = f"{self.default_cache_namespace}:friends"
-        self.user_messages_namespace = f"{self.default_cache_namespace}:messages"
         
-        self.cache.set_ttl_for_namespace(f"{self.user_convs_namespace}:id", ttl=500) # ttl is small because of duplicated info 
-        self.cache.set_ttl_for_namespace(f"{self.user_sended_invites_namespace}:id", ttl=500)
-        self.cache.set_ttl_for_namespace(f"{self.user_received_invites_namespace}:id", ttl=1000)
-        self.cache.set_ttl_for_namespace(f"{self.user_friends_namespace}:id", ttl=1000)
-        self.cache.set_ttl_for_namespace(f"{self.user_messages_namespace}:id", ttl=1000)
+        self.message_schema = message_schema
+        self.conv_schema = conv_schema
+
     
     async def get_convs(self, user_id: uuid.UUID):
         # this cache stores only cache keys of conversation objects
@@ -184,7 +181,7 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
         if convs := await self.cache.get_sets(key=f"{self.user_convs_namespace}:{user_id}") is not None:
             list = []
             for conv in convs:
-                if cur_conv := await self.cache.get_object(key=conv, schema=RawDBConversation) is not None:
+                if cur_conv := await self.cache.get_object(key=conv, schema=self.conv_schema) is not None:
                     list.append(cur_conv)
                     await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
                 else:
@@ -193,12 +190,12 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
         
         return await self.__set_conv_user_cache(user_id=user_id)
         
-    async def get_user_messages(self, user_id: uuid.UUID) -> List["Message"]:
+    async def get_user_messages(self, user_id: uuid.UUID) -> List[BaseModel]:
     
         if messages := await self.cache.get_sets(key=f"{self.user_messages_namespace}:{user_id}") is not None:
             list = []
             for message in messages:
-                if cur_message := await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}", schema=RawDBMessage) is not None:
+                if cur_message := await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}", schema=self.message_schema) is not None:
                     list.append(cur_message)
                     await self.cache.update_ttl(key=f"{message.__class.__name__}:{message.id}")
                 else:
@@ -211,8 +208,7 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
     async def add_friend(self, user: User, **criteries) -> User:
         
         friend = await self.repo.add_friend(user, **criteries)
-
-        self.cache.set_object(key=f"{self.default_cache_namespace}:{friend.id}", schema=self._schema)
+        self.cache.set_object(key=f"{self.default_cache_namespace}:{friend.id}", schema=self._schema, )
         if cur_user := self.cache.get_object(key=f"{self.default_cache_namespace}:{user.id}") is not None:
             self.cache.update_ttl(key=f"{self.default_cache_namespace}:{user.id}")
 
@@ -221,37 +217,47 @@ class CacheUserRepository(CacheCrudAlchemyRepository, AbstractUserRepository):
 
             if await self.cache.get_sets(key=f"{self.user_messages_namespace}:{friend.id}") is not None:
                 self.cache.add_to_set(key=f"{self.user_messages_namespace}:{user.id}", value=f"{self.default_cache_namespace}:{friend.id}")
-
+        
+        return friend
     
 
     async def remove_friend(self, user: User, **criteries) -> User:
-        for i in criteries:
-            if i is not None:
-                if friend := self.cache.get_object(key=f"{self.default_cache_namespace}:{criteries[i]}") is not None:
-                    return friend
-        return await self.repo.remove_friend(user, **criteries)
-       
-    async def __set_conv_user_cache(self, user_id):
-        list_convs = await self.repo.get_convs(user_id=user_id)
-        for conv in list_convs:
-            if await self.cache.get_object(key=f"{conv.__class.__name__}:{conv.id}") is None:
-                await self.cache.set_object(key=f"{conv.__class.__name__}:{conv.id}", object=conv, schema=RawDBConversation)
-            else:
-                await self.cache.update_ttl(key=f"{conv.__class.__name__}:{conv.id}")
+        friend = await self.repo.remove_friend(user, **criteries)
+        if cur_user := self.cache.get_object(key=f"{self.default_cache_namespace}:{user.id}") is not None:
+            self.cache.update_ttl(key=f"{self.default_cache_namespace}:{user.id}")
 
-            await self.cache.add_to_set(key=f"{self.user_convs_namespace}:{user_id}", value=f"{conv.__class.__name__}:{conv.id}")
-            
-        return list_convs
+            if await self.cache.get_sets(key=f"{self.user_messages_namespace}:{user.id}") is not None:
+                self.cache.remove_from_set(key=f"{self.user_messages_namespace}:{user.id}", value=f"{self.default_cache_namespace}:{friend.id}")
+
+            if await self.cache.get_sets(key=f"{self.user_messages_namespace}:{friend.id}") is not None:
+                self.cache.remove_from_set(key=f"{self.user_messages_namespace}:{user.id}", value=f"{self.default_cache_namespace}:{friend.id}")
         
-    async def __set_messages_user_cache(self, user_id):
-        list_messages = await self.repo.get_user_messages(user_id=user_id)
+        return friend
+  
+       
+    async def __set_conv_user_cache(self, user_id) -> List["DeclarativeBase"]: 
+        list_convs = await self.repo.get_convs(user_id=user_id)
+        return await self.__update_cache_for_connected_objects(obj_list=list_convs, user_id=user_id, schema=self.conv_schema, namespace=f'{self.user_convs_namespace}',)
 
-        for message in list_messages:
-            if await self.cache.get_object(key=f"{message.__class.__name__}:{message.id}", schema=RawDBMessage) is None:
-                await self.cache.set_object(key=f"{message.__class.__name__}:{message.id}", object=message, schema=RawDBMessage)
-            await self.cache.add_to_set(key=f"{self.user_messages_namespace}:{user_id}", value=f"{message.__class.__name__}:{message.id}")
+
+    async def __set_messages_user_cache(self, user_id) -> List["DeclarativeBase"]:
+        list_messages = await self.repo.get_user_messages(user_id=user_id)
+        return await self.__update_cache_for_connected_objects(obj_list=list_messages, user_id=user_id, schema=self.message_schema, namespace=f'{self.user_messages_namespace}',)
+
+    async def __update_cache_for_connected_objects(self, obj_list: List["DeclarativeBase"], user_id, schema: Type["BaseModel"], namespace: str):
+        for obj in obj_list:
+            if await self.cache.get_object(key=f"{obj.__class.__name__}:{obj.id}") is None:
+                await self.cache.set_object(key=f"{obj.__class.__name__}:{obj.id}", object=obj, schema=schema)
+            else:
+                await self.cache.update_ttl(key=f"{obj.__class.__name__}:{obj.id}")
+
+            await self.cache.add_to_set(key=f"{namespace}:{user_id}", value=f"{obj.__class.__name__}:{obj.id}")
             
-        return list_messages
+        return obj_list
+        
+    
+
+      
     
     async def get_received_invites(self, user: User) -> List[Invite]:
         await self.get_received_invites(user=user)
