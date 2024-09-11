@@ -5,9 +5,9 @@ from src.domain.events import (
     DeleteProcessedFilesFromLocalStorage,
 )
 import aiofiles.os
-from src.config import logger
+from src.config import logger, settings
 
-directory_path = "/home/vanya/test_ruff/uploads"
+directory_path = settings.base_dir
 
 
 async def delete_files(

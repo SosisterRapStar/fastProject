@@ -4,6 +4,7 @@ from src.domain.entities import AttachmentEntity
 from src.services.stream_handlers import VideoProcessingTargetWithSHA256
 import asyncio
 from starlette.concurrency import run_in_threadpool
+from src.config import settings
 import aiofiles
 from dataclasses import dataclass
 from pathlib import Path
@@ -33,7 +34,7 @@ small_test_preset = TestPresets(
         "content-type": "multipart/form-data; boundary=--------------------------689625782190013645834302",
         "content-length": "12115",
     },
-    file="/home/vanya/test_ruff/small_multipart_file_test",
+    file= settings.base_dir + "small_multipart_file_test",
 )
 
 # Medium test preset
@@ -48,7 +49,7 @@ medium_test_preset = TestPresets(
         "content-type": "multipart/form-data; boundary=--------------------------092466239646792037285037",
         "content-length": "15764468",
     },
-    file="/home/vanya/test_ruff/medium_multipart_file_test",
+    file=settings.base_dir + "medium_multipart_file_test",
 )
 
 # Big test preset
@@ -63,7 +64,7 @@ big_test_preset = TestPresets(
         "content-type": "multipart/form-data; boundary=--------------------------433465365647585314260668",
         "content-length": "35849137",
     },
-    file="/home/vanya/test_ruff/big_multipart_file_test",
+    file=settings.base_dir + "big_multipart_file_test",
 )
 
 # Two files in one multipart with one key preset
@@ -78,7 +79,7 @@ two_files_in_one_multipart_with_one_key = TestPresets(
         "content-type": "multipart/form-data; boundary=--------------------------563485192429315734968550",
         "content-length": "51613549",
     },
-    file="/home/vanya/test_ruff/complex_multipart_file_test",
+    file=settings.base_dir + "complex_multipart_file_test",
 )
 
 
@@ -104,8 +105,7 @@ async def test_async_events_and_parser():
     preset = small_test_preset
 
     parser = StreamingFormDataParser(headers=preset.headers)
-    # parser.register('file', VideoProcessingTargetWithSHA256(loop=asyncio.get_running_loop(), queue=queue, directory_path='/home/vanya/test_ruff/uploads'))
-    t = VideoProcessingTargetWithSHA256(directory_path="/home/vanya/test_ruff/uploads")
+    t = VideoProcessingTargetWithSHA256(directory_path=settings.base_dir)
 
     parser.register("file", t)
     async with aiofiles.open(preset.file, "rb") as f:

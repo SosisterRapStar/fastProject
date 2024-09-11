@@ -4,12 +4,12 @@ import uvicorn
 from src.entrypoints.app import app
 import multiprocessing
 import time
-from src.config import logger
+from src.config import logger, settings
 import aiohttp
 
 PORT = 5005
 ENDPOINT = f"http://localhost:{PORT}/videos/"
-TEST_FILE = "/home/vanya/test_ruff/uploads/download.html"
+TEST_FILE = settings.base_dir + "download.html"
 REQUESTS_NUMBER = 100
 
 # async def get_form_data(file_name: str, content_type: str):

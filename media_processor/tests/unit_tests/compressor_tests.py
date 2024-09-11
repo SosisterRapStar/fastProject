@@ -13,6 +13,7 @@ from src.domain.events import (
     ErrorEvent,
 )
 import asyncio
+from src.config import settings
 import uuid
 import time
 
@@ -86,7 +87,7 @@ async def test_compression_config_generator_with_some_params():
 
 
 async def test_get_video_info():
-    file_name = "/home/vanya/test_ruff/uploads/example.mp4"
+    file_name = settings.base_dir + "example.mp4"
     video_info = await get_video_info(file_name=file_name)
     print(video_info)
 

@@ -10,7 +10,7 @@ from src.domain.events import (
     ErrorEvent,
 )
 import uuid
-from config import logger
+from src.config import logger, settings
 
 # Этот код просто хуета
 
@@ -39,7 +39,7 @@ class ErorrDuringCompression(SubprocessErorr):
 
 
 # TODO: оптимизировать сжатие, сейчас меньшие пресеты сжимают оригинал, нужно чтобы меньшие пресеты работали с данными, которые выдали более качественные пресеты
-base_dir = "/home/vanya/test_ruff/uploads/"
+base_dir = settings.base_dir
 
 
 @dataclass(frozen=True)
