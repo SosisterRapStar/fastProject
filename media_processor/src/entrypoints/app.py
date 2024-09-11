@@ -72,9 +72,7 @@ if settings.debug.PROFILING_ENABLE:
 @app.post("/videos/", status_code=201)
 async def upload_video(consumer: asyncio_consumer, request: Request):
     parser = StreamingFormDataParser(headers=request.headers)
-    target = VideoProcessingTargetWithSHA256(
-        directory_path="/home/vanya/test_ruff/uploads"
-    )
+    target = VideoProcessingTargetWithSHA256(directory_path=settings.base_dir)
     parser.register("file", target=target)
 
     async for chunk in request.stream():
@@ -93,7 +91,6 @@ async def upload_video(consumer: asyncio_consumer, request: Request):
 @app.post("/test_upload/", status_code=201)
 async def upload_video(request: Request):
     # parser = StreamingFormDataParser(headers=request.headers)
-    # parser.register('file', VideoProcessingTarget(queue=consumer.queue, directory_path='/home/vanya/test_ruff/uploads'))
 
     print(dict(request.headers))
     async with aiofiles.open("multipart_file", "wb") as f:

@@ -10,15 +10,12 @@ from src.domain.events import (
     ErrorEvent,
 )
 import uuid
-from config import logger
-
+from src.config import logger, settings
 
 
 @dataclass
 class VideoCompressor:
-    async def __call__(
-        event: AtachmentUploadedFromClient, queue: asyncio.Queue
-    ):
+    async def __call__(event: AtachmentUploadedFromClient, queue: asyncio.Queue):
         """
         Function that handling all process of compressing, using ffmpeg
 
@@ -48,7 +45,9 @@ class VideoCompressor:
 
             for preset, quality in presets.items():
                 output_name = preset + "_" + base_videos_name + ".mp4"
-                logger.debug(f"starting compression of {original_name} to {preset} preset")
+                logger.debug(
+                    f"starting compression of {original_name} to {preset} preset"
+                )
 
                 config = await create_compressing_config(
                     video_info=video_info,
@@ -65,7 +64,8 @@ class VideoCompressor:
             logger.debug(f"starting thumbnail generation for {original_name}")
 
             video_thumbnail = await generate_thumbnail(
-                file_name=original_name, output_image_name=base_dir + "/" + thumbnail_name
+                file_name=original_name,
+                output_image_name=base_dir + "/" + thumbnail_name,
             )
 
             video.videoMediumQuality = output["medium"]
@@ -109,7 +109,7 @@ class ErorrDuringCompression(SubprocessErorr):
 
 
 # TODO: оптимизировать сжатие, сейчас меньшие пресеты сжимают оригинал, нужно чтобы меньшие пресеты работали с данными, которые выдали более качественные пресеты
-base_dir = "/home/vanya/test_ruff/uploads/"
+base_dir = settings.base_dir
 
 
 @dataclass(frozen=True)
@@ -246,5 +246,3 @@ async def start_compressing_the_video(config: str):
     if err:
         logger.error(f"Error occured during compression {err}")
         raise ErorrDuringCompression()
-
-

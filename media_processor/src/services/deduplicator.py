@@ -10,7 +10,8 @@ from src.domain.events import (
 from dataclasses import dataclass
 from adapters.s3client import S3ABC
 
-@dataclass  
+
+@dataclass
 class DeduplicateHandler:
     s3: S3ABC
 

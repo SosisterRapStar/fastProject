@@ -3,9 +3,10 @@ import asyncio
 import aiofiles
 import os
 import time
+from src.config import settings
 
 ENDPOINT = "http://localhost:5000/videos/"
-TEST_FILE = "/home/vanya/test_ruff/uploads/download.html"
+TEST_FILE = settings.base_dir + "download.html"
 REQUESTS_NUMBER = 1000
 
 

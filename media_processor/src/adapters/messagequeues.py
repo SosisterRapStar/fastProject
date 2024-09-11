@@ -25,17 +25,22 @@ EventHandler = Callable[[Event, asyncio.Queue], None]
 CommandHandler = Callable[[Command, asyncio.Queue], None]
 
 RAW_EVENT_HANDLERS: Dict[Event, List[EventHandler]] = {
-        AtachmentProcessed: [SendToS3Handler,],
-        AtachmentUploadedToS3: [KafkaHandler,],
+    AtachmentProcessed: [
+        SendToS3Handler,
+    ],
+    AtachmentUploadedToS3: [
+        KafkaHandler,
+    ],
 }
 
 
 RAW_COMMAND_HANDLERS: Dict[Command, CommandHandler] = {
-        CheckDuplicates: DeduplicateHandler,
-        ProcessNewFileFromClient: VideoCompressor,
-        DeleteProcessedFilesFromLocalStorage: DeleteFilesHandler,
-        DeleteAlreadyExistedFile: DeleteFilesHandler,
-    }
+    CheckDuplicates: DeduplicateHandler,
+    ProcessNewFileFromClient: VideoCompressor,
+    DeleteProcessedFilesFromLocalStorage: DeleteFilesHandler,
+    DeleteAlreadyExistedFile: DeleteFilesHandler,
+}
+
 
 @dataclass
 class BaseConsumerByTopic(ABC):
@@ -76,15 +81,13 @@ class BaseQueue(ABC):
         raise NotImplementedError
 
 
-
-
 # создавать хэндлеры где-то в одном месте с уже заранее прокинутыми в них зависимостями
-# использовать либо замыкания / partial 
+# использовать либо замыкания / partial
 
 # async def handle_event(
 #     event: Event, queue: asyncio.Queue
 # ):  # одно событие могут быть обработаны множеством функций
-#     HANDLERS: 
+#     HANDLERS:
 #     for handler in HANDLERS[type(event)]:
 #         future = asyncio.create_task(handler(event, queue))
 
@@ -92,7 +95,7 @@ class BaseQueue(ABC):
 # async def handle_command(
 #     command: Command, queue: asyncio.Queue
 # ):  # команды могут быть обработаны только одной конкретной функцией
-#    
+#
 #     handler = HANDLERS[type(command)]
 #     fiture = asyncio.create_task(handler(command, queue))
 
@@ -106,18 +109,20 @@ class AsyncioConsumer:
     async def start(self) -> None:
         asyncio.create_task(self.consume())
 
-    async def handle_event(self, event: Event, queue: asyncio.Queue):  # одно событие могут быть обработаны множеством функций
+    async def handle_event(
+        self, event: Event, queue: asyncio.Queue
+    ):  # одно событие могут быть обработаны множеством функций
         for handler in self.event_handlers[type(event)]:
             future = asyncio.create_task(handler(event, queue))
 
-    async def handle_command(self, command: Command, queue: asyncio.Queue):  # команды могут быть обработаны только одной конкретной функцией
+    async def handle_command(
+        self, command: Command, queue: asyncio.Queue
+    ):  # команды могут быть обработаны только одной конкретной функцией
         handler = self.command_handlers[type(command)]
         fiture = asyncio.create_task(handler(command, queue))
 
-
     async def stop(self):
         await self.queue.put("")
-
 
     async def consume(self):
         logger.debug("Consumer started\n")

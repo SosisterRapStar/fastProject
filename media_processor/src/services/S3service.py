@@ -45,8 +45,10 @@ DEFAULT_METHOD: str = methods["get"]
 
 #         return urls
 
+
 @dataclass
 class SendToS3Handler:
     s3: S3ABC
+
     async def __call__(event: AtachmentProcessed, queue: asyncio.Queue):
         pass
