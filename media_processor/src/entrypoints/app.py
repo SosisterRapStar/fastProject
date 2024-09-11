@@ -1,7 +1,7 @@
 from starlette.concurrency import run_in_threadpool
 from fastapi import FastAPI, Request
-from services.S3service import S3service
 from adapters.s3client import S3CLient
+from adapters.messagequeues import KafkaProducer
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi import Request
@@ -17,6 +17,10 @@ from pyinstrument.renderers.speedscope import SpeedscopeRenderer
 import asyncio
 import aiofiles
 from dependencies.queue import asyncio_consumer
+from src import bootstrap
+
+
+
 
 
 origins = [
@@ -35,7 +39,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-queue = asyncio.Queue()
+message_bus = bootstrap(s3 = S3CLient, producer=KafkaProducer)
 
 # profiler
 if settings.debug.PROFILING_ENABLE:
@@ -70,7 +74,7 @@ if settings.debug.PROFILING_ENABLE:
 
 
 @app.post("/videos/", status_code=201)
-async def upload_video(consumer: asyncio_consumer, request: Request):
+async def upload_video(request: Request):
     parser = StreamingFormDataParser(headers=request.headers)
     target = VideoProcessingTargetWithSHA256(directory_path=settings.base_dir)
     parser.register("file", target=target)
@@ -79,7 +83,7 @@ async def upload_video(consumer: asyncio_consumer, request: Request):
         await run_in_threadpool(parser.data_received, chunk)
         while loaded_files := target.loaded_files:
             event = AtachmentUploadedFromClient(attachment=loaded_files.pop())
-            await consumer.queue.put(event)
+            await message_bus.queue.put(event)
 
     # async for chunk in request.stream():
     #     logger.debug("Got chunk from client")

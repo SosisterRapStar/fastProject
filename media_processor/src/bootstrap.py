@@ -21,7 +21,7 @@ def bootstrap(s3: S3ABC, producer: BaseProducer) -> AsyncioConsumer:
     
     message_bus = AsyncioConsumer(event_handlers=injected_event_handlers, command_handlers=injected_command_handlers)
     return message_bus
-    
+
 
 
 
