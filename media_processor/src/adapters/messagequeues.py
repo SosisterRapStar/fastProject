@@ -4,12 +4,12 @@ from abc import ABC, abstractmethod
 from typing import Callable, Coroutine
 from config import settings, logger  # type: ignore
 import asyncio
-from typing import Dict
-from src.services.video_compressor import video_compressing_pipeline
-from src.services.S3service import send_files_to_S3
-from src.services.kafka_service import send_event_to_kafka
-from src.services.deduplicator import deduplicate_files
-from src.services.filer_deleter import delete_files
+from typing import Dict, List
+from src.services.video_compressor import VideoCompressor
+from src.services.S3service import SendToS3Handler
+from src.services.kafka_service import KafkaHandler
+from src.services.deduplicator import DeduplicateHandler
+from src.services.filer_deleter import DeleteFilesHandler
 from src.domain.events import (
     Event,
     Command,
@@ -21,6 +21,21 @@ from src.domain.events import (
     DeleteAlreadyExistedFile,
 )
 
+EventHandler = Callable[[Event, asyncio.Queue], None]
+CommandHandler = Callable[[Command, asyncio.Queue], None]
+
+RAW_EVENT_HANDLERS: Dict[Event, List[EventHandler]] = {
+        AtachmentProcessed: [SendToS3Handler,],
+        AtachmentUploadedToS3: [KafkaHandler,],
+}
+
+
+RAW_COMMAND_HANDLERS: Dict[Command, CommandHandler] = {
+        CheckDuplicates: DeduplicateHandler,
+        ProcessNewFileFromClient: VideoCompressor,
+        DeleteProcessedFilesFromLocalStorage: DeleteFilesHandler,
+        DeleteAlreadyExistedFile: DeleteFilesHandler,
+    }
 
 @dataclass
 class BaseConsumerByTopic(ABC):
@@ -61,43 +76,48 @@ class BaseQueue(ABC):
         raise NotImplementedError
 
 
-EventHandler = Callable[[Event, asyncio.Queue], None]
-CommandHandler = Callable[[Command, asyncio.Queue], None]
 
 
-async def handle_event(
-    event: Event, queue: asyncio.Queue
-):  # одно событие могут быть обработаны множеством функций
-    HANDLERS: Dict[Event, EventHandler] = {
-        AtachmentProcessed: [send_files_to_S3],
-        AtachmentUploadedToS3: [send_event_to_kafka],
-    }
-    for handler in HANDLERS[type(event)]:
-        future = asyncio.create_task(handler(event, queue))
+# создавать хэндлеры где-то в одном месте с уже заранее прокинутыми в них зависимостями
+# использовать либо замыкания / partial 
+
+# async def handle_event(
+#     event: Event, queue: asyncio.Queue
+# ):  # одно событие могут быть обработаны множеством функций
+#     HANDLERS: 
+#     for handler in HANDLERS[type(event)]:
+#         future = asyncio.create_task(handler(event, queue))
 
 
-async def handle_command(
-    command: Command, queue: asyncio.Queue
-):  # команды могут быть обработаны только одной конкретной функцией
-    HANDLERS: Dict[Command, CommandHandler] = {
-        CheckDuplicates: deduplicate_files,
-        ProcessNewFileFromClient: video_compressing_pipeline,
-        DeleteProcessedFilesFromLocalStorage: delete_files,
-        DeleteAlreadyExistedFile: delete_files,
-    }
-    handler = HANDLERS[type(command)]
-    fiture = asyncio.create_task(handler(command, queue))
+# async def handle_command(
+#     command: Command, queue: asyncio.Queue
+# ):  # команды могут быть обработаны только одной конкретной функцией
+#    
+#     handler = HANDLERS[type(command)]
+#     fiture = asyncio.create_task(handler(command, queue))
 
 
 @dataclass
 class AsyncioConsumer:
+    command_handlers: Dict[Command, CommandHandler]
+    event_handlers: Dict[Event, List[EventHandler]]
     queue: asyncio.Queue = asyncio.Queue()
 
     async def start(self) -> None:
         asyncio.create_task(self.consume())
 
+    async def handle_event(self, event: Event, queue: asyncio.Queue):  # одно событие могут быть обработаны множеством функций
+        for handler in self.event_handlers[type(event)]:
+            future = asyncio.create_task(handler(event, queue))
+
+    async def handle_command(self, command: Command, queue: asyncio.Queue):  # команды могут быть обработаны только одной конкретной функцией
+        handler = self.command_handlers[type(command)]
+        fiture = asyncio.create_task(handler(command, queue))
+
+
     async def stop(self):
         await self.queue.put("")
+
 
     async def consume(self):
         logger.debug("Consumer started\n")
@@ -106,11 +126,11 @@ class AsyncioConsumer:
 
             if isinstance(message, Event):
                 logger.debug(f"Got event: {message}\n")
-                await handle_event(event=message, queue=self.queue)
+                await self.handle_event(event=message, queue=self.queue)
 
             elif isinstance(message, Command):
                 logger.debug(f"Got command: {message}\n")
-                await handle_command(command=message, queue=self.queue)
+                await self.handle_command(command=message, queue=self.queue)
 
             else:
                 logger.debug(f"Got something else  - stop\n")

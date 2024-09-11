@@ -20,8 +20,8 @@ class BSettings(BaseSettings):
 class DebugSettings(BaseSettings):
     PROFILING_ENABLE: bool = True
 
-class StorageSettings(BaseSettings):
-    DIR_FOR_FILE_DOQNLOADING = '/home/vanya/deepWork/media_processor/uploads/'
+# class StorageSettings(BaseSettings):
+#     BASE_DOWNLOADING_DIR = ''
 
 class DBSettings(BSettings):
     pass
@@ -44,7 +44,6 @@ class Settings:
     kafka: KafkaSettings = KafkaSettings()
     s3: S3settings = S3settings()
     debug: DebugSettings = DebugSettings()
-    base_dir: StorageSettings = StorageSettings()
 
 
 settings = Settings()

@@ -28,8 +28,8 @@ class DeleteAlreadyExistedFile(Command):
 @dataclass
 class CheckDuplicates(Command):
     attachment: AttachmentEntity
-    s3: S3ABC
-    cache: AbstractCache
+    # s3: S3ABC
+    # cache: AbstractCache
 
 
 @dataclass

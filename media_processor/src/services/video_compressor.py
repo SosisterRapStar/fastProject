@@ -10,9 +10,79 @@ from src.domain.events import (
     ErrorEvent,
 )
 import uuid
-from src.config import logger, settings
+from config import logger
 
-# Этот код просто хуета
+
+
+@dataclass
+class VideoCompressor:
+    async def __call__(
+        event: AtachmentUploadedFromClient, queue: asyncio.Queue
+    ):
+        """
+        Function that handling all process of compressing, using ffmpeg
+
+        Args:
+            event (AtachmentUploadedFromClient): Event entity that activates this func
+            queue (asyncio.Queue): Async queue  for putting messages about processed videos
+        """
+
+        try:
+            video = event.attachment
+            original_name = base_dir + video.originalName + " "
+
+            logger.debug(f"Starting to compress the video video_path {original_name}")
+
+            # There should be three presets for high, medium and low quality
+            presets = {
+                "high": Quality(height=1080),
+                "medium": Quality(height=720),
+                "low": Quality(height=360),
+            }
+
+            output = {}  # maps the name of the preset and the filename for this preset
+
+            video_info = await get_video_info(file_name=original_name)
+
+            base_videos_name = create_attachment_id()
+
+            for preset, quality in presets.items():
+                output_name = preset + "_" + base_videos_name + ".mp4"
+                logger.debug(f"starting compression of {original_name} to {preset} preset")
+
+                config = await create_compressing_config(
+                    video_info=video_info,
+                    quality=quality,
+                    file_name=original_name,
+                    output_name=base_dir + output_name,
+                )
+
+                await start_compressing_the_video(config=config)
+                output[preset] = output_name
+
+            thumbnail_name = "tumbnail_" + base_videos_name + ".jpg"
+
+            logger.debug(f"starting thumbnail generation for {original_name}")
+
+            video_thumbnail = await generate_thumbnail(
+                file_name=original_name, output_image_name=base_dir + "/" + thumbnail_name
+            )
+
+            video.videoMediumQuality = output["medium"]
+            video.videoLowQuality = output["low"]
+            video.videoHighQuality = output["high"]
+            video.videoThumbnail = thumbnail_name
+
+            event = AtachmentProcessed(attachment=video)
+            await queue.put(event)
+
+        except SubprocessErorr as e:
+            logger.error("Error in compressing")
+            await queue.put(ErrorEvent())
+
+        except Exception as e:
+            logger.error(f"Error in something else {e}")
+            await queue.put(ErrorEvent())
 
 
 @dataclass
@@ -39,7 +109,7 @@ class ErorrDuringCompression(SubprocessErorr):
 
 
 # TODO: оптимизировать сжатие, сейчас меньшие пресеты сжимают оригинал, нужно чтобы меньшие пресеты работали с данными, которые выдали более качественные пресеты
-base_dir = settings.base_dir
+base_dir = "/home/vanya/test_ruff/uploads/"
 
 
 @dataclass(frozen=True)
@@ -178,72 +248,3 @@ async def start_compressing_the_video(config: str):
         raise ErorrDuringCompression()
 
 
-# this function must be handled like task coroutine and not like await function
-# otherwise it will just block the cycle
-async def video_compressing_pipeline(
-    event: AtachmentUploadedFromClient, queue: asyncio.Queue
-):
-    """
-    Function that handling all process of compressing, using ffmpeg
-
-    Args:
-        event (AtachmentUploadedFromClient): Event entity that activates this func
-        queue (asyncio.Queue): Async queue  for putting messages about processed videos
-    """
-
-    try:
-        video = event.attachment
-        original_name = base_dir + video.originalName + " "
-
-        logger.debug(f"Starting to compress the video video_path {original_name}")
-
-        # There should be three presets for high, medium and low quality
-        presets = {
-            "high": Quality(height=1080),
-            "medium": Quality(height=720),
-            "low": Quality(height=360),
-        }
-
-        output = {}  # maps the name of the preset and the filename for this preset
-
-        video_info = await get_video_info(file_name=original_name)
-
-        base_videos_name = create_attachment_id()
-
-        for preset, quality in presets.items():
-            output_name = preset + "_" + base_videos_name + ".mp4"
-            logger.debug(f"starting compression of {original_name} to {preset} preset")
-
-            config = await create_compressing_config(
-                video_info=video_info,
-                quality=quality,
-                file_name=original_name,
-                output_name=base_dir + output_name,
-            )
-
-            await start_compressing_the_video(config=config)
-            output[preset] = output_name
-
-        thumbnail_name = "tumbnail_" + base_videos_name + ".jpg"
-
-        logger.debug(f"starting thumbnail generation for {original_name}")
-
-        video_thumbnail = await generate_thumbnail(
-            file_name=original_name, output_image_name=base_dir + "/" + thumbnail_name
-        )
-
-        video.videoMediumQuality = output["medium"]
-        video.videoLowQuality = output["low"]
-        video.videoHighQuality = output["high"]
-        video.videoThumbnail = thumbnail_name
-
-        event = AtachmentProcessed(attachment=video)
-        await queue.put(event)
-
-    except SubprocessErorr as e:
-        logger.error("Error in compressing")
-        await queue.put(ErrorEvent())
-
-    except Exception as e:
-        logger.error(f"Error in something else {e}")
-        await queue.put(ErrorEvent())

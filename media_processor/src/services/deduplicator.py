@@ -7,17 +7,22 @@ from src.domain.events import (
     ProcessNewFileFromClient,
     DeleteAlreadyExistedFile,
 )
-from adapters.s3client import S3CLient
+from dataclasses import dataclass
+from adapters.s3client import S3ABC
 
+@dataclass  
+class DeduplicateHandler:
+    s3: S3ABC
 
-# should be able to return: AlreadyExists event and then get fileinfo from S3 or should return UploadedNewFile
-async def deduplicate_files(command: CheckDuplicates, queue: asyncio.Queue):
-    s3 = command.s3  # ой бля уже хз мне похйу на депендеси инжекшин
-    try:
-        file_exists = await s3.file_exists
-        if file_exists:
-            await queue.put(DeleteAlreadyExistedFile)
-        else:
-            await queue.put(ProcessNewFileFromClient)
-    except:
-        await queue.put(ErrorEvent)
+    async def deduplicate_files(self, command: CheckDuplicates, queue: asyncio.Queue):
+        try:
+            file_exists = await self.s3.file_exists
+            if file_exists:
+                await queue.put(DeleteAlreadyExistedFile)
+            else:
+                await queue.put(ProcessNewFileFromClient)
+        except:
+            await queue.put(ErrorEvent)
+
+    async def __call__(self, *args: asyncio.Any, **kwds: asyncio.Any) -> asyncio.Any:
+        pass

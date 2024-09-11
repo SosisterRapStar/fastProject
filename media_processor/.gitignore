@@ -9,7 +9,5 @@ mydata
 venv/bin/activate.csh
 ./uploads/*
 *profile
-*py-spy*
+*py-spy
 ./minio
-*.pyc
-*.jpg
