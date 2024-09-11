@@ -1,0 +1,13 @@
+.messageFieldContainer {
+    @apply flex items-center p-4 border-t border-gray-200;
+    width: 400px; /* Set your desired fixed width here */
+  }
+  
+  .messageInput {
+    @apply flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+    width: 100%; /* Ensure the input takes full width of the container */
+  }
+  
+  .sendButton {
+    @apply ml-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
