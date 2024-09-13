@@ -31,6 +31,4 @@ services:
     env_file:
       - .env_kafka
 
-
-  minio:
     

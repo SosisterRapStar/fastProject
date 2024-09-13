@@ -38,11 +38,12 @@ class FileProcessor:
         """
 
         try:
-            original_name = base_dir + video.originalName + " "
+            original_name = video.originalName
 
             logger.debug(f"Starting to compress the video video_path {original_name}")
 
             # There should be three presets for high, medium and low quality
+            logger.debug("...")
             presets = {
                 "high": Quality(height=1080),
                 "medium": Quality(height=720),
@@ -50,13 +51,13 @@ class FileProcessor:
             }
 
             output = {}  # maps the name of the preset and the filename for this preset
-
-            video_info = await get_video_info(file_name=original_name)
-
-            base_videos_name = create_attachment_id()
-
+            logger.debug("???")
+            video_info = await get_video_info(file_name=base_dir + original_name)
+            logger.debug("!!!")
+            file_name_without_extension = original_name.split(".")[0]
+            logger.debug("$$$")
             for preset, quality in presets.items():
-                output_name = preset + "_" + base_videos_name + ".mp4"
+                output_name = preset + "_" + file_name_without_extension + ".mp4"
                 logger.debug(
                     f"starting compression of {original_name} to {preset} preset"
                 )
@@ -64,19 +65,19 @@ class FileProcessor:
                 config = await create_compressing_config(
                     video_info=video_info,
                     quality=quality,
-                    file_name=original_name,
+                    file_name=base_dir + original_name,
                     output_name=base_dir + output_name,
                 )
 
                 await start_compressing_the_video(config=config)
                 output[preset] = output_name
 
-            thumbnail_name = "tumbnail_" + base_videos_name + ".jpg"
+            thumbnail_name = "tumbnail_" + file_name_without_extension + ".jpg"
 
             logger.debug(f"starting thumbnail generation for {original_name}")
 
             video_thumbnail = await generate_thumbnail(
-                file_name=original_name,
+                file_name=base_dir + original_name,
                 output_image_name=base_dir + "/" + thumbnail_name,
             )
 
@@ -142,8 +143,8 @@ class Quality:
 
 @dataclass(frozen=True)
 class AudioStreamInfoSchema:
-    codec_name: str
-    bit_rate: int
+    codec_name: str = None
+    bit_rate: int = None
 
 
 @dataclass(frozen=True)
@@ -166,6 +167,7 @@ async def get_video_info(file_name: str) -> VideoStreamInfoSchema:
             ffprobe_query, stdout=asyncio.subprocess.PIPE
         )
         data, _ = await process.communicate()
+        logger.debug(data.decode("utf-8"))
         return await parse_file_info_to_objects(json.loads(data.decode("utf-8")))
 
     except KeyError:
@@ -175,7 +177,9 @@ async def get_video_info(file_name: str) -> VideoStreamInfoSchema:
 
 async def parse_file_info_to_objects(file_info: dict) -> VideoStreamInfoSchema:
     stream_info = file_info["streams"]
+    logger.debug(stream_info)
     format_info = file_info["format"]
+    logger.debug(format_info)
     video_info = VideoStreamInfoSchema(
         codec_name=stream_info[0]["codec_name"],
         format_name=format_info["format_name"],
@@ -185,7 +189,9 @@ async def parse_file_info_to_objects(file_info: dict) -> VideoStreamInfoSchema:
         audio=AudioStreamInfoSchema(
             codec_name=stream_info[1]["codec_name"],
             bit_rate=stream_info[1]["bit_rate"],
-        ),
+        )
+        if len(stream_info) > 1
+        else AudioStreamInfoSchema(),
     )
 
     return video_info

@@ -42,7 +42,7 @@ class BaseProducer(ABC):
 
 @dataclass
 class FakeProducer(BaseProducer):
-    sended_messagess: list = field(default_factory=list)
+    sended_messages: list = field(default_factory=list)
 
     async def start(self):
         return 1

@@ -11,6 +11,8 @@ methods = {"get": "get_object", "put": "put_object"}
 DEFAULT_TIME_EXPIRATION: int = 3600
 DEFAULT_METHOD: str = methods["get"]
 
+base_dir = settings.base_dir
+
 
 @dataclass
 class SendToS3Handler:
@@ -22,27 +24,31 @@ class SendToS3Handler:
             if attachment.mimeType == "video/mp4":
                 tasks = [
                     self.s3.upload_file(
-                        attachment.videoHighQuality, bucket_name=settings.s3.bucket_name
-                    ),
-                    self.s3.upload_file(
-                        attachment.videoMediumQuality,
+                        file_path=base_dir + attachment.videoHighQuality,
                         bucket_name=settings.s3.bucket_name,
                     ),
                     self.s3.upload_file(
-                        attachment.videoLowQuality, bucket_name=settings.s3.bucket_name
+                        file_path=base_dir + attachment.videoMediumQuality,
+                        bucket_name=settings.s3.bucket_name,
+                    ),
+                    self.s3.upload_file(
+                        file_path=base_dir + attachment.videoLowQuality,
+                        bucket_name=settings.s3.bucket_name,
                     ),
                 ]
 
             else:
                 tasks = [
                     self.s3.upload_file(
-                        attachment.imageHighQuality, bucket_name=settings.s3.bucket_name
+                        file_path=base_dir + attachment.imageHighQuality,
+                        bucket_name=settings.s3.bucket_name,
                     ),
                     self.s3.upload_file(
-                        attachment.imageLowQuality, bucket_name=settings.s3.bucket_name
+                        file_path=base_dir + attachment.imageLowQuality,
+                        bucket_name=settings.s3.bucket_name,
                     ),
                     self.s3.upload_file(
-                        attachment.imageMediumQuality,
+                        file_path=base_dir + attachment.imageMediumQuality,
                         bucket_name=settings.s3.bucket_name,
                     ),
                 ]

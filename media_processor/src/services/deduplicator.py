@@ -8,7 +8,7 @@ from src.domain.events import (
 )
 from dataclasses import dataclass
 from adapters.s3client import S3ABC
-from src.config import settings
+from src.config import settings, logger
 
 
 @dataclass
@@ -17,9 +17,12 @@ class DeduplicateHandler:
 
     async def __call__(self, command: CheckDuplicates, queue: asyncio.Queue):
         try:
+            original_name = command.attachment.originalName
+            original_name = original_name if original_name.split('.')[1] == 'mp4' else original_name.split()[0]+'.mp4'
+
             file_exists = await self.s3.file_exists(
                 bucket_name=settings.s3.bucket_name,
-                file_name=command.attachment.originalName,
+                file_name=original_name
             )
             if file_exists:
                 await queue.put(
@@ -28,4 +31,5 @@ class DeduplicateHandler:
             else:
                 await queue.put(ProcessNewFileFromClient(attachment=command.attachment))
         except Exception as e:
+            logger.error(f"Error occured during deduplication: {e}")
             await queue.put(ErrorEvent(err=e))

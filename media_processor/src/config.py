@@ -11,7 +11,7 @@ ENV_FILE = ".env"
 
 class BSettings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=ENV_FILE,
+        env_file="/home/vanya/deepWork/fastProject/media_processor/src/.env",
         env_file_encoding="",
         extra="ignore",  # здесь можно менять окружение на тестовое
     )

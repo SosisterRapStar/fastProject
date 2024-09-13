@@ -19,6 +19,7 @@ from src.domain.events import (
     AttachmentProcessed,
     AttachmentUploadedToS3,
     DeleteFilesFromLocalStorage,
+    ErrorEvent,
 )
 
 EventHandler = Callable[[Event, asyncio.Queue], None]
