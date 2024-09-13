@@ -1,5 +1,5 @@
 import asyncio
-from src.domain.events import AtachmentUploadedToS3
+from src.domain.events import AttachmentUploadedToS3
 from dataclasses import dataclass
 from src.adapters.messagequeues import BaseProducer
 
@@ -8,8 +8,10 @@ from src.adapters.messagequeues import BaseProducer
 class KafkaHandler:
     producer: BaseProducer
 
-    async def __call__(self, event: AtachmentUploadedToS3, queue: asyncio.Queue):
-        atachment = event.attachment
-        await self.producer.send(
-            topic=atachment.messageId, value=atachment.to_json_in_utf()
-        )
+    async def __call__(self, event: AttachmentUploadedToS3, queue: asyncio.Queue):
+        attachment = event.attachment
+        await self.producer.send(topic=attachment.messageId, value=attachment.to_json_in_utf())
+
+
+
+

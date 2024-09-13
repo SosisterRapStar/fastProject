@@ -1,4 +1,4 @@
-from src.services.video_compressor import (
+from src.services.file_processor import (
     VideoStreamInfoSchema,
     AudioStreamInfoSchema,
     Quality,
@@ -8,8 +8,8 @@ from src.services.video_compressor import (
 )
 from src.domain.entities import AttachmentEntity
 from src.domain.events import (
-    AtachmentProcessed,
-    AtachmentUploadedFromClient,
+    AttachmentProcessed,
+    AttachmentUploadedFromClient,
     ErrorEvent,
 )
 import asyncio
@@ -108,11 +108,11 @@ async def test_integration_compressing_ffmpeg():
         mimeType="video/mp4",
         originalName=realfile,
     )
-    event = AtachmentUploadedFromClient(attachment=attachment)
+    event = AttachmentUploadedFromClient(attachment=attachment)
     await video_compressing_pipeline(event=event, queue=queue)
-    event: AtachmentProcessed = await future
+    event: AttachmentProcessed = await future
 
-    assert isinstance(event, AtachmentProcessed)
+    assert isinstance(event, AttachmentProcessed)
     assert event.attachment.id == attachment.id
     assert event.attachment.videoHighQuality is not None
     assert event.attachment.videoLowQuality is not None
@@ -130,7 +130,7 @@ async def test_integration_compressing_ffmpeg_negative_with_error_event():
         mimeType="video/mp4",
         originalName=realfile,
     )
-    event = AtachmentUploadedFromClient(attachment=attachment)
+    event = AttachmentUploadedFromClient(attachment=attachment)
     await video_compressing_pipeline(event=event, queue=queue)
     event: ErrorEvent = await future
     assert event.__class__ == ErrorEvent

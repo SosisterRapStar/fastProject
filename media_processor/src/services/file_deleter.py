@@ -15,8 +15,8 @@ class DeleteFilesHandler:
         command: DeleteAlreadyExistedFile | DeleteProcessedFilesFromLocalStorage,
         queue: asyncio.Queue,
     ):
-        atachment = command.attachment
-        file_path = directory_path + atachment.originalName
+        attachment = command.attachment
+        file_path = directory_path + attachment.originalName
         try:
             await aiofiles.os.remove(file_path)
             logger.debug(f"{file_path} deleted successfully.")

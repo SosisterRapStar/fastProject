@@ -1,22 +1,20 @@
 from starlette.concurrency import run_in_threadpool
 from fastapi import FastAPI, Request
-from adapters.s3client import S3CLient
-from adapters.messagequeues import KafkaProducer
+from src.adapters.s3client import S3CLient
+from src.adapters.messagequeues import KafkaProducer, FakeProducer
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi import Request
 from streaming_form_data import StreamingFormDataParser
-
+from src.domain.events import CheckDuplicates
 from src.services.stream_handlers import VideoProcessingTargetWithSHA256
-from src.domain.events import AtachmentUploadedFromClient
 from config import settings, logger
 from typing import Callable
 from pyinstrument import Profiler
 from pyinstrument.renderers.html import HTMLRenderer
 from pyinstrument.renderers.speedscope import SpeedscopeRenderer
 import aiofiles
-from dependencies.queue import asyncio_consumer
-from src import bootstrap
+from src.bootstrap import bootstrap
 from contextlib import asynccontextmanager
 import asyncio
 
@@ -26,7 +24,7 @@ origins = [
 ]
 
 
-message_bus = bootstrap(S3CLient, KafkaProducer)
+message_bus = bootstrap(S3CLient, FakeProducer)
 
 
 @asynccontextmanager
@@ -98,8 +96,8 @@ async def upload_video(request: Request):
     async for chunk in request.stream():
         await run_in_threadpool(parser.data_received, chunk)
         while loaded_files := target.loaded_files:
-            event = AtachmentUploadedFromClient(attachment=loaded_files.pop())
-            await message_bus.queue.put(event)
+            command = CheckDuplicates(attachment=loaded_files.pop())
+            await message_bus.queue.put(command)
 
     # async for chunk in request.stream():
     #     logger.debug("Got chunk from client")

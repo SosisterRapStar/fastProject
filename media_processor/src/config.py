@@ -22,7 +22,7 @@ class DebugSettings(BaseSettings):
 
 
 class StorageSettings(BaseSettings):
-    DIR_FOR_FILE_DOQNLOADING = "/home/vanya/deepWork/media_processor/uploads/"
+    DIR_FOR_FILE_DOQNLOADING: str = "/home/vanya/deepWork/media_processor/uploads/"
 
 
 class DBSettings(BSettings):

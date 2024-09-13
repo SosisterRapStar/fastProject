@@ -1,10 +1,9 @@
-from streaming_form_data.targets import BaseTarget, FileTarget, DirectoryTarget
+from streaming_form_data.targets import FileTarget, DirectoryTarget
 import hashlib
 import uuid
 from pathlib import Path
 import asyncio
 from domain.entities import AttachmentEntity
-from domain.events import AtachmentUploadedFromClient
 from config import logger
 from pathlib import Path
 from typing import List

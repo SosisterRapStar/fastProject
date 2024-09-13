@@ -5,27 +5,42 @@ import asyncio
 from dataclasses import dataclass
 import json
 from src.domain.events import (
-    AtachmentProcessed,
-    AtachmentUploadedFromClient,
+    AttachmentProcessed,
+    ProcessNewFileFromClient,
     ErrorEvent,
 )
+from src.domain.entities import AttachmentEntity
 import uuid
 from src.config import logger, settings
 
 
+
+
 @dataclass
-class VideoCompressor:
-    async def __call__(event: AtachmentUploadedFromClient, queue: asyncio.Queue):
+class FileProcessor:
+    async def __call__(self, command: ProcessNewFileFromClient, queue: asyncio.Queue) -> None:
+        attachment = command.attachment
+        if attachment.mimeType.split('/')[0] == "video":
+            await self.video_compressor(video=attachment, queue=queue)
+        else:
+            await self.image_compressor(image=attachment, queue=queue)
+    
+
+    async def image_compressor(self, image: AttachmentEntity, queue: asyncio.Queue):
+        pass
+
+
+
+    async def video_compressor(self, video: AttachmentEntity, queue: asyncio.Queue):
         """
         Function that handling all process of compressing, using ffmpeg
 
         Args:
-            event (AtachmentUploadedFromClient): Event entity that activates this func
+            event (AttachmentUploadedFromClient): Event entity that activates this func
             queue (asyncio.Queue): Async queue  for putting messages about processed videos
         """
 
         try:
-            video = event.attachment
             original_name = base_dir + video.originalName + " "
 
             logger.debug(f"Starting to compress the video video_path {original_name}")
@@ -73,7 +88,7 @@ class VideoCompressor:
             video.videoHighQuality = output["high"]
             video.videoThumbnail = thumbnail_name
 
-            event = AtachmentProcessed(attachment=video)
+            event = AttachmentProcessed(attachment=video)
             await queue.put(event)
 
         except SubprocessErorr as e:

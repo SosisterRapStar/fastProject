@@ -16,17 +16,17 @@ class Command(ABC):
     id: set = field(default_factory=_create_uuid)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class DeleteProcessedFilesFromLocalStorage(Command):
     attachment: AttachmentEntity
 
 
-@dataclass
+@dataclass(kw_only=True)
 class DeleteAlreadyExistedFile(Command):
     attachment: AttachmentEntity
 
 
-@dataclass
+@dataclass(kw_only=True)
 class CheckDuplicates(Command):
     attachment: AttachmentEntity
     # s3: S3ABC
@@ -37,12 +37,9 @@ class CheckDuplicates(Command):
 class Event(ABC):
     id: str = field(default_factory=_create_uuid)
 
-    def to_json_in_utf(self) -> bytes:
-        return json.dumps(self.__dict__).encode("utf-8")
 
-
-@dataclass
-class AtachmentUploaded(Event):
+@dataclass(kw_only=True)
+class AttachmentUploaded(Event):
     attachment: AttachmentEntity
 
 
@@ -52,12 +49,12 @@ class ProcessNewFileFromClient(Command):
 
 
 @dataclass(kw_only=True)
-class AtachmentProcessed(Event):
+class AttachmentProcessed(Event):
     attachment: AttachmentEntity
 
 
 @dataclass(kw_only=True)
-class AtachmentUploadedToS3(Event):
+class AttachmentUploadedToS3(Event):
     attachment: AttachmentEntity
 
 
