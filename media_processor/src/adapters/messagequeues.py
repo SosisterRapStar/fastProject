@@ -9,7 +9,8 @@ from src.services.video_compressor import VideoCompressor
 from src.services.S3service import SendToS3Handler
 from src.services.kafka_service import KafkaHandler
 from src.services.deduplicator import DeduplicateHandler
-from src.services.filer_deleter import DeleteFilesHandler
+from src.services.file_deleter import DeleteFilesHandler
+
 from src.domain.events import (
     Event,
     Command,
@@ -80,34 +81,15 @@ class BaseQueue(ABC):
     async def consume(self):
         raise NotImplementedError
 
-
-# создавать хэндлеры где-то в одном месте с уже заранее прокинутыми в них зависимостями
-# использовать либо замыкания / partial
-
-# async def handle_event(
-#     event: Event, queue: asyncio.Queue
-# ):  # одно событие могут быть обработаны множеством функций
-#     HANDLERS:
-#     for handler in HANDLERS[type(event)]:
-#         future = asyncio.create_task(handler(event, queue))
-
-
-# async def handle_command(
-#     command: Command, queue: asyncio.Queue
-# ):  # команды могут быть обработаны только одной конкретной функцией
-#
-#     handler = HANDLERS[type(command)]
-#     fiture = asyncio.create_task(handler(command, queue))
-
-
 @dataclass
 class AsyncioConsumer:
     command_handlers: Dict[Command, CommandHandler]
     event_handlers: Dict[Event, List[EventHandler]]
     queue: asyncio.Queue = asyncio.Queue()
 
-    async def start(self) -> None:
-        asyncio.create_task(self.consume())
+    async def start(self) -> asyncio.Task:
+        future = asyncio.create_task(self.consume())
+        return future
 
     async def handle_event(
         self, event: Event, queue: asyncio.Queue

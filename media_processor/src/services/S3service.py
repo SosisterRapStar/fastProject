@@ -1,9 +1,10 @@
 from adapters.s3client import S3ABC
 from dataclasses import dataclass
-from src.domain.events import AtachmentProcessed
+from src.domain.events import AtachmentProcessed, AtachmentUploadedToS3
 
 # from domain.entities import ImageEntity
 import asyncio
+from src.config import settings
 
 methods = {"get": "get_object", "put": "put_object"}
 
@@ -50,5 +51,34 @@ DEFAULT_METHOD: str = methods["get"]
 class SendToS3Handler:
     s3: S3ABC
 
-    async def __call__(event: AtachmentProcessed, queue: asyncio.Queue):
-        pass
+    async def __call__(self, event: AtachmentProcessed, queue: asyncio.Queue):
+        atachment = event.attachment
+        if atachment.mimeType == "video/mp4":
+            tasks = [
+                self.s3.upload_file(
+                    atachment.videoHighQuality, bucket_name=settings.s3.bucket_name
+                ),
+                self.s3.upload_file(
+                    atachment.videoMediumQuality, bucket_name=settings.s3.bucket_name
+                ),
+                self.s3.upload_file(
+                    atachment.videoLowQuality, bucket_name=settings.s3.bucket_name
+                ),
+            ]
+
+        else:
+            tasks = [
+                self.s3.upload_file(
+                    atachment.imageHighQuality, bucket_name=settings.s3.bucket_name
+                ),
+                self.s3.upload_file(
+                    atachment.imageLowQuality, bucket_name=settings.s3.bucket_name
+                ),
+                self.s3.upload_file(
+                    atachment.imageMediumQuality, bucket_name=settings.s3.bucket_name
+                ),
+            ]
+
+        await asyncio.gather(*tasks)
+
+        await queue.put(AtachmentUploadedToS3(attachment=atachment))

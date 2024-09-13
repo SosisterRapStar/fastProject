@@ -14,13 +14,11 @@ from typing import Callable
 from pyinstrument import Profiler
 from pyinstrument.renderers.html import HTMLRenderer
 from pyinstrument.renderers.speedscope import SpeedscopeRenderer
-import asyncio
 import aiofiles
 from dependencies.queue import asyncio_consumer
 from src import bootstrap
-
-
-
+from contextlib import asynccontextmanager
+import asyncio
 
 
 origins = [
@@ -28,8 +26,23 @@ origins = [
 ]
 
 
-app = FastAPI()
+message_bus = bootstrap(S3CLient, KafkaProducer)
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    message_bus_task = await message_bus.start()
+    yield
+    if message_bus_task:
+        # Cancel the task if it exists
+        message_bus_task.cancel()
+        try:
+            await message_bus_task
+        except asyncio.CancelledError:
+            print("Message bus task was canceled.")
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -39,7 +52,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-message_bus = bootstrap(s3 = S3CLient, producer=KafkaProducer)
 
 # profiler
 if settings.debug.PROFILING_ENABLE:

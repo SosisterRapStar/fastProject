@@ -75,7 +75,10 @@ class S3CLient(S3ABC):
             yield client
 
     async def upload_file(
-        self, file_path: str, object_name: str, bucket_name: str
+        self,
+        file_path: str,
+        bucket_name: str,
+        object_name: str = None,
     ) -> None:
         if file_path:
             if not object_name:
