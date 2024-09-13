@@ -5,6 +5,7 @@ import uuid
 from src.adapters.s3client import S3ABC
 from src.adapters.cache import AbstractCache
 import json
+from typing import List
 
 
 def _create_uuid():
@@ -17,13 +18,8 @@ class Command(ABC):
 
 
 @dataclass(kw_only=True)
-class DeleteProcessedFilesFromLocalStorage(Command):
-    attachment: AttachmentEntity
-
-
-@dataclass(kw_only=True)
-class DeleteAlreadyExistedFile(Command):
-    attachment: AttachmentEntity
+class DeleteFilesFromLocalStorage(Command):
+    files: List[str]
 
 
 @dataclass(kw_only=True)
@@ -60,4 +56,4 @@ class AttachmentUploadedToS3(Event):
 
 @dataclass(kw_only=True)
 class ErrorEvent(Event):
-    pass
+    err: str

@@ -14,22 +14,19 @@ import uuid
 from src.config import logger, settings
 
 
-
-
 @dataclass
 class FileProcessor:
-    async def __call__(self, command: ProcessNewFileFromClient, queue: asyncio.Queue) -> None:
+    async def __call__(
+        self, command: ProcessNewFileFromClient, queue: asyncio.Queue
+    ) -> None:
         attachment = command.attachment
-        if attachment.mimeType.split('/')[0] == "video":
+        if attachment.mimeType.split("/")[0] == "video":
             await self.video_compressor(video=attachment, queue=queue)
         else:
             await self.image_compressor(image=attachment, queue=queue)
-    
 
     async def image_compressor(self, image: AttachmentEntity, queue: asyncio.Queue):
         pass
-
-
 
     async def video_compressor(self, video: AttachmentEntity, queue: asyncio.Queue):
         """
@@ -93,11 +90,11 @@ class FileProcessor:
 
         except SubprocessErorr as e:
             logger.error("Error in compressing")
-            await queue.put(ErrorEvent())
+            await queue.put(ErrorEvent(err=e))
 
         except Exception as e:
             logger.error(f"Error in something else {e}")
-            await queue.put(ErrorEvent())
+            await queue.put(ErrorEvent(err=e))
 
 
 @dataclass

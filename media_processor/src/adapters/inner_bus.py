@@ -5,8 +5,6 @@ import asyncio
 from typing import Dict, List
 
 
-
-
 from src.services.file_processor import FileProcessor
 from src.services.S3service import SendToS3Handler
 from src.services.kafka_service import KafkaHandler
@@ -20,14 +18,11 @@ from src.domain.events import (
     ProcessNewFileFromClient,
     AttachmentProcessed,
     AttachmentUploadedToS3,
-    DeleteProcessedFilesFromLocalStorage,
-    DeleteAlreadyExistedFile,
+    DeleteFilesFromLocalStorage,
 )
 
 EventHandler = Callable[[Event, asyncio.Queue], None]
 CommandHandler = Callable[[Command, asyncio.Queue], None]
-
-
 
 
 RAW_EVENT_HANDLERS: Dict[Event, List[EventHandler]] = {
@@ -43,8 +38,7 @@ RAW_EVENT_HANDLERS: Dict[Event, List[EventHandler]] = {
 RAW_COMMAND_HANDLERS: Dict[Command, CommandHandler] = {
     CheckDuplicates: DeduplicateHandler,
     ProcessNewFileFromClient: FileProcessor,
-    DeleteProcessedFilesFromLocalStorage: DeleteFilesHandler,
-    DeleteAlreadyExistedFile: DeleteFilesHandler,
+    DeleteFilesFromLocalStorage: DeleteFilesHandler,
 }
 
 
@@ -76,7 +70,7 @@ class AsyncioConsumer:
     async def consume(self):
         logger.debug("Consumer started\n")
         while True:
-            message = await self.__queue.get()
+            message = await self.queue.get()
 
             if isinstance(message, Event):
                 logger.debug(f"Got event: {message}\n")

@@ -21,8 +21,8 @@ class DebugSettings(BaseSettings):
     PROFILING_ENABLE: bool = True
 
 
-class StorageSettings(BaseSettings):
-    DIR_FOR_FILE_DOQNLOADING: str = "/home/vanya/deepWork/media_processor/uploads/"
+# class StorageSettings(BaseSettings):
+#     DIR_FOR_FILE_DOQNLOADING: str = "/home/vanya/deepWork/media_processor/uploads/"
 
 
 class DBSettings(BSettings):
@@ -46,7 +46,7 @@ class Settings:
     kafka: KafkaSettings = KafkaSettings()
     s3: S3settings = S3settings()
     debug: DebugSettings = DebugSettings()
-    base_dir: StorageSettings = StorageSettings()
+    base_dir: str = "/home/vanya/deepWork/fastProject/media_processor/uploads/"
 
 
 settings = Settings()

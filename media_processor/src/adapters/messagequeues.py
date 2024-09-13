@@ -5,7 +5,6 @@ from typing import Callable, Coroutine
 from config import logger  # type: ignore
 
 
-
 @dataclass
 class BaseConsumerByTopic(ABC):
     """

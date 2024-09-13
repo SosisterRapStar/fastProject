@@ -1,8 +1,7 @@
 import asyncio
 from src.domain.events import (
-    Event,
-    DeleteAlreadyExistedFile,
-    DeleteProcessedFilesFromLocalStorage,
+    ErrorEvent,
+    DeleteFilesFromLocalStorage,
 )
 import aiofiles.os
 from src.config import logger, settings
@@ -12,15 +11,20 @@ directory_path = settings.base_dir
 
 class DeleteFilesHandler:
     async def __call__(
-        command: DeleteAlreadyExistedFile | DeleteProcessedFilesFromLocalStorage,
+        command: DeleteFilesFromLocalStorage,
         queue: asyncio.Queue,
     ):
-        attachment = command.attachment
-        file_path = directory_path + attachment.originalName
         try:
-            await aiofiles.os.remove(file_path)
-            logger.debug(f"{file_path} deleted successfully.")
+            files = command.files
+            for filename in files:
+                file_path = directory_path + filename
+                await aiofiles.os.remove(file_path)
+                logger.debug(f"{file_path} deleted successfully.")
+
         except FileNotFoundError:
-            logger.debug(f"{file_path} not found.")
+            logger.error(f"{file_path} not found.")
+            await queue.put(ErrorEvent(err=e))
+
         except Exception as e:
-            logger.debug(f"An error occurred while deleting {file_path}: {e}")
+            logger.error(f"An error occurred while deleting {file_path}: {e}")
+            await queue.put(ErrorEvent(err=e))

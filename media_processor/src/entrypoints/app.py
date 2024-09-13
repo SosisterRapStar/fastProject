@@ -74,50 +74,29 @@ if settings.debug.PROFILING_ENABLE:
         return response
 
 
-# @app.post(
-#     "/images/",
-# )
-# async def give_presigned_for_put(image: ImageEntity) -> GetPolicies:
-#     s3 = S3service(client=S3CLient())
-#     urls = await s3.get_image_presigned_url(image=image, method="put_object")
-#     return GetPolicies(high_url=urls[0], medium_url=urls[1], thumbnail_url=urls[2])
-
-
 @app.post("/videos/", status_code=201)
 async def upload_video(request: Request):
     parser = StreamingFormDataParser(headers=request.headers)
     target = VideoProcessingTargetWithSHA256(directory_path=settings.base_dir)
-    # image_target = ...
-    # message_id_targer = ...
+
     parser.register("video", target=target)
-    # parser.register("image", target=image_target)
-    # parser.register()
 
     async for chunk in request.stream():
         await run_in_threadpool(parser.data_received, chunk)
-        while loaded_files := target.loaded_files:
+        while loaded_files := target.multipart_filenames:
             command = CheckDuplicates(attachment=loaded_files.pop())
             await message_bus.queue.put(command)
-
-    # async for chunk in request.stream():
-    #     logger.debug("Got chunk from client")
-    #     await run_in_threadpool(parser.data_received, chunk)
 
     return {"sosi": "pisos"}
 
 
 @app.post("/test_upload/", status_code=201)
 async def upload_video(request: Request):
-    # parser = StreamingFormDataParser(headers=request.headers)
-
     print(dict(request.headers))
     async with aiofiles.open("multipart_file", "wb") as f:
         await f.seek(0)
         async for chunk in request.stream():
             await f.write(chunk)
-
-        # logger.debug("Got chunk from client")
-        # await run_in_threadpool(parser.data_received, chunk)
 
     return {"sosi": "pisos"}
 

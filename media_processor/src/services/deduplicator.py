@@ -4,7 +4,7 @@ from src.domain.events import (
     ErrorEvent,
     CheckDuplicates,
     ProcessNewFileFromClient,
-    DeleteAlreadyExistedFile,
+    DeleteFilesFromLocalStorage,
 )
 from dataclasses import dataclass
 from adapters.s3client import S3ABC
@@ -17,12 +17,15 @@ class DeduplicateHandler:
 
     async def __call__(self, command: CheckDuplicates, queue: asyncio.Queue):
         try:
-            file_exists = await self.s3.file_exists(bucket_name=settings.s3.bucket_name, 
-                                                    file_name=command.attachment.originalName)
+            file_exists = await self.s3.file_exists(
+                bucket_name=settings.s3.bucket_name,
+                file_name=command.attachment.originalName,
+            )
             if file_exists:
-                await queue.put(DeleteAlreadyExistedFile(attachment=command.attachment))
+                await queue.put(
+                    DeleteFilesFromLocalStorage(files=[command.attachment.originalName])
+                )
             else:
                 await queue.put(ProcessNewFileFromClient(attachment=command.attachment))
-        except:
-            await queue.put(ErrorEvent())
-
+        except Exception as e:
+            await queue.put(ErrorEvent(err=e))
