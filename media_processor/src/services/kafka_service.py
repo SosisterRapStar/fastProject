@@ -23,6 +23,7 @@ class KafkaHandler:
                 await queue.put(
                     DeleteFilesFromLocalStorage(
                         files=[
+                            attachment.originalName,
                             attachment.imageHighQuality,
                             attachment.imageLowQuality,
                             attachment.imageMediumQuality,
@@ -34,6 +35,7 @@ class KafkaHandler:
                 await queue.put(
                     DeleteFilesFromLocalStorage(
                         files=[
+                            attachment.originalName,
                             attachment.videoHighQuality,
                             attachment.videoLowQuality,
                             attachment.videoMediumQuality,

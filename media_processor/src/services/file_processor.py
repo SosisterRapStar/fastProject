@@ -78,7 +78,7 @@ class FileProcessor:
 
             video_thumbnail = await generate_thumbnail(
                 file_name=base_dir + original_name,
-                output_image_name=base_dir + "/" + thumbnail_name,
+                output_image_name=base_dir + thumbnail_name,
             )
 
             video.videoMediumQuality = output["medium"]

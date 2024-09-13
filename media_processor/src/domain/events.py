@@ -49,6 +49,10 @@ class AttachmentProcessed(Event):
     attachment: AttachmentEntity
 
 
+# class LoadFilesToS3(Command):
+#     files:
+
+
 @dataclass(kw_only=True)
 class AttachmentUploadedToS3(Event):
     attachment: AttachmentEntity

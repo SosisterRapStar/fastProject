@@ -107,9 +107,11 @@ class S3CLient(S3ABC):
         async with self.__get_client() as client:
             try:
                 await client.head_object(Bucket=bucket_name, Key=file_name)
+                logger.debug(f"File {file_name} exists in S3")
                 return True
             except ClientError as e:
                 if e.response["Error"]["Code"] == "404":  # значит что файл не найден
+                    logger.debug(f"There is no {file_name} in S3")
                     return False
                 raise S3Exception(
                     message=e.response["Error"]

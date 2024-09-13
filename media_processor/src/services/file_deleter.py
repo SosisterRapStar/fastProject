@@ -11,6 +11,7 @@ directory_path = settings.base_dir
 
 class DeleteFilesHandler:
     async def __call__(
+        self,
         command: DeleteFilesFromLocalStorage,
         queue: asyncio.Queue,
     ):

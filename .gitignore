@@ -1,0 +1,17 @@
+*/gitignore
+*/src/.mypy_cache
+*cache 
+./venv 
+mydata
+*/__pycache__
+./minio
+*env*
+./venv/*
+venv/bin/activate.csh
+./uploads/*
+*profile
+*py-spy
+./minio
+*.pyc
+*.mp4
+media_processor/.gitignore

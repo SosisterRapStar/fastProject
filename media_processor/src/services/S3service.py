@@ -18,11 +18,16 @@ base_dir = settings.base_dir
 class SendToS3Handler:
     s3: S3ABC
 
+    # c этим надо что - то делать
     async def __call__(self, event: AttachmentProcessed, queue: asyncio.Queue):
         try:
             attachment = event.attachment
-            if attachment.mimeType == "video/mp4":
+            if attachment.mimeType.split("/")[0] == "video":
                 tasks = [
+                    self.s3.upload_file(
+                        file_path=base_dir + attachment.originalName,
+                        bucket_name=settings.s3.bucket_name,
+                    ),
                     self.s3.upload_file(
                         file_path=base_dir + attachment.videoHighQuality,
                         bucket_name=settings.s3.bucket_name,
@@ -39,6 +44,10 @@ class SendToS3Handler:
 
             else:
                 tasks = [
+                    self.s3.upload_file(
+                        file_path=base_dir + attachment.originalName,
+                        bucket_name=settings.s3.bucket_name,
+                    ),
                     self.s3.upload_file(
                         file_path=base_dir + attachment.imageHighQuality,
                         bucket_name=settings.s3.bucket_name,
