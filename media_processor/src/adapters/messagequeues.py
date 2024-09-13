@@ -1,4 +1,4 @@
-from aiokafka import AIOKafkaConsumer, ConsumerRecord  # type: ignore
+from aiokafka import AIOKafkaConsumer, ConsumerRecord, AIOKafkaProducer  # type: ignore
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 from typing import Callable, Coroutine
@@ -81,6 +81,7 @@ class BaseQueue(ABC):
     async def consume(self):
         raise NotImplementedError
 
+
 @dataclass
 class AsyncioConsumer:
     command_handlers: Dict[Command, CommandHandler]
@@ -93,7 +94,7 @@ class AsyncioConsumer:
 
     async def handle_event(
         self, event: Event, queue: asyncio.Queue
-    ):  # одно событие могут быть обработаны множеством функций
+    ):  # одно событие может быть обработано множеством функций
         for handler in self.event_handlers[type(event)]:
             future = asyncio.create_task(handler(event, queue))
 
@@ -126,11 +127,36 @@ class AsyncioConsumer:
 
 @dataclass
 class BaseProducer(ABC):
-    pass
+    @abstractmethod
+    async def start(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    async def send(self, topic: str, value: bytes):
+        raise NotImplementedError
 
 
+@dataclass
+class FakeProducer(BaseProducer):
+    sended_messages = field(default_factory=list)
+
+    async def start(self):
+        return 1
+
+    async def send(self, topic: str, value: bytes):
+        self.sended_messages.append(value)
+        return self.sended_messages
+
+
+@dataclass
 class KafkaProducer(BaseProducer):
-    pass
+    _producer: AIOKafkaProducer
+
+    async def start(self):
+        await self._producer.start()
+
+    async def send(self, topic: str, value: bytes):
+        await self._producer.send(topic=topic, value=value)
 
 
 @dataclass

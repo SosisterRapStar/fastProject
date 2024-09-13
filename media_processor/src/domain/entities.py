@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from pydantic import BaseModel, Field
 import uuid
+import json
 
 # class ImageEntity(BaseModel):
 #     id: str
@@ -18,9 +19,13 @@ def _create_id() -> str:
 class Entity:
     id: str = field(default_factory=_create_id)
 
+    def to_json_in_utf(self) -> bytes:
+        return json.dumps(self.__dict__).encode("utf-8")
+
 
 @dataclass(kw_only=True)
 class AttachmentEntity(Entity):
+    messageId: str
     mimeType: str  # image/jpeg, #video/mp4
     originalName: str
     imageThumbnail: str | None = None

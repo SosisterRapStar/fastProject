@@ -89,7 +89,11 @@ if settings.debug.PROFILING_ENABLE:
 async def upload_video(request: Request):
     parser = StreamingFormDataParser(headers=request.headers)
     target = VideoProcessingTargetWithSHA256(directory_path=settings.base_dir)
-    parser.register("file", target=target)
+    # image_target = ...
+    # message_id_targer = ...
+    parser.register("video", target=target)
+    # parser.register("image", target=image_target)
+    # parser.register()
 
     async for chunk in request.stream():
         await run_in_threadpool(parser.data_received, chunk)

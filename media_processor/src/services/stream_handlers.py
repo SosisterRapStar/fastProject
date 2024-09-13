@@ -38,7 +38,7 @@ class VideoProcessingTargetWithSHA256(DirectoryTarget):
 
         self.multipart_filenames.append(
             AttachmentEntity(
-                id=self._hash.hexdigest(),
+                messageId=self._hash.hexdigest(),
                 mimeType=self.multipart_content_type,
                 originalName=new_file_name,
             )

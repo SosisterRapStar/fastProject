@@ -4,6 +4,7 @@ from abc import ABC
 import uuid
 from src.adapters.s3client import S3ABC
 from src.adapters.cache import AbstractCache
+import json
 
 
 def _create_uuid():
@@ -35,6 +36,9 @@ class CheckDuplicates(Command):
 @dataclass
 class Event(ABC):
     id: str = field(default_factory=_create_uuid)
+
+    def to_json_in_utf(self) -> bytes:
+        return json.dumps(self.__dict__).encode("utf-8")
 
 
 @dataclass
