@@ -15,7 +15,8 @@ from src.domain.events import (
     Event,
     Command,
     CheckDuplicates,
-    ProcessNewFileFromClient,
+    ProcessVideoFileFromClient,
+    ProcessImageFileFromClient,
     AttachmentProcessed,
     AttachmentUploadedToS3,
     DeleteFilesFromLocalStorage,
@@ -38,7 +39,8 @@ RAW_EVENT_HANDLERS: Dict[Event, List[EventHandler]] = {
 
 RAW_COMMAND_HANDLERS: Dict[Command, CommandHandler] = {
     CheckDuplicates: DeduplicateHandler,
-    ProcessNewFileFromClient: FileProcessor,
+    ProcessVideoFileFromClient: FileProcessor,
+    ProcessImageFileFromClient: FileProcessor,
     DeleteFilesFromLocalStorage: DeleteFilesHandler,
 }
 

@@ -6,29 +6,69 @@ from dataclasses import dataclass
 import json
 from src.domain.events import (
     AttachmentProcessed,
-    ProcessNewFileFromClient,
+    ProcessVideoFileFromClient,
+    ProcessImageFileFromClient,
     ErrorEvent,
 )
-from src.domain.entities import AttachmentEntity
+from src.domain.entities import VideoEntity, ImageEntity
 import uuid
 from src.config import logger, settings
+from io import BytesIO
+from PIL import Image
+import concurrent.futures
 
+pool = concurrent.futures.ProcessPoolExecutor()
 
 @dataclass
 class FileProcessor:
     async def __call__(
-        self, command: ProcessNewFileFromClient, queue: asyncio.Queue
+        self,
+        command: ProcessVideoFileFromClient | ProcessImageFileFromClient,
+        queue: asyncio.Queue,
     ) -> None:
-        attachment = command.attachment
-        if attachment.mimeType.split("/")[0] == "video":
-            await self.video_compressor(video=attachment, queue=queue)
+        if isinstance(command, ProcessVideoFileFromClient):
+            await self.video_compressor(video=command.attachment, queue=queue)
         else:
-            await self.image_compressor(image=attachment, queue=queue)
+            await self.image_compressor(image_event=command, queue=queue)
 
-    async def image_compressor(self, image: AttachmentEntity, queue: asyncio.Queue):
-        pass
+    async def image_compressor(
+        self, image_command: ProcessImageFileFromClient, queue: asyncio.Queue
+    ):
+        new_extention = "jpg"
+        file_name_without_extention = image_command.attachment.originalName.split('.')[0]
+        qualities = {
+            "high": ImageQuality(width=1920, height=1080, coefficient=95),
+            "medium": ImageQuality(width=576, height=1024, coefficient=80),
+            "low": ImageQuality(width=160, height=160, coefficient=70),
+            "thumbnail": ImageQuality(width=160, height=160, coefficient=70),
+        }
+        original_image_bytes = BytesIO(image_command.attachment.originalBytes)
+        image = Image.open(original_image_bytes)
+        original_width, original_height = image.size
+        image_info = ImageInfo(width=original_width, height=original_height)
 
-    async def video_compressor(self, video: AttachmentEntity, queue: asyncio.Queue):
+        output = {}
+        for preset, quality in qualities.items():
+            loop = asyncio.get_running_loop()
+            logger.debug("Started process of image compression")
+            output_name = preset+'_'+file_name_without_extention+'.'+new_extention
+            task = loop.run_in_executor(pool, compress_image, image_info, quality, output_name)
+            await task
+            output[preset] = output_name
+        
+        image_command.attachment.imageHighQuality = output["high"]
+        image_command.attachment.imageMediumQuality = output["medium"]
+        image_command.attachment.imageLowQuality = output["low"]
+        image_command.attachment.imageThumbnail = output["thumbnail"]
+        
+        await queue.put(image_command)
+
+        
+
+        
+        
+
+    async def video_compressor(self, video: VideoEntity, queue: asyncio.Queue):
         """
         Function that handling all process of compressing, using ffmpeg
 
@@ -51,11 +91,8 @@ class FileProcessor:
             }
 
             output = {}  # maps the name of the preset and the filename for this preset
-            logger.debug("???")
             video_info = await get_video_info(file_name=base_dir + original_name)
-            logger.debug("!!!")
             file_name_without_extension = original_name.split(".")[0]
-            logger.debug("$$$")
             for preset, quality in presets.items():
                 output_name = preset + "_" + file_name_without_extension + ".mp4"
                 logger.debug(
@@ -123,6 +160,18 @@ class ErorrDuringCompression(SubprocessErorr):
 
 # TODO: оптимизировать сжатие, сейчас меньшие пресеты сжимают оригинал, нужно чтобы меньшие пресеты работали с данными, которые выдали более качественные пресеты
 base_dir = settings.base_dir
+
+
+@dataclass
+class ImageQuality:
+    height: int
+    width: int
+    coefficient: int
+
+@dataclass(frozen=True)
+class ImageInfo:
+    height: int
+    width: int
 
 
 @dataclass(frozen=True)
@@ -254,6 +303,12 @@ async def create_compressing_config(
 
     return config
 
+def compress_image(image_info: ImageInfo, quality: ImageQuality, output_name: str, image: Image):
+    if quality.height < image_info.height:
+        image.thumbnail((quality.width, quality.height))
+    image.save(output_name, format='JPEG', quality=quality.coefficient, optimize=True)
+        
+    
 
 async def start_compressing_the_video(config: str):
     process = await asyncio.create_subprocess_shell(

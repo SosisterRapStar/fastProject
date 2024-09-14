@@ -7,7 +7,7 @@ import uvicorn
 from fastapi import Request
 from streaming_form_data import StreamingFormDataParser
 from src.domain.events import CheckDuplicates
-from src.services.stream_handlers import VideoProcessingTargetWithSHA256
+from src.services.stream_handlers import ProcessingTargetWithSHA256
 from config import settings, logger
 from typing import Callable
 from pyinstrument import Profiler
@@ -77,15 +77,21 @@ if settings.debug.PROFILING_ENABLE:
 @app.post("/videos/", status_code=201)
 async def upload_video(request: Request):
     parser = StreamingFormDataParser(headers=request.headers)
-    target = VideoProcessingTargetWithSHA256(directory_path=settings.base_dir)
+    target = ProcessingTargetWithSHA256(directory_path=settings.base_dir)
 
     parser.register("video", target=target)
 
     async for chunk in request.stream():
         await run_in_threadpool(parser.data_received, chunk)
-        while loaded_files := target.multipart_filenames:
+        while loaded_files := target.video_filenames:
             command = CheckDuplicates(attachment=loaded_files.pop())
             await message_bus.queue.put(command)
+
+        while loaded_images := target.image_files:
+            command = CheckDuplicates(attachment=loaded_images.pop())
+            await message_bus.queue.put(command)
+
+
 
     return {"sosi": "pisos"}
 

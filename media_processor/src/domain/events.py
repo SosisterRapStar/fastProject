@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from .entities import AttachmentEntity
+from .entities import VideoEntity, ImageEntity
 from abc import ABC
 import uuid
 from src.adapters.s3client import S3ABC
@@ -24,7 +24,7 @@ class DeleteFilesFromLocalStorage(Command):
 
 @dataclass(kw_only=True)
 class CheckDuplicates(Command):
-    attachment: AttachmentEntity
+    attachment: VideoEntity | ImageEntity
     # s3: S3ABC
     # cache: AbstractCache
 
@@ -36,17 +36,23 @@ class Event(ABC):
 
 @dataclass(kw_only=True)
 class AttachmentUploaded(Event):
-    attachment: AttachmentEntity
+    attachment: VideoEntity | ImageEntity
 
 
 @dataclass(kw_only=True)
-class ProcessNewFileFromClient(Command):
-    attachment: AttachmentEntity
+class ProcessVideoFileFromClient(Command):
+    attachment: VideoEntity | ImageEntity
+
+
+@dataclass(kw_only=True)
+class ProcessImageFileFromClient(Command):
+    image_bytes: bytes
+    attachment: ImageEntity
 
 
 @dataclass(kw_only=True)
 class AttachmentProcessed(Event):
-    attachment: AttachmentEntity
+    attachment: VideoEntity | ImageEntity
 
 
 # class LoadFilesToS3(Command):
@@ -55,7 +61,7 @@ class AttachmentProcessed(Event):
 
 @dataclass(kw_only=True)
 class AttachmentUploadedToS3(Event):
-    attachment: AttachmentEntity
+    attachment: VideoEntity | ImageEntity
 
 
 @dataclass(kw_only=True)

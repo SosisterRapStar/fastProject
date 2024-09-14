@@ -34,6 +34,7 @@ aiofiles = "^24.1.0"
 py-spy = "^0.3.14"
 asyncffmpeg = "^1.2.0"
 asynccpu = "^1.2.2"
+pillow = "^10.4.0"
 
 
 [tool.poetry.group.dev.dependencies]

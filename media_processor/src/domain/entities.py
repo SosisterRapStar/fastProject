@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from pydantic import BaseModel, Field
 import uuid
 import json
+import io
 
 # class ImageEntity(BaseModel):
 #     id: str
@@ -24,18 +25,27 @@ class Entity:
 
 
 @dataclass(kw_only=True)
-class AttachmentEntity(Entity):
+class VideoEntity(Entity):
     messageId: str
-    mimeType: str  # image/jpeg, #video/mp4
+    mimeType: str
     originalName: str
-    imageThumbnail: str | None = None
-    imageHighQuality: str | None = None
-    imageMediumQuality: str | None = None
-    imageLowQuality: str | None = None
     videoThumbnail: str | None = None
     videoHighQuality: str | None = None
     videoMediumQuality: str | None = None
     videoLowQuality: str | None = None
+
+
+@dataclass(kw_only=True)
+class ImageEntity(Entity):
+    messageId: str
+    mimeType: str
+
+    originalBytes: io.BytesIO | bytes = None
+    originalName: str | None = None
+    imageThumbnail: str | None = None
+    imageHighQuality: str | None = None
+    imageMediumQuality: str | None = None
+    imageLowQuality: str | None = None
 
 
 # class VideoEntity(BaseModel):
